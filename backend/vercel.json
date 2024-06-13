@@ -23,11 +23,7 @@
       "src": "/api/v1/room/(.*)",
       "dest": "index.js"
     },
-    
-    {
-      "src": "/api/v1/order/(.*)",
-      "dest": "index.js"
-    },
+  
     {
       "src": "/api/v1/upload/(.*)",
       "dest": "index.js"

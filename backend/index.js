@@ -39,12 +39,14 @@ import Auth from './routes/authRoute.js'
 import userAuth from './routes/userRoute.js'
 import roomRoute from './routes/roomRoutes.js'
 import reservationRoute from './routes/reservationsRoute.js'
+import uploadRoute from "./routes/uploadRoute.js";
 
 
 app.use('/api/v1/auth', Auth)
 app.use('/api/v1/user', userAuth)
 app.use('/api/v1/room', roomRoute)
-app.use('/api/v1/message', reservationRoute)
+app.use("/api/v1/message", reservationRoute);
+app.use("/api/v1/upload", uploadRoute);
 
 
 // // Middlewares
