@@ -1,0 +1,61 @@
+import asyncHandler from "express-async-handler";
+import prisma from "../prisma/index.js";
+const GetUserReservation = asyncHandler(async (req, res) => {
+  const availableRooms = await prisma.reservations.findMany({
+    where: {
+      userid: req.user.userid,
+    },
+    include: {
+      user: true,
+      rooms: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return res.json(availableRooms);
+});
+
+const CreateUserReservation = asyncHandler(async (req, res) => {
+  const { startDate, endDate, totalPrice } = req.body;
+  const id = req.params.id;
+  // check for available rooms
+  const availableRooms = await prisma.reservations.findMany({
+    where: {
+      roomid: id,
+      OR: [
+        {
+          AND: [
+            { startDate: { lte: startDate } },
+            { endDate: { gte: startDate } },
+          ],
+        },
+        {
+          AND: [{ startDate: { lte: endDate } }, { endDate: { gte: endDate } }],
+        },
+      ],
+    },
+  });
+
+  if (availableRooms.length > 0) {
+    res.status(404);
+    throw new Error("Room has alrady been booked");
+  }
+
+  // Book the room
+  const reservationData = {
+    startDate,
+    endDate,
+    totalPrice,
+    userid: currentUser.id,
+    roomid: id,
+  };
+
+  const newReservation = await prisma.reservations.create({
+    data: reservationData,
+  });
+
+  return res.json(newReservation);
+});
+
+export { GetUserReservation, CreateUserReservation };
