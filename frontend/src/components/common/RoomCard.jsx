@@ -14,6 +14,56 @@ const RoomCard = ({ type, apartment }) => {
       setTabIndex(tabindex >= apartment?.images?.length ? 0 : tabindex + 1);
     }
   };
+  if(type == 'trips') {
+    const startDate = moment(apartment?.startDate).format("MMMM Do");
+
+    const endDate = moment(apartment?.endDate).format("MMMM Do");
+    return (
+      <Link
+        to={`/reservation/payment/?reservationId=${apartment?.id}`}
+        key={index}
+        className="w-full flex flex-col"
+      >
+        <img
+          alt="Cotion"
+          placeholder="blur"
+          style={{
+            transition:
+              "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+          }}
+          src={apartment?.rooms?.images[0]}
+          className="w-full min-h-[350px] object-cover hover:grayscale-[1] grayscale-0"
+        />
+        <div className="w-full flex flex-col py-3 bg-white gap-2">
+          <h4
+            style={{ letterSpacing: "3px" }}
+            className="text-xs text-grey uppercase font-booking_font_bold font-bold"
+          >
+            for settling in castle
+          </h4>
+          <h3 className="text-2xl font-booking_font4 font-medium text-text_dark_1 ">
+            {apartment?.rooms?.title}
+          </h3>
+
+          <div
+            style={{ letterSpacing: "1px" }}
+            className="py-2 flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
+          >
+            <span className="flex uppercase items-center gap-2">
+              Date: <span>{startDate}</span> - <span>{endDate}</span>
+            </span>
+
+            <span className="flex text-xs text-grey font-normal font-booking_font flex-col">
+              price
+              <span className="block text-lg text-stone-950 font-bold font-booking_font_bold">
+                ${apartment?.rooms?.price}
+              </span>
+            </span>
+          </div>
+        </div>
+      </Link>
+    )
+  }
   if (type === "Search") {
     return (
       <div className="w-full flex flex-col gap-8 border">
