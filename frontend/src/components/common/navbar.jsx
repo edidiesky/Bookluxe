@@ -66,7 +66,7 @@ const Navbar = () => {
         {/* <img src="/images/TestLogo.png" alt="" className="w-40" /> */}
 
         <div className="flex justify-end items-center gap-8">
-          <div className="hidden md:flex items-center gap-2">
+          {/* <div className="hidden md:flex items-center gap-2">
             <img
               src="/images/image_9.png"
               alt=""
@@ -78,7 +78,7 @@ const Navbar = () => {
                 John@gmail.com
               </span>
             </h4>
-          </div>
+          </div> */}
           <span className="flex items-center gap-4">
             <div className="btn text-xs text-center p-4 font-semibold text-white px-6 rounded-[40px]">
               Book Your Stay

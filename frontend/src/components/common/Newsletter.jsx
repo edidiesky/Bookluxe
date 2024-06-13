@@ -22,12 +22,10 @@ const Newsletter = () => {
             get updates regularly
           </span>
           Subscribe to our Newsletter
-          <span className="text-sm w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
+          <span className="text-sm lg:text-lg w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
             reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing
             elit. Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ad, reprehenderit. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Ad, reprehenderit.
           </span>
         </h1>
         <div className="w-[90%] mt-8 md:w-[500px] items-center justify-center flex">

@@ -1,18 +1,45 @@
-import React, {useEffect} from "react";
+"use client";
+import React from "react";
+import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Hero from "./Hero";
+import RoomLists from "./RoomLists";
+import RecommendedList from "./RecommendedList";
+import useGetRoomById from "@/app/hooks/useGetRoomById";
 import Navbar from "../common/navbar";
-import MainContent from "./main/maincontent";
 import Footer from "../common/Footer";
-import Newsletter from "../common/Newsletter";
-const HomeIndex = () => {
+import Loader from "../home/loader";
+import { getSingleRooms } from "@/features/room/roomReducer";
+export default function BookingItem({ roomid, currentUser }) {
+  // const { loading, room } = useGetRoomById(roomid);
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { rooms, getallRoomisLoading } = useSelector((store) => store.room);
+  useEffect(() => {
+    if (id) {
+      dispatch(getSingleRooms(id));
+    }
+  }, [id]);
+  if (getallRoomisLoading) {
+    return <Loader />;
+  }
   return (
-    <div className="bg-[var(--light-grey)] w-full flex flex-col">
-      <Navbar />
-      <div className="w-full flex relative gap-4">
-        <MainContent />
-      </div>
-      <Footer/>
+    <div>
+      <Navbar currentUser={currentUser} />
+      {/* <Hero room={room} /> */}
+      {/* <RoomLists currentUser={currentUser} loading={loading} room={room} />
+      <RecommendedList
+        currentUser={currentUser}
+        loading={loading}
+        room={room}
+      /> */}
+      {/* <RoomLists currentUser={currentUser} loading={loading} room={room} />
+      <RecommendedList
+        currentUser={currentUser}
+        loading={loading}
+        room={room}
+      /> */}
+      <Footer />
     </div>
   );
-};
-
-export default HomeIndex;
+}

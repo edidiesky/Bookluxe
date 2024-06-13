@@ -196,7 +196,7 @@ const Collections = () => {
     <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
       <div className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3">
         {rooms?.map((apartment, index) => {
-          return <RoomCard key={index} apartment={apartment} />;
+          return <RoomCard type={'trips'} key={index} apartment={apartment} />;
         })}
       </div>
 
