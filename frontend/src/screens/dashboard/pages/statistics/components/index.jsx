@@ -8,9 +8,9 @@ const DashboardIndex = () => {
   return (
     <div className="w-full py-8">
       <div className="w-full flex flex-col gap-12">
-        <h2 className="text-4xl font-booking_font_normal">
+        <h2 className="text-3xl lg:text-4xl font-bold">
           Dashboard
-          <span className="text-base block text-dark font-booking_font_bold font-bold family1">
+          <span className="text-sm pt-3 block text-dark font-booking_font_bold font-semibold family1">
             <span className="font-normal font-booking_font text-sm text-dark">
               Welcome back,
             </span>{" "}

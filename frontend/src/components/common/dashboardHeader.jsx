@@ -97,7 +97,7 @@ const DashboardHeader = () => {
                 alt=""
                 className="w-10 rounded-full"
               />
-              <h4 className="text-base text-dark font-booking_font_bold font-bold family1">
+              <h4 className="text-sm text-dark font-booking_font_bold font-semibold family1">
                 {currentUser?.name}
                 <span className="block font-normal font-booking_font text-xs text-dark">
                   {currentUser?.email}
@@ -109,19 +109,19 @@ const DashboardHeader = () => {
                 <div className="flex profile_dropdown_bottom flex-col w-full">
                   <Link
                     to={"/dashboard"}
-                    className="font-bold font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                    className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Dashboard
                   </Link>
                   <Link
                     to={"/dashboard/settings"}
-                    className="font-bold font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                    className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Profile
                   </Link>
                   <div
                     onClick={handleLogOut}
-                    className="font-bold font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                    className="font-normal flex items-center font-booking_font_bold hover:bg-[#f7f7f7] text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Log Out
                   </div>
@@ -242,11 +242,9 @@ export const HeaderStyles = styled.div`
   }
   a,
   .tab {
-    padding: 6px 14px;
-    font-weight: normal;
+    padding: 10px 14px;
     margin: 0 auto;
-    font-size: 14px;
-    border-radius: 10px;
+    border-radius: 4px;
     width: 100%;
     display: flex;
     align-items: center;

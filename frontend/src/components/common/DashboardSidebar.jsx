@@ -6,7 +6,8 @@ import { TiHome } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
 import { LuBedDouble } from "react-icons/lu";
 import { FaRegUser, FaHotel } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const AdminSidebarData = [
@@ -74,17 +75,17 @@ const DashboardSidebar = () => {
               </div>
             </div>
           </div>
-          {/* <div className="w-full my-4 flex flex-col gap-1">
+          <div className="w-full my-4 flex flex-col gap-1">
             {AdminSidebarData?.map((x, index) => {
               // console.log(pathname, `/dashboard${x.tab.path}`);
               return (
                 <div
                   key={index}
-                  className="w-[90%] font-booking_font_normal text-sm mx-auto"
+                  className="w-[90%] font-booking_font_normal font-semibold text-sm mx-auto"
                 >
-                  <Link
+                  <NavLink
+                    activeClassName="active"
                     className={`
-                      ${pathname === `/dashboard${x.tab.path}` ? "active" : ""}
                       text-sm w-[90%] mx-auto text-dark family1`}
                     to={`/dashboard${x.tab.path}`}
                   >
@@ -95,21 +96,22 @@ const DashboardSidebar = () => {
                       </span>
                       {<h4>{x.tab?.title}</h4>}
                     </div>
-                  </Link>
+                  </NavLink>
                 </div>
               );
             })}
-          </div> */}
+          </div>
         </div>
         <div className="flex flex-col gap-2 w-full items-start justify-between py-1">
           <div className="w-[90%] mx-auto flex flex-col gap-4">
-            <Link
-              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal text-dark family1`}
+            <NavLink
+              activeClassName="active"
+              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal font-semibold text-dark family1`}
               to={`/dashboard/settings`}
             >
               <FiSettings fontSize={"24px"} />
               Settings
-            </Link>
+            </NavLink>
             <div className=" w-full relative px-2 flex gap-1 items-center justify-between">
               <div className="flex flex-1 gap-2 items-center">
                 <img
@@ -117,9 +119,9 @@ const DashboardSidebar = () => {
                   alt=""
                   className="w-10 rounded-full"
                 />
-                <h4 className="text-sm text-dark font-booking_font_bold">
+                <h4 className="text-sm text-dark font-bold font-booking_font_bold">
                   {currentUser?.name}
-                  <span className="block font-booking_font text-sm text-grey">
+                  <span className="block font-booking_font text-xs font-normal text-grey">
                     {currentUser?.email}
                   </span>
                 </h4>
@@ -171,6 +173,7 @@ export const HeaderStyles = styled.div`
     &.active {
       position: relative;
       background: #f5f5f5;
+      border:1px solid rgba(0, 0, 0, 0.08);
       color: #000;
 
       span {
