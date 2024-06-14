@@ -31,6 +31,7 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
     "redux-toolkit": "^1.1.2",
+    "styled-components": "^6.1.11",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7"
   },

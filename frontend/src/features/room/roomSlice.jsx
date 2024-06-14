@@ -11,6 +11,10 @@ const initialState = {
   getallRoomisLoading: false,
   getallRoomisSuccess: false,
   getallRoomisError: false,
+
+  getsingleRoomisLoading: false,
+  getsingleRoomisSuccess: false,
+  getsingleRoomisError: false,
 };
 
 export const patientSlice = createSlice({
@@ -33,14 +37,14 @@ export const patientSlice = createSlice({
     });
 
     builder.addCase(getSingleRooms.pending, (state, action) => {
-      state.getallRoomisLoading = true;
+      state.getsingleRoomisLoading = true;
     });
     builder.addCase(getSingleRooms.fulfilled, (state, action) => {
-      state.getallRoomisLoading = false;
+      state.getsingleRoomisLoading = false;
       state.room = action.payload;
     });
     builder.addCase(getSingleRooms.rejected, (state, action) => {
-      state.getallRoomisSuccess = false;
+      state.getsingleRoomisSuccess = false;
       toast.error(action.payload);
     });
   },

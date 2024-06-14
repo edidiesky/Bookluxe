@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
-import DateInput from "../forms/DateInput";
+// import DateInput from "../forms/DateInput";
 const ModalVariants = {
   initial: {
     opacity: 0,
@@ -50,7 +50,7 @@ const DateModal = ({
         exit="exit"
         className="dateModalCard"
       >
-        <div className="w-[95%] z-30 mx-auto flex flex-col gap-4">
+        {/* <div className="w-[95%] z-30 mx-auto flex flex-col gap-4">
           <div className="w-full flex items-center justify-between">
             <h3 className="text-2xl font-bold font-booking_font2">
               Select the dates of your stay
@@ -68,7 +68,7 @@ const DateModal = ({
               Done
             </div>
           </div>
-        </div>
+        </div> */}
       </motion.div>
     </DateModalStyles>
   );

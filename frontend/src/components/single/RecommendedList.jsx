@@ -2,10 +2,13 @@
 import Skeleton from "react-loading-skeleton";
 import RoomCard from "../common/RoomCard";
 import { apartmentDataList } from "@/data/apartmentData";
+import { useSelector } from "react-redux";
 
-const RecommendedList = ({ currentUser, roomid }) => {
+const RecommendedList = ({ roomid }) => {
   // const { loading, error, rooms } = useRooms();
-  const { room, rooms } = useSelector((store) => store.room);
+  const { room, rooms, getallRoomisLoading } = useSelector(
+    (store) => store.room
+  );
   const newRooms = rooms?.filter((room, index) => room?.id !== roomid);
   return (
     <div className="w-full py-8 mt-8 flex flex-col gap-8">
@@ -19,7 +22,7 @@ const RecommendedList = ({ currentUser, roomid }) => {
         </h3>
 
         <div className="w-full gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-          {loading ? (
+          {getallRoomisLoading ? (
             <>
               {apartmentDataList?.slice(0, 3).map((apartment, index) => {
                 return (
@@ -44,7 +47,7 @@ const RecommendedList = ({ currentUser, roomid }) => {
                     index={index}
                     type={"Search"}
                     apartment={apartment}
-                    currentUser={currentUser}
+                    // currentUser={currentUser}
                     key={index}
                   />
                 );

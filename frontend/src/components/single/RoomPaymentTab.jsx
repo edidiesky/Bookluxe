@@ -2,17 +2,17 @@
 import React, { useRef, useState, useEffect } from "react";
 import { BiCheck, BiChevronDown, BiChevronUp, BiStar } from "react-icons/bi";
 import moment from "moment";
+import { addDays, format } from "date-fns";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
-import Loader from "@/components/loader";
-import { redirect } from "next/navigation";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSelector } from "react-redux";
+import Loader from "../home/loader";
 export default function RoomPaymentTab({
   setDateModal,
   dateRange,
@@ -20,29 +20,36 @@ export default function RoomPaymentTab({
   childrens,
   setGuestsModal,
   setLoginModal,
-  currentUser,
   room,
 }) {
   // states of the reservation booking either loading or
   const [bookingloading, setBookingLoading] = useState(false);
   const [bookingdata, setBookingData] = useState(null);
-  const [startdate, setStartDate] = React.useState(Date.now());
-  const [enddate, setEndDate] = React.useState(Date.now());
-  console.log(moment(startdate).format("MMMM Do"));
 
+  // console.log(moment(startdate).format("MMMM Do"));
+  const { currentUser } = useSelector((store) => store.auth);
+
+  const today = new Date();
+  const [date, setDate] = React.useState({
+    from: today,
+    to: addDays(today, 3),
+  });
+  const startdate = date?.from;
+  const enddate = date?.to;
   let date1 = moment(startdate);
   let date2 = moment(enddate);
   const differenceInDays = date2.diff(date1, "days"); // Convert milliseconds to days
-  console.log(moment(startdate, "MMMM Do YYYY"));
-  const router = useRouter();
+  // console.log(moment(startdate)?.date());
 
   const totalPrice =
     room?.price * differenceInDays + room?.price * differenceInDays * 0.1;
   const reservationData = {
     totalPrice: totalPrice,
-    startDate: moment(startdate, "MMMM Do YYYY"),
-    endDate: moment(enddate, "MMMM Do YYYY"),
+    startDate: moment(startdate).format( "MMMM Do YYYY"),
+    endDate: moment(enddate).format( "MMMM Do YYYY"),
   };
+
+  // console.log(reservationData);
   const handleReservationBooking = async () => {
     if (currentUser) {
       // console.log('Reservation has been booked')
@@ -75,108 +82,104 @@ export default function RoomPaymentTab({
   //  console.log(newStartDate);
   useEffect(() => {
     if (bookingdata !== null) {
-      redirect(`/reservation/payment?reservationId=${bookingdata?.id}`);
+      // redirect(`/reservation/payment?reservationId=${bookingdata?.id}`);
     }
   }, [bookingdata]);
 
   return (
     <div className="w-[95%] lg:sticky top-[10%] flex flex-col gap-8">
       <div className="w-full py-8 flex flex-col items-center gap-4 justify-center md:w-[400px] bg-[#1C1C1C]">
-        <div className="w-[90%] mx-auto grid grid-cols-2 gap-4">
+        <div className="w-[90%] mx-auto grid grid-cols-1 gap-4">
           <Popover>
             <PopoverTrigger>
-              <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
-                <span className="uppercase text-sm text-white">CHECK-IN</span>
-                <div className="flex items-center gap-2">
-                  <span
-                    style={{ letterSpacing: "4px" }}
-                    className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-                  >
-                    19
+              <div className="grid w-full grid-cols-2 gap-4">
+                <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
+                  <span className="uppercase text-sm text-white">CHECK-IN</span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    >
+                      {moment(startdate)?.date()}
+                    </span>
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                    >
+                      {moment(startdate).format("MMM").toUpperCase()}
+                      <BiChevronDown fontSize={"24px"} />
+                    </span>
+                  </div>
+                </div>
+                <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
+                  <span className="uppercase text-xs text-white">
+                    CHECK-Out
                   </span>
-                  <span
-                    style={{ letterSpacing: "4px" }}
-                    className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
-                  >
-                    JUN
-                    <BiChevronDown fontSize={"24px"} />
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    >
+                      {moment(enddate)?.date()}
+                    </span>
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                    >
+                      {moment(enddate).format("MMM").toUpperCase()}
+                      <BiChevronDown fontSize={"16px"} />
+                    </span>
+                  </div>
                 </div>
               </div>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0">
+            <PopoverContent className="w-auto p-0" align="start">
               <Calendar
-                mode="single"
-                selected={startdate}
-                onSelect={setStartDate}
                 initialFocus
+                mode="range"
+                defaultMonth={date?.from}
+                selected={date}
+                onSelect={setDate}
+                numberOfMonths={2}
               />
             </PopoverContent>
           </Popover>
-          <Popover>
-            <PopoverTrigger>
-              <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
-                <span className="uppercase text-xs text-white">CHECK-Out</span>
-                <div className="flex items-center gap-2">
-                  <span
-                    style={{ letterSpacing: "4px" }}
-                    className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-                  >
-                    19
-                  </span>
-                  <span
-                    style={{ letterSpacing: "4px" }}
-                    className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
-                  >
-                    JUN
-                    <BiChevronDown fontSize={"16px"} />
-                  </span>
-                </div>
+          <div className="w-full grid grid-cols-2 gap-4">
+            <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
+              <span className="uppercase text-xs text-white">GUEsTS</span>
+              <div className="flex items-center gap-2">
+                <span
+                  style={{ letterSpacing: "4px" }}
+                  className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                >
+                  19
+                </span>
+                <span
+                  style={{ letterSpacing: "4px" }}
+                  className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                >
+                  <BiChevronDown fontSize={"16px"} />
+                  <BiChevronUp fontSize={"16px"} />
+                </span>
               </div>
-              <PopoverContent className="w-auto p-0">
-                <Calendar
-                  mode="single"
-                  selected={enddate}
-                  onSelect={setEndDate}
-                  initialFocus
-                />
-              </PopoverContent>
-            </PopoverTrigger>
-          </Popover>
-          <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
-            <span className="uppercase text-xs text-white">GUEsTS</span>
-            <div className="flex items-center gap-2">
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-              >
-                19
-              </span>
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
-              >
-                <BiChevronDown fontSize={"16px"} />
-                <BiChevronUp fontSize={"16px"} />
-              </span>
             </div>
-          </div>
-          <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
-            <span className="uppercase text-xs text-white">Nights</span>
-            <div className="flex items-center gap-2">
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-              >
-                19
-              </span>
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
-              >
-                <BiChevronDown fontSize={"16px"} />
-                <BiChevronUp fontSize={"16px"} />
-              </span>
+            <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
+              <span className="uppercase text-xs text-white">Nights</span>
+              <div className="flex items-center gap-2">
+                <span
+                  style={{ letterSpacing: "4px" }}
+                  className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                >
+                  19
+                </span>
+                <span
+                  style={{ letterSpacing: "4px" }}
+                  className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                >
+                  <BiChevronDown fontSize={"16px"} />
+                  <BiChevronUp fontSize={"16px"} />
+                </span>
+              </div>
             </div>
           </div>
         </div>

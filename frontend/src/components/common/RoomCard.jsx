@@ -1,5 +1,6 @@
 import { useState } from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 import Heart from "../../assets/svg/heart";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa6";
@@ -15,14 +16,13 @@ const RoomCard = ({ type, apartment }) => {
       setTabIndex(tabindex >= apartment?.images?.length ? 0 : tabindex + 1);
     }
   };
-  if(type == 'trips') {
+  if (type == "trips") {
     const startDate = moment(apartment?.startDate).format("MMMM Do");
 
     const endDate = moment(apartment?.endDate).format("MMMM Do");
     return (
       <Link
         to={`/reservation/payment/?reservationId=${apartment?.id}`}
-        key={index}
         className="w-full flex flex-col"
       >
         <img
@@ -63,7 +63,7 @@ const RoomCard = ({ type, apartment }) => {
           </div>
         </div>
       </Link>
-    )
+    );
   }
   if (type === "Search") {
     return (
@@ -196,8 +196,8 @@ const RoomCard = ({ type, apartment }) => {
             </div>
 
             <span className="text-sm flex items-center leading-[1.6] font-light text-dark">
-             FULL INFO
-             <BiChevronRight fontSize={'20px'}/>
+              FULL INFO
+              <BiChevronRight fontSize={"20px"} />
             </span>
           </div>
         </div>
@@ -205,7 +205,7 @@ const RoomCard = ({ type, apartment }) => {
     );
   }
   return (
-    <div className="w-full flex flex-col gap-8">
+    <Link to={`/room/${apartment?.id}`} className="w-full flex flex-col gap-8">
       <div className="w-full h-[270px] overflow-hidden relative">
         <div className="w-full h-full absolute bg-[rgba(0,0,0,.09)] z-[30]"></div>
         <div className="w-full absolute justify-end h-full flex-col gap-1 flex items-start p-6 pb-8 px-8 z-[40]">
@@ -221,27 +221,30 @@ const RoomCard = ({ type, apartment }) => {
             </span>
           </span>
         </div>
-        <div
+        <Link
+          to={"#"}
           //   onClick={handleFavouriteRooms}
           className="absolute z-[30] top-[10%] left-[5%]"
         >
           <Heart />
-        </div>
+        </Link>
         <div className="h-full z-[40] absolute left-0 w-[80px] flex items-center justify-center">
-          <div
+          <Link
+            to={"#"}
             onClick={() => handleImagePosition("left")}
             className="w-12 h-12 text-lg bg-[#00000013] hover:bg-[#00000072] hover:scale-[1.09] cursor-pointer text-white flex items-center justify-center z-[40]"
           >
             <BiChevronLeft fontSize={"30px"} />
-          </div>
+          </Link>
         </div>
         <div className="h-full z-[40] absolute right-0 w-[80px] flex items-center justify-center">
-          <div
+          <Link
+            to={"#"}
             onClick={() => handleImagePosition("right")}
             className="w-12 h-12 text-lg bg-[#00000013] hover:bg-[#00000072] hover:scale-[1.09] cursor-pointer text-white flex items-center justify-center"
           >
             <BiChevronRight fontSize={"30px"} />
-          </div>
+          </Link>
         </div>
         <div
           style={{ gridTemplateColumns: "repeat(4, 100%)" }}
@@ -296,7 +299,7 @@ const RoomCard = ({ type, apartment }) => {
         </div>
         {/* <img src= alt="" /> */}
       </div>
-    </div>
+    </Link>
   );
 };
 

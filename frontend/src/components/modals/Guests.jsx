@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence, Variant } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
 import { BiMinus, BiPlus } from "react-icons/bi";

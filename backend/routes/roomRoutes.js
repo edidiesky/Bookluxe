@@ -5,14 +5,18 @@ import {
   authMiddleware,
 } from "../middleware/authentication.js";
 
-import { CreateRooms, GetAllRoom } from "../controllers/roomControllers.js";
+import {
+  CreateRooms,
+  GetAllRoom,
+  GetSingleRoom,
+} from "../controllers/roomControllers.js";
 
 router
   .route("/")
   .get(GetAllRoom)
   .post(authMiddleware, adminMiddleware, CreateRooms);
 
-// router.route("/host/:id").get(GetHostListing);
+router.route("/:id").get(GetSingleRoom);
 // router.route("/wish/:id").put(authMiddleware, CreateListingWishlist);
 // router.route("/wish").get(authMiddleware, getUserListingWishlist);
 // router

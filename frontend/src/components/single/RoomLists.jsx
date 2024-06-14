@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { motion, AnimatePresence, Variant } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaStar } from "react-icons/fa";
 import GuestsModal from "@/components/modals/Guests";
 import DateModal from "@/components/modals/Date";
@@ -12,7 +12,7 @@ import RoomFeatures from "./RoomFeatures";
 import RoomPaymentTab from "./RoomPaymentTab";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useSelector } from "react-redux";
-const RoomLists = ({currentUser }) => {
+const RoomLists = () => {
   const [datemodal, setDateModal] = useState(false);
   const [guestsmodal, setGuestsModal] = useState(false);
   const [loginmodal, setLoginModal] = useState(false);
@@ -21,30 +21,8 @@ const RoomLists = ({currentUser }) => {
   const [childrens, setChildrens] = useState(1);
   const [adults, setAdults] = useState(2);
 
-  const [dateRange, setDateRange] = useState({
-    selection: {
-      startDate: null,
-      endDate: null,
-      key: "selection",
-    },
-  });
-
   const { room, getallRoomisLoading } = useSelector((store) => store.room);
 
-  const handleSelect = (ranges) => {
-    // console.log(ranges);
-    const selectedStartDate = ranges?.range1?.startDate;
-    const selectedendDate = ranges?.range1?.endDate;
-    // console.log(selectedStartDate, selectedendDate, ranges);
-
-    setDateRange({
-      ...ranges.range1,
-      selection: {
-        startDate: selectedStartDate,
-        endDate: selectedendDate,
-      },
-    });
-  };
   const handleImagePosition = (position) => {
     if (position === "left") {
       setTabIndex(tabindex < 0 ? room?.images?.length - 1 : tabindex - 1);
@@ -85,19 +63,6 @@ const RoomLists = ({currentUser }) => {
             setLoginModal={setLoginModal}
             modal={registermodal}
             setModal={setRegisterModal}
-          />
-        )}
-      </AnimatePresence>
-      {/* RegisterModal */}
-      {/* date modal */}
-      <AnimatePresence mode="wait">
-        {datemodal && (
-          <DateModal
-            setAdults={setAdults}
-            modal={datemodal}
-            setModal={setDateModal}
-            handleSelect={handleSelect}
-            dateRange={dateRange}
           />
         )}
       </AnimatePresence>
@@ -197,12 +162,9 @@ const RoomLists = ({currentUser }) => {
           </div>
           {/* <div className="w"></div> */}
           <RoomPaymentTab
-            currentUser={currentUser}
             setAdults={setAdults}
             datemodal={datemodal}
             setDateModal={setDateModal}
-            handleSelect={handleSelect}
-            dateRange={dateRange}
             adults={adults}
             setChildrens={setChildrens}
             childrens={childrens}

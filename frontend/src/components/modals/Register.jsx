@@ -2,23 +2,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
-import { motion, AnimatePresence, Variant } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
-import { BiMinus, BiPlus } from "react-icons/bi";
-import { RegisterFormInputData } from "@/constants/data/formdata";
-import toast from "react-hot-toast";
-import Loader from "../loader";
-import { signIn } from "next-auth/react";
-import { useAppDispatch } from "@/app/hooks/useCustomRedux";
+// import { signIn } from "next-auth/react";
 import {
-  offLoginModal,
   onLoginModal,
   offRegisterModal,
-  onRegisterModal,
-} from "@/app/libs/features/modals/modalSlice";
-
+} from "../../features/modals/modalSlice";
+import { useDispatch } from "react-redux";
+import Loader from "../home/loader";
+import { RegisterFormInputData } from "@/constants/data/formdata";
 
 const ModalVariants = {
   initial: {
@@ -37,10 +31,10 @@ const ModalVariants = {
     transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
   },
 };
-const RegisterModal = ({ modal}) => {
-  const dispatch = useAppDispatch()
+const RegisterModal = ({ modal }) => {
+  const dispatch = useDispatch();
   const handleClearAlert = () => {
-   dispatch(offRegisterModal())
+    dispatch(offRegisterModal());
   };
   const [formvalue, setFormValue] = useState({
     name: "",
@@ -68,7 +62,7 @@ const RegisterModal = ({ modal}) => {
     axios
       .post("/api/register", formvalue)
       .then(() => {
-          dispatch(offRegisterModal());
+        dispatch(offRegisterModal());
       })
       .catch((error) => {
         // toast.error(error);
@@ -85,9 +79,7 @@ const RegisterModal = ({ modal}) => {
       exit={{ opacity: 0, visibility: "hidden" }}
       animate={{ opacity: 1, visibility: "visible" }}
     >
-      {
-        loading && <Loader/>
-      }
+      {loading && <Loader />}
       <motion.div
         variants={ModalVariants}
         initial="initial"
@@ -158,7 +150,10 @@ const RegisterModal = ({ modal}) => {
                 </div>
               </div>
               <div className="option text-dark">or</div>
-              <div onClick={() => signIn('google')} className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_normal font-bold border border-[rgba(0,0,0,.9)]">
+              <div
+                // onClick={() => signIn("google")}
+                className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_normal font-bold border border-[rgba(0,0,0,.9)]"
+              >
                 <FcGoogle fontSize={"28px"} />
                 Continue with Google
               </div>

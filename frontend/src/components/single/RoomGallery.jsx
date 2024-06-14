@@ -5,7 +5,7 @@ export default function RoomGallery() {
   const [tabindex, setTabIndex] = useState(0);
   const { room } = useSelector((store) => store.room);
   return (
-    <div className="w-full relative">
+    <div className="w-full relative overflow-hidden">
       {/* <div className="w-full h-full z-30 bg-[rgba(0,0,0,.5)] absolute top-0 left-0"></div> */}
       <div
         style={{ gridTemplateColumns: "repeat(4, 100%)" }}
@@ -21,7 +21,7 @@ export default function RoomGallery() {
               key={index}
               className="w-full h-full"
             >
-              <ing
+              <img
                 key={index}
                 alt="Cotion"
                 loading="lazy"
