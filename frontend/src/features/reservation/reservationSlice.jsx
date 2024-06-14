@@ -1,6 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
-import { GetSingleReservation } from "./reservationReducer";
+import {
+  GetSingleReservation,
+  GetUserReservations,
+} from "./reservationReducer";
 const initialState = {
   reservation: null,
   reservations: [],
@@ -26,9 +29,22 @@ export const reservationSlice = createSlice({
     builder.addCase(GetSingleReservation.fulfilled, (state, action) => {
       state.getsingleReservationisLoading = false;
       state.getsingleReservationisSuccess = true;
-      state.reservation = action.payload
+      state.reservation = action.payload;
     });
     builder.addCase(GetSingleReservation.rejected, (state, action) => {
+      state.getsingleReservationisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(GetUserReservations.pending, (state, action) => {
+      state.getsingleReservationisLoading = true;
+    });
+    builder.addCase(GetUserReservations.fulfilled, (state, action) => {
+      state.getsingleReservationisLoading = false;
+      state.getsingleReservationisSuccess = true;
+      state.reservations = action.payload;
+    });
+    builder.addCase(GetUserReservations.rejected, (state, action) => {
       state.getsingleReservationisSuccess = false;
       toast.error(action.payload);
     });

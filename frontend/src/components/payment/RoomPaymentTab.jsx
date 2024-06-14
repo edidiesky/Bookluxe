@@ -48,7 +48,7 @@ export default function RoomPaymentTab() {
         </div>
       ) : (
         <div className="w-full flex-col gap-8">
-          <div className="border shadow-xl rounded-xl overflow-hidden flex flex-col w-full">
+          <div className="border shadow-2xl rounded-xl overflow-hidden flex flex-col w-full">
             <img
               alt="Cotion"
               loading="lazy"

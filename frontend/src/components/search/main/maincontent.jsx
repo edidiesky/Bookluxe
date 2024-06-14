@@ -1,8 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
+import { useDispatch, useSelector } from "react-redux";
 import { apartmentDataList } from "../../../data/apartmentData";
 import RoomCard from "../../common/RoomCard";
+import { getAllRooms } from "@/features/room/roomReducer";
+import Loader from "@/components/home/loader";
 const MainContent = () => {
   return (
     <div className="w-full relative min-h-[100vh] flex flex-col">
@@ -80,6 +83,12 @@ const Hero = () => {
 };
 
 const RoomLists = () => {
+  const dispatch = useDispatch();
+  const { rooms, getallRoomisLoading } = useSelector((store) => store.room);
+
+  useEffect(() => {
+    dispatch(getAllRooms());
+  }, []);
   return (
     <div
       className="w-full relative py-24 flex items-center justify-center
@@ -174,13 +183,17 @@ const RoomLists = () => {
           </div>
         </div>
         <div className="w-full">
-          <div className=" gap-8 w-full grid md:grid-cols-2">
-            {apartmentDataList?.map((apartment, index) => {
-              return (
-                <RoomCard type={"Search"} key={index} apartment={apartment} />
-              );
-            })}
-          </div>
+          {getallRoomisLoading ? (
+            <Loader />
+          ) : (
+            <div className=" gap-8 w-full grid md:grid-cols-2">
+              {rooms?.map((apartment, index) => {
+                return (
+                  <RoomCard type={"Search"} key={index} apartment={apartment} />
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -60,7 +60,7 @@ const RoomLists = () => {
               <h3 className="text-5xl font-booking_font4">
                 {room?.title}
 
-                <span className="text-base text-grey font-normal font-booking_font4 flex items-center gap-3">
+                <span className="text-base text-dark font-normal font-booking_font4 flex items-center gap-3">
                   Room, London{" "}
                   <span className="flex items-center gap-1">
                     <FaStar />
@@ -75,15 +75,15 @@ const RoomLists = () => {
               <RoomGallery room={room} />
               {/* room basic features */}
               <div className="grid grid-cols-2 sm:grid-cols-4 items-center mt-4 py-4 gap-8">
-                <div className="flex flex-col gap-1 text-xs font-light text-grey">
+                <div className="flex flex-col gap-1 text-xs font-normal text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/plugins/nd-booking/templates/icon-bed-grey.svg"
                     alt=""
                     className="w-12"
                   />
-                  56 $ / PER NIGHT
+                  {room?.price} $ / PER NIGHT
                 </div>
-                <div className="flex flex-col gap-2 text-sm font-light text-grey">
+                <div className="flex flex-col gap-2 text-sm font-normal text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/plugins/nd-booking/templates/icon-user-grey.svg"
                     alt=""
@@ -92,7 +92,7 @@ const RoomLists = () => {
                   4 GUESTS
                 </div>
 
-                <div className="flex flex-col gap-2 uppercase text-sm font-light text-grey">
+                <div className="flex flex-col gap-2 uppercase text-sm font-normal text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/television.png"
                     alt=""
@@ -101,7 +101,7 @@ const RoomLists = () => {
                   Television
                 </div>
 
-                <div className="flex flex-col uppercase gap-1 text-sm font-light text-grey">
+                <div className="flex flex-col uppercase gap-1 text-sm font-normal text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/private-bathroom.png"
                     alt=""

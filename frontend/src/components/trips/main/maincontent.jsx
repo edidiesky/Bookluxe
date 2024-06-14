@@ -3,8 +3,9 @@ import React from "react";
 import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { apartmentDataList } from "../../../data/apartmentData";
 import RoomCard from "../../common/RoomCard";
+import { useSelector } from "react-redux";
 const MainContent = () => {
-  return (
+return (
     <div className="w-full relative min-h-[100vh] flex flex-col">
       <Hero />
       <RoomLists />
@@ -80,6 +81,7 @@ const Hero = () => {
 };
 
 const RoomLists = () => {
+  const {reservations} = useSelector(store=> store.reservation)
   return (
     <div
       className="w-full relative py-24 flex items-center justify-center
@@ -91,9 +93,9 @@ const RoomLists = () => {
       >
         <div className="w-full">
           <div className=" gap-8 w-full grid md:grid-cols-3">
-            {apartmentDataList?.slice(0,2).map((apartment, index) => {
+            {reservations?.map((apartment, index) => {
               return (
-                <RoomCard type={"Search"} key={index} apartment={apartment} />
+                <RoomCard type={"trips"} key={index} apartment={apartment} />
               );
             })}
           </div>
