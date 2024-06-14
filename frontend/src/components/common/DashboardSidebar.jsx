@@ -84,7 +84,7 @@ const DashboardSidebar = () => {
                   className="w-[90%] font-booking_font_normal font-semibold text-sm mx-auto"
                 >
                   <NavLink
-                    activeClassName="active"
+                    // activeClassName="active"
                     end
                     className={`
                       text-sm w-[90%] mx-auto text-dark family1`}
@@ -106,7 +106,7 @@ const DashboardSidebar = () => {
         <div className="flex flex-col gap-2 w-full items-start justify-between py-1">
           <div className="w-[90%] mx-auto flex flex-col gap-4">
             <NavLink
-              activeClassName="active"
+              // activeClassName="active"
               end
               className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal font-semibold text-dark family1`}
               to={`/dashboard/settings`}

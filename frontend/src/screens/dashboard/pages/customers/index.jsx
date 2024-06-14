@@ -1,7 +1,7 @@
 // import Head from "next/head";
 import DashboardIndex from "./components";
 
-export default async function Customers() {
+export default function Customers() {
   return (
     <div>
       <DashboardIndex />

@@ -34,20 +34,20 @@ const TableCard = ({ x, type }) => {
               <span className="text-sm text-dark text-bold">
                 {x?.fullname}
               </span>
-              <span className="text-sm family1 text-grey">{x?.email}</span>
+              <span className="text-sm family1 text-dark">{x?.email}</span>
             </div>
           </td>
           <td>
-            <span className="text-sm family1  text-grey">{x?.phone}</span>
+            <span className="text-sm family1  text-dark">{x?.phone}</span>
           </td>
           <td>
-            <span className=" text-grey text-sm family1">
+            <span className=" text-dark text-sm family1">
               {x?.country ? x?.country : "-"}
             </span>
           </td>
 
           <td>
-            <span className="text-grey text-sm family1 text-light">
+            <span className="text-dark text-sm family1 text-light">
               24th May 2024
             </span>
           </td>
@@ -168,19 +168,19 @@ const TableCard = ({ x, type }) => {
       {/* <Delete /> */}
       <tr key={x?._id}>
         <td>
-          <span className="text-sm family1 text-grey">{x?.plan}</span>
+          <span className="text-sm family1 text-dark">{x?.plan}</span>
         </td>
         <td>
-          <span className="text-grey text-sm family1">$ {x?.price}</span>
+          <span className="text-dark text-sm family1">$ {x?.price}</span>
         </td>
 
         <td>
-          <span className="text-grey text-sm family1 text-light">
+          <span className="text-dark text-sm family1 text-light">
             Type 1
           </span>
         </td>
         <td>
-          <span className="text-grey text-sm family1 text-light">
+          <span className="text-dark text-sm family1 text-light">
             {x?.date}
           </span>
         </td>
