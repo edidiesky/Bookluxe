@@ -135,7 +135,7 @@ body {
   background-color: #fff;
   font-weight: 400;
   line-height: 1.2;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
 }
 #reactSchedulerOutsideWrapper {
   font-family: "Neue Montreal", sans-serif !important;

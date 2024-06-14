@@ -85,6 +85,7 @@ const DashboardSidebar = () => {
                 >
                   <NavLink
                     activeClassName="active"
+                    end
                     className={`
                       text-sm w-[90%] mx-auto text-dark family1`}
                     to={`/dashboard${x.tab.path}`}
@@ -106,6 +107,7 @@ const DashboardSidebar = () => {
           <div className="w-[90%] mx-auto flex flex-col gap-4">
             <NavLink
               activeClassName="active"
+              end
               className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal font-semibold text-dark family1`}
               to={`/dashboard/settings`}
             >
@@ -173,7 +175,7 @@ export const HeaderStyles = styled.div`
     &.active {
       position: relative;
       background: #f5f5f5;
-      border:1px solid rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.08);
       color: #000;
 
       span {

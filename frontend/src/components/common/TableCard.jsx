@@ -31,23 +31,23 @@ const TableCard = ({ x, type }) => {
         <tr key={x?._id}>
           <td>
             <div className="flex flex-col">
-              <span className="text-xs text-dark text-bold">
+              <span className="text-sm text-dark text-bold">
                 {x?.fullname}
               </span>
-              <span className="text-xs family1 text-grey">{x?.email}</span>
+              <span className="text-sm family1 text-grey">{x?.email}</span>
             </div>
           </td>
           <td>
-            <span className="text-xs family1  text-grey">{x?.phone}</span>
+            <span className="text-sm family1  text-grey">{x?.phone}</span>
           </td>
           <td>
-            <span className=" text-grey text-xs family1">
+            <span className=" text-grey text-sm family1">
               {x?.country ? x?.country : "-"}
             </span>
           </td>
 
           <td>
-            <span className="text-grey text-xs family1 text-light">
+            <span className="text-grey text-sm family1 text-light">
               24th May 2024
             </span>
           </td>
@@ -90,18 +90,18 @@ const TableCard = ({ x, type }) => {
           <td>
             <div className="flex w-full justify-center flex-col items-center gap-2">
               <img src={x?.images[0]} alt="" className="w-28 h-16 rounded-lg" />
-              <span className="text-xs family1 text-center text-dark">
+              <span className="text-sm family1 text-center text-dark">
                 {x?.title}
               </span>
             </div>
           </td>
-          <td className="text-xs">{x?.address}</td>
+          <td className="text-sm">{x?.address}</td>
 
-          <td className="text-xs">{x?.city}</td>
+          <td className="text-sm">{x?.city}</td>
 
-          <td className="text-xs">{startDate}</td>
+          <td className="text-sm">{startDate}</td>
 
-          <td className="text-xs">
+          <td className="text-sm">
             <div className="flex items-center justify-center">
               <Link
                 href={`/account/admin/dashboard/Manage_Customers/${x?._id}`}
@@ -136,28 +136,28 @@ const TableCard = ({ x, type }) => {
         </AnimatePresence>
         <tr key={x?._id}>
           <td>
-            <span className="text-xs text-center family1 text-dark">
+            <span className="text-sm text-center family1 text-dark">
               {x?.user}
             </span>
           </td>
-          <td className="text-xs">
+          <td className="text-sm">
             {x?.status === "booked" ? (
-              <span className="text-xs font-booking_font_bold text-center success">
+              <span className="text-sm font-booking_font_bold text-center success">
                 {x?.status}
               </span>
             ) : (
-              <span className="text-xs font-booking_font_bold text-center danger">
+              <span className="text-sm font-booking_font_bold text-center danger">
                 {x?.status}
               </span>
             )}
           </td>
 
-          <td className="text-xs">{x?.venue}</td>
+          <td className="text-sm">{x?.venue}</td>
 
-          <td className="text-xs">
+          <td className="text-sm">
             24th May - <span>25th Dec</span> 2024
           </td>
-          <td className="text-xs">09:00 - 12:00</td>
+          <td className="text-sm">09:00 - 12:00</td>
         </tr>
       </>
     );
@@ -168,19 +168,19 @@ const TableCard = ({ x, type }) => {
       {/* <Delete /> */}
       <tr key={x?._id}>
         <td>
-          <span className="text-xs family1 text-grey">{x?.plan}</span>
+          <span className="text-sm family1 text-grey">{x?.plan}</span>
         </td>
         <td>
-          <span className="text-grey text-xs family1">$ {x?.price}</span>
+          <span className="text-grey text-sm family1">$ {x?.price}</span>
         </td>
 
         <td>
-          <span className="text-grey text-xs family1 text-light">
+          <span className="text-grey text-sm family1 text-light">
             Type 1
           </span>
         </td>
         <td>
-          <span className="text-grey text-xs family1 text-light">
+          <span className="text-grey text-sm family1 text-light">
             {x?.date}
           </span>
         </td>

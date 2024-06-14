@@ -1,17 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useAppSelector } from "@/app/hooks/useCustomRedux";
+import { useSelector } from "react-redux";
 
 import { BiSearch } from "react-icons/bi";
 import { Table } from "@/components/common/styles";
 import TableCard from "@/components/common/TableCard";
-import Loader from "@/components/loader";
+import Loader from "@/components/home/loader";
 
 const RoomsList = () => {
   const {
     rooms,
     getallRoomisLoading,
-  } = useAppSelector((store) => store.room);
+  } = useSelector((store) => store.room);
   return (
     <>
       {getallRoomisLoading && <Loader />}
