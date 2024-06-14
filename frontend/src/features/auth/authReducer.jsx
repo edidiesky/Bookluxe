@@ -6,12 +6,10 @@ export const RegisterUser = createAsyncThunk(
   "RegisterUser",
   async (userdata, thunkAPI) => {
     try {
-      const config = {
-        headers: {
-          Authorization: `Basic ${auth}`,
-        },
-      };
-      const { data } = await axios.post(`${import.meta.env.VITE_API_BASE_URLS}/auth`, userdata);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URLS}/auth/register`,
+        userdata
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -27,7 +25,12 @@ export const LoginUser = createAsyncThunk(
   "LoginUser",
   async (userdata, thunkAPI) => {
     try {
-      const { data } = await axios.post(`${import.meta.env.VITE_API_BASE_URLS}/auth`, userdata);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URLS}/auth/login`,
+        userdata
+      );
+      localStorage.setItem("customer", JSON.stringify(data.user));
+      localStorage.setItem("customertoken", data.token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

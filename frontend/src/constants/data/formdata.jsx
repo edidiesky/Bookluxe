@@ -11,7 +11,7 @@ export const LoginFormInputData = [
     },
     {
         id: 2,
-        name: "password",
+        name: "hashedPassword",
         placeholder: "Minimum 8 Characters",
         type: "password",
         label: "Password",
@@ -38,10 +38,10 @@ export const inputData2 = [
     },
     {
         id: 2,
-        name: "password",
+        name: "hashedPassword",
         placeholder: "Minimum 8 Characters",
         type: "password",
-        text: "password",
+        text: "hashedPassword",
         required: true,
     },
 ];
@@ -67,8 +67,8 @@ export const RegisterFormInputData = [
     },
     {
         id: 39,
-        name: "password",
-        placeholder: "Please input your password",
+        name: "hashedPassword",
+        placeholder: "Please input your hashedPassword",
         type: "password",
         text: "Password",
         label: "Password",

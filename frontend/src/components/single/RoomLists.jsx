@@ -46,26 +46,6 @@ const RoomLists = () => {
           />
         )}
       </AnimatePresence>
-      {/* // register modal */}
-      <AnimatePresence mode="wait">
-        {loginmodal && (
-          <LoginModal
-            registermodal={registermodal}
-            modal={loginmodal}
-            setModal={setLoginModal}
-            setRegisterModal={setRegisterModal}
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence mode="wait">
-        {registermodal && (
-          <RegisterModal
-            setLoginModal={setLoginModal}
-            modal={registermodal}
-            setModal={setRegisterModal}
-          />
-        )}
-      </AnimatePresence>
       <div
         className="w-full relative py-24 border-b flex items-center justify-center
    gap-8"

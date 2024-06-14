@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
 import { motion } from "framer-motion";
@@ -10,9 +10,10 @@ import {
   onLoginModal,
   offRegisterModal,
 } from "../../features/modals/modalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../home/loader";
 import { RegisterFormInputData } from "@/constants/data/formdata";
+import { RegisterUser } from "@/features/auth/authReducer";
 
 const ModalVariants = {
   initial: {
@@ -31,11 +32,16 @@ const ModalVariants = {
     transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
   },
 };
-const RegisterModal = ({ modal }) => {
+const RegisterModal = () => {
   const dispatch = useDispatch();
   const handleClearAlert = () => {
     dispatch(offRegisterModal());
   };
+
+  const { registerisSuccess, registerisLoading } = useSelector(
+    (store) => store.auth
+  );
+  const { registermodal } = useSelector((store) => store.modal);
   const [formvalue, setFormValue] = useState({
     name: "",
     username: "",
@@ -58,20 +64,14 @@ const RegisterModal = ({ modal }) => {
 
   const handleFormSubmision = (e) => {
     e.preventDefault();
-    setLoading(true);
-    axios
-      .post("/api/register", formvalue)
-      .then(() => {
-        dispatch(offRegisterModal());
-      })
-      .catch((error) => {
-        // toast.error(error);
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    dispatch(RegisterUser(formvalue));
   };
+
+  useEffect(() => {
+    if (registerisSuccess) {
+      dispatch(offLoginModal());
+    }
+  }, [registerisSuccess]);
   return (
     <RegisterModalStyles
       as={motion.div}
@@ -79,11 +79,11 @@ const RegisterModal = ({ modal }) => {
       exit={{ opacity: 0, visibility: "hidden" }}
       animate={{ opacity: 1, visibility: "visible" }}
     >
-      {loading && <Loader />}
+      {registerisLoading && <Loader />}
       <motion.div
         variants={ModalVariants}
         initial="initial"
-        animate={modal ? "enter" : "exit"}
+        animate={registermodal ? "enter" : "exit"}
         exit="exit"
         className="guestModalCard"
       >

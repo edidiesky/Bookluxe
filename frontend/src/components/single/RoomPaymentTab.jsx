@@ -11,8 +11,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../home/loader";
+import { onLoginModal } from "@/features/modals/modalSlice";
 export default function RoomPaymentTab({
   setDateModal,
   dateRange,
@@ -23,11 +24,14 @@ export default function RoomPaymentTab({
   room,
 }) {
   // states of the reservation booking either loading or
+  const dispatch = useDispatch();
   const [bookingloading, setBookingLoading] = useState(false);
   const [bookingdata, setBookingData] = useState(null);
 
   // console.log(moment(startdate).format("MMMM Do"));
-  const { currentUser } = useSelector((store) => store.auth);
+  const { currentUser, token } = useSelector((store) => store.auth);
+
+  // console.log(token)
 
   const today = new Date();
   const [date, setDate] = React.useState({
@@ -45,8 +49,8 @@ export default function RoomPaymentTab({
     room?.price * differenceInDays + room?.price * differenceInDays * 0.1;
   const reservationData = {
     totalPrice: totalPrice,
-    startDate: moment(startdate).format( "MMMM Do YYYY"),
-    endDate: moment(enddate).format( "MMMM Do YYYY"),
+    startDate: moment(startdate).format("MMMM Do YYYY"),
+    endDate: moment(enddate).format("MMMM Do YYYY"),
   };
 
   // console.log(reservationData);
@@ -60,9 +64,15 @@ export default function RoomPaymentTab({
         // toast.success("Reservation date is fine");
         try {
           setBookingLoading(true);
+           const config = {
+             headers: {
+               authorization: `Bearer ${token}`,
+             },
+           };
           const { data } = await axios.post(
-            `/api/reservation/${room?.id}`,
-            reservationData
+            `${import.meta.env.VITE_API_BASE_URLS}/reservation/${room?.id}`,
+            reservationData,
+            config
           );
           setBookingData(data);
         } catch (error) {
@@ -74,12 +84,9 @@ export default function RoomPaymentTab({
         }
       }
     } else {
-      setLoginModal(true);
+      dispatch(onLoginModal());
     }
   };
-  //   // // console.log(bookingdata);
-  // let newStartDate = startdate &&  startdate?.split("")[0]
-  //  console.log(newStartDate);
   useEffect(() => {
     if (bookingdata !== null) {
       // redirect(`/reservation/payment?reservationId=${bookingdata?.id}`);

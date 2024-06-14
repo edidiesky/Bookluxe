@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
@@ -14,7 +14,8 @@ import {
   offRegisterModal,
   onRegisterModal,
 } from "../../features/modals/modalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { LoginUser } from "@/features/auth/authReducer";
 
 const ModalVariants = {
   initial: {
@@ -33,15 +34,17 @@ const ModalVariants = {
     transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
   },
 };
-const LoginModal = ({ modal }) => {
+const LoginModal = () => {
   const dispatch = useDispatch();
+
+  const { loginisSuccess, loginisLoading } = useSelector((store) => store.auth);
+  const { loginmodal } = useSelector((store) => store.modal);
   const handleClearAlert = () => {
     dispatch(offLoginModal());
   };
-  const [loading, setLoading] = useState(false);
   const [formvalue, setFormValue] = useState({
     email: "",
-    password: "",
+    hashedPassword: "",
   });
 
   const handleFormChange = (e) => {
@@ -56,9 +59,15 @@ const LoginModal = ({ modal }) => {
     dispatch(onRegisterModal());
   };
   const handleFormSubmision = (e) => {
-    // e.preventDefault();
-  
+    e.preventDefault();
+    dispatch(LoginUser(formvalue));
   };
+
+  useEffect(() => {
+    if (loginisSuccess) {
+      dispatch(offLoginModal());
+    }
+  }, [loginisSuccess]);
   return (
     <LoginModalStyles
       as={motion.div}
@@ -66,11 +75,11 @@ const LoginModal = ({ modal }) => {
       exit={{ opacity: 0, visibility: "hidden" }}
       animate={{ opacity: 1, visibility: "visible" }}
     >
-      {loading && <Loader />}
+      {loginisLoading && <Loader />}
       <motion.div
         variants={ModalVariants}
         initial="initial"
-        animate={modal ? "enter" : "exit"}
+        animate={loginmodal ? "enter" : "exit"}
         exit="exit"
         className="guestModalCard"
       >
@@ -78,7 +87,7 @@ const LoginModal = ({ modal }) => {
           <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex border-[rgba(0,0,0,.2)] items-center justify-between">
             <h3 className="text-3xl font-bold font-booking_font4">
               Sign In
-              <span className="block text-sm font-light font-booking_font_normal">
+              <span className="block text-sm font-normal font-booking_font_normal">
                 Login to your account and check out your bookings
               </span>
             </h3>
@@ -99,11 +108,14 @@ const LoginModal = ({ modal }) => {
                       htmlFor={input.label}
                       className="text-sm font-booking_font_normal rounded-[10px] flex flex-col gap-2 text-dark"
                     >
-                      <span className="text-dark font-semibold">{input.label}</span>
+                      <span className="text-dark font-semibold">
+                        {input.label}
+                      </span>
                       <div className="input flex item-center gap-1">
                         {/* <MdOutlineMailOutline fontSize={'18px'} className="text-grey" /> */}
                         <input
-                          className="w-100 rounded-2xl text-dark font-normal text-base"
+                          className="w-100 rounded-2xl text-dark
+                           font-semibold text-base"
                           required={true}
                           name={input?.name}
                           id={input.label}
@@ -125,7 +137,7 @@ const LoginModal = ({ modal }) => {
                   Sign In
                 </button>
                 <div className="w-full flex items-center justify-start gap-2">
-                  <span className="text-sm font-light text-dark">
+                  <span className="text-sm font-normal text-dark">
                     Not yet a Member?{" "}
                     <span
                       onClick={handleLoginModal}

@@ -19,7 +19,7 @@ export default function RoomFeatures() {
               return (
                 <div
                   key={index}
-                  className="flex text-sm md:text-base gap-4 font-light items-center text-grey font-booking_font5"
+                  className="flex text-sm md:text-base gap-4 font-light items-center font-booking_font5"
                 >
                   {x?.icon}
                   <span className="w-full"> {x.title}</span>
