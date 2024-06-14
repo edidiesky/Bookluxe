@@ -6,7 +6,7 @@ const customerToken = localStorage.getItem("customertoken");
 const initialState = {
   users: [],
   token: customerToken ? customerToken : "",
-  currentUser: customerData ? customerData : {},
+  currentUser: customerData ? customerData : null,
   alertText: "",
   showAlert: false,
   alertType: "",

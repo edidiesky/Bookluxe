@@ -1,4 +1,5 @@
 import asyncHandler from "express-async-handler";
+import { parse, formatISO } from 'date-fns'
 import prisma from "../prisma/index.js";
 const GetUserReservation = asyncHandler(async (req, res) => {
   const availableRooms = await prisma.reservations.findMany({
@@ -17,8 +18,10 @@ const GetUserReservation = asyncHandler(async (req, res) => {
 });
 
 const CreateUserReservation = asyncHandler(async (req, res) => {
-  const { startDate, endDate, totalPrice } = req.body;
+  let { startDate, endDate, totalPrice } = req.body;
   const id = req.params.id;
+ startDate = formatISO(parse(startDate, "MMMM do yyyy", new Date()));
+ endDate = formatISO(parse(endDate, "MMMM do yyyy", new Date()));
   // check for available rooms
   const availableRooms = await prisma.reservations.findMany({
     where: {
@@ -47,7 +50,7 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
     startDate,
     endDate,
     totalPrice,
-    userid: currentUser.id,
+    userid: req.user.userId,
     roomid: id,
   };
 

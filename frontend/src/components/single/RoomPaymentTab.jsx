@@ -5,6 +5,7 @@ import moment from "moment";
 import { addDays, format } from "date-fns";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -25,6 +26,7 @@ export default function RoomPaymentTab({
 }) {
   // states of the reservation booking either loading or
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [bookingloading, setBookingLoading] = useState(false);
   const [bookingdata, setBookingData] = useState(null);
 
@@ -64,16 +66,17 @@ export default function RoomPaymentTab({
         // toast.success("Reservation date is fine");
         try {
           setBookingLoading(true);
-           const config = {
-             headers: {
-               authorization: `Bearer ${token}`,
-             },
-           };
+          const config = {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          };
           const { data } = await axios.post(
             `${import.meta.env.VITE_API_BASE_URLS}/reservation/${room?.id}`,
             reservationData,
             config
           );
+          toast.success("Room has been succesfully booked!!");
           setBookingData(data);
         } catch (error) {
           const erroMessage =
@@ -89,7 +92,7 @@ export default function RoomPaymentTab({
   };
   useEffect(() => {
     if (bookingdata !== null) {
-      // redirect(`/reservation/payment?reservationId=${bookingdata?.id}`);
+      navigate(`/reservation/payment?reservationId=${bookingdata?.id}`);
     }
   }, [bookingdata]);
 
@@ -231,6 +234,7 @@ export default function RoomPaymentTab({
           {currentUser ? (
             <button
               type="submit"
+              disabled={bookingloading}
               onClick={handleReservationBooking}
               style={{ letterSpacing: "4px" }}
               className="btn text-center text-sm uppercase text-white py-6 px-8 w-full"

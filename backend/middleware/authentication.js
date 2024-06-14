@@ -28,6 +28,7 @@ const authMiddleware = (req, res, next) => {
     req.user = { userId, role, username };
     next();
   } catch (err) {
+    console.log(err);
     res.status(403).json({ messsage: "Not authorized to access this route" });
   }
 };

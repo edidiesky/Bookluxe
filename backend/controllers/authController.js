@@ -34,13 +34,11 @@ const registerUser = asyncHandler(async (req, res) => {
   const user = await prisma.user.create({
     data: Tempuser,
   });
-
-  const jwtcode = "hello";
   const token = jwt.sign(
     {
       userId: user?.id,
     },
-    jwtcode,
+    process.env.JWT_CODE,
     { expiresIn: "12d" }
   );
 
@@ -82,13 +80,13 @@ const LoginUser = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("Please provide a valid hashedPassword");
   }
-  const jwtcode = "hello";
+
   //
   const token = jwt.sign(
     {
       userId: userExist.id,
     },
-    jwtcode,
+    process.env.JWT_CODE,
     { expiresIn: "12d" }
   );
 
