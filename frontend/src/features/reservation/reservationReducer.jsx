@@ -6,8 +6,15 @@ export const GetSingleReservation = createAsyncThunk(
   "GetSingleReservation",
   async (reservationId, thunkAPI) => {
     try {
+        const state = thunkAPI.getState();
+        const config = {
+          headers: {
+            authorization: `Bearer ${state.auth.token}`,
+          },
+        };
       const { data } = await axios.get(
-        `${import.meta.env.VITE_API_BASE_URLS}/reservation/${reservationId}`
+        `${import.meta.env.VITE_API_BASE_URLS}/reservation/${reservationId}`,
+        config
       );
       return data;
     } catch (error) {

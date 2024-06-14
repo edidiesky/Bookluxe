@@ -4,7 +4,7 @@ import prisma from "../prisma/index.js";
 const GetUserReservation = asyncHandler(async (req, res) => {
   const availableRooms = await prisma.reservations.findMany({
     where: {
-      userid: req.user.userid,
+      userid: req.user.userId,
     },
     include: {
       user: true,
@@ -20,7 +20,7 @@ const GetUserReservation = asyncHandler(async (req, res) => {
 const GetSingleReservation = asyncHandler(async (req, res) => {
   const availableRooms = await prisma.reservations.findUnique({
     where: {
-      userid: req.user.userid,
+      userid: req.user.userId,
       id: req.params.id,
     },
     include: {
