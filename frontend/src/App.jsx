@@ -8,6 +8,7 @@ const SearchWrapper = lazy(() => import("./screens/Search"));
 const SingleWrapper = lazy(() => import("./screens/Single"));
 const SavedWrapper = lazy(() => import("./screens/Saved"));
 const TripsWrapper = lazy(() => import("./screens/Trips"));
+const PaymentWrapper = lazy(() => import("./screens/Payment"));
 
 export default function App() {
   const [height, setHeight] = useState(0);
@@ -53,6 +54,14 @@ export default function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <TripsWrapper />
+              </Suspense>
+            }
+          />
+          <Route
+            path="reservation/payment/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PaymentWrapper />
               </Suspense>
             }
           />

@@ -92,7 +92,7 @@ export default function RoomPaymentTab({
   };
   useEffect(() => {
     if (bookingdata !== null) {
-      navigate(`/reservation/payment?reservationId=${bookingdata?.id}`);
+      navigate(`/reservation/payment/${bookingdata?.id}`);
     }
   }, [bookingdata]);
 

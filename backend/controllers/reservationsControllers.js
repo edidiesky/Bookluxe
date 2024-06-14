@@ -1,5 +1,5 @@
 import asyncHandler from "express-async-handler";
-import { parse, formatISO } from 'date-fns'
+import { parse, formatISO } from "date-fns";
 import prisma from "../prisma/index.js";
 const GetUserReservation = asyncHandler(async (req, res) => {
   const availableRooms = await prisma.reservations.findMany({
@@ -17,11 +17,25 @@ const GetUserReservation = asyncHandler(async (req, res) => {
   return res.json(availableRooms);
 });
 
+const GetSingleReservation = asyncHandler(async (req, res) => {
+  const availableRooms = await prisma.reservations.findUnique({
+    where: {
+      userid: req.user.userid,
+      id: req.params.id,
+    },
+    include: {
+      user: true,
+      rooms: true,
+    },
+  });
+  return res.json(availableRooms);
+});
+
 const CreateUserReservation = asyncHandler(async (req, res) => {
   let { startDate, endDate, totalPrice } = req.body;
   const id = req.params.id;
- startDate = formatISO(parse(startDate, "MMMM do yyyy", new Date()));
- endDate = formatISO(parse(endDate, "MMMM do yyyy", new Date()));
+  startDate = formatISO(parse(startDate, "MMMM do yyyy", new Date()));
+  endDate = formatISO(parse(endDate, "MMMM do yyyy", new Date()));
   // check for available rooms
   const availableRooms = await prisma.reservations.findMany({
     where: {
@@ -61,4 +75,4 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
   return res.json(newReservation);
 });
 
-export { GetUserReservation, CreateUserReservation };
+export { GetUserReservation, CreateUserReservation, GetSingleReservation };
