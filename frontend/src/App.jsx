@@ -3,6 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import "./index.css";
 import Loader from "./components/home/loader";
 import Layout from "./screens/Layout";
+import DashboardLayout from "./screens/DashboardLayout";
+import { Statistics } from "./screens/dashboard";
 const HomeWrapper = lazy(() => import("./screens/Home"));
 const SearchWrapper = lazy(() => import("./screens/Search"));
 const SingleWrapper = lazy(() => import("./screens/Single"));
@@ -62,6 +64,17 @@ export default function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <PaymentWrapper />
+              </Suspense>
+            }
+          />
+        </Route>
+
+        <Route path={"/dashboard"} element={<DashboardLayout />}>
+          <Route
+            index
+            element={
+              <Suspense fallback={<Loader />}>
+                <Statistics />
               </Suspense>
             }
           />

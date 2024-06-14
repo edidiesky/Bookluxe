@@ -4,12 +4,13 @@ import { RxCross1 } from "react-icons/rx";
 import { FaBars } from "react-icons/fa6";
 import { FaRegUser, FaHotel } from "react-icons/fa";
 import { TiHome, TiMessage } from "react-icons/ti";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 import { RxTimer } from "react-icons/rx";
 import { LuBedDouble } from "react-icons/lu";
 import { BiSearch } from "react-icons/bi";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 const AdminSidebarData = [
   {
     id: 1,
@@ -49,9 +50,8 @@ const AdminSidebarData = [
   },
 ];
 
-const DashboardHeader = ({ sidebar, setSidebar, currentUser }) => {
-  // const dispatch = useAppDispatch()
-  const pathname = usePathname();
+const DashboardHeader = () => {
+  const { currentUser } = useSelector((store) => store.auth);
   const [bar, setBar] = React.useState(false);
   const [activeindex, setActiveIndex] = useState(0);
 
@@ -108,13 +108,13 @@ const DashboardHeader = ({ sidebar, setSidebar, currentUser }) => {
               <div className="w-full flex flex-col">
                 <div className="flex profile_dropdown_bottom flex-col w-full">
                   <Link
-                    href={"/dashboard"}
+                    to={"/dashboard"}
                     className="font-bold font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
                   >
                     Dashboard
                   </Link>
                   <Link
-                    href={"/dashboard/settings"}
+                    to={"/dashboard/settings"}
                     className="font-bold font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
                   >
                     Profile
@@ -168,9 +168,8 @@ const DashboardHeader = ({ sidebar, setSidebar, currentUser }) => {
                 <div key={index} className="w-[90%] mx-auto">
                   <Link
                     className={`
-                      ${pathname === `/dashboard${x.tab.path}` ? "active" : ""}
                       text-3xl w-[90%] mx-auto text-dark font-medium`}
-                    href={`/dashboard${x.tab.path}`}
+                    to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
                       <span className="w-12 h-12 text-xm rounded-xl flex items-center text-blue justify-center">
@@ -197,7 +196,7 @@ export const HeaderStyles = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  background:#fff;
+  background: #fff;
   .profile_wrapper:hover .profile_dropdown {
     opacity: 1;
     transform: scale(1);
@@ -272,7 +271,6 @@ export const HeaderStyles = styled.div`
       svg {
         color: #000;
       }
-     
     }
   }
 `;

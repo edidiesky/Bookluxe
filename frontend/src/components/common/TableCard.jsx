@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import moment from "moment";
-import Link from "next/link";
+import {Link} from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 import DeleteModal from "../modals/DeleteModal";

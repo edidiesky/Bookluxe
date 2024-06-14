@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 import styled from "styled-components";
-import { usePathname } from "next/navigation";
-import Image from "next/image";
+// import { usePathname } from "next/navigation";
 import { TiHome } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
 import { LuBedDouble } from "react-icons/lu";
 import { FaRegUser, FaHotel } from "react-icons/fa";
-import Link from "next/link";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AdminSidebarData = [
   {
@@ -48,9 +48,9 @@ const AdminSidebarData = [
   },
 ];
 
-const DashboardSidebar = ({ active, currentUser }) => {
-  // const currentUser = {};
-  const pathname = usePathname();
+const DashboardSidebar = () => {
+  const { currentUser } = useSelector((store) => store.auth);
+  const pathname = true;
   return (
     <HeaderStyles className={`w-full border-r flex column gap-2`}>
       <div className="w-full h-full py-4 justify-between flex items-center flex-col gap-4">
@@ -59,11 +59,7 @@ const DashboardSidebar = ({ active, currentUser }) => {
             {/* <h4 className="text-sm text-dark">RockTrading</h4> */}
             <div className=" w-[90%] mx-auto relative flex gap-4 items-center flex-col justify-between">
               <div className="w-full flex items-center gap-1 justify-start">
-                <Image
-                  alt="Cotion"
-                  width={0}
-                  sizes="100vw"
-                  height={0}
+                <img
                   loading="lazy"
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
                   className="w-14 h-14 rounded-full object-cover"
@@ -78,7 +74,7 @@ const DashboardSidebar = ({ active, currentUser }) => {
               </div>
             </div>
           </div>
-          <div className="w-full my-4 flex flex-col gap-1">
+          {/* <div className="w-full my-4 flex flex-col gap-1">
             {AdminSidebarData?.map((x, index) => {
               // console.log(pathname, `/dashboard${x.tab.path}`);
               return (
@@ -90,7 +86,7 @@ const DashboardSidebar = ({ active, currentUser }) => {
                     className={`
                       ${pathname === `/dashboard${x.tab.path}` ? "active" : ""}
                       text-sm w-[90%] mx-auto text-dark family1`}
-                    href={`/dashboard${x.tab.path}`}
+                    to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
                       <span className="w-12 h-12 text-xm rounded-xl flex items-center text-blue justify-center">
@@ -103,15 +99,13 @@ const DashboardSidebar = ({ active, currentUser }) => {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
         <div className="flex flex-col gap-2 w-full items-start justify-between py-1">
           <div className="w-[90%] mx-auto flex flex-col gap-4">
             <Link
-              className={`${
-                pathname === `/dashboard/settings` ? "active" : ""
-              } text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal text-dark family1`}
-              href={`/dashboard/settings`}
+              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal text-dark family1`}
+              to={`/dashboard/settings`}
             >
               <FiSettings fontSize={"24px"} />
               Settings

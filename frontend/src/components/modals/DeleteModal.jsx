@@ -4,15 +4,15 @@ import { CiWarning } from "react-icons/ci";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
-import Loader from "../loader";
-import { useAppDispatch, useAppSelector } from "@/app/hooks/useCustomRedux";
-import { DeleteRoom } from "@/app/libs/features/rooms/roomReducer";
-import { handleClearRoomAlert } from "@/app/libs/features/rooms/roomSlice";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../home/loader";
+// import { DeleteRoom } from "@/app/libs/features/rooms/roomReducer";
+// import { handleClearRoomAlert } from "@/app/libs/features/rooms/roomSlice";
 export default function DeleteModal({ type, modal, setModal, room }) {
-  const { deleteRoomisLoading, deleteRoomisSuccess } = useAppSelector(
+  const { deleteRoomisLoading, deleteRoomisSuccess } = useSelector(
     (store) => store.room
   );
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const handleClearAlert = () => {
     setModal(false);
   };
@@ -20,13 +20,13 @@ export default function DeleteModal({ type, modal, setModal, room }) {
     dispatch(DeleteRoom(room?.id));
   }, []);
   useEffect(() => {
-    dispatch(handleClearRoomAlert());
+    // dispatch(handleClearRoomAlert());
   }, []);
   useEffect(() => {
     // dispatch(handleClearRoomAlert());
     if (deleteRoomisSuccess) {
       setModal(false);
-      dispatch(handleClearRoomAlert());
+      // dispatch(handleClearRoomAlert());
     }
   }, [setModal, deleteRoomisSuccess]);
 
