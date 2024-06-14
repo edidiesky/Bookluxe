@@ -43,7 +43,7 @@ const RoomCard = ({ type, apartment }) => {
           >
             for settling in castle
           </h4>
-          <h3 className="text-2xl font-booking_font4 font-medium text-text_dark_1 ">
+          <h3 className="text-2xl font-booking_font4 font-bold text-text_dark_1 ">
             {apartment?.rooms?.title}
           </h3>
 
