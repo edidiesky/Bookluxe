@@ -9,6 +9,7 @@ import {
   CreateRooms,
   GetAllRoom,
   GetSingleRoom,
+  DeleteRoom,
 } from "../controllers/roomControllers.js";
 
 router
@@ -16,13 +17,9 @@ router
   .get(GetAllRoom)
   .post(authMiddleware, adminMiddleware, CreateRooms);
 
-router.route("/:id").get(GetSingleRoom);
-// router.route("/wish/:id").put(authMiddleware, CreateListingWishlist);
-// router.route("/wish").get(authMiddleware, getUserListingWishlist);
-// router
-//   .route("/:id")
-//   .get(GetSingleListing)
-//   .put(authMiddleware, adminMiddleware, UpdateListing)
-//   .delete(authMiddleware, DeleteListing);
+router
+  .route("/:id")
+  .get(GetSingleRoom)
+  .delete(authMiddleware, adminMiddleware, DeleteRoom);
 
 export default router;

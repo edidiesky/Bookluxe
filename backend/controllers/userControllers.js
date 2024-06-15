@@ -76,16 +76,18 @@ const UpdateUser = asyncHandler(async (req, res) => {
 //PRIVATE/ADMIN
 const AdminUpdateUser = asyncHandler(async (req, res) => {
   const { userId, username } = req.user;
-  const Loginuser = await prisma.user.findById({ _id: req.params.id });
-  if (!Loginuser) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  if (!user) {
     res.status(404);
     throw new Error("The user does not exist");
   }
-  const updatedUser = await prisma.user.findByIdAndUpdate(
-    { _id: req.params.id },
-    req.body,
-    { new: true }
-  );
+  const updatedUser = await prisma.user.update({
+    where: { id: req.params.id, data: { ...req.body } },
+  });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 
@@ -93,13 +95,18 @@ const AdminUpdateUser = asyncHandler(async (req, res) => {
 });
 //PRIVATE/ADMIN
 const DeleteUser = asyncHandler(async (req, res) => {
-  const { userId, username } = req.user;
-  const Loginuser = await prisma.user.findById({ _id: req.params.id });
-  if (!Loginuser) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  if (!user) {
     res.status(404);
     throw new Error("The user does not exist");
   }
-  await prisma.user.findByIdAndDelete({ _id: req.params.id });
+  await prisma.user.delete({
+    where: { id: req.params.id },
+  });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 

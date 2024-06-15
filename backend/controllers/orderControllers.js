@@ -28,8 +28,8 @@ const GetAllOrder = async (req, res) => {
   const noOfPages = Math.ceil(totalOrder / limit);
 
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
   res.status(200).json({ order, noOfPages, totalOrder });
 };
 
@@ -45,9 +45,9 @@ const GetCustomerOrder = async (req, res) => {
     .populate("buyerId", "firstname lastname email address")
     .populate("reservation_id", "image title price countInStock deliveryDays");
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
-    res.status(200).json({ order });
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
+  res.status(200).json({ order });
 };
 
 // GET
@@ -61,9 +61,9 @@ const GetSellerOrder = async (req, res) => {
     .populate("buyerId", "image username email address name")
     .populate("reservation_id", "image title price countInStock deliveryDays");
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
-    res.status(200).json({ order });
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
+  res.status(200).json({ order });
 };
 
 // get the order id
@@ -76,8 +76,8 @@ const GetOrderById = async (req, res) => {
     "firstname lastname email address"
   );
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
   res.status(200).json({ order });
 };
 
@@ -136,8 +136,8 @@ const CreateOrder = expressAsyncHandler(async (req, res) => {
   });
 
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
   res.status(200).json({ order, url: session.url });
 
   // console.log(req.body);y
@@ -175,16 +175,16 @@ const UpdateOrderToPaid = expressAsyncHandler(async (req, res) => {
       buyerId: req.user.userId,
     });
     res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+    res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
     res.status(200).json({ userorder });
   } else {
     const userorder = await Order.find({
       buyerId: req.user.userId,
     });
     res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+    res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
     res.status(200).json({ userorder });
   }
   // console.log(req.params.id == 'undefined');
@@ -211,8 +211,8 @@ const UpdateOrderToIsDelivered = async (req, res) => {
     { new: true }
   );
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
   res.status(200).json({ updatedOrder });
 };
 
@@ -256,8 +256,8 @@ const AggregateUserOrderStats = asyncHandler(async (req, res) => {
   });
 
   res.setHeader("Content-Type", "text/html");
-res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
- 
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
   res.status(200).json({ totalOrder });
 });
 

@@ -6,7 +6,8 @@ const GetAllRoom = asyncHandler(async (req, res) => {
       createdAt: "desc",
     },
   });
-
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res.json(rooms);
 });
 
@@ -17,7 +18,8 @@ const CreateRooms = asyncHandler(async (req, res) => {
       ...req.body,
     },
   });
-
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res.json(room);
 });
 
@@ -35,7 +37,27 @@ const GetSingleRoom = asyncHandler(async (req, res) => {
       { status: 404 }
     );
   }
-
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res.json(room);
 });
-export { GetAllRoom, CreateRooms, GetSingleRoom };
+
+const DeleteRoom = asyncHandler(async (req, res) => {
+  const rooms = await prisma.rooms.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  if (!rooms) {
+    res.status(404);
+    throw new Error("The rooms does not exist");
+  }
+  await prisma.rooms.delete({
+    where: { id: req.params.id },
+  });
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
+  res.status(200).json({ msg: "The rooms has been successfully deleted" });
+});
+export { GetAllRoom, CreateRooms, GetSingleRoom, DeleteRoom };

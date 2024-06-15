@@ -1,14 +1,6 @@
 import asyncHandler from "express-async-handler";
 import prisma from "../prisma/index.js";
-const GetAllRoom = asyncHandler(async (req, res) => {
-  const rooms = await prisma.rooms.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
 
-  return res.json(rooms);
-});
 
 const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
   const id = req.params.id;
@@ -45,7 +37,8 @@ const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
   const message = isSavedRoomIncluded
     ? `${room.title} has been removed from your collections`
     : `${room.title} has been saved to your collections`;
-
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res
   ({
     message: message,
@@ -54,4 +47,4 @@ const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
   });
 });
 
-export { GetAllRoom, CreateUserFavouriteRoom };
+export {  CreateUserFavouriteRoom };
