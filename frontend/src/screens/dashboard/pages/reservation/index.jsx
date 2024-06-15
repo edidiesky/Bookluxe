@@ -1,5 +1,4 @@
-// import Head from "next/head";
-import DashboardLayout from "../layout";
+
 import DashboardIndex from "./components";
 export default function Home() {
   return (

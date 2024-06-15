@@ -1,5 +1,5 @@
 "use client";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const RegisterUser = createAsyncThunk(
@@ -31,6 +31,82 @@ export const LoginUser = createAsyncThunk(
       );
       localStorage.setItem("customer", JSON.stringify(data.user));
       localStorage.setItem("customertoken", data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);
+
+export const GetAllUsers = createAsyncThunk(
+  "GetAllUsers",
+  async (userId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URLS}/user`,
+        config
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);
+
+export const DeleteSingleUser = createAsyncThunk(
+  "DeleteSingleUser",
+  async (userId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
+      const { data } = await axios.delete(
+        `${import.meta.env.VITE_API_BASE_URLS}/user/${userId}`,
+        config
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);
+
+export const UpdateSingleUser = createAsyncThunk(
+  "UpdateSingleUser",
+  async (user, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
+      const { data } = await axios.put(
+        `${import.meta.env.VITE_API_BASE_URLS}/user/${user?.id}`,
+        user,
+        config
+      );
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(

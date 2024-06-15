@@ -77,7 +77,7 @@ export const Table = styled.div`
             text-align: center;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             padding: 1.7rem 1rem;
-            font-weight: 700;
+            font-weight: bold;
           }
         }
       }
@@ -93,9 +93,8 @@ export const Table = styled.div`
           }
           td {
             text-align: center;
-            padding: 1.2rem 1rem;
+            padding: 1.4rem 1rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-            font-family: "Proxima_SemiBold", sans-serif;
 
             span {
               &.danger {
