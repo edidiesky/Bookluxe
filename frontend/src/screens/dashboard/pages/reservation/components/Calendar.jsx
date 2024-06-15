@@ -1,14 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import dynamic from "next/dynamic";
 import BookingReservationModal from "@/components/modals/BookingReservationModal";
-const Scheduler = dynamic(
-  () => import("@bitnoi.se/react-scheduler").then((mod) => mod.Scheduler),
-  {
-    ssr: false,
-  }
-);
+import Scheduler from "@bitnoi.se/react-scheduler"
 
 const ReservationCalendar = () => {
   const [filterButtonState, setFilterButtonState] = useState(0);
