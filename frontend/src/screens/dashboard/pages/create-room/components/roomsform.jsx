@@ -52,7 +52,7 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-bold">
+            <h4 className="text-2xl font-booking_font_bold font-semibold">
               Name & Description
             </h4>
             <div className="flex items-center justify-end">
@@ -100,7 +100,7 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-bold">
+            <h4 className="text-2xl font-booking_font_bold font-semibold">
               Price & Room Capacity
               <span className="font-normal font-booking_font text-base block">
                 Share what makes your place special.
@@ -160,7 +160,7 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-bold">
+            <h4 className="text-2xl font-booking_font_bold font-semibold">
               Room Location
               <span className="font-normal font-booking_font text-base block">
                 Share where your room is located.

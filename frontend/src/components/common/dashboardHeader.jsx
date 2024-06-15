@@ -150,7 +150,7 @@ const DashboardHeader = () => {
         {/* <div className="w-full h-full absolute bg-[#fff] z-[24] object-cover" /> */}
         <div
           style={{ zIndex: "200" }}
-          className="w-full h-full bg-white Header_wrapper py-4 flex items-start flex-col gap-4"
+          className="w-full h-full bg-white Header_wrapper py-4 flex items-start flex-col gap-2"
         >
           <div className="flex px-3 items-center gap-2">
             <img
@@ -158,10 +158,10 @@ const DashboardHeader = () => {
               alt=""
               className="w-10 rounded-full"
             />
-            <h4 className="text-base font-booking_font4 text-dark">
-              {currentUser?.fullname || "Jermiah frim"}
+            <h4 className="text-base font-bold text-dark">
+              {currentUser?.name}
               <span className="block font-normal font-booking_font text-sm text-dark">
-                {currentUser?.email || "jerrme@gmail.com"}
+                {currentUser?.email}
               </span>
             </h4>
           </div>

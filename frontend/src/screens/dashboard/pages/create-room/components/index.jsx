@@ -53,16 +53,16 @@ const DashboardIndex = () => {
   return (
     <div className="w-full relative">
       <div className="w-full relative pb-20 flex flex-col gap-12">
-        <div className="w-full grid lg:grid-cols-2 lg:items-center gap-4 justify-between">
-          <h3 className="text-3xl font-booking_font_normal">
+        <div className="w-full grid md:grid-cols-2 md:items-center gap-4 justify-between">
+          <h3 className="text-3xl font-bold font-booking_font_normal">
             Add Your Room
-            <span className="block text-grey pt-2 text-sm font-booking_font_normal">
+            <span className="block font-semibold text-grey pt-2 text-sm font-booking_font_normal">
               The most important idea about this section is that it gives u
               ability to add your rooms. When adding your room product idea do
               not forget to fill out the forms else errors are bound to occur
             </span>
           </h3>
-          <div className="flex items-center lg:justify-end">
+          <div className="flex items-center md:justify-end">
             <button
               disabled={creatingRoomisLoading}
               onClick={handleRoomCreation}
