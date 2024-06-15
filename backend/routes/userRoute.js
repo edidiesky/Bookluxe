@@ -16,7 +16,7 @@ import {
 router.get("/", authMiddleware, adminMiddleware, GetAllUser);
 // router.get('/stats', authMiddleware, adminMiddleware, AggregateUserStats)
 router
-  .route("/admin/profile/:id")
+  .route("/:id")
   .delete(authMiddleware, adminMiddleware, DeleteUser)
   .get(authMiddleware, GetUserById)
   .put(authMiddleware, adminMiddleware, AdminUpdateUser);

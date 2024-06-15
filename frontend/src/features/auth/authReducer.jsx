@@ -69,7 +69,7 @@ export const GetAllUsers = createAsyncThunk(
 
 export const DeleteSingleUser = createAsyncThunk(
   "DeleteSingleUser",
-  async (userId, thunkAPI) => {
+  async (id, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const config = {
@@ -78,10 +78,10 @@ export const DeleteSingleUser = createAsyncThunk(
         },
       };
       await axios.delete(
-        `${import.meta.env.VITE_API_BASE_URLS}/user/${userId}`,
+        `${import.meta.env.VITE_API_BASE_URLS}/user/${id}`,
         config
       );
-      return userId;
+      return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
