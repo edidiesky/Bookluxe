@@ -39,6 +39,10 @@ export const patientSlice = createSlice({
   initialState,
   reducers: {
     handlePatientData: (state, action) => {},
+    handleClearRoomAlert: (state, action) => {
+      state.deleteRoomisLoading = false;
+      state.deleteRoomisSuccess = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllRooms.pending, (state, action) => {
@@ -107,6 +111,6 @@ export const patientSlice = createSlice({
   },
 });
 
-export const { handlePatientData } = patientSlice.actions;
+export const { handleClearRoomAlert } = patientSlice.actions;
 
 export default patientSlice.reducer;

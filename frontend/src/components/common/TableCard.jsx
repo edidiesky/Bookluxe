@@ -32,13 +32,13 @@ const TableCard = ({ x, type }) => {
           <td>
             <div className="flex flex-col">
               <span className="text-sm  font-semibold text-dark text-bold">
-                {x?.fullname}
+                {x?.name}
               </span>
-              <span className="text-sm  font-semibold family1 text-dark">{x?.email}</span>
+              {/* <span className="text-sm  font-semibold family1 text-dark">{x?.email}</span> */}
             </div>
           </td>
           <td>
-            <span className="text-sm  font-semibold family1  text-dark">{x?.phone}</span>
+            <span className="text-sm  font-semibold family1  text-dark">{x?.email}</span>
           </td>
           <td>
             <span className=" text-dark text-sm  font-semibold family1">

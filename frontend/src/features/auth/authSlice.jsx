@@ -43,7 +43,10 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    handlePatientData: (state, action) => {},
+    handleClearUserAlert: (state, action) => {
+      state.deleteUserisLoading = false
+      state.deleteUserisSuccess = false
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(LoginUser.pending, (state, action) => {
@@ -118,6 +121,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { handlePatientData } = authSlice.actions;
+export const { handleClearUserAlert } = authSlice.actions;
 
 export default authSlice.reducer;

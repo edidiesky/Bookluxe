@@ -6,11 +6,17 @@ import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../home/loader";
-// import { DeleteRoom } from "@/app/libs/features/rooms/roomReducer";
-// import { handleClearRoomAlert } from "@/app/libs/features/rooms/roomSlice";
-export default function DeleteModal({ type, modal, setModal, room }) {
+import { DeleteSingleUser } from "@/features/auth/authReducer";
+import { handleClearUserAlert } from "@/features/auth/authSlice";
+import { handleClearRoomAlert } from "@/features/room/roomSlice";
+import { DeleteRoom } from "@/features/room/roomReducer";
+export default function DeleteModal({ type, modal, setModal, room, id }) {
   const { deleteRoomisLoading, deleteRoomisSuccess } = useSelector(
     (store) => store.room
+  );
+
+  const { deleteUserisLoading, deleteUserisSuccess } = useSelector(
+    (store) => store.auth
   );
   const dispatch = useDispatch();
   const handleClearAlert = () => {
@@ -19,16 +25,19 @@ export default function DeleteModal({ type, modal, setModal, room }) {
   const handleDeleteRoom = useCallback(() => {
     dispatch(DeleteRoom(room?.id));
   }, []);
-  useEffect(() => {
-    // dispatch(handleClearRoomAlert());
+  const handleDeleteUser = useCallback(() => {
+    dispatch(DeleteSingleUser(id));
   }, []);
+
   useEffect(() => {
-    // dispatch(handleClearRoomAlert());
-    if (deleteRoomisSuccess) {
+    dispatch(handleClearRoomAlert());
+    dispatch(handleClearUserAlert());
+    if (deleteRoomisSuccess || deleteUserisSuccess) {
       setModal(false);
-      // dispatch(handleClearRoomAlert());
+      dispatch(handleClearRoomAlert());
+      dispatch(handleClearUserAlert());
     }
-  }, [setModal, deleteRoomisSuccess]);
+  }, [setModal, deleteRoomisSuccess, deleteUserisSuccess]);
 
   if (type === "rooms") {
     return (
@@ -142,12 +151,12 @@ export default function DeleteModal({ type, modal, setModal, room }) {
             Cancel
           </button>
           <button
-            disabled={roomdeleteloading}
-            onClick={handleDeleteRoom}
+            disabled={deleteUserisLoading}
+            onClick={handleDeleteUser}
             className="deleteBtn family1 font-booking_font_bold flex items-center justify-center text-sm"
             // onClick={() => dispatch(AdminDeleteUserProfile({ Detailsdata: id }))}
           >
-            {roomdeleteloading ? (
+            {deleteUserisLoading ? (
               <span className="flex items-center justify-center gap-2">
                 <Loader type="dots" />
                 Deleting in progress
