@@ -1,19 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { redirect } from "next/navigation";
 import RoomForms from "./roomsform";
-import toast from "react-hot-toast";
 import RoomDetail from "./roomdetail";
-import Loader from "@/components/loader";
-import { useAppDispatch, useAppSelector } from "@/app/hooks/useCustomRedux";
-import { CreateRoom } from "@/app/libs/features/rooms/roomReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { CreateRoom } from "@/features/room/roomReducer";
+import Loader from "@/components/home/loader";
+import { useNavigate } from "react-router-dom";
 const DashboardIndex = () => {
+  const navigate = useNavigate()
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
-  // const [images, setImages] = useState([]);
   const [images, setImages] = useState([]);
 
   const [features, setFeatures] = useState([]);
@@ -23,8 +21,8 @@ const DashboardIndex = () => {
   const [description, setDescription] = useState("");
   const [shortdescription, setShortDescription] = useState("");
 
-  const dispatch = useAppDispatch();
-  const { creatingRoomisLoading, creatingRoomisSuccess } = useAppSelector(
+  const dispatch = useDispatch();
+  const { creatingRoomisLoading, creatingRoomisSuccess } = useSelector(
     (store) => store.room
   );
   //  const [bookingdata, setBookingData] = useState(null);
@@ -47,11 +45,11 @@ const DashboardIndex = () => {
   useEffect(() => {
     if (creatingRoomisSuccess) {
       const timeout = setTimeout(() => {
-        redirect(`/dashboard/rooms`);
+        navigate(`/dashboard/rooms`);
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [creatingRoomisSuccess, redirect]);
+  }, [creatingRoomisSuccess, navigate]);
   return (
     <div className="w-full relative">
       <div className="w-full relative pb-20 flex flex-col gap-12">
