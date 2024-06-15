@@ -26,6 +26,7 @@ export default function DeleteModal({ type, modal, setModal, room, id }) {
     dispatch(DeleteRoom(room?.id));
   }, []);
   const handleDeleteUser = useCallback(() => {
+    // console.log(id)
     dispatch(DeleteSingleUser(id));
   }, []);
 
