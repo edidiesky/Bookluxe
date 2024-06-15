@@ -34,6 +34,7 @@
     "react-loading-skeleton": "^3.4.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.9.0",
+    "react-use": "^17.5.0",
     "redux-toolkit": "^1.1.2",
     "styled-components": "^6.1.11",
     "tailwind-merge": "^2.3.0",
