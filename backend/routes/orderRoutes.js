@@ -1,14 +1,11 @@
 import express from "express"
 const router = express.Router()
 import {
-  GetOrderById,
-  GetAllOrder,
-  UpdateOrderToPaid,
-  UpdateOrderToIsDelivered,
-  CreateOrder,
-  GetCustomerOrder,
-  AggregateUserOrderStats,
-  GetSellerOrder,
+  CreatePayment,
+  GetPaymentHistoryForAdmin,
+  UpdatePaymentToFailed,
+  GetSinglePaymentDetails,
+  UpdatePaymentToSuccess,
 } from "../controllers/orderControllers.js";
 import {
     adminMiddleware,
@@ -16,14 +13,13 @@ import {
 } from '../middleware/authentication.js'
 
 
-router.route('/').post(authMiddleware, CreateOrder)
-router.get("/seller/order", authMiddleware, GetSellerOrder);
-router.route('/stats').get(authMiddleware, adminMiddleware, AggregateUserOrderStats)
-router.route('/').get(authMiddleware, adminMiddleware, GetAllOrder)
-router.get('/customer/order', authMiddleware, GetCustomerOrder)
-router.route('/:id').get(authMiddleware, GetOrderById)
-router.route('/:id/pay').put(authMiddleware,UpdateOrderToPaid)
-router.route('/:id/delivered').put(authMiddleware, adminMiddleware, UpdateOrderToIsDelivered)
+router.route("/").post(authMiddleware, CreatePayment);
+router.get("/history", authMiddleware,adminMiddleware, GetPaymentHistoryForAdmin);
+router.get("/payment/success", authMiddleware, UpdatePaymentToSuccess);
+router.get("/payment/failed", authMiddleware, UpdatePaymentToFailed);
+router.get("/payment/:id", authMiddleware, GetSinglePaymentDetails);
+
+
 export default router
 
 

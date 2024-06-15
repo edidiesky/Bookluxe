@@ -16,6 +16,12 @@ enum ReservationStatus {
   CANCELLED
 }
 
+enum PaymentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
 model User {
   id              String          @id @default(auto()) @map("_id") @db.ObjectId
   name            String
@@ -81,16 +87,16 @@ model Reservations {
 }
 
 model Payment {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
   amount    Float
   currency  String
-  status    String
-  userid    String   @db.ObjectId
-  roomid    String   @db.ObjectId
-  user      User     @relation(fields: [userid], references: [id])
-  room      Rooms    @relation(fields: [roomid], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  status    PaymentStatus @default(PENDING)
+  userid    String        @db.ObjectId
+  roomid    String        @db.ObjectId
+  user      User          @relation(fields: [userid], references: [id])
+  room      Rooms         @relation(fields: [roomid], references: [id])
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
 }
 
 model Conversations {
