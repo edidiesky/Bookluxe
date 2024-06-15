@@ -10,6 +10,12 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum ReservationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+}
+
 model User {
   id              String          @id @default(auto()) @map("_id") @db.ObjectId
   name            String
@@ -60,15 +66,15 @@ model Rooms {
 }
 
 model Reservations {
-  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  id         String            @id @default(auto()) @map("_id") @db.ObjectId
   startDate  DateTime
   endDate    DateTime
   totalPrice Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-
-  roomid String @db.ObjectId
-  userid String @db.ObjectId
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  status     ReservationStatus @default(PENDING)
+  roomid     String            @db.ObjectId
+  userid     String            @db.ObjectId
 
   rooms Rooms? @relation(fields: [roomid], references: [id], onDelete: Cascade)
   user  User?  @relation(fields: [userid], references: [id], onDelete: Cascade)

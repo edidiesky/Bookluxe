@@ -66,6 +66,7 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
     totalPrice,
     userid: req.user.userId,
     roomid: id,
+    status: "PENDING",
   };
 
   const newReservation = await prisma.reservations.create({
