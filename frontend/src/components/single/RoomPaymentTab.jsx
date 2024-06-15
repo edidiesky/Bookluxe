@@ -44,7 +44,7 @@ export default function RoomPaymentTab({
   const enddate = date?.to;
   let date1 = moment(startdate);
   let date2 = moment(enddate);
-  const differenceInDays = date2.diff(date1, "days"); // Convert milliseconds to days
+  const differenceInDays = date2?.diff(date1, "days"); // Convert milliseconds to days
   // console.log(moment(startdate)?.date());
 
   const totalPrice =

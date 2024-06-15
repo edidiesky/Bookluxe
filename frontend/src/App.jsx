@@ -5,6 +5,7 @@ import Loader from "./components/home/loader";
 import Layout from "./screens/Layout";
 import DashboardLayout from "./screens/DashboardLayout";
 import { Statistics, Rooms, Customers } from "./screens/dashboard";
+import { ProtectRoute } from "./lib/ProtectRoute";
 const HomeWrapper = lazy(() => import("./screens/Home"));
 const SearchWrapper = lazy(() => import("./screens/Search"));
 const SingleWrapper = lazy(() => import("./screens/Single"));
@@ -69,7 +70,14 @@ export default function App() {
           />
         </Route>
 
-        <Route path={"/dashboard"} element={<DashboardLayout />}>
+        <Route
+          path={"/dashboard"}
+          element={
+            <ProtectRoute>
+              <DashboardLayout />
+            </ProtectRoute>
+          }
+        >
           <Route
             exact
             index

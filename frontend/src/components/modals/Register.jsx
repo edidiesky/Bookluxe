@@ -9,6 +9,7 @@ import { RxCross2 } from "react-icons/rx";
 import {
   onLoginModal,
   offRegisterModal,
+  offLoginModal,
 } from "../../features/modals/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../home/loader";
@@ -69,7 +70,8 @@ const RegisterModal = () => {
 
   useEffect(() => {
     if (registerisSuccess) {
-      dispatch(offLoginModal());
+      dispatch(offRegisterModal());
+      dispatch(onLoginModal());
     }
   }, [registerisSuccess]);
   return (
@@ -91,7 +93,7 @@ const RegisterModal = () => {
           <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex border-[rgba(0,0,0,.2)] items-center justify-between">
             <h3 className="text-2xl font-bold font-booking_font_bold">
               Sign Up
-              <span className="block text-sm font-light font-booking_font_normal">
+              <span className="block text-sm font-normal font-booking_font_normal">
                 Register to your account and check out your bookings
               </span>
             </h3>
@@ -136,7 +138,7 @@ const RegisterModal = () => {
                   Sign Up
                 </button>
                 <div className="w-full flex items-center justify-start gap-2">
-                  <span className="text-sm font-light text-dark">
+                  <span className="text-sm font-normal text-dark">
                     Already a Member?{" "}
                     <span
                       onClick={handleLoginModal}

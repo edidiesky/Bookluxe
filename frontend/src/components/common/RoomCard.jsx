@@ -34,7 +34,7 @@ const RoomCard = ({ type, apartment }) => {
               "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
           src={apartment?.rooms?.images[0]}
-          className="w-full h-[350px] object-cover hover:grayscale-[1] grayscale-0"
+          className="w-full h-[240px] object-cover hover:grayscale-[1] grayscale-0"
         />
         <div className="w-full flex flex-col py-3 bg-white gap-2">
           <h4
@@ -43,13 +43,13 @@ const RoomCard = ({ type, apartment }) => {
           >
             for settling in castle
           </h4>
-          <h3 className="text-2xl font-booking_font4 font-bold text-text_dark_1 ">
+          <h3 className="text-2xl font-booking_font4 font-normal text-text_dark_1 ">
             {apartment?.rooms?.title}
           </h3>
 
           <div
             style={{ letterSpacing: "1px" }}
-            className="py-2 flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
+            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
           >
             <span className="flex uppercase items-center gap-2">
               Date: <span>{startDate}</span> - <span>{endDate}</span>
@@ -70,7 +70,7 @@ const RoomCard = ({ type, apartment }) => {
     return (
       <Link
         to={`/room/${apartment?.id}`}
-        className="w-full flex flex-col gap-2"
+        className="w-full flex flex-col gap-4"
       >
         <div className="w-full h-[230px] overflow-hidden relative">
           <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
@@ -215,7 +215,7 @@ const RoomCard = ({ type, apartment }) => {
           >
             for settling in castle
           </h4>
-          <h3 className="text-3xl font-booking_font4 font-bold text-text_dark_1 ">
+          <h3 className="text-3xl font-booking_font4 font-normal text-text_dark_1 ">
             {apartment?.title}
           </h3>
 

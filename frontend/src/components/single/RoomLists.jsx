@@ -2,8 +2,8 @@
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaStar } from "react-icons/fa";
-import GuestsModal from "@/components/modals/Guests";
-import DateModal from "@/components/modals/Date";
+// import GuestsModal from "@/components/modals/Guests";
+// import DateModal from "@/components/modals/Date";
 import LoginModal from "@/components/modals/Login";
 import RegisterModal from "@/components/modals/Register";
 import RoomGallery from "./RoomGallery";
@@ -34,7 +34,7 @@ const RoomLists = () => {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait">
         {guestsmodal && (
           <GuestsModal
             setChildrens={setChildrens}
@@ -45,7 +45,7 @@ const RoomLists = () => {
             setModal={setGuestsModal}
           />
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
       <div
         className="w-full relative py-24 border-b flex items-center justify-center
    gap-8"

@@ -1,6 +1,7 @@
 "use client";
 import styled from "styled-components";
 import { RxCross1 } from "react-icons/rx";
+import { HiBars3BottomLeft } from "react-icons/hi2";
 import { FaBars } from "react-icons/fa6";
 import { FaRegUser, FaHotel } from "react-icons/fa";
 import { TiHome, TiMessage } from "react-icons/ti";
@@ -8,7 +9,7 @@ import { TiHome, TiMessage } from "react-icons/ti";
 import { RxTimer } from "react-icons/rx";
 import { LuBedDouble } from "react-icons/lu";
 import { BiSearch } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 const AdminSidebarData = [
@@ -70,7 +71,7 @@ const DashboardHeader = () => {
             {bar ? (
               <RxCross1 fontSize={"30px"} />
             ) : (
-              <FaBars fontSize={"30px"} />
+              <HiBars3BottomLeft fontSize={"30px"} />
             )}
           </div>
 
@@ -107,18 +108,20 @@ const DashboardHeader = () => {
             <div className="profile_dropdown shadow-2xl absolute">
               <div className="w-full flex flex-col">
                 <div className="flex profile_dropdown_bottom flex-col w-full">
-                  <Link
+                  <NavLink
+                    end
                     to={"/dashboard"}
                     className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Dashboard
-                  </Link>
-                  <Link
+                  </NavLink>
+                  <NavLink
+                    end
                     to={"/dashboard/settings"}
                     className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Profile
-                  </Link>
+                  </NavLink>
                   <div
                     onClick={handleLogOut}
                     className="font-normal flex items-center font-booking_font_bold hover:bg-[#f7f7f7] text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
@@ -165,20 +168,21 @@ const DashboardHeader = () => {
           <div className="w-full my-4 flex flex-col">
             {AdminSidebarData?.map((x, index) => {
               return (
-                <div key={index} className="w-[90%] mx-auto">
-                  <Link
+                <div key={index} className="w-full mx-auto">
+                  <NavLink
+                    end
                     className={`
-                      text-3xl w-[90%] mx-auto text-dark font-medium`}
+                      text-xm w-[90%] mx-auto text-dark font-medium`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
-                      <span className="w-12 h-12 text-xm rounded-xl flex items-center text-blue justify-center">
+                      <span className="w-12 h-12 text-lg rounded-xl flex items-center text-blue justify-center">
                         {" "}
                         {x.tab.icon}
                       </span>
                       {<h4>{x.tab?.title}</h4>}
                     </div>
-                  </Link>
+                  </NavLink>
                 </div>
               );
             })}
