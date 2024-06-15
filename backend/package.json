@@ -26,6 +26,7 @@
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
     "express-session": "^1.17.3",
+    "flutterwave-node-v3": "^1.1.10",
     "jsonwebtoken": "^9.0.1",
     "moment": "^2.29.4",
     "mongoose": "^7.4.3",
