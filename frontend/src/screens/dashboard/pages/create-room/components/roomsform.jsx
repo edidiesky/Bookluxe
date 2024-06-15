@@ -1,8 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { BiSearch, BiUpload } from "react-icons/bi";
-import Loader from "@/components/loader";
-import Link from "next/link";
+import {Link} from "react-router-dom";
 import { RoomFeaturesList, RoomFeaturesList2 } from "@/constants/data/feature";
 import ImageUpload from "./imageUpload";
 import Roomfeatures from "./roomfeatures";

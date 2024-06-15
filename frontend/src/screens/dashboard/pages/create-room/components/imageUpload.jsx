@@ -1,8 +1,6 @@
 "use client";
 import React, { useCallback } from "react";
 import { BiSearch, BiUpload } from "react-icons/bi";
-import { CldUploadWidget } from "next-cloudinary";
-import Image from "next/image";
 const ImageUpload = ({ images, setImages }) => {
   const handleUpload = useCallback(
     (result) => {
@@ -29,11 +27,8 @@ const ImageUpload = ({ images, setImages }) => {
                 {images.map((image, index) => {
                   return (
                     <div className="w-full border p-2">
-                      <Image
+                      <img
                         alt="Cotion"
-                        width={0}
-                        sizes="100vw"
-                        height={0}
                         loading="lazy"
                         src={images}
                       />
@@ -42,7 +37,7 @@ const ImageUpload = ({ images, setImages }) => {
                 })}
               </div>
               // <div className="w-full border p-2">
-              //   <Image
+              //   <img
               //     alt="Cotion"
               //     width={0}
               //     sizes="100vw"
@@ -52,26 +47,27 @@ const ImageUpload = ({ images, setImages }) => {
               //   />
               // </div>
             ) : (
-              <CldUploadWidget
-                multiple
-                onSuccess={handleUpload}
-                uploadPreset="dl93zl9fn"
-                folder="uploads"
-                sources={["local", "url", "camera"]}
-              >
-                {({ open }) => {
-                  return (
-                    <div className="w-full bg-[#fafafa] rounded-lg flex items-center justify-center h-[300px]">
-                      <div
-                        onClick={() => open()}
-                        className="text-sm font-bold cursor-pointer flex items-center shadow-xl border rounded-lg justify-center bg-white p-4 gap-3 font-booking_font_bold"
-                      >
-                        <BiUpload /> Select the photos for your room
-                      </div>
-                    </div>
-                  );
-                }}
-              </CldUploadWidget>
+              // <CldUploadWidget
+              //   multiple
+              //   onSuccess={handleUpload}
+              //   uploadPreset="dl93zl9fn"
+              //   folder="uploads"
+              //   sources={["local", "url", "camera"]}
+              // >
+              //   {({ open }) => {
+              //     return (
+              //       <div className="w-full bg-[#fafafa] rounded-lg flex items-center justify-center h-[300px]">
+              //         <div
+              //           onClick={() => open()}
+              //           className="text-sm font-bold cursor-pointer flex items-center shadow-xl border rounded-lg justify-center bg-white p-4 gap-3 font-booking_font_bold"
+              //         >
+              //           <BiUpload /> Select the photos for your room
+              //         </div>
+              //       </div>
+              //     );
+              //   }}
+              // </CldUploadWidget>
+              <div className="w-full"></div>
             )}
           </div>
         </div>

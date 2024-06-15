@@ -77,11 +77,11 @@ export const DeleteSingleUser = createAsyncThunk(
           authorization: `Bearer ${state.auth.token}`,
         },
       };
-      const { data } = await axios.delete(
+      await axios.delete(
         `${import.meta.env.VITE_API_BASE_URLS}/user/${userId}`,
         config
       );
-      return data;
+      return userId;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message

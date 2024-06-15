@@ -1,6 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
-import { LoginUser, RegisterUser } from "./authReducer";
+import {
+  LoginUser,
+  RegisterUser,
+  GetAllUsers,
+  DeleteSingleUser,
+  UpdateSingleUser,
+} from "./authReducer";
 const customerData = JSON.parse(localStorage.getItem("customer"));
 const customerToken = localStorage.getItem("customertoken");
 const initialState = {
@@ -17,6 +23,20 @@ const initialState = {
   registerisLoading: false,
   registerisSuccess: false,
   registerisError: false,
+
+  getallUserisLoading: false,
+  getallUserisSuccess: false,
+  getallUserisError: false,
+
+  deleteUserisLoading: false,
+  deleteUserisSuccess: false,
+  deleteUserisError: false,
+
+  updateUserisLoading: false,
+  updateUserisSuccess: false,
+  updateUserisError: false,
+  noOfPages: 0,
+  totalUser: 0,
 };
 
 export const authSlice = createSlice({
@@ -51,6 +71,48 @@ export const authSlice = createSlice({
     });
     builder.addCase(RegisterUser.rejected, (state, action) => {
       state.registerisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(GetAllUsers.pending, (state, action) => {
+      state.getallUserisLoading = true;
+    });
+    builder.addCase(GetAllUsers.fulfilled, (state, action) => {
+      state.getallUserisLoading = false;
+      state.getallUserisSuccess = true;
+      state.users = action.payload.user;
+      state.totalUser = action.payload.totalUser;
+    });
+    builder.addCase(GetAllUsers.rejected, (state, action) => {
+      state.getallUserisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(DeleteSingleUser.pending, (state, action) => {
+      state.deleteUserisLoading = true;
+    });
+    builder.addCase(DeleteSingleUser.fulfilled, (state, action) => {
+      state.deleteUserisLoading = false;
+      state.deleteUserisSuccess = true;
+      state.users = state.users.filter((user) => user?.id !== action.payload);
+      toast.success("deleted user sucessfully!!!!");
+    });
+    builder.addCase(DeleteSingleUser.rejected, (state, action) => {
+      state.deleteUserisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    
+    builder.addCase(UpdateSingleUser.pending, (state, action) => {
+      state.updateUserisLoading = true;
+    });
+    builder.addCase(UpdateSingleUser.fulfilled, (state, action) => {
+      state.updateUserisLoading = false;
+      state.updateUserisSuccess = true;
+      toast.success("updated user sucessfully!!!!");
+    });
+    builder.addCase(UpdateSingleUser.rejected, (state, action) => {
+      state.updateUserisSuccess = false;
       toast.error(action.payload);
     });
   },

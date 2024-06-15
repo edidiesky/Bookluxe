@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import { Table } from "@/components/common/styles";
 import TableCard from "@/components/common/TableCard";
-
+import { useSelector } from "react-redux";
 const rooms = [
   {
     name: "Hover",
@@ -37,6 +37,7 @@ const rooms = [
 
 const RoomsList = () => {
   //   const [roommodal, setRoomModal] = useState(false);
+    const { users, getallRoomisLoading } = useSelector((store) => store.auth);
   return (
     <div className="w-full p-4 px-6 bg-white border rounded-[20px]">
       <label
@@ -67,7 +68,7 @@ const RoomsList = () => {
               </tr>
             </thead>
             <tbody>
-              {rooms?.map((x, index) => {
+              {users?.map((x, index) => {
                 return <TableCard x={x} type={"customerlist"} key={x?._id} />;
               })}
             </tbody>

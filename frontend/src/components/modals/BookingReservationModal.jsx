@@ -1,15 +1,13 @@
-"use client";
+
 import React, { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { BiMinus, BiPlus, BiCheck } from "react-icons/bi";
 import styled from "styled-components";
 import { RxCross2 } from "react-icons/rx";
-import Loader from "../loader";
-import { useAppDispatch, useAppSelector } from "@/app/hooks/useCustomRedux";
-import { DeleteRoom } from "@/app/libs/features/rooms/roomReducer";
-import { handleClearRoomAlert } from "@/app/libs/features/rooms/roomSlice";
+import Loader from "../home/loader";
+import { useDispatch, useSelector } from "react-redux";
 export default function BookingReservationModal({ setModal, room }) {
-  const { deleteRoomisLoading, deleteRoomisSuccess } = useAppSelector(
+  const { deleteRoomisLoading, deleteRoomisSuccess } = useSelector(
     (store) => store.room
   );
 
@@ -28,27 +26,26 @@ export default function BookingReservationModal({ setModal, room }) {
   const [description, setDescription] = useState("");
   const [shortdescription, setShortDescription] = useState("");
 
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const handleClearAlert = () => {
     setModal({
       modal: false,
     });
   };
   const handleDeleteRoom = useCallback(() => {
-    dispatch(DeleteRoom(room?.id));
   }, []);
   useEffect(() => {
-    dispatch(handleClearRoomAlert());
+    // dispatch(handleClearRoomAl());
   }, []);
-  useEffect(() => {
-    // dispatch(handleClearRoomAlert());
-    if (deleteRoomisSuccess) {
-      setModal({
-        modal: false,
-      });
-      dispatch(handleClearRoomAlert());
-    }
-  }, [setModal, deleteRoomisSuccess]);
+  // useEffect(() => {
+  //   // dispatch(handleClearRoomAlert());
+  //   if (deleteRoomisSuccess) {
+  //     setModal({
+  //       modal: false,
+  //     });
+  //     dispatch(handleClearRoomAlert());
+  //   }
+  // }, [setModal, deleteRoomisSuccess]);
 
   return (
     <ReservationModalStyles

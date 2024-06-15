@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import Image from "next/image";
 
 const RoomDetail = ({
   title,
@@ -10,20 +9,15 @@ const RoomDetail = ({
   images,
   rooms,
 }) => {
-  const room = {
-    image: "/images/images_1.jpg",
-  };
+
   return (
     <div className="w-full bg-[#fff] border p-6 rounded-[10px]">
       <div className="w-full flex flex-col gap-8">
         <h4 className="text-2xl font-booking_font_bold font-bold">Preview</h4>
         <div className="w-full flex flex-col gap-4">
           {images?.length > 0 ? (
-            <Image
+            <img
               alt="Cotion"
-              width={0}
-              sizes="100vw"
-              height={0}
               loading="lazy"
               style={{
                 transition:

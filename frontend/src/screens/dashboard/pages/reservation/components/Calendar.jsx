@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import BookingReservationModal from "@/components/modals/BookingReservationModal";
-import Scheduler from "@bitnoi.se/react-scheduler"
+import { Scheduler, SchedulerData } from "@bitnoi.se/react-scheduler";
 
 const ReservationCalendar = () => {
   const [filterButtonState, setFilterButtonState] = useState(0);
