@@ -1,17 +1,18 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { BiSearch } from "react-icons/bi";
 import { Table } from "@/components/common/styles";
 import TableCard from "@/components/common/TableCard";
 import Loader from "@/components/home/loader";
+import { handlePage } from "@/features/room/roomSlice";
 
 const RoomsList = () => {
-  const {
-    rooms,
-    getallRoomisLoading,
-  } = useSelector((store) => store.room);
+  const dispatch = useDispatch();
+  const { rooms, getallRoomisLoading, page } = useSelector(
+    (store) => store.room
+  );
   return (
     <>
       {getallRoomisLoading && <Loader />}
@@ -52,10 +53,17 @@ const RoomsList = () => {
           </div>
         </Table>
         <div className="w-full flex items-center justify-end gap-2">
-          <div className="p-3 rounded-2xl text-sm font-bold font-booking_font_bold px-8 border hover:opacity-[.8] cursor-pointer border-[rgba(0,0,0,0.3)]">
+          <div
+            onClick={() => dispatch(handlePage("prev"))}
+            className="p-3 rounded-2xl text-sm font-bold font-booking_font_bold px-4 border hover:opacity-[.8] cursor-pointer border-[rgba(0,0,0,0.3)]"
+          >
             Previous
           </div>
-          <div className="p-3 rounded-2xl text-sm font-bold font-booking_font_bold px-8 border hover:opacity-[.8] cursor-pointer border-[rgba(0,0,0,0.3)]">
+          {page}
+          <div
+            onClick={() => dispatch(handlePage("next"))}
+            className="p-3 rounded-2xl text-sm font-bold font-booking_font_bold px-4 border hover:opacity-[.8] cursor-pointer border-[rgba(0,0,0,0.3)]"
+          >
             Next
           </div>
         </div>

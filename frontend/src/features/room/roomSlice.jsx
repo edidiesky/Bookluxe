@@ -6,6 +6,7 @@ import {
   DeleteRoom,
   CreateRoom,
   UpdateRoom,
+  getAllRoomsForAdmin,
 } from "./roomReducer";
 const initialState = {
   rooms: [],
@@ -32,19 +33,46 @@ const initialState = {
   getsingleRoomisLoading: false,
   getsingleRoomisSuccess: false,
   getsingleRoomisError: false,
+  page: 1,
+  search: "",
+  limit: "",
+  noOfPages: 0,
 };
 
 export const patientSlice = createSlice({
   name: "room",
   initialState,
   reducers: {
-    handlePatientData: (state, action) => {},
+    handlePage: (state, action) => {
+      if (action.payload === "next") {
+        state.page =
+          state.page === state.noOfPages ? state.noOfPages : state.page + 1;
+      }
+      if (action.payload === "prev") {
+        state.page = state.page === 1 ? 1 : state.page - 1;
+      }
+    },
     handleClearRoomAlert: (state, action) => {
       state.deleteRoomisLoading = false;
       state.deleteRoomisSuccess = false;
     },
   },
   extraReducers: (builder) => {
+    // getAllRoomsForAdmin
+    builder.addCase(getAllRoomsForAdmin.pending, (state, action) => {
+      state.getallRoomisLoading = true;
+    });
+    builder.addCase(getAllRoomsForAdmin.fulfilled, (state, action) => {
+      state.getallRoomisLoading = false;
+      state.rooms = action.payload.rooms;
+      state.noOfPages = action.payload.noOfPages;
+    });
+    builder.addCase(getAllRoomsForAdmin.rejected, (state, action) => {
+      state.getallRoomisSuccess = false;
+      state.getallRoomisLoading = false;
+      toast.error(action.payload);
+    });
+
     builder.addCase(getAllRooms.pending, (state, action) => {
       state.getallRoomisLoading = true;
     });
@@ -54,6 +82,7 @@ export const patientSlice = createSlice({
     });
     builder.addCase(getAllRooms.rejected, (state, action) => {
       state.getallRoomisSuccess = false;
+      state.getallRoomisLoading = false;
       toast.error(action.payload);
     });
 
@@ -111,6 +140,6 @@ export const patientSlice = createSlice({
   },
 });
 
-export const { handleClearRoomAlert } = patientSlice.actions;
+export const { handleClearRoomAlert, handlePage } = patientSlice.actions;
 
 export default patientSlice.reducer;

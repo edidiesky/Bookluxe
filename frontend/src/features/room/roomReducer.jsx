@@ -19,6 +19,34 @@ export const getAllRooms = createAsyncThunk(
     }
   }
 );
+
+export const getAllRoomsForAdmin = createAsyncThunk(
+  "getAllRoomsForAdmin",
+  async (name, thunkAPI) => {
+    try {
+      const { page, search, limit } = thunkAPI.getState().room;
+      let roomUrl = `${import.meta.env.VITE_API_BASE_URLS}/room/admin`;
+      if (page) {
+        roomUrl = roomUrl + `?page=${page}`;
+        const { data } = await axios.get(roomUrl);
+        return data;
+      } else if (search) {
+        roomUrl = roomUrl + `?search=${search}`;
+        const { data } = await axios.get(roomUrl);
+        return data;
+      } else {
+        const { data } = await axios.get(roomUrl);
+        return data;
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);
 export const getSingleRooms = createAsyncThunk(
   "getSingleRooms",
   async (roomid, thunkAPI) => {
@@ -40,12 +68,12 @@ export const DeleteRoom = createAsyncThunk(
   "DeleteRoom",
   async (roomdataid, thunkAPI) => {
     try {
-       const state = thunkAPI.getState();
-       const config = {
-         headers: {
-           authorization: `Bearer ${state.auth.token}`,
-         },
-       };
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
       const { data } = await axios.delete(
         `${import.meta.env.VITE_API_BASE_URLS}/room/${roomdataid}`,
         config

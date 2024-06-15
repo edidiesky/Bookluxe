@@ -4,7 +4,13 @@ import "./index.css";
 import Loader from "./components/home/loader";
 import Layout from "./screens/Layout";
 import DashboardLayout from "./screens/DashboardLayout";
-import { Statistics, Rooms, Customers, CreateRoom } from "./screens/dashboard";
+import {
+  Statistics,
+  Rooms,
+  Customers,
+  CreateRoom,
+  Reservation,
+} from "./screens/dashboard";
 import { ProtectRoute } from "./lib/ProtectRoute";
 const HomeWrapper = lazy(() => import("./screens/Home"));
 const SearchWrapper = lazy(() => import("./screens/Search"));
@@ -105,6 +111,16 @@ export default function App() {
               </Suspense>
             }
           />
+          <Route
+            exact
+            path="reservation"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Reservation />
+              </Suspense>
+            }
+          />
+          {/* Reservation */}
 
           <Route
             exact

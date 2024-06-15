@@ -186,6 +186,9 @@ input::placeholder {
 .hide {
   overflow: hidden;
 }
+.hide {
+  overflow: hidden;
+}
 html.lenis,
 html.lenis body {
   height: auto;

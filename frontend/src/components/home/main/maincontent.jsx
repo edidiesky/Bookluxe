@@ -9,12 +9,12 @@ const MainContent = () => {
   return (
     <div className="w-full flex flex-col gap-8">
       <Hero />
-      <About />
+      <RoomFlex />
+      {/* <About /> */}
       <Collections />
       <RoomsPrice />
       <RoomStructure />
       <RoomsBanner />
-      <RoomFlex />
     </div>
   );
 };
@@ -573,7 +573,7 @@ const RoomFlex = () => {
   return (
     <div className="w-full flex py-32 flex-col gap-40">
       <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
-        <h1 className="text-dark text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4">
+        <h1 className="text-dark text-center leading-[1.6] text-5xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "4px" }}
             className="text-xs pb-12 font-semibold uppercase block font-booking_font"
@@ -581,12 +581,11 @@ const RoomFlex = () => {
             Luxury Home & Best Resort
           </span>
           Enjoy A Luxury <br /> Experience
-          <span className="text-sm w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
+          <span className="text-lg w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
             reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing
             elit. Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur
             adipisicing elit. Ad, reprehenderit. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Ad, reprehenderit.
           </span>
         </h1>
       </div>

@@ -11,14 +11,14 @@ import SmoothScroll from "./constants/utils/SmoothScroll";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <Toaster />
-      <BrowserRouter>
-        <SmoothScroll>
+    <SmoothScroll>
+      <Provider store={store}>
+        <Toaster />
+        <BrowserRouter>
           <App />
-        </SmoothScroll>
-      </BrowserRouter>
-    </Provider>
+        </BrowserRouter>
+      </Provider>
+    </SmoothScroll>
     ,
   </React.StrictMode>
 );

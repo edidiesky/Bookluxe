@@ -89,7 +89,7 @@ const TableCard = ({ x, type }) => {
         <tr key={x?._id}>
           <td>
             <div className="flex w-full justify-center flex-col items-center gap-2">
-              <img src={x?.images[0]} alt="" className="w-28 h-16 rounded-lg" />
+              <img src={x?.images[0]} alt="" className="w-28 h-20 object-cover rounded-lg" />
               <span className="text-sm  font-semibold family1 text-center text-dark">
                 {x?.title}
               </span>

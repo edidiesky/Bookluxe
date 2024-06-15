@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { motion, useInView, AnimatePresence, Variant } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import ReservationRoomsModal from "@/components/modals/ReservationRoomsModal";
 import ReservationCalendar from "./Calendar";
 const DashboardIndex = () => {
@@ -18,7 +18,7 @@ const DashboardIndex = () => {
       </AnimatePresence>
       <div className="w-full relative flex flex-col gap-12">
         <div className="w-full grid lg:grid-cols-2 lg:items-center gap-4 justify-between">
-          <h3 className="text-3xl font-booking_font_normal">
+          <h3 className="text-3xl lg:text-4xl font-booking_font_normal">
             My Reservation
           </h3>
           <div className="flex items-center lg:justify-end gap-2">
