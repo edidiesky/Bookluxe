@@ -83,31 +83,31 @@ const Navbar = () => {
                           <div className="flex profile_dropdown_bottom flex-col w-full">
                             <Link
                               to={"/dashboard"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Dashboard
                             </Link>
                             <Link
                               to={"/dashboard/settings"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Profile
                             </Link>
                             <Link
                               to={"/trips"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Reservation
                             </Link>
                             <Link
                               to={"/Favourites"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Favourites
                             </Link>
                             <div
                               onClick={() => signOut()}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Log Out
                             </div>
@@ -116,25 +116,25 @@ const Navbar = () => {
                           <div className="flex profile_dropdown_bottom flex-col w-full">
                             <Link
                               to={"/trips"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Reservation
                             </Link>
                             <Link
                               to={"/Favourites"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Favourites
                             </Link>
                             <Link
                               href={"/dashboard/settings"}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Profile
                             </Link>
                             <div
                               onClick={() => signOut()}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Log Out
                             </div>
@@ -143,13 +143,13 @@ const Navbar = () => {
                           <div className="flex profile_dropdown_bottom flex-col w-full">
                             <div
                               onClick={() => dispatch(onRegisterModal())}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Sign Up
                             </div>
                             <div
                               onClick={() => dispatch(onLoginModal())}
-                              className="font-booking_font_bold text-xl p-2 family1 w-full profile_list text-dark block"
+                              className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Sign In
                             </div>
@@ -183,7 +183,7 @@ const Navbar = () => {
                       {currentUser && (
                         <h4 className="text-sm hidden lg:block font-booking_font_bold text-dark font-bold family1">
                           {currentUser?.name}
-                          <span className="block font-normal font-booking_font text-xs text-grey">
+                          <span className="block font-semibold font-booking_font text-xs text-grey">
                             {currentUser?.email}
                           </span>
                         </h4>
@@ -271,7 +271,7 @@ const Navbar = () => {
                     <Link
                       to={`/${x.path}`}
                       key={index}
-                      className="font-normal text-dark font-booking_font
+                      className="font-semibold text-dark font-booking_font
                         hover:bg-[rgba(0,0,0,.1)] py-[20px] border-b text-sm px-8"
                     >
                       {x.title}
@@ -289,18 +289,6 @@ const Navbar = () => {
                     </Link>
                   );
                 })}
-            {!currentUser && (
-              <div className="w-100 px-2 py-2 flex items-center gap-4">
-                <Link to={"/register"} className="btn w-full btn-1 text-lg ">
-                  Sign Up
-                </Link>
-                <div className="btn_wrapper w-full">
-                  <div className="btn w-full btn-2 text-lg font-bold">
-                    Log In
-                  </div>
-                </div>
-              </div>
-            )}
           </ul>
         </div>
       </div>

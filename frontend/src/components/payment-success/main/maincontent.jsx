@@ -106,10 +106,10 @@ const RoomLists = () => {
    gap-8"
     >
       <div
-        className="w-[90%]  relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
+        className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
        gap-12"
       >
-        <div className="w-full flex flex-col gap-12">
+        <div className="w-full px-4 flex flex-col gap-12">
           <div className="p-24 bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
             <FaRegCircleCheck fontSize={"80px"} color="var(--gold-1)" />
             <h3 className="text-4xl text-center font-booking_font4">
@@ -121,9 +121,9 @@ const RoomLists = () => {
           </div>
           <div className="w-full pb-8 border-b flex flex-col gap-8">
             <h3 className="text-4xl font-booking_font4">Order Details</h3>
-            <div className="w-full grid grid-cols-custom md:items-center gap-20">
+            <div className="w-full grid lg:grid-cols-custom md:items-center gap-20">
               <div className="w-full">
-                <div className="grid grid-cols-custom_4 items-center gap-8">
+                <div className="grid md:grid-cols-custom_4 items-center gap-8">
                   <img
                     src="/images/hazel_1.jpeg"
                     alt=""
