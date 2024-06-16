@@ -37,7 +37,7 @@ export const GetPaymentHistory = createAsyncThunk(
           authorization: `Bearer ${state.auth.token}`,
         },
       };
-      const { data } = await axios.post(
+      const { data } = await axios.get(
         `${import.meta.env.VITE_API_BASE_URLS}/payment/history`,
         config
       );
@@ -52,7 +52,6 @@ export const GetPaymentHistory = createAsyncThunk(
   }
 );
 
-
 export const GetSinglePaymentHistory = createAsyncThunk(
   "GeSinglePaymentHistory",
   async (paymentDataId, thunkAPI) => {
@@ -63,8 +62,10 @@ export const GetSinglePaymentHistory = createAsyncThunk(
           authorization: `Bearer ${state.auth.token}`,
         },
       };
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URLS}/payment/${paymentDataId}`,
+      const { data } = await axios.get(
+        `${
+          import.meta.env.VITE_API_BASE_URLS
+        }/payment/history/${paymentDataId}`,
         config
       );
       return data;
@@ -80,7 +81,7 @@ export const GetSinglePaymentHistory = createAsyncThunk(
 
 export const UpdatePaymentToSuccess = createAsyncThunk(
   "UpdatePaymentToSuccess",
-  async (paymentDataId, thunkAPI) => {
+  async ({paymentDataId,roomid}, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const config = {
@@ -88,10 +89,11 @@ export const UpdatePaymentToSuccess = createAsyncThunk(
           authorization: `Bearer ${state.auth.token}`,
         },
       };
-      const { data } = await axios.post(
+      const { data } = await axios.put(
         `${
           import.meta.env.VITE_API_BASE_URLS
-        }/payment/success/${paymentDataId}`,
+        }/payment/history/success/${paymentDataId}`,
+        roomid,
         config
       );
       return data;
@@ -116,7 +118,10 @@ export const UpdatePaymentToFailed = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URLS}/payment/failed/${paymentDataId}`,
+        `${
+          import.meta.env.VITE_API_BASE_URLS
+        }/payment/history/failed/${paymentDataId}`,
+        null,
         config
       );
       return data;

@@ -72,7 +72,7 @@ const RoomCard = ({ type, apartment }) => {
         to={`/room/${apartment?.id}`}
         className="w-full flex flex-col gap-4"
       >
-        <div className="w-full h-[230px] overflow-hidden relative">
+        <div className="w-full h-[270px] overflow-hidden relative">
           <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
 
           <Link
@@ -102,7 +102,7 @@ const RoomCard = ({ type, apartment }) => {
           </div>
           <div
             style={{ gridTemplateColumns: "repeat(4, 100%)" }}
-            className="w-full h-[230px] absolute top-0 left-0 overflow-hidden grid"
+            className="w-full h-[270px] absolute top-0 left-0 overflow-hidden grid"
           >
             {apartment.images.map((image, index) => {
               return (
@@ -112,7 +112,7 @@ const RoomCard = ({ type, apartment }) => {
                     transition: "all .4s ease",
                   }}
                   key={index}
-                  className="w-full h-[230px]"
+                  className="w-full h-[270px]"
                 >
                   <img
                     key={index}

@@ -29,6 +29,11 @@ const initialState = {
 export const reservationSlice = createSlice({
   name: "payment",
   initialState,
+  reducers: {
+    handleClearPayment: (state, action) => {
+      state.payment = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(CreatePayment.pending, (state, action) => {
       state.createpaymentisLoading = true;
@@ -102,5 +107,5 @@ export const reservationSlice = createSlice({
     });
   },
 });
-
+export const { handleClearPayment } = reservationSlice.actions;
 export default reservationSlice.reducer;

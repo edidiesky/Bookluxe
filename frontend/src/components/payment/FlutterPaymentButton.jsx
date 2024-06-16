@@ -14,7 +14,7 @@ const FlutterPaymentButton = () => {
     public_key: import.meta.env.VITE_FLUTTER_PUBLIC_KEY,
     tx_ref: Date.now(),
     amount: reservation?.totalPrice,
-    currency: "USD",
+    currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
       email: currentUser?.email,
@@ -40,7 +40,7 @@ const FlutterPaymentButton = () => {
     );
   };
 
-  console.log(payment);
+  // console.log(payment);
   return (
     <button
       onClick={() => {

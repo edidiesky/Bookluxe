@@ -45,15 +45,15 @@ const GetPaymentHistoryForAdmin = expressAsyncHandler(async (req, res) => {
 
 const GetSinglePaymentDetails = expressAsyncHandler(async (req, res) => {
   // instantiate the form data from the request body
-  const { userId } = req.body;
+
   const payment = await prisma.payment.findUnique({
     where: {
       id: req.params.id,
-      userid: userId,
+      userid: req.user?.userId,
     },
     include: {
       user: true,
-      rooms: true,
+      room: true,
     },
   });
   res.setHeader("Content-Type", "text/html");
@@ -74,7 +74,7 @@ const UpdatePaymentToFailed = expressAsyncHandler(async (req, res) => {
     },
     include: {
       user: true,
-      rooms: true,
+      room: true,
     },
   });
   res.setHeader("Content-Type", "text/html");
@@ -96,7 +96,7 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
     },
     include: {
       user: true,
-      rooms: true,
+      room: true,
     },
   });
 
@@ -104,10 +104,6 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
     where: {
       userid: req.user.userId,
       roomid: roomid,
-    },
-    include: {
-      user: true,
-      rooms: true,
     },
   });
   if (reservation) {

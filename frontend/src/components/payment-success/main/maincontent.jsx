@@ -1,11 +1,22 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Confettis from "@/components/common/Confetti";
 const MainContent = () => {
-  const [showconfetti, setShowConfetti] = useState(true);
+  const [showconfetti, setShowConfetti] = useState(false);
+  const { payment } = useSelector((store) => store.payment);
+
+  useEffect(() => {
+    if (payment) {
+      const interval = setTimeout(() => {
+        setShowConfetti(true);
+      }, 7000);
+      return () => clearTimeout(interval);
+    }
+    
+  }, [payment]);
   return (
     <>
       {showconfetti && <Confettis />}
