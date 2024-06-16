@@ -88,7 +88,7 @@ model Reservations {
 
 model Payment {
   id        String        @id @default(auto()) @map("_id") @db.ObjectId
-  amount    Float
+  amount    Int?
   currency  String
   status    PaymentStatus @default(PENDING)
   userid    String        @db.ObjectId

@@ -12,35 +12,13 @@ const CreatePayment = expressAsyncHandler(async (req, res) => {
 
   // create payment history for the user
   const payment = await prisma.payment.create({
-    roomid,
-    amount,
-    currency,
-    userid: userId,
-    roomid: roomid,
-  });
-
-  // find the reservation
-  const reservation = await prisma.reservations.findUnique({
-    where: {
-      userid: req.user.userId,
-      roomidid: roomid,
-    },
-    include: {
-      user: true,
-      rooms: true,
+    data: {
+      amount,
+      currency,
+      userid: userId,
+      roomid: roomid,
     },
   });
-  if (reservation) {
-    await prisma.reservations.update({
-      where: {
-        userid: req.user.userId,
-        roomidid: roomid,
-      },
-      data: {
-        status: "CONFIRMED",
-      },
-    });
-  }
 
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
@@ -107,7 +85,8 @@ const UpdatePaymentToFailed = expressAsyncHandler(async (req, res) => {
 
 const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
   // instantiate the form data from the request body
-  const { userId } = req.body;
+
+  const { roomid, amount, currency } = req.body;
   const payment = await prisma.payment.update({
     where: {
       id: req.params.id,
@@ -120,6 +99,28 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
       rooms: true,
     },
   });
+
+  const reservation = await prisma.reservations.findUnique({
+    where: {
+      userid: req.user.userId,
+      roomid: roomid,
+    },
+    include: {
+      user: true,
+      rooms: true,
+    },
+  });
+  if (reservation) {
+    await prisma.reservations.update({
+      where: {
+        userid: req.user.userId,
+        roomid: roomid,
+      },
+      data: {
+        status: "CONFIRMED",
+      },
+    });
+  }
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 

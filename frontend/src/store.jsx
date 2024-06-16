@@ -3,11 +3,13 @@ import roomSlice from "./features/room/roomSlice";
 import modalSlice from "./features/modals/modalSlice";
 import authSlice from "./features/auth/authSlice";
 import reservationSlice from "./features/reservation/reservationSlice";
+import paymentSlice from "./features/payment/paymentSlice";
 export const store = configureStore({
   reducer: {
     room: roomSlice,
     modal: modalSlice,
     auth: authSlice,
-    reservation:reservationSlice
+    reservation: reservationSlice,
+    payment: paymentSlice,
   },
 });

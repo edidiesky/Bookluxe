@@ -6,6 +6,7 @@ import { BiCheck, BiChevronLeft } from "react-icons/bi";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 import { slideup } from "@/constants/utils/framer";
+import FlutterPaymentButton from "./FlutterPaymentButton";
 export default function RoomInfo() {
   const { reservation, getsingleReservationisLoading } = useSelector(
     (store) => store.reservation
@@ -115,9 +116,7 @@ export default function RoomInfo() {
                   {getsingleReservationisLoading ? (
                     <Skeleton width={"100%"} height={40} />
                   ) : (
-                    <div className="btn p-6 cursor-pointer px-8 text-base font-bold uppercase text-center rounded-lg text-white font-booking_font">
-                      pay now
-                    </div>
+                    <FlutterPaymentButton/>
                   )}
                 </div>
               </div>

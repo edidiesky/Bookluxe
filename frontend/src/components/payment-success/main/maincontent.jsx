@@ -5,13 +5,15 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Confettis from "@/components/common/Confetti";
 const MainContent = () => {
-  const [showconfetti, setShowConfetti] = useState(false);
+  const [showconfetti, setShowConfetti] = useState(true);
   return (
-    <div className="w-full relative min-h-[100vh] flex flex-col">
+    <>
       {showconfetti && <Confettis />}
-      <Hero />
-      <RoomLists />
-    </div>
+      <div className="w-full relative min-h-[100vh] flex flex-col">
+        <Hero />
+        <RoomLists />
+      </div>
+    </>
   );
 };
 
@@ -33,7 +35,7 @@ const Hero = () => {
       >
         <h1 className="text-white text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4">
           Thank You!!
-          <span className="block md:mx-auto md:text-center md:w-[400px] text-lg font-booking_font">
+          <span className="block md:mx-auto md:text-center md:w-[450px] text-base text-grey font-booking_font">
             Your payment has been carried out successfull! We appreciate you
           </span>
         </h1>
