@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import Navbar from "../common/navbar";
+import { useSearchParams } from "react-router-dom";
 import MainContent from "./main/maincontent";
 import Footer from "../common/Footer";
 import Newsletter from "../common/Newsletter";
@@ -10,19 +11,22 @@ import { handleClearPayment } from "@/features/payment/paymentSlice";
 import { UpdatePaymentToSuccess } from "@/features/payment/paymentReducer";
 const HomeIndex = () => {
   const dispatch = useDispatch();
+  let [searchParams, setSearchParams] = useSearchParams();
     const { payment } = useSelector((store) => store.payment);
   const navigate = useNavigate()
   const { id } = useParams();
+  const roomid = searchParams.get('roomid')
+  console.log(roomid);
   // UpdatePaymentToSuccess
   // GetSinglePaymentHistory
-  useLayoutEffect(() => {
-    // dispatch(GetUserReservations());
-    dispatch(handleClearPayment());
-    // verify the payment route
-    if (id) {
-      dispatch(UpdatePaymentToSuccess(id));
-    }
-  }, []);
+  // useLayoutEffect(() => {
+  //   // dispatch(GetUserReservations());
+  //   dispatch(handleClearPayment());
+  //   // verify the payment route
+  //   if (id) {
+  //     dispatch(UpdatePaymentToSuccess(id));
+  //   }
+  // }, []);
 
   // if(!payment) {
   //   navigate('/')
