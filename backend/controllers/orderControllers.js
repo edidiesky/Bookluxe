@@ -82,46 +82,41 @@ const UpdatePaymentToFailed = expressAsyncHandler(async (req, res) => {
 
   res.status(200).json({ payment });
 });
-
 const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
-  // instantiate the form data from the request body
-
   const { roomid, amount, currency } = req.body;
+  const paymentId = req.params.id;
+
+  // Update the payment status to "CONFIRMED"
   const payment = await prisma.payment.update({
-    where: {
-      id: req.params.id,
-    },
-    data: {
-      status: "CONFIRMED",
-    },
+    where: { id: paymentId },
+    data: { status: "CONFIRMED" },
     include: {
       user: true,
       room: true,
     },
   });
 
-  const reservation = await prisma.reservations.findUnique({
+  // Find the reservation
+  const reservation = await prisma.reservations.findFirst({
     where: {
       userid: req.user.userId,
       roomid: roomid,
     },
   });
-  if (reservation) {
-    await prisma.reservations.update({
-      where: {
-        userid: req.user.userId,
-        roomid: roomid,
-      },
-      data: {
-        status: "CONFIRMED",
-      },
-    });
-  }
-  res.setHeader("Content-Type", "text/html");
-  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 
-  res.status(200).json({ payment });
+  if (reservation) {
+    // Update the reservation status using the unique `id`
+    const updatedReservation = await prisma.reservations.update({
+      where: { id: reservation.id },
+      data: { status: "CONFIRMED" },
+    });
+
+    res.status(200).json({ payment, updatedReservation });
+  } else {
+    res.status(404).json({ message: "Reservation not found" });
+  }
 });
+
 export {
   CreatePayment,
   GetPaymentHistoryForAdmin,

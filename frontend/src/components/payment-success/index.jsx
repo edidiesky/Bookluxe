@@ -16,17 +16,17 @@ const HomeIndex = () => {
   const navigate = useNavigate()
   const { id } = useParams();
   const roomid = searchParams.get('roomid')
-  console.log(roomid);
+  // console.log(roomid);
   // UpdatePaymentToSuccess
   // GetSinglePaymentHistory
-  // useLayoutEffect(() => {
-  //   // dispatch(GetUserReservations());
-  //   dispatch(handleClearPayment());
-  //   // verify the payment route
-  //   if (id) {
-  //     dispatch(UpdatePaymentToSuccess(id));
-  //   }
-  // }, []);
+  useLayoutEffect(() => {
+    // dispatch(GetUserReservations());
+    dispatch(handleClearPayment());
+    // verify the payment route
+    if (id) {
+      dispatch(UpdatePaymentToSuccess({ id, roomid }));
+    }
+  }, []);
 
   // if(!payment) {
   //   navigate('/')

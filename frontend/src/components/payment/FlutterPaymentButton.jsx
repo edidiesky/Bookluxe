@@ -13,7 +13,7 @@ const FlutterPaymentButton = () => {
   const config = {
     public_key: import.meta.env.VITE_FLUTTER_PUBLIC_KEY,
     tx_ref: Date.now(),
-    amount: reservation?.totalPrice,
+    amount: reservation?.totalPrice * 1024,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -24,7 +24,7 @@ const FlutterPaymentButton = () => {
     customizations: {
       title: "Payment for Booking",
       description: "Payment for booking a room",
-      logo: "https://yourlogo.com/logo.png",
+      logo: "https://www.hopper.com/assets/treasure-D-5S8iOp.svg",
     },
   };
 
@@ -34,7 +34,7 @@ const FlutterPaymentButton = () => {
     dispatch(
       CreatePayment({
         roomid: reservation?.roomid,
-        amount: reservation?.totalPrice,
+        amount: reservation?.totalPrice * 1024,
         currency: "NGN",
       })
     );
@@ -52,16 +52,10 @@ const FlutterPaymentButton = () => {
             if (response.status === "successful") {
               // Handle successful payment here
               toast.success("Payment Successfully!! Redirecting Soon...");
-              if (payment) {
-                navigate(`/payment-success/${payment?.id}`);
-              }
-
-              // alert("Payment Successful");
-              // For example, you can send the payment response to your backend to verify the transaction
-              // fetch('/api/verify-payment', { method: 'POST', body: JSON.stringify(response) })
+               navigate(
+                 `/payment-success/${payment?.id}?roomid=${payment?.roomid}`
+               );
             } else {
-              // Handle payment failure here
-              // alert("Payment Failed");
               toast.error("Payment Failed");
             }
             closePaymentModal(); // Close the modal programmatically

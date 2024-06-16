@@ -81,7 +81,7 @@ export const GetSinglePaymentHistory = createAsyncThunk(
 
 export const UpdatePaymentToSuccess = createAsyncThunk(
   "UpdatePaymentToSuccess",
-  async ({paymentDataId,roomid}, thunkAPI) => {
+  async ({id,roomid}, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const config = {
@@ -92,7 +92,7 @@ export const UpdatePaymentToSuccess = createAsyncThunk(
       const { data } = await axios.put(
         `${
           import.meta.env.VITE_API_BASE_URLS
-        }/payment/history/success/${paymentDataId}`,
+        }/payment/history/success/${id}`,
         roomid,
         config
       );
