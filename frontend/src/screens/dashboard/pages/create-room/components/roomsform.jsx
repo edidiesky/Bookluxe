@@ -37,7 +37,7 @@ const RoomForms = ({
     }
   };
 
-  const handleRoomAmenitiesSelection = (data) => {
+  const handleRoomAmenitiesSelection = (data) => {                                                                    
     if (amenities.includes(data)) {
       const newdata = amenities.filter((x) => x?.title !== data?.title);
       setAmenities(newdata);
@@ -52,13 +52,13 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-semibold">
+            <h4 className="text-2xl font-booking_font4">
               Name & Description
             </h4>
             <div className="flex items-center justify-end">
               <Link
                 href={"/dashboard/rooms"}
-                className="p-3 px-4 cursor-pointer hover:bg-[#fafafa] border rounded-lg font-booking_font_bold text-base flex items-center justify-center gap-2"
+                className="p-3 px-4 cursor-pointer hover:bg-[#fafafa] border rounded-lg font-booking_font4 text-base flex items-center justify-center gap-2"
               >
                 Go Back
               </Link>
@@ -67,7 +67,7 @@ const RoomForms = ({
           <div className="pt-4 w-full flex flex-col gap-4">
             <label
               htmlFor="title"
-              className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+              className="text-sm  flex flex-col gap-2 font-booking_font4"
             >
               Product Title
               <input
@@ -81,7 +81,7 @@ const RoomForms = ({
             </label>
             <label
               htmlFor="description"
-              className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+              className="text-sm  flex flex-col gap-2 font-booking_font4"
             >
               Product Description
               <textarea
@@ -100,7 +100,7 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-semibold">
+            <h4 className="text-2xl font-booking_font4">
               Price & Room Capacity
               <span className="font-normal font-booking_font text-base block">
                 Share what makes your place special.
@@ -110,7 +110,7 @@ const RoomForms = ({
           <div className="pt-2 w-full flex flex-col gap-4">
             <label
               htmlFor="titlprice"
-              className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+              className="text-sm  flex flex-col gap-2 font-booking_font4"
             >
               Room Amount
               <input
@@ -125,7 +125,7 @@ const RoomForms = ({
             <div className="w-full grid md:grid-cols-2 gap-4">
               <label
                 htmlFor="rooms"
-                className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+                className="text-sm  flex flex-col gap-2 font-booking_font4"
               >
                 Room Count
                 <input
@@ -139,7 +139,7 @@ const RoomForms = ({
               </label>
               <label
                 htmlFor="bathrooms"
-                className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+                className="text-sm  flex flex-col gap-2 font-booking_font4"
               >
                 Bath-Room Count
                 <input
@@ -160,7 +160,7 @@ const RoomForms = ({
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font_bold font-semibold">
+            <h4 className="text-2xl font-booking_font4">
               Room Location
               <span className="font-normal font-booking_font text-base block">
                 Share where your room is located.
@@ -171,7 +171,7 @@ const RoomForms = ({
             <div className="w-full grid md:grid-cols-2 gap-4">
               <label
                 htmlFor="city"
-                className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+                className="text-sm  flex flex-col gap-2 font-booking_font4"
               >
                 Room City
                 <input
@@ -185,7 +185,7 @@ const RoomForms = ({
               </label>
               <label
                 htmlFor="bathrooms"
-                className="text-sm font-bold flex flex-col gap-2 font-booking_font_bold"
+                className="text-sm  flex flex-col gap-2 font-booking_font4"
               >
                 Room Address
                 <input

@@ -12,7 +12,7 @@ const ImageUpload = ({ images, setImages }) => {
     <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
       <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
         <div className="w-full flex items-center justify-between">
-          <h4 className="text-2xl font-booking_font_bold font-bold">
+          <h4 className="text-2xl font-booking_font4">
             Room Images
             <span className="font-normal font-booking_font text-base block">
               Share what makes your rooms images special.
@@ -20,22 +20,19 @@ const ImageUpload = ({ images, setImages }) => {
           </h4>
         </div>
         <div className="w-full flex flex-col gap-4">
-          <div className="w-full flex flex-col gap-4 text-sm font-booking_font_bold">
+          <div className="w-full flex flex-col gap-4 text-sm font-booking_font4">
             <span>Photos</span>
-            {images.length >0 ? (
+            {images.length > 0 ? (
               <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-2">
                 {images.map((image, index) => {
                   return (
                     <div className="w-full border p-2">
-                      <img
-                        alt="Cotion"
-                        loading="lazy"
-                        src={images}
-                      />
+                      <img alt="Cotion" loading="lazy" src={images} />
                     </div>
                   );
                 })}
               </div>
+            ) : (
               // <div className="w-full border p-2">
               //   <img
               //     alt="Cotion"
@@ -46,7 +43,6 @@ const ImageUpload = ({ images, setImages }) => {
               //     src={images}
               //   />
               // </div>
-            ) : (
               // <CldUploadWidget
               //   multiple
               //   onSuccess={handleUpload}

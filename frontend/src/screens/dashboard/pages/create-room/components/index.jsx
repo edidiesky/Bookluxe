@@ -54,9 +54,9 @@ const DashboardIndex = () => {
     <div className="w-full relative">
       <div className="w-full relative pb-20 flex flex-col gap-12">
         <div className="w-full grid md:grid-cols-2 md:items-center gap-4 justify-between">
-          <h3 className="text-3xl lg:text-4xl font-bold font-booking_font_normal">
+          <h3 className="text-3xl lg:text-4xl font-booking_font4">
             Add Your Room
-            <span className="block font-normal text-grey pt-2 text-base font-booking_font_normal">
+            <span className="block font-normal text-dark pt-2 text-base font-booking_font">
               The most important idea about this section is that it gives u
               ability to add your rooms. When adding your room product idea do
               not forget to fill out the forms else errors are bound to occur

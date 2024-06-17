@@ -10,7 +10,7 @@ const Roomfeatures = ({
     <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
       <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
         <div className="w-full flex items-center justify-between">
-          <h4 className="text-2xl font-booking_font_bold font-semibold">
+          <h4 className="text-2xl font-booking_font4">
             Room Attributes & Features
             <span className="font-normal font-booking_font text-base block">
               Share what makes your place special.
@@ -35,7 +35,7 @@ const Roomfeatures = ({
                     } flex w-full cursor-pointer hover:bg-[#fafafa] p-4 rounded-lg flex-col gap-2`}
                   >
                     {x?.icon}
-                    <span className="text-sm font-booking_font_bold font-semibold">
+                    <span className="text-sm font-booking_font4">
                       {x?.title}
                     </span>
                   </div>
@@ -61,7 +61,7 @@ const Roomfeatures = ({
                     } flex w-full cursor-pointer hover:bg-[#fafafa] p-4 rounded-lg flex-col gap-2`}
                   >
                     {x?.icon}
-                    <span className="text-sm font-booking_font_bold font-semibold">
+                    <span className="text-sm font-booking_font4">
                       {x?.title}
                     </span>
                   </div>

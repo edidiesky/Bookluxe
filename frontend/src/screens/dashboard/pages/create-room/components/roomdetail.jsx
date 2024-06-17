@@ -13,7 +13,7 @@ const RoomDetail = ({
   return (
     <div className="w-full bg-[#fff] border p-6 rounded-[10px]">
       <div className="w-full flex flex-col gap-8">
-        <h4 className="text-2xl font-booking_font_bold font-semibold">Preview</h4>
+        <h4 className="text-2xl font-booking_font4">Preview</h4>
         <div className="w-full flex flex-col gap-4">
           {images?.length > 0 ? (
             <img
@@ -35,7 +35,7 @@ const RoomDetail = ({
           <div className="w-full flex flex-col gap-2">
             <h4
               style={{ letterSpacing: "3px" }}
-              className="text-xs text-grey uppercase font-booking_font_bold font-semibold"
+              className="text-xs text-grey uppercase font-booking_font4"
             >
               for settling in castle
             </h4>
@@ -45,19 +45,19 @@ const RoomDetail = ({
             <div className="w-full flex flex-wrap gap-2">
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold font-semibold"
+                className="text-xs text-dark uppercase font-booking_font4"
               >
                 Price: ${price}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold font-semibold"
+                className="text-xs text-dark uppercase font-booking_font4"
               >
                 Rooms: {rooms}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold font-semibold"
+                className="text-xs text-dark uppercase font-booking_font4"
               >
                 BathRooms: {bathrooms}
               </h4>
