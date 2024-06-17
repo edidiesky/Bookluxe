@@ -68,17 +68,19 @@ export const Table = styled.div`
           background-color: #f5f5f5;
           border-radius: 40px;
           padding: 1rem;
-          text-transform: uppercase;
+          /* text-transform: uppercase; */
+          font-weight: normal !important;
           &:hover {
             background-color: rgba(0, 0, 0, 0.1);
           }
           th {
             font-size: 0.8rem;
-            text-align: center;
+            text-align: start;
+            font-size: 15px !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             padding: 1.7rem 1rem;
             font-family: "playfair";
-            font-weight: normal;
+            font-weight: normal !important;
           }
         }
       }
@@ -93,22 +95,24 @@ export const Table = styled.div`
             background-color: rgba(0, 0, 0, 0.06);
           }
           td {
-            text-align: center;
-            padding: 1.4rem 1rem;
+            text-align: start;
+            padding: 1.6rem 1rem !important;
+            font-size: 14px !important;
             border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+            color: #000;
 
             span {
               &.danger {
                 color: #840a0a;
-                padding: 0.8rem 1.2rem;
-                border-radius: 40px;
+                padding: 0.56rem 1rem;
+                border-radius: 4px;
                 background: #f3efe5;
               }
               &.success {
                 color: #28a745;
-                padding: 0.8rem 1.2rem;
-                border-radius: 40px;
-                background: #edffeb;
+                padding: 0.56rem 1rem;
+                border-radius: 4px;
+                background: #dcf6d9;
               }
             }
           }

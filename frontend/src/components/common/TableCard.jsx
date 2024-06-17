@@ -14,7 +14,45 @@ const TableCard = ({ x, type }) => {
   const handleDeleteClient = () => {
     setUserDeleteModal(true);
   };
+  if (type === "orderlist") {
+    return (
+      <>
+        {/* <Delete /> */}
+        <tr key={x?.id}>
+          <td>
+            <span className="flex items-center gap-2">
+              Payment Received from{" "}
+              <span className="font-booking_font_bold text-dark">
+                {x?.user?.name}
+              </span>
+            </span>
+          </td>
+          <td>{x?.amount}</td>
+          <td>{x?.currency}</td>
+          <td>
+            {/* <span className="p-4">
+              {x?.status}
+            </span> */}
 
+            {x?.status === "CONFIRMED" ? (
+              <span className=" font-semibold text-xs font-booking_font_bold text-center success">
+                {x?.status}
+              </span>
+            ) : (
+              <span className=" font-semibold text-xs font-booking_font_bold text-center danger">
+                {x?.status}
+              </span>
+            )}
+          </td>
+          <td>{moment(x?.createdAt).format("DD MMMM YYYY")}</td>
+
+          {/* <td>
+
+          </td> */}
+        </tr>
+      </>
+    );
+  }
   if (type === "customerlist") {
     return (
       <>
@@ -31,23 +69,23 @@ const TableCard = ({ x, type }) => {
         <tr key={x?._id}>
           <td>
             <div className="flex flex-col">
-              <span className="text-xs  font-semibold text-dark text-bold">
+              <span className=" font-semibold text-dark text-bold">
                 {x?.name}
               </span>
-              {/* <span className="text-xs  font-semibold family1 text-dark">{x?.email}</span> */}
+              {/* <span className=" font-semibold family1 text-dark">{x?.email}</span> */}
             </div>
           </td>
           <td>
-            <span className="text-xs  font-semibold family1  text-dark">{x?.email}</span>
+            <span className=" font-semibold family1  text-dark">{x?.email}</span>
           </td>
           <td>
-            <span className=" text-dark text-xs  font-semibold family1">
+            <span className=" text-dark  font-semibold family1">
               {x?.country ? x?.country : "-"}
             </span>
           </td>
 
           <td>
-            <span className="text-dark text-xs  font-semibold family1 text-light">
+            <span className="text-dark  font-semibold family1 text-light">
               24th May 2024
             </span>
           </td>
@@ -90,18 +128,18 @@ const TableCard = ({ x, type }) => {
           <td>
             <div className="flex w-full justify-center flex-col items-center gap-2">
               <img src={x?.images[0]} alt="" className="w-28 h-20 object-cover rounded-lg" />
-              <span className="text-xs  font-semibold family1 text-center text-dark">
+              <span className=" font-semibold family1 text-center text-dark">
                 {x?.title}
               </span>
             </div>
           </td>
-          <td className="text-xs  font-semibold">{x?.address}</td>
+          <td className=" font-semibold">{x?.address}</td>
 
-          <td className="text-xs  font-semibold">{x?.city}</td>
+          <td className=" font-semibold">{x?.city}</td>
 
-          <td className="text-xs  font-semibold">{startDate}</td>
+          <td className=" font-semibold">{startDate}</td>
 
-          <td className="text-xs  font-semibold">
+          <td className=" font-semibold">
             <div className="flex items-center justify-center">
               <Link
                 href={`/account/admin/dashboard/Manage_Customers/${x?._id}`}
@@ -136,28 +174,28 @@ const TableCard = ({ x, type }) => {
         </AnimatePresence>
         <tr key={x?._id}>
           <td>
-            <span className="text-xs  font-semibold text-center family1 text-dark">
+            <span className=" font-semibold text-center family1 text-dark">
               {x?.user}
             </span>
           </td>
-          <td className="text-xs  font-semibold">
+          <td className=" font-semibold">
             {x?.status === "booked" ? (
-              <span className="text-xs  font-semibold font-booking_font_bold text-center success">
+              <span className=" font-semibold font-booking_font_bold text-center success">
                 {x?.status}
               </span>
             ) : (
-              <span className="text-xs  font-semibold font-booking_font_bold text-center danger">
+              <span className=" font-semibold font-booking_font_bold text-center danger">
                 {x?.status}
               </span>
             )}
           </td>
 
-          <td className="text-xs  font-semibold">{x?.venue}</td>
+          <td className=" font-semibold">{x?.venue}</td>
 
-          <td className="text-xs  font-semibold">
+          <td className=" font-semibold">
             24th May - <span>25th Dec</span> 2024
           </td>
-          <td className="text-xs  font-semibold">09:00 - 12:00</td>
+          <td className=" font-semibold">09:00 - 12:00</td>
         </tr>
       </>
     );
@@ -168,19 +206,19 @@ const TableCard = ({ x, type }) => {
       {/* <Delete /> */}
       <tr key={x?._id}>
         <td>
-          <span className="text-xs  font-semibold family1 text-dark">{x?.plan}</span>
+          <span className=" font-semibold family1 text-dark">{x?.plan}</span>
         </td>
         <td>
-          <span className="text-dark text-xs  font-semibold family1">$ {x?.price}</span>
+          <span className="text-dark  font-semibold family1">$ {x?.price}</span>
         </td>
 
         <td>
-          <span className="text-dark text-xs  font-semibold family1 text-light">
+          <span className="text-dark  font-semibold family1 text-light">
             Type 1
           </span>
         </td>
         <td>
-          <span className="text-dark text-xs  font-semibold family1 text-light">
+          <span className="text-dark  font-semibold family1 text-light">
             {x?.date}
           </span>
         </td>
