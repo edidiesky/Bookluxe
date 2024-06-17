@@ -9,6 +9,7 @@ import {
 } from "./paymentReducer";
 const initialState = {
   payment: null,
+  updatedReservation:null,
   payments: [],
   alertText: "",
   showAlert: false,
@@ -32,6 +33,10 @@ export const reservationSlice = createSlice({
   reducers: {
     handleClearPayment: (state, action) => {
       state.payment = null;
+    },
+    handleClearPaymentAlert: (state, action) => {
+      state.createpaymentisSuccess = false;
+      state.updatepaymentisSuccess = false;
     },
   },
   extraReducers: (builder) => {
@@ -83,7 +88,8 @@ export const reservationSlice = createSlice({
     builder.addCase(UpdatePaymentToSuccess.fulfilled, (state, action) => {
       state.updatepaymentisLoading = false;
       state.updatepaymentisSuccess = true;
-      state.payment = action.payload;
+      state.payment = action.payload.payment;
+      state.updatedReservation = action.payload.updatedReservation;
       toast.success("Payment Details has been updated to success");
     });
     builder.addCase(UpdatePaymentToSuccess.rejected, (state, action) => {
@@ -107,5 +113,5 @@ export const reservationSlice = createSlice({
     });
   },
 });
-export const { handleClearPayment } = reservationSlice.actions;
+export const { handleClearPayment,handleClearPaymentAlert } = reservationSlice.actions;
 export default reservationSlice.reducer;

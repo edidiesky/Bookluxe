@@ -210,7 +210,7 @@ const RoomCard = ({ type, apartment }) => {
         </div> */}
         <div className="w-full flex flex-col bg-white gap-2">
           <h4
-            style={{ letterSpacing: "3px" }}
+            style={{ letterSpacing: "3px" }}con
             className="text-[10px] text-grey uppercase font-booking_font_bold font-bold"
           >
             for settling in castle

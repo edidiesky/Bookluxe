@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Navbar from "../common/navbar";
 import { useSearchParams } from "react-router-dom";
 import MainContent from "./main/maincontent";
@@ -9,28 +9,31 @@ import { GetUserReservations } from "@/features/reservation/reservationReducer";
 import { useParams, useNavigate } from "react-router-dom";
 import { handleClearPayment } from "@/features/payment/paymentSlice";
 import { UpdatePaymentToSuccess } from "@/features/payment/paymentReducer";
+import Loader from "../home/loader";
 const HomeIndex = () => {
   const dispatch = useDispatch();
   let [searchParams, setSearchParams] = useSearchParams();
-    const { payment } = useSelector((store) => store.payment);
-  const navigate = useNavigate()
+  const { payment, updatepaymentisLoading } = useSelector(
+    (store) => store.payment
+  );
+  const navigate = useNavigate();
   const { id } = useParams();
-  const roomid = searchParams.get('roomid')
-  // console.log(roomid);
+  const reservationid = searchParams.get("reservationid");
+  // console.log(reservationid);
   // UpdatePaymentToSuccess
   // GetSinglePaymentHistory
-  useLayoutEffect(() => {
+  useMemo(() => {
     // dispatch(GetUserReservations());
     dispatch(handleClearPayment());
     // verify the payment route
     if (id) {
-      dispatch(UpdatePaymentToSuccess({ id, roomid }));
+      dispatch(UpdatePaymentToSuccess({ id, reservationid }));
     }
   }, []);
 
-  // if(!payment) {
-  //   navigate('/')
-  // }
+  if (updatepaymentisLoading) {
+    return <Loader />;
+  }
   return (
     <div className="bg-[var(--light-grey)] w-full flex flex-col">
       <Navbar />

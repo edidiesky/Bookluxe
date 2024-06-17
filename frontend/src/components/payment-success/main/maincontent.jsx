@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import moment from "moment";
 import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
@@ -15,7 +16,6 @@ const MainContent = () => {
       }, 7000);
       return () => clearTimeout(interval);
     }
-    
   }, [payment]);
   return (
     <>
@@ -44,7 +44,7 @@ const Hero = () => {
         className="w-[90%] mx-auto z-40 flex items-center justify-center flex-col
        gap-4"
       >
-        <h1 className="text-white text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4">
+        <h1 className="text-white text-center leading-[1.3] text-4xl md:text-6xl font-booking_font4">
           Thank You!!
           <span className="block md:mx-auto md:text-center md:w-[450px] text-base text-grey font-booking_font">
             Your payment has been carried out successfull! We appreciate you
@@ -100,6 +100,16 @@ const Hero = () => {
 
 const RoomLists = () => {
   const { reservations } = useSelector((store) => store.reservation);
+  const { payment, updatedReservation } = useSelector((store) => store.payment);
+  const startDate = moment(updatedReservation?.startDate).format(
+    "MMMM Do YYYY"
+  );
+  const paymentDate = moment(payment?.createAt).format("MMMM Do YYYY");
+  const endDate = moment(updatedReservation?.endDate).format("MMMM Do YYYY");
+  const differenceInDays = moment(updatedReservation?.endDate).diff(
+    moment(updatedReservation?.startDate),
+    "days"
+  );
   return (
     <div
       className="w-full relative py-24 flex items-center justify-center
@@ -109,10 +119,10 @@ const RoomLists = () => {
         className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
        gap-12"
       >
-        <div className="w-full px-4 flex flex-col gap-12">
-          <div className="p-24 bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
+        <div className="w-full flex flex-col gap-12">
+          <div className="py-24 px-8 w-full bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
             <FaRegCircleCheck fontSize={"80px"} color="var(--gold-1)" />
-            <h3 className="text-4xl text-center font-booking_font4">
+            <h3 className="text-3xl md:text-4xl text-center font-booking_font4">
               Your Payment has been confirmed
               <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-lg font-booking_font text-grey">
                 Your payment has been carried out successfull! We appreciate you
@@ -125,27 +135,29 @@ const RoomLists = () => {
               <div className="w-full">
                 <div className="grid md:grid-cols-custom_4 items-center gap-8">
                   <img
-                    src="/images/hazel_1.jpeg"
+                    src={updatedReservation?.rooms?.images[0]}
                     alt=""
                     className="w-[300px] object-cover h-[300px]"
                   />
                   <div className="w-full flex flex-col gap-4">
-                    <h3 className="text-4xl font-booking_font4">Hazel</h3>
+                    <h3 className="text-4xl font-booking_font4">
+                      {updatedReservation?.rooms?.title}
+                    </h3>
                     <ul className="flex flex-col gap-2">
                       <li className="text-lg flex items-center gap-3 font-booking_font">
                         <span className="font-bold">Check In:</span>
-                        Dec 24 2024
+                        {startDate}
                       </li>
                       <li className="text-lg flex items-center gap-3 font-booking_font">
                         <span className="font-bold">Check Out:</span>
-                        Dec 29 2024
+                        {endDate}
                       </li>
                       <li className="text-lg flex items-center gap-3 font-booking_font">
                         <span className="font-bold">Guests:</span>4
                       </li>
                       <li className="text-lg flex items-center gap-3 font-booking_font">
-                        <span className="font-bold">Total Days:</span>4 Days 3
-                        Nights
+                        <span className="font-bold">Total Days:</span>
+                        {differenceInDays} days
                       </li>
                     </ul>
                   </div>
@@ -159,15 +171,15 @@ const RoomLists = () => {
                   <ul className="flex flex-col gap-2">
                     <li className="text-lg flex items-center gap-3 font-booking_font">
                       <span className="font-bold">Order No:</span>
-                      3947565tggfjf48
+                      {payment?.id}
                     </li>
                     <li className="text-lg flex items-center gap-3 font-booking_font">
                       <span className="font-bold">Order Date:</span>
-                      Dec 29 2024
+                      {paymentDate}
                     </li>
                     <li className="text-lg flex items-center gap-3 font-booking_font">
                       <span className="font-bold">Transaction Id:</span>{" "}
-                      3746r5fhfjd773geb
+                      {updatedReservation?.id}
                     </li>
                   </ul>
                 </div>
@@ -176,7 +188,7 @@ const RoomLists = () => {
           </div>
           <div className="w-full flex items-center justify-end">
             <h3 className="text-3xl md:text-4xl font-booking_font4">
-              Amount Paid: <span>#300000</span>
+              Amount Paid: <span>#{payment?.amount}</span>
             </h3>
           </div>
         </div>

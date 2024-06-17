@@ -68,7 +68,6 @@ model Rooms {
 
   user         User?          @relation(fields: [userid], references: [id], onDelete: Cascade)
   reservations Reservations[]
-  payment      Payment[]
 }
 
 model Reservations {
@@ -81,22 +80,22 @@ model Reservations {
   status     ReservationStatus @default(PENDING)
   roomid     String            @db.ObjectId
   userid     String            @db.ObjectId
-
-  rooms Rooms? @relation(fields: [roomid], references: [id], onDelete: Cascade)
-  user  User?  @relation(fields: [userid], references: [id], onDelete: Cascade)
+  payment    Payment[]
+  rooms      Rooms?            @relation(fields: [roomid], references: [id], onDelete: Cascade)
+  user       User?             @relation(fields: [userid], references: [id], onDelete: Cascade)
 }
 
 model Payment {
-  id        String        @id @default(auto()) @map("_id") @db.ObjectId
-  amount    Int?
-  currency  String
-  status    PaymentStatus @default(PENDING)
-  userid    String        @db.ObjectId
-  roomid    String        @db.ObjectId
-  user      User          @relation(fields: [userid], references: [id])
-  room      Rooms         @relation(fields: [roomid], references: [id])
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
+  id            String        @id @default(auto()) @map("_id") @db.ObjectId
+  amount        Int?
+  currency      String
+  status        PaymentStatus @default(PENDING)
+  userid        String        @db.ObjectId
+  reservationid String        @db.ObjectId
+  user          User          @relation(fields: [userid], references: [id])
+  reservation   Reservations  @relation(fields: [reservationid], references: [id])
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
 
 model Conversations {

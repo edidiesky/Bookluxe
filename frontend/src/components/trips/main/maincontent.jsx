@@ -105,7 +105,7 @@ const RoomLists = () => {
               </Link>
             </h1>
           ) : (
-            <div className=" gap-8 w-full grid md:grid-cols-3">
+            <div className=" gap-8 w-full grid md:grid-cols-2 lg:grid-cols-3">
               {reservations?.map((apartment, index) => {
                 return (
                   <RoomCard type={"trips"} key={index} apartment={apartment} />

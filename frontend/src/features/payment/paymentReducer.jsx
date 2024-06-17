@@ -81,7 +81,7 @@ export const GetSinglePaymentHistory = createAsyncThunk(
 
 export const UpdatePaymentToSuccess = createAsyncThunk(
   "UpdatePaymentToSuccess",
-  async ({id,roomid}, thunkAPI) => {
+  async ({id,reservationid}, thunkAPI) => {
     try {
       const state = thunkAPI.getState();
       const config = {
@@ -93,10 +93,10 @@ export const UpdatePaymentToSuccess = createAsyncThunk(
         `${
           import.meta.env.VITE_API_BASE_URLS
         }/payment/history/success/${id}`,
-        roomid,
+        reservationid,
         config
       );
-      return data.payment;
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message

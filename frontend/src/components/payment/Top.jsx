@@ -27,19 +27,20 @@ export default function RoomInfo() {
   return (
     <>
       <div className="w-full py-20 flex flex-col gap-24 justify-end items-end">
-        <div className="w-[90%] relative md:w-[80%] mx-auto max-w-custom_1 justify-end items-end flex flex-col">
+        <div className="w-[90%] relative lg:w-[85%] mx-auto max-w-custom_1 justify-end items-end flex flex-col">
           <div className="w-full relative flex flex-col gap-20 justify-end">
-            <div className="w-full grid relative grid-cols-1 md:items-center lg:grid-cols-custom_5 gap-20">
-              <div className="flex flex-col gap-12 w-full">
+            <div className="w-full grid relative grid-cols-1 md:items-center lg:grid-cols-custom_5 gap-4 lg:gap-24">
+              <div className="flex pr-2 lg:pr-12 flex-col gap-12 w-full">
                 {/* description */}
                 <div className="w-full flex flex-col gap-8">
-                  <div className="w-full flex flex-col md:flex-row md:items-center gap-4 md:px-4">
-                    <div className="w-8 md:-ml-8 h-8 bg-[#d8d8d8] rounded-full flex items-center justify-center text-xl">
+                  <div className="w-full flex flex-col md:flex-row md:items-center">
+                    {/* <div className="w-8 md:-ml-8 h-8 bg-[#d8d8d8] rounded-full flex items-center justify-center text-xl">
                       <BiChevronLeft />
-                    </div>
+                    </div> */}
                     <h2
                       ref={ctaText_1}
-                      className="text-4xl lg:text-5xl font-normal font-booking_font4 flex flex-wrap gap-x-[8px] gap-y-[8px]  leading-[1] font-booking_font3"
+                      className="text-4xl lg:text-5xl font-normal font-booking_font4 flex flex-wrap gap-x-[8px] gap-y-[8px]  leading-[1] 
+                      font-booking_font3"
                     >
                       {ctaText1.split(" ").map((x, index) => {
                         return (
@@ -60,8 +61,8 @@ export default function RoomInfo() {
                       })}
                     </h2>
                   </div>
-                  <ul className="flex flex-col gap-8 pb-8 border-b">
-                    <li className="text-lg font-booking_font font-normal">
+                  <ul className="flex flex-col gap-8 pb-6 border-b">
+                    <li className="text-base font-booking_font font-normal">
                       Did you know that Marriott Bonvoy members earn 5 points
                       per qualifying $1 spent on every home stay? Join now and
                       start earning today.
@@ -116,13 +117,12 @@ export default function RoomInfo() {
                   {getsingleReservationisLoading ? (
                     <Skeleton width={"100%"} height={40} />
                   ) : (
-                    <FlutterPaymentButton/>
+                    <FlutterPaymentButton />
                   )}
                 </div>
               </div>
-              <div className="w-full sticky top-[10%] lg:w-[420px] flex flex-col gap-16">
-                <RoomPaymentTab
-                />
+              <div className="w-full sticky top-[10%] lg:w-[400px] flex flex-col gap-16">
+                <RoomPaymentTab />
               </div>
             </div>
           </div>

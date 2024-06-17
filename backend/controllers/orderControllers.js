@@ -8,7 +8,7 @@ import expressAsyncHandler from "express-async-handler";
 const CreatePayment = expressAsyncHandler(async (req, res) => {
   // instantiate the form data from the request body
   const { userId } = req.user;
-  const { roomid, amount, currency } = req.body;
+  const { reservationid, amount, currency } = req.body;
 
   // create payment history for the user
   const payment = await prisma.payment.create({
@@ -16,7 +16,7 @@ const CreatePayment = expressAsyncHandler(async (req, res) => {
       amount,
       currency,
       userid: userId,
-      roomid: roomid,
+      reservationid: reservationid,
     },
   });
 
@@ -31,7 +31,7 @@ const GetPaymentHistoryForAdmin = expressAsyncHandler(async (req, res) => {
   const payment = await prisma.payment.findMany({
     include: {
       user: true,
-      rooms: true,
+      reservation: true,
     },
     orderBy: {
       createdAt: "desc",
@@ -53,7 +53,7 @@ const GetSinglePaymentDetails = expressAsyncHandler(async (req, res) => {
     },
     include: {
       user: true,
-      room: true,
+      reservation: true,
     },
   });
   res.setHeader("Content-Type", "text/html");
@@ -74,7 +74,7 @@ const UpdatePaymentToFailed = expressAsyncHandler(async (req, res) => {
     },
     include: {
       user: true,
-      room: true,
+      reservation: true,
     },
   });
   res.setHeader("Content-Type", "text/html");
@@ -83,7 +83,7 @@ const UpdatePaymentToFailed = expressAsyncHandler(async (req, res) => {
   res.status(200).json({ payment });
 });
 const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
-  const { roomid, amount, currency } = req.body;
+  const { reservationid, amount, currency } = req.body;
   const paymentId = req.params.id;
 
   // Update the payment status to "CONFIRMED"
@@ -92,7 +92,6 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
     data: { status: "CONFIRMED" },
     include: {
       user: true,
-      room: true,
     },
   });
 
@@ -100,7 +99,7 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
   const reservation = await prisma.reservations.findFirst({
     where: {
       userid: req.user.userId,
-      roomid: roomid,
+      id: reservationid,
     },
   });
 
@@ -109,6 +108,9 @@ const UpdatePaymentToSuccess = expressAsyncHandler(async (req, res) => {
     const updatedReservation = await prisma.reservations.update({
       where: { id: reservation.id },
       data: { status: "CONFIRMED" },
+      include: {
+        rooms: true,
+      },
     });
 
     res.status(200).json({ payment, updatedReservation });
