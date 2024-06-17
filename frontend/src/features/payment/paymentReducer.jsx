@@ -41,7 +41,7 @@ export const GetPaymentHistory = createAsyncThunk(
         `${import.meta.env.VITE_API_BASE_URLS}/payment/history`,
         config
       );
-      return data;
+      return data.payment;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message

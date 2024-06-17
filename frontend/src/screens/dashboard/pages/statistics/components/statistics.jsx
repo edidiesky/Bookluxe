@@ -1,14 +1,17 @@
 "use client";
+import { GetPaymentHistory } from "@/features/payment/paymentReducer";
 import React, { useState, useEffect } from "react";
 import Chart from "react-apexcharts";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Statistics = () => {
   return (
-    <div className="w-full grid md:grid-cols-custom items-start gap-4">
+    <div className="w-full grid md:grid-cols-custom_6 items-start gap-4">
       <div className="flex w-full">
         <GrowthStat />
       </div>
-      <div className="flex w-full md:w-[350px]">
+      <div className="flex w-full">
         <SalesStat />
       </div>
     </div>
@@ -19,8 +22,8 @@ const GrowthStat = () => {
   const [options, setOptions] = useState({
     chart: {
       height: 350,
-      type: "line",
-      fontFamily: "var(--font-work)",
+      type: "bar",
+      fontFamily: "playfair",
       foreColor: "#333",
       fontSize: "30px",
       textTransform: "capitalize",
@@ -31,7 +34,7 @@ const GrowthStat = () => {
     dataLabels: {
       enabled: false,
     },
-    colors: ["#FF1654", "#247BA0"],
+    colors: ["var(--dark-1)", "#247BA0"],
     stroke: {
       curve: "smooth",
     },
@@ -42,13 +45,13 @@ const GrowthStat = () => {
 
   const [series, setSeries] = useState([
     {
-      name: "Rooms",
+      name: "Transactions",
       data: [14, 22, 45, 15, 40, 18, 58, 16],
     },
-    {
-      name: "Reservations",
-      data: [16, 23, 39, 26, 44, 25, 50, 28],
-    },
+    // {
+    //   name: "Reservations",
+    //   data: [16, 23, 39, 26, 44, 25, 50, 28],
+    // },
   ]);
   return (
     <div id="chart" className="w-full">
@@ -59,7 +62,7 @@ const GrowthStat = () => {
             <Chart
               options={options}
               series={series}
-              type="line"
+              type="bar"
               width={"100%"}
               height={430}
             />
@@ -71,9 +74,67 @@ const GrowthStat = () => {
 };
 
 const SalesStat = () => {
+  const dispatch = useDispatch();
+  
+  // const transactionList = [
+  //   {
+  //     name: "Jonas Felix",
+  //     email: "jonasfelix@gmail.com",
+  //     totalPrice: 19373,
+  //   },
+  //   {
+  //     name: "Blessed Dan",
+  //     email: "lessDan@gmail.com",
+  //     totalPrice: 19373,
+  //   },
+  //   {
+  //     name: "Tereas Jonas",
+  //     email: "jterejonas@gmail.com",
+  //     totalPrice: 3643,
+  //   },
+  // ];
+
+  useEffect(() => {
+    dispatch(GetPaymentHistory());
+  }, []);
+  const { payments } = useSelector((store) => store.payment);
   return (
-    <div className="w-full p-6 flex flex-col gap-4 bg-white border rounded-[10px]">
-      <h3 className="text-xl font-booking_font4">Transaction History</h3>
+    <div className="w-full py-6 flex flex-col gap-4 bg-white border rounded-[10px]">
+      <div className="w-full flex flex-col gap-4">
+        <div className="w-full px-6 flex items-center justify-between">
+          <h3 className="text-xl font-booking_font4">Transaction History</h3>
+          <Link
+            style={{ textDecoration: "underline" }}
+            className="text-sm text-[var(--dark-1)] font-booking_font_bold"
+            to={"/dashboard/orders"}
+          >
+            View All
+          </Link>
+        </div>
+        <ul className="flex flex-col gap-2 w-full">
+          {payments?.map((data, index) => {
+            return (
+              <li
+                key={index}
+                className="text-lg py-2 px-6 cursor-pointer hover:bg-[#fafafa] font-booking_font4 flex items-center justify-between w-full"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#000] flex items-center justify-center text-white text-base">
+                    {data?.user?.name[0]}
+                  </div>
+                  <span className="text-lg">
+                    {data?.user?.name}
+                    <div className="block font-booking_font text-sm text-grey">
+                      {data?.user?.email}
+                    </div>
+                  </span>
+                </div>
+                <span>+{data?.amount}</span>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

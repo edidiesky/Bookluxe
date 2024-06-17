@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { TiHome } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
 import { LuBedDouble } from "react-icons/lu";
-import { FaRegUser, FaHotel } from "react-icons/fa";
+import { FaRegUser, FaHotel, FaMoneyBill } from "react-icons/fa";
 // import { NavLink } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -26,6 +26,15 @@ const AdminSidebarData = [
       icon: <FaHotel fontSize={"16px"} />,
       title: "Rooms",
       path: "/rooms",
+    },
+    list: [],
+  },
+  {
+    id: 6,
+    tab: {
+      icon: <FaMoneyBill fontSize={"16px"} />,
+      title: "Transactions",
+      path: "/orders",
     },
     list: [],
   },
@@ -53,7 +62,7 @@ const DashboardSidebar = () => {
   const { currentUser } = useSelector((store) => store.auth);
   const pathname = true;
   return (
-    <HeaderStyles className={`w-full border-r flex column gap-2`}>
+    <HeaderStyles className={`w-full border-r  hidden lg:flex column gap-2`}>
       <div className="w-full h-full py-4 justify-between flex items-center flex-col gap-4">
         <div className="w-full h-[90%] flex flex-col gap-8">
           <div className="flex flex-col w-full items-start justify-between py-1">
@@ -143,9 +152,7 @@ export const HeaderStyles = styled.div`
   height: 100vh;
   background: #fff;
   /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
-  @media (max-width: 980px) {
-    display: none;
-  }
+
   .dropdown {
     max-height: 0;
     transition: all 0.7s;

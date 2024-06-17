@@ -22,6 +22,7 @@ module.exports = {
         custom: "1fr auto",
         custom_5: "1fr auto",
         custom_2: "30% 1fr",
+        custom_6: "1fr 45%",
         custom_4: "auto 1fr",
         custom_3: "15% 1fr",
       },

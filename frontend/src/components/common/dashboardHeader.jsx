@@ -111,20 +111,20 @@ const DashboardHeader = () => {
                   <NavLink
                     end
                     to={"/dashboard"}
-                    className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
+                    className="flex items-center font-booking_font4 text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Dashboard
                   </NavLink>
                   <NavLink
                     end
                     to={"/dashboard/settings"}
-                    className="font-normal flex items-center font-booking_font_bold text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
+                    className="flex items-center font-booking_font4 text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Profile
                   </NavLink>
                   <div
                     onClick={handleLogOut}
-                    className="font-normal flex items-center font-booking_font_bold hover:bg-[#f7f7f7] text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
+                    className="flex items-center font-booking_font4 hover:bg-[#f7f7f7] text-xs p-8 h-[45px] px-2 family1 w-full profile_list text-dark"
                   >
                     Log Out
                   </div>

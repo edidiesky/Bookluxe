@@ -4,7 +4,7 @@ import DashboardIndex from "./components";
 import { useEffect } from "react";
 import { GetAllUsers } from "@/features/auth/authReducer";
 
-export default function Customers() {
+export default function Orders() {
   const dispatch = useDispatch()
 
   useEffect(()=> {
