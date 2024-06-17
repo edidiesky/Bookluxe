@@ -86,7 +86,7 @@ const DashboardHeader = () => {
             <input
               type="text"
               placeholder="Search"
-              className="bg-transparent border-none outline-none text-base text-dark flex-1"
+              className="bg-transparent font-booking_font4 border-none outline-none text-base text-dark flex-1"
             />
           </label>
         </div>
@@ -98,7 +98,7 @@ const DashboardHeader = () => {
                 alt=""
                 className="w-10 rounded-full"
               />
-              <h4 className="text-sm text-dark font-booking_font_bold font-semibold family1">
+              <h4 className="text-base text-dark font-booking_font4 family1">
                 {currentUser?.name}
                 <span className="block font-normal font-booking_font text-xs text-dark">
                   {currentUser?.email}

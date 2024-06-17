@@ -65,7 +65,7 @@ const DashboardSidebar = () => {
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
                   className="w-14 h-14 rounded-full object-cover"
                 />
-                <h4 className="hidden md:flex flex-col text-sm font-booking_font_bold font-bold text-dark">
+                <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-dark">
                   HOME & VILLAS{" "}
                   <span className="block text-xs font-booking_font">
                     {" "}
@@ -81,17 +81,17 @@ const DashboardSidebar = () => {
               return (
                 <div
                   key={index}
-                  className="w-[90%] font-booking_font_normal font-semibold text-sm mx-auto"
+                  className="w-[90%] font-booking_font4 text-sm mx-auto"
                 >
                   <NavLink
                     // activeClassName="active"
                     end
                     className={`
-                      text-sm w-[90%] mx-auto text-dark family1`}
+                      text-base w-[90%] mx-auto text-dark family1`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
-                      <span className="w-12 h-12 text-xm rounded-xl flex items-center text-blue justify-center">
+                      <span className="w-12 h-12 text-base rounded-xl flex items-center text-blue justify-center">
                         {" "}
                         {x.tab.icon}
                       </span>
@@ -108,7 +108,7 @@ const DashboardSidebar = () => {
             <NavLink
               // activeClassName="active"
               end
-              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font_normal font-semibold text-dark family1`}
+              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font4 text-dark family1`}
               to={`/dashboard/settings`}
             >
               <FiSettings fontSize={"24px"} />
@@ -121,7 +121,7 @@ const DashboardSidebar = () => {
                   alt=""
                   className="w-10 rounded-full"
                 />
-                <h4 className="text-sm text-dark font-bold font-booking_font_bold">
+                <h4 className="text-base text-dark font-booking_font4">
                   {currentUser?.name}
                   <span className="block font-booking_font text-xs font-normal text-grey">
                     {currentUser?.email}
@@ -137,7 +137,7 @@ const DashboardSidebar = () => {
 };
 
 export const HeaderStyles = styled.div`
-  width: 320px;
+  width: 350px;
   position: sticky;
   top: 0;
   height: 100vh;
@@ -156,7 +156,6 @@ export const HeaderStyles = styled.div`
   }
   a,
   .tab {
-    font-weight: medium;
     margin: 0 auto;
     border-radius: 10px;
     width: 100%;

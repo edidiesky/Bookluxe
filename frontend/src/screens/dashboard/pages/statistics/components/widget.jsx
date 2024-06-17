@@ -43,7 +43,7 @@ const Widget = () => {
             className={`p-6 md:p-8 font-booking_font4 w-full rounded-[10px] hover:shadow-2xl justify-between cursor-pointer border grid bg-white items-center gap-4 h-48`}
           >
             <div className="flex flex-col">
-              <h3 className="text-4xl font-bold font-booking_font_normal">
+              <h3 className="text-4xl font-booking_font4">
                 <span className="text-grey pb-2 font-booking_font block text-base font-normal">
                   {widget?.title}
                 </span>

@@ -54,9 +54,7 @@ const GrowthStat = () => {
     <div id="chart" className="w-full">
       <div className="w-full flex flex-col gap-8">
         <div className="p-6 w-full px-6 flex-col rounded-[10px] min-h-[500px] border bg-white flex gap-4">
-          <h3 className="text-2xl font-semibold font-booking_booking_font_normal">
-            This Year Growth
-          </h3>
+          <h3 className="text-2xl font-booking_font4">This Year Growth</h3>
           <div className="flex w-full flex-col gap-8">
             <Chart
               options={options}
@@ -75,9 +73,7 @@ const GrowthStat = () => {
 const SalesStat = () => {
   return (
     <div className="w-full p-6 flex flex-col gap-4 bg-white border rounded-[10px]">
-      <h3 className="text-xl font-semibold font-booking_booking_font_normal">
-       Transaction History
-      </h3>
+      <h3 className="text-xl font-booking_font4">Transaction History</h3>
     </div>
   );
 };

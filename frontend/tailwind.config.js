@@ -31,9 +31,9 @@ module.exports = {
         custom_2: "1304px",
       },
       fontFamily: {
-        booking_font: ["Neue Montreal", "sans-serif"],
-        booking_font_bold: ["Neue Montreal", "sans-serif"],
-        booking_font_normal: ["Neue Montreal", "sans-serif"],
+        booking_font: ["Booking_Normal_Font", "sans-serif"],
+        booking_font_bold: ["Booking_Normal_Bold", "sans-serif"],
+        booking_font_normal: ["Booking_Normal_Medium", "sans-serif"],
         booking_font4: ["playfair", "sans-serif"],
       },
       colors: {
