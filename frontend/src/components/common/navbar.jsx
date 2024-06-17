@@ -44,7 +44,7 @@ const Navbar = () => {
               src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
               className="w-14 h-14 rounded-full object-cover"
             />
-            <h4 className="flex flex-col text-base font-bold font-booking_font4 text-dark">
+            <h4 className="flex flex-col text-base font-booking_font4 text-dark">
               HOME & VILLAS{" "}
               <span className="block font-semibold text-xs font-booking_font">
                 {" "}
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <Link
                   to={`/${list.path}`}
                   key={index}
-                  className={`text-sm hover:text-grey font-semibold flex items-center gap-2 p-3 px-3 rounded-[40px]`}
+                  className={`text-sm hover:text-grey font-booking_font4 flex items-center gap-2 p-3 px-3 rounded-[40px]`}
                 >
                   {/* <img src={list?.icon} className="w-4" alt="" /> */}
                   {list?.title}
@@ -181,9 +181,9 @@ const Navbar = () => {
                         />
                       )}
                       {currentUser && (
-                        <h4 className="text-sm hidden lg:block font-booking_font_bold text-dark font-bold family1">
+                        <h4 className="text-sm hidden lg:block font-booking_font4 text-dark family1">
                           {currentUser?.name}
-                          <span className="block font-semibold font-booking_font text-xs text-grey">
+                          <span className="block font-normal font-booking_font text-xs text-dark">
                             {currentUser?.email}
                           </span>
                         </h4>
@@ -199,7 +199,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <span className="flex items-center gap-4">
-                  <div className="btn text-xs text-center p-4 font-semibold text-white px-6 rounded-[40px]">
+                  <div className="btn text-xs text-center p-4 font-booking_font4 text-white px-6 rounded-[40px]">
                     Book Your Stay
                   </div>
                   <span
