@@ -9,10 +9,12 @@ import {
   CreateUserReservation,
   GetUserReservation,
   GetSingleReservation,
+  GetAllReservation,
 } from "../controllers/reservationsControllers.js";
 
 // router.route("/buyer/:id").get(authMiddleware, GetSingleBuyerReservations);
 router.route("/user").get(authMiddleware, GetUserReservation);
+router.route("/history").get(authMiddleware,adminMiddleware, GetUserReservation);
 // router.route("/host").get(authMiddleware, GetAllHostReservations);
 router
   .route("/:id")

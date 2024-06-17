@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import {
   GetSingleReservation,
   GetUserReservations,
+  GetAllReservations,
 } from "./reservationReducer";
 const initialState = {
   reservation: null,
@@ -35,7 +36,7 @@ export const reservationSlice = createSlice({
       state.getsingleReservationisSuccess = false;
       toast.error(action.payload);
     });
-
+    // GetAllReservations
     builder.addCase(GetUserReservations.pending, (state, action) => {
       state.getsingleReservationisLoading = true;
     });
@@ -46,6 +47,20 @@ export const reservationSlice = createSlice({
     });
     builder.addCase(GetUserReservations.rejected, (state, action) => {
       state.getsingleReservationisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(GetAllReservations.pending, (state, action) => {
+      state.getsingleReservationisLoading = true;
+    });
+    builder.addCase(GetAllReservations.fulfilled, (state, action) => {
+      state.getsingleReservationisLoading = false;
+      state.getsingleReservationisSuccess = true;
+      state.reservations = action.payload;
+    });
+    builder.addCase(GetAllReservations.rejected, (state, action) => {
+      state.getsingleReservationisSuccess = false;
+      state.getsingleReservationisLoading = false;
       toast.error(action.payload);
     });
   },

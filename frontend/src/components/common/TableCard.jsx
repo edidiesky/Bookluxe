@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import moment from "moment";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdEdit } from "react-icons/md";
 import { BsTrash } from "react-icons/bs";
 import DeleteModal from "../modals/DeleteModal";
@@ -76,7 +76,9 @@ const TableCard = ({ x, type }) => {
             </div>
           </td>
           <td>
-            <span className=" font-semibold family1  text-dark">{x?.email}</span>
+            <span className=" font-semibold family1  text-dark">
+              {x?.email}
+            </span>
           </td>
           <td>
             <span className=" text-dark  font-semibold family1">
@@ -127,7 +129,11 @@ const TableCard = ({ x, type }) => {
         <tr key={x?._id}>
           <td>
             <div className="flex w-full justify-center flex-col items-center gap-2">
-              <img src={x?.images[0]} alt="" className="w-28 h-20 object-cover rounded-lg" />
+              <img
+                src={x?.images[0]}
+                alt=""
+                className="w-28 h-20 object-cover rounded-lg"
+              />
               <span className=" font-semibold family1 text-center text-dark">
                 {x?.title}
               </span>
@@ -161,41 +167,35 @@ const TableCard = ({ x, type }) => {
     );
   }
   if (type === "Reservation") {
+    const startDate = moment(x?.startDate).format("DD MMM YYYY");
+    const endDate = moment(x?.endDate).format("DD MMM YYYY");
     return (
       <>
-        <AnimatePresence>
-          {userdeletemodal && (
-            <DeleteModal
-              id={x?._id}
-              modal={userdeletemodal}
-              setModal={setUserDeleteModal}
-            />
-          )}
-        </AnimatePresence>
-        <tr key={x?._id}>
+        <tr key={x?.id}>
+          <td className=" font-semibold">{x?.rooms?.title}</td>
           <td>
-            <span className=" font-semibold text-center family1 text-dark">
-              {x?.user}
-            </span>
-          </td>
-          <td className=" font-semibold">
-            {x?.status === "booked" ? (
-              <span className=" font-semibold font-booking_font_bold text-center success">
+            {/* <span className="p-4">
+              {x?.status}
+            </span> */}
+
+            {x?.status === "CONFIRMED" ? (
+              <span className=" font-semibold text-xs font-booking_font_bold text-center success">
                 {x?.status}
               </span>
             ) : (
-              <span className=" font-semibold font-booking_font_bold text-center danger">
+              <span className=" font-semibold text-xs font-booking_font_bold text-center danger">
                 {x?.status}
               </span>
             )}
           </td>
-
-          <td className=" font-semibold">{x?.venue}</td>
-
+          <td className=" font-semibold">{x?.totalPrice}</td>
+          <td className=" font-semibold">{x?.rooms?.address}</td>
           <td className=" font-semibold">
-            24th May - <span>25th Dec</span> 2024
+            {startDate} - {endDate}
           </td>
-          <td className=" font-semibold">09:00 - 12:00</td>
+          <td className=" font-semibold">
+            {moment(x?.createdAt).format("DD MMM YYYY")}
+          </td>
         </tr>
       </>
     );

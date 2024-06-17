@@ -122,9 +122,9 @@ const RoomLists = () => {
         <div className="w-full flex flex-col gap-12">
           <div className="py-24 px-8 w-full bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
             <FaRegCircleCheck fontSize={"80px"} color="var(--gold-1)" />
-            <h3 className="text-3xl md:text-4xl text-center font-booking_font4">
+            <h3 className="text-3xl text-center font-booking_font4">
               Your Payment has been confirmed
-              <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-lg font-booking_font text-grey">
+              <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-base font-booking_font text-grey">
                 Your payment has been carried out successfull! We appreciate you
               </span>
             </h3>
@@ -140,23 +140,23 @@ const RoomLists = () => {
                     className="w-[300px] object-cover h-[300px]"
                   />
                   <div className="w-full flex flex-col gap-4">
-                    <h3 className="text-4xl font-booking_font4">
+                    <h3 className="text-3xl font-booking_font4">
                       {updatedReservation?.rooms?.title}
                     </h3>
                     <ul className="flex flex-col gap-2">
-                      <li className="text-lg flex items-center gap-3 font-booking_font">
-                        <span className="font-bold">Check In:</span>
+                      <li className="text-base flex items-center gap-3 font-booking_font">
+                        <span className="font-bold font-booking_font_bold">Check In:</span>
                         {startDate}
                       </li>
-                      <li className="text-lg flex items-center gap-3 font-booking_font">
-                        <span className="font-bold">Check Out:</span>
+                      <li className="text-base flex items-center gap-3 font-booking_font">
+                        <span className="font-bold font-booking_font_bold">Check Out:</span>
                         {endDate}
                       </li>
-                      <li className="text-lg flex items-center gap-3 font-booking_font">
-                        <span className="font-bold">Guests:</span>4
+                      <li className="text-base flex items-center gap-3 font-booking_font">
+                        <span className="font-bold font-booking_font_bold">Guests:</span>4
                       </li>
-                      <li className="text-lg flex items-center gap-3 font-booking_font">
-                        <span className="font-bold">Total Days:</span>
+                      <li className="text-base flex items-center gap-3 font-booking_font">
+                        <span className="font-bold font-booking_font_bold">Total Days:</span>
                         {differenceInDays} days
                       </li>
                     </ul>
@@ -165,20 +165,20 @@ const RoomLists = () => {
               </div>
               <div className="w-[400px]">
                 <div className="w-full flex flex-col gap-4">
-                  <h3 className="text-4xl font-booking_font4">
+                  <h3 className="text-3xl font-booking_font4">
                     Reservation Details
                   </h3>
                   <ul className="flex flex-col gap-2">
-                    <li className="text-lg flex items-center gap-3 font-booking_font">
-                      <span className="font-bold">Order No:</span>
+                    <li className="text-base flex items-center gap-3 font-booking_font">
+                      <span className="font-bold font-booking_font_bold">Order No:</span>
                       {payment?.id}
                     </li>
-                    <li className="text-lg flex items-center gap-3 font-booking_font">
-                      <span className="font-bold">Order Date:</span>
+                    <li className="text-base flex items-center gap-3 font-booking_font">
+                      <span className="font-bold font-booking_font_bold">Order Date:</span>
                       {paymentDate}
                     </li>
-                    <li className="text-lg flex items-center gap-3 font-booking_font">
-                      <span className="font-bold">Transaction Id:</span>{" "}
+                    <li className="text-base flex items-center gap-3 font-booking_font">
+                      <span className="font-bold font-booking_font_bold">Transaction Id:</span>{" "}
                       {updatedReservation?.id}
                     </li>
                   </ul>
@@ -187,7 +187,7 @@ const RoomLists = () => {
             </div>
           </div>
           <div className="w-full flex items-center justify-end">
-            <h3 className="text-3xl md:text-4xl font-booking_font4">
+            <h3 className="text-3xl font-booking_font4">
               Amount Paid: <span>#{payment?.amount}</span>
             </h3>
           </div>

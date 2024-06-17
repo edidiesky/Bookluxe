@@ -116,15 +116,15 @@ const SalesStat = () => {
             return (
               <li
                 key={index}
-                className="text-lg py-2 px-6 cursor-pointer hover:bg-[#fafafa] font-booking_font4 flex items-center justify-between w-full"
+                className="text-base py-2 px-6 cursor-pointer hover:bg-[#fafafa] font-booking_font4 flex items-center justify-between w-full"
               >
                 <div className="flex items-center gap-2">
                   <div className="w-10 h-10 rounded-full bg-[#000] flex items-center justify-center text-white text-base">
                     {data?.user?.name[0]}
                   </div>
-                  <span className="text-lg">
+                  <span className="text-base">
                     {data?.user?.name}
-                    <div className="block font-booking_font text-sm text-grey">
+                    <div className="block font-booking_font text-xs text-grey">
                       {data?.user?.email}
                     </div>
                   </span>

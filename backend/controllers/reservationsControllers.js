@@ -17,6 +17,18 @@ const GetUserReservation = asyncHandler(async (req, res) => {
   return res.json(availableRooms);
 });
 
+const GetAllReservation = asyncHandler(async (req, res) => {
+  const availableRooms = await prisma.reservations.findMany({
+    include: {
+      user: true,
+      rooms: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return res.json(availableRooms);
+});
 const GetSingleReservation = asyncHandler(async (req, res) => {
   const availableRooms = await prisma.reservations.findUnique({
     where: {
@@ -76,4 +88,4 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
   return res.json(newReservation);
 });
 
-export { GetUserReservation, CreateUserReservation, GetSingleReservation };
+export { GetUserReservation,GetAllReservation, CreateUserReservation, GetSingleReservation };
