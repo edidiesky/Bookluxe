@@ -19,7 +19,7 @@ const Hero = () => {
       >
         <div className="w-full absolute bottom-0 left-0 z-[35] flex  gap-8 items-center justify-center py-6">
           <div className="flex items-center w-[90%]  max-w-custom_1 lg:flex-row flex-col gap-8 mx-auto justify-between">
-            <div className="w-full md:w-[70%] flex  md:flex-row flex-col md:justify-start items-center gap-6 md:gap-8 h-full">
+            <div className="w-full md:w-[90%] lg-w-[70%] flex  md:flex-row flex-col md:justify-start items-center gap-6 md:gap-8 h-full">
               <span
                 style={{ letterSpacing: "4px" }}
                 className="text-[9px] md:text-xs font-normal uppercase flex items-center gap-4 font-booking_font"

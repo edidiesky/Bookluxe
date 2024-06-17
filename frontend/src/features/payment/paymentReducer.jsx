@@ -96,7 +96,7 @@ export const UpdatePaymentToSuccess = createAsyncThunk(
         roomid,
         config
       );
-      return data;
+      return data.payment;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message

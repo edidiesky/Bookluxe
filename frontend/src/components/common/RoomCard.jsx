@@ -221,15 +221,15 @@ const RoomCard = ({ type, apartment }) => {
 
           <div
             style={{ letterSpacing: "1px" }}
-            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
+            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-[10px] font-bold font-booking_font_bold"
           >
             <span className="flex uppercase items-center gap-2">
               Explore Destinations <IoIosArrowRoundForward fontSize={"24px"} />
             </span>
 
-            <span className="flex text-xs text-grey font-normal font-booking_font flex-col">
+            <span className="flex text-[10px] text-grey font-normal font-booking_font flex-col">
               price
-              <span className="block text-lg text-stone-950 font-bold font-booking_font_bold">
+              <span className="block text-base text-stone-950 font-bold font-booking_font_bold">
                 ${apartment?.price}
               </span>
             </span>
