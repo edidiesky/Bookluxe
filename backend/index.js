@@ -39,6 +39,7 @@ import roomRoute from "./routes/roomRoutes.js";
 import reservationRoute from "./routes/reservationsRoute.js";
 import uploadRoute from "./routes/uploadRoute.js";
 import orderRoute from "./routes/orderRoutes.js";
+import StatRoute from "./routes/statRoute.js";
 
 app.use("/api/v1/auth", Auth);
 app.use("/api/v1/user", userAuth);
@@ -46,6 +47,7 @@ app.use("/api/v1/room", roomRoute);
 app.use("/api/v1/reservation", reservationRoute);
 app.use("/api/v1/upload", uploadRoute);
 app.use("/api/v1/payment", orderRoute);
+app.use("/api/v1/stat", StatRoute);
 
 // // Middlewares
 app.use(NotFound);
