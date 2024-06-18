@@ -33,7 +33,7 @@ const DashboardIndex = () => {
     city: city,
     address: address,
     features: features,
-    amenities: amenities,
+    // amenities: amenities,
     bedroom: rooms,
     bathroom: bathrooms,
     description: description,

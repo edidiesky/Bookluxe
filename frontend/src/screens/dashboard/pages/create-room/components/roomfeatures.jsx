@@ -19,7 +19,7 @@ const Roomfeatures = ({
         </div>
         <div className="pt-2 w-full flex flex-col gap-8">
           <div className="flex gap-4 flex-col w-full">
-            <span className="font-semibold font-booking_font_bold text-base block">
+            <span className="font-booking_font4 text-base block">
               Room Features
             </span>
             <div className="w-full grid grid-cols-2 lg:grid-cols-3 gap-3">
@@ -35,7 +35,7 @@ const Roomfeatures = ({
                     } flex w-full cursor-pointer hover:bg-[#fafafa] p-4 rounded-lg flex-col gap-2`}
                   >
                     {x?.icon}
-                    <span className="text-sm font-booking_font4">
+                    <span className="text-sm font-booking_font">
                       {x?.title}
                     </span>
                   </div>
@@ -43,7 +43,7 @@ const Roomfeatures = ({
               })}
             </div>
           </div>
-
+{/* 
           <div className="flex gap-4 flex-col w-full">
             <span className="font-semibold font-booking_font_bold text-base block">
               Room Amenities
@@ -68,7 +68,7 @@ const Roomfeatures = ({
                 );
               })}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
