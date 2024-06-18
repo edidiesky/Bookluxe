@@ -98,7 +98,7 @@ export default function App() {
             exact
             index
             element={
-              <Suspense fallback={<Loader />}>
+              <Suspense fallback={<></>}>
                 <Statistics />
               </Suspense>
             }

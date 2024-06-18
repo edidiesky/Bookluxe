@@ -160,22 +160,26 @@ body {
 textarea {
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
   padding: 0.6rem;
+  font-family: "Booking_Normal_Bold";
   border-radius: 10px;
 }
 input {
   border: none;
   outline: none;
+  font-family: "Booking_Normal_Bold";
 }
 input::placeholder {
   font-size: inherit;
   font-weight: normal;
   color: #000;
+  font-family: "Booking_Normal_Bold";
 }
 .input {
   border: 1px solid rgba(0, 0, 0, 0.2) !important;
   height: 55px;
   padding: 0 1rem;
   border-radius: 10px;
+  font-family: "Booking_Normal_Bold";
 }
 
 .btn {

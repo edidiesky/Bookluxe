@@ -35,29 +35,29 @@ const RoomDetail = ({
           <div className="w-full flex flex-col gap-2">
             <h4
               style={{ letterSpacing: "3px" }}
-              className="text-xs text-grey uppercase font-booking_font4"
+              className="text-xs text-grey uppercase font-booking_font_bold"
             >
               for settling in castle
             </h4>
-            <h3 className="text-2xl lg:text-2xl font-booking_font_bold font-medium text-text_dark_1 ">
+            <h3 className="text-2xl lg:text-2xl font-booking_font4 font-medium text-text_dark_1 ">
               {title}
             </h3>
             <div className="w-full flex flex-wrap gap-2">
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font4"
+                className="text-xs text-dark uppercase font-booking_font_bold"
               >
                 Price: ${price}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font4"
+                className="text-xs text-dark uppercase font-booking_font_bold"
               >
                 Rooms: {rooms}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font4"
+                className="text-xs text-dark uppercase font-booking_font_bold"
               >
                 BathRooms: {bathrooms}
               </h4>

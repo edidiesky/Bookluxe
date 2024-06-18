@@ -31,7 +31,7 @@ const GetAllAdminRooms = asyncHandler(async (req, res) => {
 const CreateRooms = asyncHandler(async (req, res) => {
   const room = await prisma.rooms.create({
     data: {
-      userid: req.user?.userid,
+      userid: req.user?.userId,
       ...req.body,
     },
   });

@@ -100,7 +100,7 @@ export const CreateRoom = createAsyncThunk(
         },
       };
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URLS}/rooms`,
+        `${import.meta.env.VITE_API_BASE_URLS}/room`,
         roomdata,
         config
       );

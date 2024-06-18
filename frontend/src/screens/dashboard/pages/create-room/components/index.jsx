@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { CreateRoom } from "@/features/room/roomReducer";
 import Loader from "@/components/home/loader";
 import { useNavigate } from "react-router-dom";
+import { handleClearRoomAlert } from "@/features/room/roomSlice";
 const DashboardIndex = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [city, setCity] = useState("");
@@ -43,6 +44,7 @@ const DashboardIndex = () => {
     dispatch(CreateRoom(roomData));
   };
   useEffect(() => {
+    dispatch(handleClearRoomAlert());
     if (creatingRoomisSuccess) {
       const timeout = setTimeout(() => {
         navigate(`/dashboard/rooms`);
