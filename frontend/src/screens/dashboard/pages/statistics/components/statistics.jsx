@@ -19,10 +19,12 @@ const Statistics = () => {
 };
 
 const GrowthStat = () => {
+  const { totalStatAmount, totalMonth } = useSelector((store) => store.stat);
+
   const [options, setOptions] = useState({
     chart: {
       height: 350,
-      type: "bar",
+      type: "line",
       fontFamily: "playfair",
       foreColor: "#333",
       fontSize: "30px",
@@ -39,20 +41,34 @@ const GrowthStat = () => {
       curve: "smooth",
     },
     xaxis: {
-      categories: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+      categories: totalMonth,
     },
   });
 
   const [series, setSeries] = useState([
     {
       name: "Transactions",
-      data: [14, 22, 45, 15, 40, 18, 58, 16],
+      data: totalStatAmount,
     },
-    // {
-    //   name: "Reservations",
-    //   data: [16, 23, 39, 26, 44, 25, 50, 28],
-    // },
   ]);
+  useEffect(() => {
+     if (Array.isArray(totalMonth) && Array.isArray(totalStatAmount)) {
+       if (totalMonth.length !== 0 || totalStatAmount.length !== 0) {
+         setOptions((prevOptions) => ({
+           ...prevOptions,
+           xaxis: {
+             categories: totalMonth,
+           },
+         }));
+         setSeries([
+           {
+             name: "Transactions",
+             data: totalStatAmount,
+           },
+         ]);
+       }
+     }
+  }, [totalStatAmount, totalMonth, setSeries, setOptions]);
   return (
     <div id="chart" className="w-full">
       <div className="w-full flex flex-col gap-8">
@@ -62,7 +78,7 @@ const GrowthStat = () => {
             <Chart
               options={options}
               series={series}
-              type="bar"
+              type="line"
               width={"100%"}
               height={430}
             />
@@ -75,24 +91,6 @@ const GrowthStat = () => {
 
 const SalesStat = () => {
   const dispatch = useDispatch();
-  
-  // const transactionList = [
-  //   {
-  //     name: "Jonas Felix",
-  //     email: "jonasfelix@gmail.com",
-  //     totalPrice: 19373,
-  //   },
-  //   {
-  //     name: "Blessed Dan",
-  //     email: "lessDan@gmail.com",
-  //     totalPrice: 19373,
-  //   },
-  //   {
-  //     name: "Tereas Jonas",
-  //     email: "jterejonas@gmail.com",
-  //     totalPrice: 3643,
-  //   },
-  // ];
 
   useEffect(() => {
     dispatch(GetPaymentHistory());
@@ -112,7 +110,7 @@ const SalesStat = () => {
           </Link>
         </div>
         <ul className="flex flex-col gap-2 w-full">
-          {payments?.map((data, index) => {
+          {payments?.slice(0, 3)?.map((data, index) => {
             return (
               <li
                 key={index}

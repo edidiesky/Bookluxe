@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Widget from "./widget";
 import ReservationList from "./ReservationList";
 import Statistics from "./statistics";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getAdminStat } from "@/features/stat/statReducer";
+import Loader from "@/components/home/loader";
 const DashboardIndex = () => {
   const { currentUser } = useSelector((store) => store.auth);
+  const { getStatisLoading } = useSelector((store) => store.stat);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAdminStat());
+  }, []);
+  if (getStatisLoading) {
+    return <Loader />;
+  }
   return (
     <div className="w-full">
       <div className="w-full flex flex-col gap-12">
