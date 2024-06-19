@@ -10,16 +10,19 @@ import {
   GetUserReservation,
   GetSingleReservation,
   GetAllReservation,
+  DeleteReservations,
 } from "../controllers/reservationsControllers.js";
 
 // router.route("/buyer/:id").get(authMiddleware, GetSingleBuyerReservations);
 router.route("/user").get(authMiddleware, GetUserReservation);
-router.route("/history").get(authMiddleware,adminMiddleware, GetUserReservation);
-// router.route("/host").get(authMiddleware, GetAllHostReservations);
+router
+  .route("/history")
+  .get(authMiddleware, adminMiddleware, GetUserReservation);
 router
   .route("/:id")
   .post(authMiddleware, CreateUserReservation)
-  .get(authMiddleware, GetSingleReservation);
+  .get(authMiddleware, GetSingleReservation)
+  .delete(authMiddleware, DeleteReservations);
 // .put(authMiddleware, UpdateBuyerReservations)
 // .delete(authMiddleware, DeleteBuyerReservations);
 

@@ -7,7 +7,10 @@ import { Link } from "react-router-dom";
 import Heart from "../../assets/svg/heart";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa6";
+import { RxCross1 } from "react-icons/rx";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { DeleteReservation } from "@/features/reservation/reservationReducer";
 
 const RoomCard = ({ type, apartment, inView, index }) => {
   const [tabindex, setTabIndex] = useState(0);
@@ -19,6 +22,8 @@ const RoomCard = ({ type, apartment, inView, index }) => {
       setTabIndex(tabindex >= apartment?.images?.length ? 0 : tabindex + 1);
     }
   };
+  const dispatch = useDispatch();
+  // DeleteReservation
   if (type == "trips") {
     const startDate = moment(apartment?.startDate).format("MMMM Do");
 
@@ -28,16 +33,27 @@ const RoomCard = ({ type, apartment, inView, index }) => {
         to={`/reservation/payment/${apartment?.id}`}
         className="w-full flex flex-col"
       >
-        <img
-          alt="Cotion"
-          placeholder="blur"
-          style={{
-            transition:
-              "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-          }}
-          src={apartment?.rooms?.images[0]}
-          className="w-full h-[240px] object-cover hover:grayscale-[1] grayscale-0"
-        />
+        <div className="h-[240px] group w-full relative">
+          <Link
+            to={"#"}
+            style={{ transition: "all .4s" }}
+            onClick={() => dispatch(DeleteReservation(apartment?.id))}
+            className="absolute group-hover:scale-100 scale-0 top-5 right-5 rounded-full w-12 h-12 z-[50] bg-white shadow-lg flex
+           items-center justify-center text-xl"
+          >
+            <RxCross1 />
+          </Link>
+          <img
+            alt="Cotion"
+            placeholder="blur"
+            style={{
+              transition:
+                "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+            src={apartment?.rooms?.images[0]}
+            className="w-full h-[240px] z-20 absolute object-cover hover:grayscale-[1] grayscale-0"
+          />
+        </div>
         <div className="w-full flex flex-col py-3 bg-white gap-2">
           <h4
             style={{ letterSpacing: "3px" }}
@@ -78,8 +94,8 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
 
           <Link
-            to={"#"}
-            //   onClick={handleFavouriteRooms}
+       
+            //   onClick={handleFavouriteRooms}     to={"#"}
             className="absolute z-[30] top-[10%] left-[5%]"
           >
             <Heart />

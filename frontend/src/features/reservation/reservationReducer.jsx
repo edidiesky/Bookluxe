@@ -100,3 +100,29 @@ export const GetAllReservations = createAsyncThunk(
     }
   }
 );
+
+
+export const DeleteReservation = createAsyncThunk(
+  "DeleteReservation",
+  async (reservationId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
+      const { data } = await axios.delete(
+        `${import.meta.env.VITE_API_BASE_URLS}/reservation/${reservationId}`,
+        config
+      );
+      return reservationId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);

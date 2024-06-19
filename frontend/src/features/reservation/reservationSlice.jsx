@@ -5,6 +5,7 @@ import {
   GetUserReservations,
   GetAllReservations,
   GetAllRoomAndReservations,
+  DeleteReservation,
 } from "./reservationReducer";
 const initialState = {
   reservation: null,
@@ -19,6 +20,10 @@ const initialState = {
   getsingleReservationisLoading: false,
   getsingleReservationisSuccess: false,
   getsingleReservationisError: false,
+
+  deleteReservationisLoading: false,
+  deleteReservationisSuccess: false,
+  deleteReservationisError: false,
 };
 
 export const reservationSlice = createSlice({
@@ -78,7 +83,22 @@ export const reservationSlice = createSlice({
       state.getsingleReservationisLoading = false;
       toast.error(action.payload);
     });
-    // GetAllRoomAndReservations
+    // DeleteReservation
+
+    
+    builder.addCase(DeleteReservation.pending, (state, action) => {
+      state.deleteReservationisLoading = true;
+    });
+    builder.addCase(DeleteReservation.fulfilled, (state, action) => {
+      state.deleteReservationisSuccess = true;
+      state.deleteReservationisLoading = false;
+      state.reservations = state.reservations.filter((Reservation) => Reservation.id !== action.payload);
+      toast.success("reservations has been deleted");
+    });
+    builder.addCase(DeleteReservation.rejected, (state, action) => {
+      state.deleteReservationisSuccess = false;
+      toast.error(action.payload);
+    });
   },
 });
 

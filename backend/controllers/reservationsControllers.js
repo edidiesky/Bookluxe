@@ -96,10 +96,30 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
 
   return res.json(newReservation);
 });
+const DeleteReservations = asyncHandler(async (req, res) => {
+  const reservations = await prisma.reservations.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  if (!reservations) {
+    res.status(404);
+    throw new Error("The reservations does not exist");
+  }
+  await prisma.reservations.delete({
+    where: { id: req.params.id },
+  });
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 
+  res
+    .status(200)
+    .json({ msg: "The reservations has been successfully deleted" });
+});
 export {
   GetUserReservation,
   GetAllReservation,
   CreateUserReservation,
   GetSingleReservation,
+  DeleteReservations,
 };
