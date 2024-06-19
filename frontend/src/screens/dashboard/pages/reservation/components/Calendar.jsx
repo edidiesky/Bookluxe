@@ -69,7 +69,7 @@ const mockedSchedulerData = [
       {
         id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
         startDate: new Date("2024-04-13T15:31:24.272Z"),
-        endDate: new Date("2024-08-28T10:28:22.649Z"),
+        endDate: new Date("2024-04-28T10:28:22.649Z"),
         occupancy: 3600,
         title: "Room",
         subtitle: "Subtitle A",
@@ -79,7 +79,7 @@ const mockedSchedulerData = [
       {
         id: "22fbe237-6344-4c8e-affb-64a1750f33bd",
         startDate: new Date("2024-10-07T08:16:31.123Z"),
-        endDate: new Date("2024-11-15T21:55:23.582Z"),
+        endDate: new Date("2024-10-15T21:55:23.582Z"),
         occupancy: 2852,
         title: "Project B",
         subtitle: "Subtitle B",
@@ -89,7 +89,7 @@ const mockedSchedulerData = [
       {
         id: "3601c1cd-f4b5-46bc-8564-8c983919e3f5",
         startDate: new Date("2024-03-30T22:25:14.377Z"),
-        endDate: new Date("2024-09-01T07:20:50.526Z"),
+        endDate: new Date("2024-04-01T07:20:50.526Z"),
         occupancy: 1800,
         title: "Project C",
         subtitle: "Subtitle C",
@@ -118,7 +118,7 @@ const mockedSchedulerData = [
       {
         id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
         startDate: new Date("2024-04-20T15:31:24.272Z"),
-        endDate: new Date("2024-09-28T10:28:22.649Z"),
+        endDate: new Date("2024-04-28T10:28:22.649Z"),
         occupancy: 3600,
         title: "Room A",
         subtitle: "Subtitle A",
@@ -128,7 +128,7 @@ const mockedSchedulerData = [
       {
         id: "22fbe237-6344-4c8e-affb-64a1750f33bd",
         startDate: new Date("2024-10-21T08:16:31.123Z"),
-        endDate: new Date("2024-11-24T21:55:23.582Z"),
+        endDate: new Date("2024-10-24T21:55:23.582Z"),
         occupancy: 2852,
         title: "Project B",
         subtitle: "Subtitle B",
@@ -138,7 +138,7 @@ const mockedSchedulerData = [
       {
         id: "3601c1cd-f4b5-46bc-8564-8c983919e3f5",
         startDate: new Date("2024-03-10T22:25:14.377Z"),
-        endDate: new Date("2024-09-11T07:20:50.526Z"),
+        endDate: new Date("2024-04-11T07:20:50.526Z"),
         occupancy: 1800,
         title: "Project C",
         subtitle: "Subtitle C",

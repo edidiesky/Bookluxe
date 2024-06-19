@@ -13,7 +13,7 @@ root.render(
   <React.StrictMode>
     <SmoothScroll>
       <Provider store={store}>
-        <Toaster />
+        {/* <Toaster /> */}
         <BrowserRouter>
           <App />
         </BrowserRouter>

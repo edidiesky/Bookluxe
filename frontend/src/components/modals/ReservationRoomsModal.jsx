@@ -56,7 +56,7 @@ const ReservationRoomsModal = ({
             <div className="flex items-center gap-2">
               <div
                 // onClick={() => setReservationModal(true)}
-                className="p-3 cursor-pointer text-sm font-booking_font_normal
+                className="p-3 cursor-pointer text-sm 
              bg-[#C5F244] btn px-8 font-booking_font rounded-[10px] font-bold text-dark"
               >
                 Save
@@ -344,8 +344,8 @@ const DeleteContainer = styled(motion.div)`
   top: 0;
   background: rgba(0, 0, 0, 0.3);
   .guestModalCard {
-    max-width: 85vw;
-    min-width: 60vw;
+    max-width: 550px;
+    min-width: 500px;
     display: flex;
     max-height: 50rem;
     align-items: center;

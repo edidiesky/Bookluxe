@@ -322,8 +322,8 @@ const ReservationModalStyles = styled(motion.div)`
   background: rgba(0, 0, 0, 0.4);
   padding:2rem 0;
   .deleteCard {
-    max-width: 1250px;
-    min-width: 1100px;
+    max-width: 650px;
+    min-width: 500px;
     display: flex;
     align-items: center;
     justify-content: center;

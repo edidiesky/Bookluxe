@@ -11,9 +11,6 @@ import {
 const initialState = {
   rooms: [],
   room: {},
-  alertText: "",
-  showAlert: false,
-  alertType: "",
   creatingRoomisLoading: false,
   creatingRoomisSuccess: false,
   creatingRoomisError: false,
@@ -71,7 +68,7 @@ export const patientSlice = createSlice({
     builder.addCase(getAllRoomsForAdmin.rejected, (state, action) => {
       state.getallRoomisSuccess = false;
       state.getallRoomisLoading = false;
-      toast.error(action.payload);
+      // toast.error(action.payload);
     });
 
     builder.addCase(getAllRooms.pending, (state, action) => {

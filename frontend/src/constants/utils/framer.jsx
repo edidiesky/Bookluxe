@@ -1,7 +1,7 @@
 export const slideup = {
   initial: {
     opacity: 0,
-    y: "30px",
+    y: "45px",
   },
   animate: (i) => ({
     opacity: 1,
@@ -10,57 +10,42 @@ export const slideup = {
   }),
   exit: {
     opacity: 0,
-    y: "30px",
+    y: "45px",
   },
 };
 
 export const smallslideup = {
   initial: {
     opacity: 0,
-    y: "42px",
+    y: "32px",
   },
   animate: (i) => ({
     opacity: 1,
     y: "0",
-    transition: { duration: 0.4, delay: i * 0.03, },
+    transition: { duration: 0.6, delay: i * 0.16 },
   }),
   exit: {
     opacity: 0,
-    y: "42px",
+    y: "32px",
   },
 };
 
 export const slideup2 = {
   initial: {
     opacity: 0,
-    y: "100px",
+    y: "150px",
   },
   animate: (i) => ({
     opacity: 1,
     y: "0",
-    transition: { duration: 0.4, delay: i * 0.16 },
+    transition: { duration: 0.6, delay: i * 0.16 },
   }),
   exit: {
     opacity: 0,
-    y: "100px",
+    y: "150px",
   },
 };
 
-export const slideup3 = {
-  initial: {
-    opacity: 0,
-    y: "100%",
-  },
-  animate: (i) => ({
-    opacity: 1,
-    y: "0",
-    transition: { duration: .6, delay: i * 0.16 },
-  }),
-  exit: {
-    opacity: 0,
-    y: "100%",
-  },
-};
 
 
 export const opacity = {

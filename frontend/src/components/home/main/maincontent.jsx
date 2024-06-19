@@ -1,10 +1,25 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import moment from "moment";
+import { addDays, format } from "date-fns";
 import { BiCheck, BiChevronDown } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { apartmentDataList } from "../../../data/apartmentData";
 import RoomCard from "../../common/RoomCard";
 import { getAllRooms } from "../../../features/room/roomReducer";
+import { motion, useInView } from "framer-motion";
+import {
+  opacity,
+  slideup2,
+  slideup,
+  smallslideup,
+} from "@/constants/utils/framer";
 const MainContent = () => {
   return (
     <div className="w-full flex flex-col gap-8">
@@ -20,6 +35,18 @@ const MainContent = () => {
 };
 
 const Hero = () => {
+  const today = new Date();
+  const [date, setDate] = React.useState({
+    from: today,
+    to: addDays(today, 3),
+  });
+  const startdate = date?.from;
+  const enddate = date?.to;
+  let date1 = moment(startdate);
+  let date2 = moment(enddate);
+  const differenceInDays = date2?.diff(date1, "days"); // Convert milliseconds to days
+  // console.log(moment(startdate)?.date());
+
   return (
     <div
       className="w-full min-h-[100vh] py-32 relative flex items-center justify-center
@@ -55,54 +82,70 @@ const Hero = () => {
 
         <div className="w-[95%] lg:w-full py-4 lg:flex-row flex-col items-center justify-center flex">
           <div className="w-full lg:w-[700px] py-8  min-h-[160px] bg-white flex items-center justify-center">
-            <span className="pr-3 md:pr-8 border-r">
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
-              >
-                CHECK IN
-              </span>
+            <Popover>
+              <PopoverTrigger>
+                <div className="flex items-center gap-3">
+                  <span className="pr-3 md:pr-8 border-r">
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
+                    >
+                      CHECK IN
+                    </span>
 
-              <div className="flex items-center gap-2">
-                <span
-                  style={{ letterSpacing: "4px" }}
-                  className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-                >
-                  19
-                </span>
-                <span
-                  style={{ letterSpacing: "4px" }}
-                  className="text-[8px] md:text-xs uppercase leading-[1.5] flex flex-col text-dark font-normal"
-                >
-                  JUN
-                  <BiChevronDown fontSize={"24px"} />
-                </span>
-              </div>
-            </span>
-            <span className="px-4 md:px-8 border-r">
-              <span
-                style={{ letterSpacing: "4px" }}
-                className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
-              >
-                CHECK OUT
-              </span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        style={{ letterSpacing: "4px" }}
+                        className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                      >
+                        {moment(startdate)?.date()}
+                      </span>
+                      <span
+                        style={{ letterSpacing: "4px" }}
+                        className="text-[8px] md:text-xs uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                      >
+                        {moment(startdate).format("MMM").toUpperCase()}
+                        <BiChevronDown fontSize={"24px"} />
+                      </span>
+                    </div>
+                  </span>
+                  <span className="px-4 md:px-8 border-r">
+                    <span
+                      style={{ letterSpacing: "4px" }}
+                      className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
+                    >
+                      CHECK OUT
+                    </span>
 
-              <div className="flex items-center gap-2">
-                <span
-                  style={{ letterSpacing: "4px" }}
-                  className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
-                >
-                  19
-                </span>
-                <span
-                  style={{ letterSpacing: "4px" }}
-                  className="text-[8px] md:text-xs uppercase leading-[1.5] flex flex-col text-dark font-normal"
-                >
-                  JUN
-                  <BiChevronDown fontSize={"24px"} />
-                </span>
-              </div>
-            </span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        style={{ letterSpacing: "4px" }}
+                        className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                      >
+                        {moment(enddate)?.date()}
+                      </span>
+                      <span
+                        style={{ letterSpacing: "4px" }}
+                        className="text-[8px] md:text-xs uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                      >
+                        {moment(enddate).format("MMM").toUpperCase()}
+                        <BiChevronDown fontSize={"24px"} />
+                      </span>
+                    </div>
+                  </span>
+                </div>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  initialFocus
+                  mode="range"
+                  defaultMonth={date?.from}
+                  selected={date}
+                  onSelect={setDate}
+                  numberOfMonths={2}
+                />
+              </PopoverContent>
+            </Popover>
             <span className="px-4 md:px-8">
               <span
                 style={{ letterSpacing: "4px" }}
@@ -121,7 +164,10 @@ const Hero = () => {
               </div>
             </span>
           </div>
-          <div className="w-full lg:w-[250px] bg-[var(--dark-1)] min-h-[100px] md:min-h-[160px] flex items-center justify-center">
+          <div
+            style={{ transition: "all .6s" }}
+            className="w-full lg:w-[250px] hover:opacity-[.8] cursor-pointer bg-[var(--dark-1)] min-h-[100px] md:min-h-[160px] flex items-center justify-center"
+          >
             <h5
               style={{ letterSpacing: "5px" }}
               className="text-[10px] md:text-sm uppercase leading-[1.5] text-center text-white font-semibold"
@@ -129,6 +175,201 @@ const Hero = () => {
               check <br /> availability
             </h5>
           </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const RoomFlex = () => {
+  const RoomFlex_text_ref_1 = useRef(null);
+  const RoomFlex_text_ref_2 = useRef(null);
+  const RoomFlex_text_ref_4 = useRef(null);
+  const RoomFlex_text_ref_5 = useRef(null);
+
+  const inView1 = useInView(RoomFlex_text_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
+
+  const inView5 = useInView(RoomFlex_text_ref_5, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView2 = useInView(RoomFlex_text_ref_2, {
+    margin: "0px 100px -50px 0px",
+  });
+
+  const RoomFlex_text_1 = [`Enjoy`, `A`, `Luxury`, `Experience`];
+  const RoomFlex_text_2 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet`,
+  ];
+
+  const RoomFlex_text_3 = ["Flex your Life", "in our amazing", "Home Resort"];
+  const RoomFlex_text_4 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+  ];
+  const RoomFlex_text_5 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+  ];
+
+  return (
+    <div className="w-full flex py-32 flex-col gap-40">
+      <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
+        <h1
+          ref={RoomFlex_text_ref_1}
+          className="text-dark md:text-center leading-[1.6] text-5xl md:text-7xl font-booking_font4"
+        >
+          <span
+            style={{ letterSpacing: "4px" }}
+            className="text-xs pb-12 font-semibold uppercase block font-booking_font"
+          >
+            Luxury Home & Best Resort
+          </span>
+          <span className=" md:w-[550px] mx-auto leading-[1] gap-x-[5px] flex md:items-center md:justify-center flex-wrap ">
+            {RoomFlex_text_1.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    animate={inView1 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
+          <span
+            className="text-lg w-full md:w-[650px] md:mx-auto font-normal pt-6
+             flex md:items-center md:justify-center gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {RoomFlex_text_2.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView1 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
+        </h1>
+      </div>
+      <div className="w-[90%] mx-auto gap-24 md:gap-24 py-20 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
+        <div className="w-full lg:w-[450px] h-[400px] md:h-[550px] relative">
+          <img
+            src="/images/pearl_1.jpeg"
+            alt=""
+            className="w-full absolute h-full object-cover"
+          />
+          <div className="absolute -bottom-[6%] bg-[var(--gold-1)] -left-[1%] lg:-left-[10%] min-h-[190px] w-[180px] flex items-center justify-center">
+            <div className="text-5xl text-center flex flex-col gap-1 uppercase text-white font-booking_font4">
+              + 8
+              <br />{" "}
+              <span
+                style={{ letterSpacing: "3px" }}
+                className="text-xs font-booking_font uppercase"
+              >
+                Big Rooms
+              </span>
+            </div>
+          </div>
+        </div>
+        <div ref={RoomFlex_text_ref_2} className="w-full flex flex-col gap-8">
+          <span
+            style={{ letterSpacing: "3px" }}
+            className="text-xs font-booking_font uppercase"
+          >
+            enjoy your life
+          </span>
+          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4 gap-x-[5px] flex flex-wrap ">
+            {RoomFlex_text_3.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={slideup2}
+                    custom={index}
+                    initial="initial"
+                    animate={inView2 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </h2>
+          <span
+            className="text-lg w-full md:w-[650px] md:mx-auto font-normal
+             flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {RoomFlex_text_4.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView2 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
+          <span
+            ref={RoomFlex_text_ref_5}
+            className="text-lg w-full font-normal
+             flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {RoomFlex_text_5.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView5 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
         </div>
       </div>
     </div>
@@ -192,11 +433,30 @@ const Collections = () => {
   useEffect(() => {
     dispatch(getAllRooms());
   }, []);
+    const collection_ref_1 = useRef(null);
+    const collection_ref_2 = useRef(null);
+    const RoomFlex_text_ref_5 = useRef(null);
+
+    const inView1 = useInView(collection_ref_1, {
+      margin: "0px 100px -50px 0px",
+    });
+
+    const inView5 = useInView(RoomFlex_text_ref_5, {
+      margin: "0px 100px -50px 0px",
+    });
+    const inView2 = useInView(collection_ref_2, {
+      margin: "0px 100px -50px 0px",
+    });
   return (
     <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
-      <div className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3">
+      <div
+        ref={collection_ref_1}
+        className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3"
+      >
         {rooms?.map((apartment, index) => {
-          return <RoomCard key={index} apartment={apartment} />;
+          return (
+            <RoomCard index={index} inView={inView1} key={index} apartment={apartment} />
+          );
         })}
       </div>
 
@@ -563,74 +823,6 @@ const RoomsBanner = () => {
             alt=""
             className="w-[70%]"
           />
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const RoomFlex = () => {
-  return (
-    <div className="w-full flex py-32 flex-col gap-40">
-      <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
-        <h1 className="text-dark text-center leading-[1.6] text-5xl md:text-7xl font-booking_font4">
-          <span
-            style={{ letterSpacing: "4px" }}
-            className="text-xs pb-12 font-semibold uppercase block font-booking_font"
-          >
-            Luxury Home & Best Resort
-          </span>
-          Enjoy A Luxury <br /> Experience
-          <span className="text-lg w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-            reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ad, reprehenderit. Lorem ipsum dolor sit amet
-          </span>
-        </h1>
-      </div>
-      <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
-        <div className="w-full lg:w-[450px] h-[400px] md:h-[550px] relative">
-          <img
-            src="/images/pearl_1.jpeg"
-            alt=""
-            className="w-full absolute h-full object-cover"
-          />
-          <div className="absolute -bottom-[6%] bg-[var(--gold-1)] -left-[1%] lg:-left-[10%] min-h-[190px] w-[180px] flex items-center justify-center">
-            <div className="text-5xl text-center flex flex-col gap-1 uppercase text-white font-booking_font4">
-              + 8
-              <br />{" "}
-              <span
-                style={{ letterSpacing: "3px" }}
-                className="text-xs font-booking_font uppercase"
-              >
-                Big Rooms
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-8">
-          <span
-            style={{ letterSpacing: "3px" }}
-            className="text-xs font-booking_font uppercase"
-          >
-            enjoy your life
-          </span>
-          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4">
-            Flex your Life <br /> in our amazing <br /> Home Resort
-          </h2>
-          <span className="text-base leading-[1.5] font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
-          </span>
-          <span className="text-base leading-[1.5] font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
-          </span>
         </div>
       </div>
     </div>
