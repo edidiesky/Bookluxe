@@ -11,6 +11,7 @@ export const slideup = {
   exit: {
     opacity: 0,
     y: "45px",
+    transition: { duration: 0.5 },
   },
 };
 
@@ -27,6 +28,7 @@ export const smallslideup = {
   exit: {
     opacity: 0,
     y: "32px",
+    transition: { duration: 0.5 },
   },
 };
 
@@ -43,10 +45,47 @@ export const slideup2 = {
   exit: {
     opacity: 0,
     y: "150px",
+    transition: { duration: 0.5 },
   },
 };
 
+export const clipPathRight = {
+  initial: {
+    opacity: 0,
+    // clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+  },
+  animate: (i) => ({
+    opacity: 1,
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition: { duration: 1.2 },
+  }),
+  exit: {
+    opacity: 0,
+    transition: {duration: 0.5},
+    // clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+  },
+};
 
+export const clipPathLeft = {
+  initial: {
+    opacity: 0,
+    clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    // clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+  },
+  animate: (i) => ({
+    opacity: 1,
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    transition: { duration: 1.2, delay: i * 0.4 },
+  }),
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.5 },
+    clipPath: "polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)",
+    // clipPath: "polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)",
+  },
+};
 
 export const opacity = {
   initial: {
@@ -54,7 +93,7 @@ export const opacity = {
   },
   animate: (i) => ({
     opacity: 1,
-    transition: { duration: 1, delay: i * 0.04 },
+    transition: { duration: 1.2, delay: i * 0.1 },
   }),
   exit: {
     opacity: 0,

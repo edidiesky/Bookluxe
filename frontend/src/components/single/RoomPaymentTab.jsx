@@ -200,7 +200,7 @@ export default function RoomPaymentTab({
           <div className="w-full flex flex-col gap-2">
             {/* price */}
             <div className="w-full text-base font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-white">
+              <span className="text-grey text-lg block font-booking_font font-normal">
                 {room?.price} x {differenceInDays} nights
               </span>
               <span>
@@ -209,16 +209,20 @@ export default function RoomPaymentTab({
               </span>
             </div>
             {/* taxes */}
-            <div className="w-full text-base font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-white">Fees and taxess</span>
+            <div className="w-full font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
+              <span className="text-grey text-lg block font-booking_font font-normal">
+                Fees and taxess
+              </span>
               <span>
                 {room?.price * differenceInDays * 0.1}{" "}
                 <span className="text-lg">USD</span>
               </span>
             </div>
             {/* total */}
-            <div className="w-full text-base font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-white">Total</span>
+            <div className="w-full font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
+              <span className="text-grey text-lg block font-booking_font font-normal">
+                Total
+              </span>
               <span>
                 {100} <span className="text-lg">USD</span>
               </span>
@@ -226,10 +230,12 @@ export default function RoomPaymentTab({
           </div>
           {/* summary */}
           <div
-            className="w-full text-xl font-normal text-white font-booking_font4
+            className="w-full text-xl font-normal text-grey font-booking_font4
                     flex items-center justify-between"
           >
-            <span>You Pay</span>
+            <span className="text-base font-booking_font font-normal">
+              You Pay
+            </span>
             <span className="text-[var(--gold-1)] ">
               {totalPrice} <span className="text-base">USD</span>
             </span>

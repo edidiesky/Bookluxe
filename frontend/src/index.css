@@ -95,7 +95,7 @@
 }
 @font-face {
   font-display: swap;
-  font-family: "Neue Montreal";
+  font-family: "Montreal";
   font-style: normal;
   font-weight: 400 600 700;
   src: url(https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2)
@@ -148,9 +148,7 @@ body {
   line-height: 1.1;
   /* letter-spacing: 1px; */
 }
-#reactSchedulerOutsideWrapper {
-  font-family: "Neue Montreal", sans-serif !important;
-}
+
 .hide {
   overflow: hidden !important;
 }
@@ -227,6 +225,7 @@ html.lenis body {
 }
 
 /* calendar */
+#reactSchedulerOutsideWrapper ,
 #reactSchedulerOutsideWrapper *,
 #reactSchedulerOutsideWrapper ::before,
 #reactSchedulerOutsideWrapper ::after {

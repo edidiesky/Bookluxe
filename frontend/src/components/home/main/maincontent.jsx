@@ -19,6 +19,8 @@ import {
   slideup2,
   slideup,
   smallslideup,
+  clipPathLeft,
+  clipPathRight,
 } from "@/constants/utils/framer";
 const MainContent = () => {
   return (
@@ -186,11 +188,13 @@ const RoomFlex = () => {
   const RoomFlex_text_ref_2 = useRef(null);
   const RoomFlex_text_ref_4 = useRef(null);
   const RoomFlex_text_ref_5 = useRef(null);
-
+  const image_ref_1 = useRef(null);
   const inView1 = useInView(RoomFlex_text_ref_1, {
     margin: "0px 100px -50px 0px",
   });
-
+  const inView7 = useInView(image_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
   const inView5 = useInView(RoomFlex_text_ref_5, {
     margin: "0px 100px -50px 0px",
   });
@@ -253,7 +257,7 @@ const RoomFlex = () => {
             })}
           </span>
           <span
-            className="text-lg w-full md:w-[650px] md:mx-auto font-normal pt-6
+            className="text-lg md:text-xl w-full md:w-[650px] md:mx-auto font-normal pt-6
              flex md:items-center md:justify-center gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_2.map((x, index) => {
@@ -278,12 +282,18 @@ const RoomFlex = () => {
         </h1>
       </div>
       <div className="w-[90%] mx-auto gap-24 md:gap-24 py-20 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
-        <div className="w-full lg:w-[450px] h-[400px] md:h-[550px] relative">
-          <img
+        <div
+          ref={image_ref_1}
+          className="w-full lg:w-[450px] h-[400px] md:h-[550px] relative"
+        >
+          <motion.img
+            variants={clipPathLeft}
+            initial="initial"
+            animate={inView7 ? "animate" : "exit"}
             src="/images/pearl_1.jpeg"
             alt=""
             className="w-full absolute h-full object-cover"
-          />
+          ></motion.img>
           <div className="absolute -bottom-[6%] bg-[var(--gold-1)] -left-[1%] lg:-left-[10%] min-h-[190px] w-[180px] flex items-center justify-center">
             <div className="text-5xl text-center flex flex-col gap-1 uppercase text-white font-booking_font4">
               + 8
@@ -324,7 +334,7 @@ const RoomFlex = () => {
             })}
           </h2>
           <span
-            className="text-lg w-full md:w-[650px] md:mx-auto font-normal
+            className="text-lg md:text-xl w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_4.map((x, index) => {
@@ -348,7 +358,7 @@ const RoomFlex = () => {
           </span>
           <span
             ref={RoomFlex_text_ref_5}
-            className="text-lg w-full font-normal
+            className="text-lg md:text-xl w-full font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_5.map((x, index) => {
@@ -408,13 +418,13 @@ const About = () => {
           <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4">
             Relax in our <br /> Home Resort
           </h2>
-          <span className="text-base font-booking_font">
+          <span className="text-lg font-booking_font">
             Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
             Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
             euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
             tempor nunc vel nisl condimentum, nec tempor risus.
           </span>
-          <span className="text-base font-booking_font">
+          <span className="text-lg font-booking_font">
             Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
             Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
             euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
@@ -433,20 +443,36 @@ const Collections = () => {
   useEffect(() => {
     dispatch(getAllRooms());
   }, []);
-    const collection_ref_1 = useRef(null);
-    const collection_ref_2 = useRef(null);
-    const RoomFlex_text_ref_5 = useRef(null);
+  const collection_ref_1 = useRef(null);
+  const collection_ref_2 = useRef(null);
+  const text_ref_4 = useRef(null);
+  const text_ref_5 = useRef(null);
+  const image_ref_1 = useRef(null);
+  const inView1 = useInView(collection_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
 
-    const inView1 = useInView(collection_ref_1, {
-      margin: "0px 100px -50px 0px",
-    });
+  const inView5 = useInView(text_ref_4, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView6 = useInView(text_ref_5, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView7 = useInView(image_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView2 = useInView(collection_ref_2, {
+    margin: "0px 100px -50px 0px",
+  });
 
-    const inView5 = useInView(RoomFlex_text_ref_5, {
-      margin: "0px 100px -50px 0px",
-    });
-    const inView2 = useInView(collection_ref_2, {
-      margin: "0px 100px -50px 0px",
-    });
+  const text_1 = [`Our Amazing`, `Home Resort`];
+  const text_4 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+  ];
+
   return (
     <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
       <div
@@ -455,7 +481,12 @@ const Collections = () => {
       >
         {rooms?.map((apartment, index) => {
           return (
-            <RoomCard index={index} inView={inView1} key={index} apartment={apartment} />
+            <RoomCard
+              index={index}
+              inView={inView1}
+              key={index}
+              apartment={apartment}
+            />
           );
         })}
       </div>
@@ -471,28 +502,91 @@ const Collections = () => {
           >
             Carry out a view of
           </span>
-          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4">
-            Our Amazing <br /> Home Resort
+          <h2
+            ref={collection_ref_2}
+            className="text-5xl md:text-7xl leading-[1.2] font-booking_font4"
+          >
+            <span className="w-full gap-x-[5px] flex flex-wrap ">
+              {text_1.map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup2}
+                      custom={index}
+                      initial="initial"
+                      animate={inView2 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
           </h2>
-          <span className="text-base w-[90%] font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
+          <span
+            ref={text_ref_4}
+            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+             flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {text_4.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView5 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
           </span>
-          <span className="text-base w-[90%] font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
+          <span
+            ref={text_ref_5}
+            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+             flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {text_4.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView6 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
           </span>
         </div>
-        <div className=" w-full lg:w-[450px] h-[400px] md:h-[650px] relative">
-          <img
+        <div
+          ref={image_ref_1}
+          className=" w-full lg:w-[450px] h-[400px] md:h-[650px] relative"
+        >
+          <motion.img
+            variants={clipPathLeft}
+            initial="initial"
+            animate={inView7 ? "animate" : "exit"}
             src="/images/hazel_2.jpeg"
             alt=""
             className="w-full absolute h-full object-cover"
-          />
+          ></motion.img>
           <div className="absolute -bottom-[6%] bg-[var(--gold-1)] -left-[1%] lg:-left-[10%] min-h-[190px] w-[180px] flex items-center justify-center">
             <div className="text-5xl text-center flex flex-col gap-1 uppercase text-white font-booking_font4">
               + 8
@@ -521,7 +615,7 @@ const Collections = () => {
           <div className=" flex items-center flex-col justify-center">
             <h4 className="text-3xl text-dark font-booking_font4">
               Reception 24h / 7 Days
-              <span className="block text-base pt-2 font-booking_font text-start text-grey">
+              <span className="block text-lg pt-2 font-booking_font text-start text-grey">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                 tellus, luctus nec
               </span>
@@ -537,7 +631,7 @@ const Collections = () => {
           <div className=" flex items-center flex-col justify-center">
             <h4 className="text-3xl text-dark font-booking_font4">
               Reservation Online
-              <span className="block text-base pt-2 font-booking_font text-start text-grey">
+              <span className="block text-lg pt-2 font-booking_font text-start text-grey">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                 tellus, luctus nec
               </span>
@@ -567,6 +661,49 @@ const RoomStructure = () => {
       icon: "https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-18.png",
       title: "Disinfection",
     },
+  ];
+  const roomUtilities = [
+    {
+      width: "90%",
+      title: "Room Service",
+      bgColor: "var(--gold-1)",
+    },
+    {
+      width: "60%",
+      title: "BreakFact Inclusion",
+      bgColor: "#000",
+    },
+    {
+      width: "70%",
+      title: "Smart Television",
+      bgColor: "var(--gold-1)",
+    },
+  ];
+  const collection_ref_1 = useRef(null);
+  const collection_ref_2 = useRef(null);
+  const collection_ref_3 = useRef(null);
+  const text_ref_5 = useRef(null);
+  const image_ref_1 = useRef(null);
+  const inView1 = useInView(collection_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
+
+  const inView3 = useInView(image_ref_1, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView4 = useInView(collection_ref_3, {
+    margin: "0px 100px -50px 0px",
+  });
+  const inView2 = useInView(collection_ref_2, {
+    margin: "0px 100px -50px 0px",
+  });
+
+  const text_1 = [`The`, `Structure`];
+  const text_4 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
   ];
   return (
     <div className="w-full flex py-20 flex-col gap-20">
@@ -622,47 +759,102 @@ const RoomStructure = () => {
             style={{ letterSpacing: "3px" }}
             className="text-xs font-normal font-booking_font uppercase"
           >
-            HOTEL FACILITIES
+            {/* HOTEL FACILITIES */}
           </span>
-          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4">
-            The Structure
+          <h2
+            ref={collection_ref_1}
+            className="text-5xl md:text-7xl leading-[1.2] font-booking_font4"
+          >
+            {/* The Structure */}
+            <span className="w-full gap-x-[5px] flex flex-wrap ">
+              {text_1.map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup2}
+                      custom={index}
+                      initial="initial"
+                      animate={inView1 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
           </h2>
-          <span className="text-base leading-[1.6] font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
+          <span
+            ref={collection_ref_3}
+            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+             flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
+          >
+            {text_4.map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={smallslideup}
+                    custom={index}
+                    initial="initial"
+                    key={index}
+                    animate={inView4 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
           </span>
-          <div className="flex flex-col gap-4 w-full">
-            <div className="h-10 bg-[var(--gold-1)] px-4 text-white font-semibold text-sm w-[90%] flex items-center justify-between">
-              <span className="">Room Service</span>
-              <span className="">90%</span>
-            </div>
-
-            <div className="h-10 bg-[var(--dark-1)] px-4 text-white font-semibold text-sm w-[60%] flex items-center justify-between">
-              <span className="">BreakFact Inclusion</span>
-              <span className="">90%</span>
-            </div>
-
-            <div className="h-10 bg-[var(--dark-1)] px-4 text-white font-semibold text-sm w-[90%] flex items-center justify-between">
-              <span className="">Laundry Service</span>
-              <span className="">90%</span>
-            </div>
+          <div ref={image_ref_1} className="flex flex-col gap-4 w-full">
+            {roomUtilities?.map((data, index) => {
+              return (
+                <motion.div
+                  variants={clipPathLeft}
+                  initial="initial"
+                  custom={index}
+                  animate={inView3 ? "animate" : "exit"}
+                  style={{
+                    width: `${data?.width}`,
+                    background: `${data?.bgColor}`,
+                  }}
+                  key={index}
+                  className="h-10  px-4 text-white font-semibold text-sm flex items-center justify-between"
+                >
+                  <span className="">{data?.title}</span>
+                  <span className="">{data?.width}</span>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>
-      <div className="w-[90%] py-8 mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-4">
+      <div
+        ref={collection_ref_2}
+        className="w-[90%] py-8 mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-4"
+      >
         {roomService.map((room, index) => {
           return (
-            <div key={index} className="flex items-center gap-4">
+            <motion.div
+              variants={slideup2}
+              custom={index}
+              initial="initial"
+              animate={inView2 ? "animate" : "exit"}
+              key={index}
+              className="flex items-center gap-4"
+            >
               <img src={room.icon} alt="room_images_icon" className="w-20" />
-              <span className="text-xl font-booking_font4 font-bold">
+              <span className="text-xl font-booking_font4">
                 {room.title}
                 <span className="block text-sm text-grey font-normal font-booking_font">
                   Lorem ipsum dolor sit amet
                 </span>
               </span>
-            </div>
+            </motion.div>
           );
         })}
       </div>
@@ -753,7 +945,7 @@ const RoomsPrice = () => {
                     return (
                       <div
                         key={index}
-                        className="w-full flex items-center gap-4 text-base"
+                        className="w-full flex items-center gap-4 text-lg"
                       >
                         <BiCheck /> {am}
                       </div>
@@ -796,7 +988,7 @@ const RoomsBanner = () => {
               BUS STATION NEAR
             </span>
             Enjoy A Luxury <br /> Experience
-            <span className="block py-6 text-base leading-[1.6] font-normal font-booking_font">
+            <span className="block py-6 text-lg leading-[1.6] font-normal font-booking_font">
               Suspendisse commodo bibendum purus at hendrerit. Vivamus aliquam
               bibendum fringilla. Praesent cursus felis nunc, quis vulputate
               sapien posuere vitae. Aliquam erat volutpat. Cras egestas porta

@@ -66,7 +66,7 @@ const DashboardSidebar = () => {
       <div className="w-full h-full py-4 justify-between flex items-center flex-col gap-4">
         <div className="w-full h-[90%] flex flex-col gap-8">
           <div className="flex flex-col w-full items-start justify-between py-1">
-            {/* <h4 className="text-sm text-[#E0E5E7]">RockTrading</h4> */}
+            {/* <h4 className="text-sm text-[#000]">RockTrading</h4> */}
             <div className=" w-[90%] mx-auto relative flex gap-4 items-center flex-col justify-between">
               <div className="w-full flex items-center gap-1 justify-start">
                 <img
@@ -96,7 +96,7 @@ const DashboardSidebar = () => {
                     // activeClassName="active"
                     end
                     className={`
-                      text-base w-[90%] mx-auto text-[#E0E5E7]`}
+                      text-base w-[90%] mx-auto text-[#000]`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
@@ -117,7 +117,7 @@ const DashboardSidebar = () => {
             <NavLink
               // activeClassName="active"
               end
-              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font4 text-[#E0E5E7] family1`}
+              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font4 text-[#000] family1`}
               to={`/dashboard/settings`}
             >
               <FiSettings fontSize={"24px"} />
@@ -130,7 +130,7 @@ const DashboardSidebar = () => {
                   alt=""
                   className="w-10 rounded-full"
                 />
-                <h4 className="text-base text-[#fff] font-booking_font4">
+                <h4 className="text-base text-[#000] font-booking_font4">
                   {currentUser?.name}
                   <span className="block font-booking_font text-xs font-normal text-grey">
                     {currentUser?.email}
@@ -150,7 +150,7 @@ export const HeaderStyles = styled.div`
   position: sticky;
   top: 0;
   height: 100vh;
-  background: #191f2f;
+  background: #fff;
   /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
 
   .dropdown {

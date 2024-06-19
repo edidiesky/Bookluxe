@@ -15,7 +15,7 @@ const RecommendedList = ({ roomid }) => {
       <div className="w-[90%]  max-w-custom mx-auto flex flex-col gap-12">
         <h3 className="text-4xl md:text-5xl font-booking_font4">
           Similar Rooms
-          <span className="block pt-3 text-sm">
+          <span className="block pt-3 text-lg font-booking_font font-normal text-grey">
             Enjoy the comforts of home and beyond with these distinctive
             features.
           </span>

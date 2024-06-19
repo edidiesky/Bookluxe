@@ -57,10 +57,10 @@ const RoomLists = () => {
           <div className="w-full">
             <div className="flex flex-col gap-6 w-full">
               {/* room title */}
-              <h3 className="text-5xl font-booking_font4">
+              <h3 className="text-5xl font-booking_font4 font-normal">
                 {room?.title}
 
-                <span className="text-base text-dark font-normal font-booking_font4 flex items-center gap-3">
+                <span className="text-base text-dark font-normal font-booking_font_bold flex items-center gap-3">
                   Room, London{" "}
                   <span className="flex items-center gap-1">
                     <FaStar />
@@ -120,7 +120,7 @@ const RoomLists = () => {
               <div className="w-full py-12 flex flex-col gap-4">
                 <h3 className="text-3xl font-booking_font4">
                   Room Photos
-                  <span className="block pt-3 text-sm">
+                  <span className="block pt-3 text-base font-booking_font font-normal text-grey">
                     Enjoy the comforts of home and beyond with these distinctive
                     features.
                   </span>
