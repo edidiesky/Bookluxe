@@ -87,11 +87,9 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
 
   await prisma.rooms.update({
     where: { id },
-    include: {
+    data: {
       reservations: {
-        include: {
-          user: true, // Include user information in reservations
-        },
+        connect: { id: newReservation?.id },
       },
     },
   });
@@ -99,4 +97,9 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
   return res.json(newReservation);
 });
 
-export { GetUserReservation,GetAllReservation, CreateUserReservation, GetSingleReservation };
+export {
+  GetUserReservation,
+  GetAllReservation,
+  CreateUserReservation,
+  GetSingleReservation,
+};

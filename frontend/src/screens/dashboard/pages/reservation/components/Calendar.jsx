@@ -1,17 +1,44 @@
 "use client";
 import React, { useState } from "react";
+import moment from "moment";
 import { AnimatePresence } from "framer-motion";
 import BookingReservationModal from "@/components/modals/BookingReservationModal";
 import { Scheduler } from "@bitnoi.se/react-scheduler";
-  import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const ReservationCalendar = () => {
   const [filterButtonState, setFilterButtonState] = useState(0);
-  const isLoading = false;
-  const { reservations } = useSelector((store) => store.reservation);
+  // const isLoading = false;
+  const { reservations, getsingleReservationisLoading } = useSelector(
+    (store) => store.reservation
+  );
   const [reservationtab, setReservationTab] = useState({
     modal: false,
     data: null,
   });
+  const newFormattedData = reservations?.map((booking) => {
+    return {
+      id: booking?.id,
+      label: {
+        icon: booking?.images && booking?.images[0],
+        title: booking?.title,
+      },
+      data: booking?.reservations?.map((data, index) => {
+        const formattedStartDate = moment(data?.startDate).format();
+        const formattedEndDate = moment(data?.endDate).format();
+        return {
+          // startDate: new Date(`${data?.startDate}`),
+          // endDate: new Date(`${data?.endDate}`),
+          startDate: formattedStartDate,
+          endDate: formattedEndDate,
+          id: data?.id,
+          title: data?.user?.name,
+          bgColor: "#0e7b10",
+          subtitle: `${data?.user?.name} has booked this room`,
+        };
+      }),
+    };
+  });
+  console.log(newFormattedData);
   return (
     <>
       <AnimatePresence mode="wait">
@@ -22,36 +49,38 @@ const ReservationCalendar = () => {
           />
         )}
       </AnimatePresence>
-      <section className="relative p4 bg-white overflow-hidden shadow-lg border rounded-[10px] min-h-[450px]">
-        <Scheduler
-          data={mockedSchedulerData}
-          isLoading={isLoading}
-          onRangeChange={(newRange) => console.log(newRange)}
-          onTileClick={(item) =>
-            setReservationTab({
-              modal: true,
-              data: item,
-            })
-          }
-          onItemClick={(item) =>
-            setReservationTab({
-              modal: true,
-              data: item,
-            })
-          }
-          onFilterData={() => {
-            // Some filtering logic...
-            setFilterButtonState(1);
-          }}
-          onClearFilterData={() => {
-            // Some clearing filters logic...
-            setFilterButtonState(0);
-          }}
-          config={{
-            zoom: 0,
-            filterButtonState,
-          }}
-        />
+      <section className="relative p4 bg-white overflow-hidden shadow-lg border rounded-[10px] min-h-[500px]">
+        {getsingleReservationisLoading === false && (
+          <Scheduler
+            data={newFormattedData}
+            isLoading={getsingleReservationisLoading}
+            onRangeChange={(newRange) => console.log(newRange)}
+            onTileClick={(item) =>
+              setReservationTab({
+                modal: true,
+                data: item,
+              })
+            }
+            // onItemClick={(item) =>
+            //   setReservationTab({
+            //     modal: true,
+            //     data: item,
+            //   })
+            // }
+            onFilterData={() => {
+              // Some filtering logic...
+              setFilterButtonState(1);
+            }}
+            onClearFilterData={() => {
+              // Some clearing filters logic...
+              setFilterButtonState(0);
+            }}
+            config={{
+              zoom: 0,
+              filterButtonState,
+            }}
+          />
+        )}
       </section>
     </>
   );

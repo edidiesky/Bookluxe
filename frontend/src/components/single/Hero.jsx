@@ -46,9 +46,9 @@ const Hero = () => {
               </span>
             </div>
             <div className="flex flex-1 items-center justify-end">
-              <h3 className="text-5xl justify-end gap-2 flex text-white">
+              <h3 className="text-5xl font-booking_font4 justify-end gap-2 flex text-white">
                 {room?.price}{" "}
-                <div className="flex flex-col">
+                <div className="flex font-booking_font_bold flex-col">
                   <span className="text-sm uppercase">$</span>
                   <span className="text-sm uppercase">/ per night</span>
                 </div>

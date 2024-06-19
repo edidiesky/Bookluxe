@@ -200,9 +200,7 @@ input::placeholder {
 .hide {
   overflow: hidden;
 }
-.hide {
-  overflow: hidden;
-}
+
 html.lenis,
 html.lenis body {
   height: auto;
@@ -276,8 +274,8 @@ html.lenis body {
 }
 
 .jwOjdZ {
-    margin-right: 0.2rem;
-    width: 3rem !important;
+    margin-right: 0.6rem;
+    width: 5rem !important;
     height: 3rem !important;
     border-radius: 10px !important;
 
