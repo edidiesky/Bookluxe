@@ -10,6 +10,24 @@ const GetAllRoom = asyncHandler(async (req, res) => {
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res.json(rooms);
 });
+
+const GetAllRoomAndReservations = asyncHandler(async (req, res) => {
+  const rooms = await prisma.rooms.findMany({
+    include: {
+      reservations: {
+        include: {
+          user: true,
+        },
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+  return res.json(rooms);
+});
 const GetAllAdminRooms = asyncHandler(async (req, res) => {
   const limit = req.query.limit || 3;
   const page = req.query.page || 1;
@@ -77,4 +95,11 @@ const DeleteRoom = asyncHandler(async (req, res) => {
 
   res.status(200).json({ msg: "The rooms has been successfully deleted" });
 });
-export { GetAllRoom, CreateRooms, GetSingleRoom, DeleteRoom, GetAllAdminRooms };
+export {
+  GetAllRoom,
+  GetAllRoomAndReservations,
+  CreateRooms,
+  GetSingleRoom,
+  DeleteRoom,
+  GetAllAdminRooms,
+};

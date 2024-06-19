@@ -1,11 +1,20 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+  import { useDispatch, useSelector } from "react-redux";
+  import { GetAllRoomAndReservations } from "@/features/reservation/reservationReducer";
+
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import ReservationRoomsModal from "@/components/modals/ReservationRoomsModal";
 import ReservationCalendar from "./Calendar";
 const DashboardIndex = () => {
   const [reservationmodal, setReservationModal] = useState(false);
   const [roommodal, setRoomModal] = useState(false);
+  const dispatch = useDispatch();
+  const { reservations } = useSelector((store) => store.reservation);
+
+  useEffect(() => {
+    dispatch(GetAllRoomAndReservations());
+  }, []);
   return (
     <div className="w-full">
       <AnimatePresence mode="wait">

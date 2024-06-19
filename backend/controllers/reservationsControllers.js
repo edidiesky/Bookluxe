@@ -85,6 +85,17 @@ const CreateUserReservation = asyncHandler(async (req, res) => {
     data: reservationData,
   });
 
+  await prisma.rooms.update({
+    where: { id },
+    include: {
+      reservations: {
+        include: {
+          user: true, // Include user information in reservations
+        },
+      },
+    },
+  });
+
   return res.json(newReservation);
 });
 

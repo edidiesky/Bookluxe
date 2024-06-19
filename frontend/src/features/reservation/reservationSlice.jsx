@@ -4,6 +4,7 @@ import {
   GetSingleReservation,
   GetUserReservations,
   GetAllReservations,
+  GetAllRoomAndReservations,
 } from "./reservationReducer";
 const initialState = {
   reservation: null,
@@ -63,6 +64,21 @@ export const reservationSlice = createSlice({
       state.getsingleReservationisLoading = false;
       toast.error(action.payload);
     });
+
+    builder.addCase(GetAllRoomAndReservations.pending, (state, action) => {
+      state.getsingleReservationisLoading = true;
+    });
+    builder.addCase(GetAllRoomAndReservations.fulfilled, (state, action) => {
+      state.getsingleReservationisLoading = false;
+      state.getsingleReservationisSuccess = true;
+      state.reservations = action.payload;
+    });
+    builder.addCase(GetAllRoomAndReservations.rejected, (state, action) => {
+      state.getsingleReservationisSuccess = false;
+      state.getsingleReservationisLoading = false;
+      toast.error(action.payload);
+    });
+    // GetAllRoomAndReservations
   },
 });
 

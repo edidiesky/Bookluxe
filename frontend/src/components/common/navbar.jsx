@@ -256,7 +256,7 @@ const Navbar = () => {
               />
             )}
             {currentUser && (
-              <h4 className="text-base font-booking_font_bold text-dark font-bold family1">
+              <h4 className="text-base font-booking_font4 text-dark family1">
                 {currentUser?.name}
                 <span className="block font-normal font-booking_font text-sm text-grey">
                   {currentUser?.email}
@@ -271,7 +271,7 @@ const Navbar = () => {
                     <Link
                       to={`/${x.path}`}
                       key={index}
-                      className="font-semibold text-dark font-booking_font
+                      className="text-dark font-booking_font4
                         hover:bg-[rgba(0,0,0,.1)] py-[20px] border-b text-sm px-8"
                     >
                       {x.title}
@@ -283,7 +283,7 @@ const Navbar = () => {
                     <Link
                       to={`/${x.path}`}
                       key={index}
-                      className="font-bold text-dark font-booking_font_bold  hover:bg-[rgba(0,0,0,.1)] py-[20px] border-b text-sm px-8"
+                      className="text-dark font-booking_font4  hover:bg-[rgba(0,0,0,.1)] py-[20px] border-b text-sm px-8"
                     >
                       {x.title}
                     </Link>

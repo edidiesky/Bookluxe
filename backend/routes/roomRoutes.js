@@ -11,6 +11,7 @@ import {
   GetSingleRoom,
   DeleteRoom,
   GetAllAdminRooms,
+  GetAllRoomAndReservations,
 } from "../controllers/roomControllers.js";
 
 router
@@ -18,6 +19,9 @@ router
   .get(GetAllRoom)
   .post(authMiddleware, adminMiddleware, CreateRooms);
 router.route("/admin").get(GetAllAdminRooms);
+router
+  .route("/room-reservation-history")
+  .get(authMiddleware, adminMiddleware, GetAllRoomAndReservations);
 router
   .route("/:id")
   .get(GetSingleRoom)

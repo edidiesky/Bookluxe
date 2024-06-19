@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import BookingReservationModal from "@/components/modals/BookingReservationModal";
 import { Scheduler } from "@bitnoi.se/react-scheduler";
-
+  import { useDispatch, useSelector } from "react-redux";
 const ReservationCalendar = () => {
   const [filterButtonState, setFilterButtonState] = useState(0);
   const isLoading = false;
-
+  const { reservations } = useSelector((store) => store.reservation);
   const [reservationtab, setReservationTab] = useState({
     modal: false,
     data: null,

@@ -74,7 +74,7 @@ const DashboardSidebar = () => {
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
                   className="w-14 h-14 rounded-full object-cover"
                 />
-                <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-[#fff]">
+                <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-[#000]">
                   HOME & VILLAS{" "}
                   <span className="block text-grey text-xs font-booking_font">
                     {" "}

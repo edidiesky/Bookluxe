@@ -923,7 +923,7 @@ const RoomsPrice = () => {
           The Best Prices
         </h1>
 
-        <div className="w-[90%] mx-auto py-4 lg:flex-row gap-4 flex-col items-center justify-center flex">
+        <div className="w-[90%] max-w-custom_1 mx-auto py-4 lg:flex-row gap-4 flex-col items-center justify-center flex">
           {roompriceData.map((room, index) => {
             return (
               <div
@@ -966,7 +966,7 @@ const RoomsPrice = () => {
 const RoomsBanner = () => {
   return (
     <div
-      className="w-full min-h-[100vh] py-32 relative flex items-center justify-center
+      className="w-full py-40 relative flex items-center justify-center
    gap-8"
     >
       <div className="w-full h-full z-30 bg-[rgba(0,0,0,.6)] absolute top-0 left-0"></div>
