@@ -5,6 +5,7 @@ import authSlice from "./features/auth/authSlice";
 import reservationSlice from "./features/reservation/reservationSlice";
 import paymentSlice from "./features/payment/paymentSlice";
 import statSlice from "./features/stat/statSlice";
+import favouritesSlice from "./features/favourites/favouritesSlice";
 export const store = configureStore({
   reducer: {
     room: roomSlice,
@@ -12,6 +13,7 @@ export const store = configureStore({
     auth: authSlice,
     reservation: reservationSlice,
     payment: paymentSlice,
-    stat: statSlice
+    stat: statSlice,
+    favourites: favouritesSlice,
   },
 });

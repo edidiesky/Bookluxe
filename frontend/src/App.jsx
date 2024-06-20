@@ -11,6 +11,7 @@ import {
   CreateRoom,
   Reservation,
   Orders,
+  Settings,
 } from "./screens/dashboard";
 import { ProtectRoute } from "./lib/ProtectRoute";
 const HomeWrapper = lazy(() => import("./screens/Home"));
@@ -121,12 +122,23 @@ export default function App() {
               </Suspense>
             }
           />
+          {/* Settings */}
           <Route
             exact
             path="reservation"
             element={
               <Suspense fallback={<Loader />}>
                 <Reservation />
+              </Suspense>
+            }
+          />
+
+          <Route
+            exact
+            path="profile/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <Settings />
               </Suspense>
             }
           />

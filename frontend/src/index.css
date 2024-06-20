@@ -182,7 +182,7 @@ input::placeholder {
   transition: all 0.5s;
   background: var(--green-1) !important;
   cursor: pointer;
-  font-family: "playfair", sans-serif;
+  /* font-family: "playfair", sans-serif; */
 }
 .btn:hover {
   opacity: 0.7;

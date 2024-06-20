@@ -6,6 +6,7 @@ import {
   GetAllUsers,
   DeleteSingleUser,
   UpdateSingleUser,
+  addListToWish,
 } from "./authReducer";
 const customerData = JSON.parse(localStorage.getItem("customer"));
 const customerToken = localStorage.getItem("customertoken");
@@ -37,6 +38,10 @@ const initialState = {
   updateUserisError: false,
   noOfPages: 0,
   totalUser: 0,
+
+  wishisLoading: false,
+  wishisSuccess: false,
+  wishisError: false,
 };
 
 export const authSlice = createSlice({
@@ -44,8 +49,8 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     handleClearUserAlert: (state, action) => {
-      state.deleteUserisLoading = false
-      state.deleteUserisSuccess = false
+      state.deleteUserisLoading = false;
+      state.deleteUserisSuccess = false;
     },
   },
   extraReducers: (builder) => {
@@ -105,7 +110,6 @@ export const authSlice = createSlice({
       toast.error(action.payload);
     });
 
-    
     builder.addCase(UpdateSingleUser.pending, (state, action) => {
       state.updateUserisLoading = true;
     });
@@ -116,6 +120,20 @@ export const authSlice = createSlice({
     });
     builder.addCase(UpdateSingleUser.rejected, (state, action) => {
       state.updateUserisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(addListToWish.pending, (state, action) => {
+      state.wishisLoading = true;
+    });
+    builder.addCase(addListToWish.fulfilled, (state, action) => {
+      state.wishisSuccess = true;
+      state.wishisLoading = false;
+      state.currentUser  = action.payload.user
+      toast.success(action.payload.message);
+    });
+    builder.addCase(addListToWish.rejected, (state, action) => {
+      state.wishisSuccess = false;
       toast.error(action.payload);
     });
   },

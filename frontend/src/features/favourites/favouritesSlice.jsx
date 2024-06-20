@@ -1,7 +1,7 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
-import { addListToWish, GetUserFavouriteRooms } from "./favouritesReducer";
+import { GetUserFavouriteRooms } from "./favouritesReducer";
 const initialState = {
   savedRooms: [],
   alertText: "",
@@ -19,19 +19,6 @@ export const favouritesSlice = createSlice({
     handleFavouritesRooms: (state, action) => {},
   },
   extraReducers: (builder) => {
-    builder.addCase(addListToWish.pending, (state, action) => {
-      state.wishisLoading = true;
-    });
-    builder.addCase(addListToWish.fulfilled, (state, action) => {
-      state.wishisSuccess = true;
-      state.wishisLoading = false;
-      toast.success(action.payload);
-    });
-    builder.addCase(addListToWish.rejected, (state, action) => {
-      state.wishisSuccess = false;
-      toast.error(action.payload);
-    });
-
     builder.addCase(GetUserFavouriteRooms.pending, (state, action) => {
       state.wishisLoading = true;
     });

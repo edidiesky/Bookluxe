@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
-import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
-import { apartmentDataList } from "../../../data/apartmentData";
 import RoomCard from "../../common/RoomCard";
+import { useSelector } from "react-redux";
+import Loader from "@/components/home/loader";
 const MainContent = () => {
   return (
     <div className="w-full relative min-h-[100vh] flex flex-col">
@@ -80,18 +80,22 @@ const Hero = () => {
 };
 
 const RoomLists = () => {
+  const { savedRooms, wishisLoading } = useSelector(
+    (store) => store.favourites
+  );
   return (
     <div
       className="w-full relative py-24 flex items-center justify-center
    gap-8"
     >
+      {wishisLoading && <Loader />}
       <div
         className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
        gap-12"
       >
         <div className="w-full">
           <div className=" gap-8 w-full grid md:grid-cols-3">
-            {apartmentDataList?.slice(0,2).map((apartment, index) => {
+            {savedRooms?.map((apartment, index) => {
               return (
                 <RoomCard type={"Search"} key={index} apartment={apartment} />
               );

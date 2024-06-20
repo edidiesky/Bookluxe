@@ -12,7 +12,7 @@ import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { DeleteReservation } from "@/features/reservation/reservationReducer";
 import { onLoginModal } from "@/features/modals/modalSlice";
-import { addListToWish } from "@/features/favourites/favouritesReducer";
+import { addListToWish } from "@/features/auth/authReducer";
 
 const RoomCard = ({ type, apartment, inView, index }) => {
   const [tabindex, setTabIndex] = useState(0);
@@ -39,8 +39,8 @@ const RoomCard = ({ type, apartment, inView, index }) => {
   }, [currentUser]);
   // DeleteReservation
 
-  const customerData = JSON.parse(localStorage.getItem("client"));
-  // const active = customerData?.includes()
+  const customerData = JSON.parse(localStorage.getItem("customer"));
+  const active = customerData?.favourites?.includes(apartment?.id);
   if (type == "trips") {
     const startDate = moment(apartment?.startDate).format("MMMM Do");
 
@@ -112,10 +112,10 @@ const RoomCard = ({ type, apartment, inView, index }) => {
 
           <Link
             to={"#"}
-            onClick={()=>handleFavouriteRooms()}
+            onClick={() => handleFavouriteRooms()}
             className="absolute z-[50] top-[10%] left-[5%]"
           >
-            <Heart />
+            <Heart active={active} />
           </Link>
           <div className="h-full z-[40] absolute left-0 w-[80px] flex items-center justify-center">
             <Link
@@ -307,7 +307,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
             onClick={handleFavouriteRooms}
             className="absolute z-[59] top-[10%] left-[5%]"
           >
-            <Heart />
+            <Heart active={active} />
           </Link>
           <div className="h-full z-[40] absolute left-0 w-[80px] flex items-center justify-center">
             <Link
