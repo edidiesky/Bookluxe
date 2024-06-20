@@ -15,30 +15,33 @@ const ReservationCalendar = () => {
     modal: false,
     data: null,
   });
-  const newFormattedData = reservations?.map((booking) => {
-    return {
-      id: booking?.id,
-      label: {
-        icon: booking?.images && booking?.images[0],
-        title: booking?.title,
-      },
-      data: booking?.reservations?.map((data, index) => {
-        const formattedStartDate = moment(data?.startDate).format();
-        const formattedEndDate = moment(data?.endDate).format();
-        return {
-          // startDate: new Date(`${data?.startDate}`),
-          // endDate: new Date(`${data?.endDate}`),
-          startDate: formattedStartDate,
-          endDate: formattedEndDate,
-          id: data?.id,
-          title: data?.user?.name,
-          bgColor: "#0e7b10",
-          subtitle: `${data?.user?.name} has booked this room`,
-        };
-      }),
-    };
-  });
-  console.log(newFormattedData);
+const newFormattedData = (reservations || []).map((booking) => {
+  return {
+    id: booking?.id,
+    label: {
+      icon: booking?.images && booking?.images[0],
+      title: booking?.title,
+    },
+    data: (booking?.reservations || []).map((data, index) => {
+      const formattedStartDate = new Date(data?.startDate);
+      const formattedEndDate = new Date(data?.endDate);
+      return {
+        startDate: formattedStartDate,
+        endDate: formattedEndDate,
+        id: data?.id,
+        occupancy: 11111,
+        title: "Project D",
+        subtitle: "Subtitle D",
+        description: "Garden heavy an software Metal",
+        bgColor: "#0e7b10",
+        // title: data?.user?.name,
+        // bgColor: "#0e7b10",
+        // subtitle: `${data?.user?.name} has booked this room`,
+      };
+    }),
+  };
+});
+  // console.log(newFormattedData);
   return (
     <>
       <AnimatePresence mode="wait">
