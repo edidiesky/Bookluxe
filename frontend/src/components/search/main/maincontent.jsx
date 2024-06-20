@@ -95,10 +95,10 @@ const RoomLists = () => {
    gap-8"
     >
       <div
-        className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-custom_4 items-start justify-center flex-col
+        className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid lg:grid-cols-custom_4 items-start lg:justify-center flex-col
        gap-12"
       >
-        <div className="w-[90%] sticky top-[11%] flex flex-col gap-8">
+        <div className="w-[90%] lg:sticky top-[11%] flex flex-col gap-8">
           <div className="w-full py-12 flex items-center justify-center md:w-[360px] lg:w-[400px] bg-[#1C1C1C]">
             <div className="w-[90%] mx-auto grid grid-cols-2 gap-4">
               <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
@@ -186,7 +186,7 @@ const RoomLists = () => {
           {getallRoomisLoading ? (
             <Loader />
           ) : (
-            <div className=" gap-8 w-full grid lg:grid-cols-2">
+            <div className=" gap-8 w-full grid md:grid-cols-2">
               {rooms?.map((apartment, index) => {
                 return (
                   <RoomCard type={"Search"} key={index} apartment={apartment} />

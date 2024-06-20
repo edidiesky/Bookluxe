@@ -1,7 +1,6 @@
 import asyncHandler from "express-async-handler";
 import prisma from "../prisma/index.js";
 
-
 const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
   const id = req.params.id;
   const room = await prisma.rooms.findUnique({
@@ -12,6 +11,14 @@ const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("No room has been found");
   }
+
+  // find the user
+
+  const currentUser = await prisma.user.findUnique({
+    where: {
+      id: req.user?.userId,
+    },
+  });
 
   let userRoomFavourites = currentUser?.favourites
     ? currentUser?.favourites
@@ -39,12 +46,31 @@ const CreateUserFavouriteRoom = asyncHandler(async (req, res) => {
     : `${room.title} has been saved to your collections`;
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
-  return res
-  ({
+  return  res.status(200).json({
     message: message,
     favourite: !isSavedRoomIncluded,
     user: user,
   });
 });
 
-export {  CreateUserFavouriteRoom };
+const GetUserFavouriteRooms = asyncHandler(async (req, res) => {
+  const currentUser = await prisma.user.findUnique({
+    where: {
+      id: req.user?.userId,
+    },
+  });
+
+  let userRoomFavourites = currentUser?.favourites
+    ? currentUser?.favourites
+    : [];
+  const rooms = await prisma.rooms.findMany({
+    where: {
+      id: { in: userRoomFavourites },
+    },
+  });
+
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+  return  res.status(200).json(rooms);
+});
+export { CreateUserFavouriteRoom, GetUserFavouriteRooms };

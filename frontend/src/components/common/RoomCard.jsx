@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import moment from "moment";
 import { motion, useInView } from "framer-motion";
 import { slideup2 } from "@/constants/utils/framer";
@@ -9,11 +9,14 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa6";
 import { RxCross1 } from "react-icons/rx";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { DeleteReservation } from "@/features/reservation/reservationReducer";
+import { onLoginModal } from "@/features/modals/modalSlice";
+import { addListToWish } from "@/features/favourites/favouritesReducer";
 
 const RoomCard = ({ type, apartment, inView, index }) => {
   const [tabindex, setTabIndex] = useState(0);
+  const { currentUser } = useSelector((store) => store.auth);
   const handleImagePosition = (position) => {
     if (position === "left") {
       setTabIndex(tabindex < 0 ? apartment?.images?.length - 1 : tabindex - 1);
@@ -23,7 +26,21 @@ const RoomCard = ({ type, apartment, inView, index }) => {
     }
   };
   const dispatch = useDispatch();
+
+  const handleFavouriteRooms = useCallback(() => {
+    // check if the user exists
+    // else perform wish lists
+    if (!currentUser) {
+      dispatch(onLoginModal());
+    } else {
+      dispatch(addListToWish(apartment?.id));
+      // router.refresh();
+    }
+  }, [currentUser]);
   // DeleteReservation
+
+  const customerData = JSON.parse(localStorage.getItem("client"));
+  // const active = customerData?.includes()
   if (type == "trips") {
     const startDate = moment(apartment?.startDate).format("MMMM Do");
 
@@ -94,9 +111,9 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
 
           <Link
-       
-            //   onClick={handleFavouriteRooms}     to={"#"}
-            className="absolute z-[30] top-[10%] left-[5%]"
+            to={"#"}
+            onClick={()=>handleFavouriteRooms()}
+            className="absolute z-[50] top-[10%] left-[5%]"
           >
             <Heart />
           </Link>
@@ -287,8 +304,8 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           </div>
           <Link
             to={"#"}
-            //   onClick={handleFavouriteRooms}
-            className="absolute z-[30] top-[10%] left-[5%]"
+            onClick={handleFavouriteRooms}
+            className="absolute z-[59] top-[10%] left-[5%]"
           >
             <Heart />
           </Link>
