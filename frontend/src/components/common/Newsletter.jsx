@@ -1,4 +1,27 @@
+
+"use client";
+import React, { useEffect, useRef } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import {
+  slideup,
+} from "@/constants/utils/framer";
+import AnimateText from "@/animations/AnimateText";
 const Newsletter = () => {
+    const text_ref = useRef(null);
+    const button_ref = useRef(null);
+    const inView1 = useInView(text_ref, {
+      margin: "0px 100px -100px 0px",
+    });
+  const RoomFlex_text_2 = [
+    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
+    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Ad, reprehenderit. Lorem ipsum dolor sit amet`,
+  ];
+    const inView2 = useInView(button_ref, {
+      margin: "0px 100px -100px 0px",
+    });
+
   return (
     <div
       className="w-full mt-12 py-32 relative flex items-center justify-center
@@ -14,26 +37,86 @@ const Newsletter = () => {
         className="w-[90%] mx-auto max-w-custom_1 z-40 flex items-center justify-center flex-col
        gap-4"
       >
-        <h1 className="text-white text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4">
+        <h1
+          ref={text_ref}
+          className="text-white text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4"
+        >
           <span
             style={{ letterSpacing: "4px" }}
             className="text-base pb-5 font-semibold uppercase block font-booking_font"
           >
-            get updates regularly
+            <span className="w-full gap-x-[5px] flex md:justify-center items-center flex-wrap ">
+              {["GET", "UPDATES", "REGULARY"].map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup}
+                      custom={index}
+                      initial="initial"
+                      animate={inView1 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
           </span>
-          Subscribe to our Newsletter
+          <span className="w-full gap-x-[8px] flex flex-wrap ">
+            {["Subscribe", "to", "our", "", "Newsletter"].map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={slideup}
+                    custom={index}
+                    initial="initial"
+                    animate={inView1 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
           <span className="text-sm lg:text-lg w-full md:w-[600px] md:mx-auto pt-6 font-normal block font-booking_font">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad,
-            reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur
+            <span className="w-full gap-x-[8px] flex md:justify-center flex-wrap ">
+              {RoomFlex_text_2.map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup}
+                      custom={index}
+                      initial="initial"
+                      animate={inView1 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
           </span>
         </h1>
-        <div className="w-[90%] mt-8 md:w-[500px] items-center justify-center flex">
+        <div className="w-full mt-8 lg:w-[700px] lg:flex-row flex-col  items-center justify-center flex gap-2">
           <input
             type="text"
             placeholder="Your Email address"
             className="input text-base w-full flex items-center"
           />
+          <div className="btn min-h-[55px] rounded-[10px] w-full items-center justify-center flex text-white md:w-[250px] btn-2">
+            <AnimateText
+            children={"Subscribe Now"}
+            />
+          </div>
         </div>
       </div>
     </div>

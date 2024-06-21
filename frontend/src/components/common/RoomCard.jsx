@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import moment from "moment";
 import { motion, useInView } from "framer-motion";
-import { slideup2 } from "@/constants/utils/framer";
+import { smallslideup2 } from "@/constants/utils/framer";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import Heart from "../../assets/svg/heart";
@@ -276,7 +276,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
   }
   return (
     <motion.div
-      variants={slideup2}
+      variants={smallslideup2}
       custom={index}
       initial="initial"
       key={index}

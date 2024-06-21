@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import AnimateText from "@/animations/AnimateText";
 const linkData = [
   {
     title: "Home",
@@ -61,7 +62,7 @@ const Navbar = () => {
                   className={`text-sm hover:text-grey font-booking_font4 flex items-center gap-2 p-3 px-3 rounded-[40px]`}
                 >
                   {/* <img src={list?.icon} className="w-4" alt="" /> */}
-                  {list?.title}
+                  <AnimateText children={list?.title} />
                 </Link>
               );
             })}

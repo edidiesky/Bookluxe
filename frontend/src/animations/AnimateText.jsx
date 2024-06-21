@@ -11,7 +11,7 @@ const AnimateText = ({ children }) => {
       <div className="flex items-center relative">
         {children.split("").map((data, index) => {
           return (
-            <motion.div
+            <motion.span
               key={index}
               variants={{
                 initial: { y: "0px" },
@@ -24,15 +24,15 @@ const AnimateText = ({ children }) => {
               }}
               className="inline-block"
             >
-              {data}
-            </motion.div>
+              {data === " " ? "\u00A0" : data}
+            </motion.span>
           );
         })}
       </div>
       <div className="flex w-full items-center absolute inset-0">
         {children.split("").map((data, index) => {
           return (
-            <motion.div
+            <motion.span
               key={index}
               variants={{
                 initial: { y: "100%" },
@@ -44,8 +44,8 @@ const AnimateText = ({ children }) => {
                 ease: "easeInOut",
               }}
             >
-              {data}
-            </motion.div>
+              {data === " " ? "\u00A0" : data}
+            </motion.span>
           );
         })}
       </div>

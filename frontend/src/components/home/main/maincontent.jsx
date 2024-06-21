@@ -7,24 +7,17 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import moment from "moment";
-import { addDays, format } from "date-fns";
+import { addDays } from "date-fns";
 import { BiCheck, BiChevronDown } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { apartmentDataList } from "../../../data/apartmentData";
 import RoomCard from "../../common/RoomCard";
 import { getAllRooms } from "../../../features/room/roomReducer";
-import { motion, useInView } from "framer-motion";
-import {
-  opacity,
-  slideup2,
-  slideup,
-  smallslideup,
-  clipPathLeft,
-  clipPathRight,
-} from "@/constants/utils/framer";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { slideup, clipPathLeft, smallslideup2 } from "@/constants/utils/framer";
+import AnimateText from "@/animations/AnimateText";
 const MainContent = () => {
   return (
-    <div className="w-full flex flex-col gap-8">
+    <div className="w-full overflow-hidden flex flex-col gap-8">
       <Hero />
       <RoomFlex />
       {/* <About /> */}
@@ -51,6 +44,7 @@ const Hero = () => {
 
   return (
     <div
+      data-scroll-section
       className="w-full min-h-[100vh] py-32 relative flex items-center justify-center
    gap-8"
     >
@@ -76,9 +70,9 @@ const Hero = () => {
         <div className="w-full items-center justify-center flex">
           <div
             style={{ letterSpacing: "4px" }}
-            className="btn btn_2 text-xs text-white uppercase px-12 py-6"
+            className="btn btn_2 text-xs font-bold text-white uppercase px-12 py-6"
           >
-            Rooms & Suites
+            <AnimateText children={"Book & Flex"} />
           </div>
         </div>
 
@@ -172,9 +166,9 @@ const Hero = () => {
           >
             <h5
               style={{ letterSpacing: "5px" }}
-              className="text-[10px] md:text-sm uppercase leading-[1.5] text-center text-white font-semibold"
+              className="text-[10px] md:text-base uppercase leading-[1.5] text-center text-white font-semibold"
             >
-              check <br /> availability
+              <AnimateText children={"Search"} />
             </h5>
           </div>
         </div>
@@ -190,16 +184,16 @@ const RoomFlex = () => {
   const RoomFlex_text_ref_5 = useRef(null);
   const image_ref_1 = useRef(null);
   const inView1 = useInView(RoomFlex_text_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView7 = useInView(image_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView5 = useInView(RoomFlex_text_ref_5, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView2 = useInView(RoomFlex_text_ref_2, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
 
   const RoomFlex_text_1 = [`Enjoy`, `A`, `Luxury`, `Experience`];
@@ -225,7 +219,7 @@ const RoomFlex = () => {
   ];
 
   return (
-    <div className="w-full flex py-32 flex-col gap-40">
+    <div data-scroll-section className="w-full flex py-32 flex-col gap-40">
       <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
         <h1
           ref={RoomFlex_text_ref_1}
@@ -245,7 +239,7 @@ const RoomFlex = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     animate={inView1 ? "animate" : "exit"}
@@ -267,7 +261,7 @@ const RoomFlex = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -322,7 +316,7 @@ const RoomFlex = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={slideup2}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     animate={inView2 ? "animate" : "exit"}
@@ -344,7 +338,7 @@ const RoomFlex = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -368,7 +362,7 @@ const RoomFlex = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -379,56 +373,6 @@ const RoomFlex = () => {
                 </span>
               );
             })}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
-const About = () => {
-  return (
-    <div className="w-full flex py-20 flex-col gap-8">
-      <div className="w-[90%] mx-auto gap-24 md:gap-16 max-w-custom_1 lg:items-center grid lg:grid-cols-custom_4">
-        <div className="w-full lg:w-[450px] h-[400px] md:h-[650px] relative">
-          <img
-            src="/images/hazel_4.jpeg"
-            alt=""
-            className="w-full absolute h-full object-cover"
-          />
-          <div className="absolute -bottom-[6%] bg-[var(--gold-1)] -left-[1%] lg:-left-[10%] min-h-[190px] w-[180px] flex items-center justify-center">
-            <div className="text-5xl text-center flex flex-col gap-1 uppercase text-white font-booking_font4">
-              + 8
-              <br />{" "}
-              <span
-                style={{ letterSpacing: "3px" }}
-                className="text-xs font-booking_font uppercase"
-              >
-                Big Rooms
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="w-full flex flex-col gap-8">
-          <span
-            style={{ letterSpacing: "3px" }}
-            className="text-xs font-booking_font uppercase"
-          >
-            HOTEL BAYVIEW
-          </span>
-          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4">
-            Relax in our <br /> Home Resort
-          </h2>
-          <span className="text-lg font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
-          </span>
-          <span className="text-lg font-booking_font">
-            Quisque eu euismod arcu. Morbi et dapibus diam, sed interdum velit.
-            Proin tempor nunc vel nisl condimentum, nec tempor risus. Quisque eu
-            euismod arcu. Morbi et dapibus diam, sed interdum velit. Proin
-            tempor nunc vel nisl condimentum, nec tempor risus.
           </span>
         </div>
       </div>
@@ -448,21 +392,25 @@ const Collections = () => {
   const text_ref_4 = useRef(null);
   const text_ref_5 = useRef(null);
   const image_ref_1 = useRef(null);
+  const container_ref_1 = useRef(null);
   const inView1 = useInView(collection_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
 
   const inView5 = useInView(text_ref_4, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView6 = useInView(text_ref_5, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
+  });
+  const inView8 = useInView(container_ref_1, {
+    margin: "0px 100px -120px 0px",
   });
   const inView7 = useInView(image_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView2 = useInView(collection_ref_2, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
 
   const text_1 = [`Our Amazing`, `Home Resort`];
@@ -473,8 +421,23 @@ const Collections = () => {
     `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
   ];
 
+  const servicesData = [
+    {
+      title: " Reception 24h / 7 Days",
+      image: "/images/hazel_1.jpeg",
+      desc: "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec",
+    },
+    {
+      title: " Reservation Online",
+      image: "/images/hazel_2.jpeg",
+      desc: "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec",
+    },
+  ];
   return (
-    <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
+    <div
+      data-scroll-section
+      className="w-full py-16 flex flex-col gap-32 md:gap-40"
+    >
       <div
         ref={collection_ref_1}
         className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3"
@@ -514,7 +477,7 @@ const Collections = () => {
                     className="flex hide relative items-center justify-start"
                   >
                     <motion.span
-                      variants={slideup2}
+                      variants={slideup}
                       custom={index}
                       initial="initial"
                       animate={inView2 ? "animate" : "exit"}
@@ -538,7 +501,7 @@ const Collections = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -562,7 +525,7 @@ const Collections = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -603,41 +566,37 @@ const Collections = () => {
       </div>
 
       <div
+        ref={container_ref_1}
         className="w-[90%] md:w-[85%] mx-auto gap-8 md:gap-32 max-w-custom_1 grid 
       lg:grid-cols-2"
       >
-        <div className=" w-full flex md:flex-row flex-col items-center md:justify-center gap-8 py-12 px-8 bg-white shadow-2xl rounded-xl relative">
-          <img
-            src="/images/hazel_2.jpeg"
-            alt=""
-            className="w-[130px]  md:-ml-24 h-[130px] rounded-full object-cover"
-          />
-          <div className=" flex items-center flex-col justify-center">
-            <h4 className="text-3xl text-dark font-booking_font4">
-              Reception 24h / 7 Days
-              <span className="block text-lg pt-2 font-booking_font text-start text-grey">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec
-              </span>
-            </h4>
-          </div>
-        </div>
-        <div className=" w-full flex md:flex-row flex-col items-center md:justify-center gap-8 py-12 px-8 bg-white shadow-2xl rounded-xl relative">
-          <img
-            src="/images/hazel_3.jpeg"
-            alt=""
-            className="w-[130px]  md:-ml-24 h-[130px] rounded-full object-cover"
-          />
-          <div className=" flex items-center flex-col justify-center">
-            <h4 className="text-3xl text-dark font-booking_font4">
-              Reservation Online
-              <span className="block text-lg pt-2 font-booking_font text-start text-grey">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec
-              </span>
-            </h4>
-          </div>
-        </div>
+        {servicesData?.map((data, index) => {
+          return (
+            <motion.div
+              variants={slideup}
+              custom={index}
+              initial="initial"
+              animate={inView8 ? "animate" : "exit"}
+              key={index}
+              className=" w-full flex md:flex-row flex-col items-center
+               md:justify-center gap-8 py-12 px-8 bg-white shadow-xl border rounded-xl relative"
+            >
+              <img
+                src={data?.image}
+                alt=""
+                className="w-[130px]  md:-ml-24 h-[130px] rounded-full object-cover"
+              />
+              <div className=" flex items-center flex-col justify-center">
+                <h4 className="text-3xl text-dark font-booking_font4">
+                  {data?.title}
+                  <span className="block text-lg pt-2 font-booking_font text-start text-grey">
+                    {data?.desc}
+                  </span>
+                </h4>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </div>
   );
@@ -685,17 +644,17 @@ const RoomStructure = () => {
   const text_ref_5 = useRef(null);
   const image_ref_1 = useRef(null);
   const inView1 = useInView(collection_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
 
   const inView3 = useInView(image_ref_1, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView4 = useInView(collection_ref_3, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
   const inView2 = useInView(collection_ref_2, {
-    margin: "0px 100px -50px 0px",
+    margin: "0px 100px -120px 0px",
   });
 
   const text_1 = [`The`, `Structure`];
@@ -706,7 +665,7 @@ const RoomStructure = () => {
     `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
   ];
   return (
-    <div className="w-full flex py-20 flex-col gap-20">
+    <div data-scroll-section className="w-full flex py-20 flex-col gap-20">
       <div className="w-[90%] mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid lg:grid-cols-2">
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
@@ -774,7 +733,7 @@ const RoomStructure = () => {
                     className="flex hide relative items-center justify-start"
                   >
                     <motion.span
-                      variants={slideup2}
+                      variants={slideup}
                       custom={index}
                       initial="initial"
                       animate={inView1 ? "animate" : "exit"}
@@ -798,7 +757,7 @@ const RoomStructure = () => {
                   className="flex hide relative items-center justify-start"
                 >
                   <motion.span
-                    variants={smallslideup}
+                    variants={slideup}
                     custom={index}
                     initial="initial"
                     key={index}
@@ -840,7 +799,7 @@ const RoomStructure = () => {
         {roomService.map((room, index) => {
           return (
             <motion.div
-              variants={slideup2}
+              variants={slideup}
               custom={index}
               initial="initial"
               animate={inView2 ? "animate" : "exit"}
@@ -869,40 +828,62 @@ const RoomsPrice = () => {
       background: "var(-white-1)",
       price: 55,
       amenties: [
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
+        "Home Screen",
+        "PS5 Console",
+        "Walk in Closets",
+        "Fibre Optic Networks",
+        "DSTV, Showmax, and Netflix",
+        "Gated and Secured Estates",
+        "Fully Furnished Kitchen",
       ],
     },
     {
       title: "Small Suite",
       background: "var(-gold-1)",
-      price: 55,
+      price: 75,
       amenties: [
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
+        "Home Screen",
+        "24 / 7 Power Supply",
+        "PS5 Console",
+        "Walk in Closets",
+        "Fibre Optic Networks",
+        "DSTV, Showmax, and Netflix",
+        "Gated and Secured Estates",
+        "Fully Furnished Kitchen",
       ],
     },
     {
       title: "Apartment",
       background: "var(-white-1)",
-      price: 55,
+      price: 105,
       amenties: [
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
-        "Free Wifi",
+        "Home Screen",
+        "24 / 7 Power Supply",
+        "PS5 Console",
+        "Walk in Closets",
+        "Fibre Optic Networks",
+        "DSTV, Showmax, and Netflix",
+        "Gated and Secured Estates",
+        "Fully Furnished Kitchen",
+        "Spacious Compound",
+        "House Keeping",
       ],
     },
   ];
+  const price_ref_1 = useRef(null);
+  const image_ref_1 = useRef(null);
+  const inView1 = useInView(price_ref_1, {
+    margin: "0px 100px -120px 0px",
+  });
+
+  const inView2 = useInView(image_ref_1, {
+    margin: "0px 100px -120px 0px",
+  });
   return (
-    <div className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8">
+    <div
+      data-scroll-section
+      className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8"
+    >
       <img
         src="/images/hazel_11.jpeg"
         alt=""
@@ -913,49 +894,130 @@ const RoomsPrice = () => {
         className="w-full z-40 flex items-center justify-center flex-col
        gap-16"
       >
-        <h1 className="text-white text-center leading-[1.3] text-6xl md:text-7xl font-booking_font4">
+        <h1
+          ref={price_ref_1}
+          className="text-white text-center leading-[1.3] text-6xl md:text-7xl font-booking_font4"
+        >
           <span
             style={{ letterSpacing: "4px" }}
-            className="text-xs pb-6 font-semibold uppercase block font-booking_font"
+            className="text-xs pb-6 md:text-center font-semibold uppercase block font-booking_font"
           >
-            OUR ROOM PRICES
+            <span className="w-full gap-x-[5px] flex justify-center items-center flex-wrap ">
+              {["OUR", "ROOM", "Prices"].map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup}
+                      custom={index}
+                      initial="initial"
+                      animate={inView1 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
           </span>
-          The Best Prices
+          <span className="w-full gap-x-[8px] flex flex-wrap ">
+            {["The", "", "Best", "", "Prices"].map((x, index) => {
+              return (
+                <span
+                  key={index}
+                  className="flex hide relative items-center justify-start"
+                >
+                  <motion.span
+                    variants={slideup}
+                    custom={index}
+                    initial="initial"
+                    animate={inView1 ? "animate" : "exit"}
+                  >
+                    {x}
+                  </motion.span>
+                </span>
+              );
+            })}
+          </span>
         </h1>
 
-        <div className="w-[90%] max-w-custom_1 mx-auto py-4 lg:flex-row gap-4 flex-col items-center justify-center flex">
+        <div
+          ref={image_ref_1}
+          className="w-[90%] max-w-custom_1 mx-auto py-4 lg:flex-row gap-4 flex-col items-start justify-center flex"
+        >
           {roompriceData.map((room, index) => {
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={smallslideup2}
+                custom={index}
+                initial="initial"
+                animate={inView2 ? "animate" : "exit"}
                 className={`w-full ${
-                  index === 1
-                    ? "bg-[var(--gold-1)] text-white md:scale-[1.12]"
-                    : "bg-white"
-                } flex items-center justify-center flex-col gap-6 py-16`}
+                  index === 1 ? "bg-[#101727] text-white" : "bg-white"
+                } flex items-center shadow-2xl justify-center rounded-[20px] flex-col gap-8 py-16`}
               >
-                <h3 className="text-3xl font-booking_font4">{room?.title}</h3>
-                <h3 className="text-6xl md:text-7xl font-booking_font4">
-                  <span className="text-xl">$</span>
-                  {room?.price}
-                  <span className="pl-3 text-xl">/ night</span>
-                </h3>
-                <div className="flex flex-col gap-4">
-                  {room.amenties.map((am, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="w-full flex items-center gap-4 text-lg"
-                      >
-                        <BiCheck /> {am}
-                      </div>
-                    );
-                  })}
+                <div className="w-full flex flex-col gap-3 px-8">
+                  <h3
+                    className={`${index === 1 ? "text-[#B7FF0A]" : "b"}
+                     text-xl font-booking_font font-bold`}
+                  >
+                    {room?.title}
+                  </h3>
+                  <h3 className="text-6xl md:text-7xl font-booking_font4">
+                    <span className="text-xl">$</span>
+                    {room?.price}
+                    <span className="pl-3 text-xl font-booking_font font-bold">
+                      / night
+                    </span>
+                  </h3>
+                  <div className="w-full">
+                    <div
+                      className="btn font-bold btn_2 flex items-center justify-center
+                     py-4 mt-6 px-8 rounded-[40px] w-full text-lg"
+                    >
+                      <AnimateText children={"Get Started Now!"} />
+                    </div>
+                  </div>
                 </div>
-                <div className="btn btn_2 py-3 mt-6 px-8 text-sm">
-                  More Info
+                <div
+                  className={`w-full ${
+                    index === 1
+                      ? "border-[rgba(255,255,255,.2)]"
+                      : "border-[rgba(0,0,0,.2)]"
+                  } pt-6 border-t px-8 flex flex-col gap-12`}
+                >
+                  <div className="w-full flex flex-col gap-8">
+                    <h3
+                      className={`${index === 1 ? "text-[#fff]" : "text-dark"}
+                     text-xl font-booking_font font-bold`}
+                    >
+                      Features
+                    </h3>
+                    <div className="flex flex-col gap-4">
+                      {room.amenties.map((am, index) => {
+                        return (
+                          <div
+                            key={index}
+                            className="w-full flex items-center gap-4 text-base"
+                          >
+                            <div
+                              className="w-6 text-xm bg-[#B7FF0A] h-6 flex 
+                        items-center justify-center text-[#000] rounded-full"
+                            >
+                              {" "}
+                              <BiCheck />{" "}
+                            </div>
+                            {am}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -964,45 +1026,110 @@ const RoomsPrice = () => {
   );
 };
 const RoomsBanner = () => {
+  const banner_ref_1 = useRef(null);
+  const button_ref = useRef(null);
+  const inView1 = useInView(banner_ref_1, {
+    margin: "0px 100px -120px 0px",
+  });
+
+  const inView2 = useInView(button_ref, {
+    margin: "0px 100px -120px 0px",
+  });
+
   return (
     <div
-      className="w-full py-40 relative flex items-center justify-center
+      data-scroll-section
+      className="w-full min-h-[100vh] overflow-hidden relative flex items-center justify-center
    gap-8"
     >
       <div className="w-full h-full z-30 bg-[rgba(0,0,0,.6)] absolute top-0 left-0"></div>
-      <img
-        src="/images/hazel_8.jpeg"
-        alt=""
-        className="absolute z-10 object-cover top-0 left-0 h-full w-full"
-      />
+      <motion.div className="w-full absolute z-[20] h-full">
+        <img
+          src="/images/hazel_8.jpeg"
+          alt=""
+          className="absolute z-10 object-cover top-0 left-0 h-full w-full"
+        />
+      </motion.div>
       <div
         className="w-[90%] max-w-custom mx-auto z-40 grid items-center lg:grid-cols-2
        gap-12"
       >
         <div className="flex flex-col gap-6">
-          <h1 className="text-white text-start leading-[1.3] text-6xl md:text-7xl font-booking_font4">
+          <h1
+            ref={banner_ref_1}
+            className="text-white text-start leading-[1.3] text-6xl md:text-7xl font-booking_font4"
+          >
             <span
               style={{ letterSpacing: "4px" }}
               className="text-xs pb-8 font-semibold uppercase block font-booking_font"
             >
-              BUS STATION NEAR
+              <span className="w-full gap-x-[5px] flex justify-start items-center flex-wrap ">
+                {["BUS", "STATION", "NEAR"].map((x, index) => {
+                  return (
+                    <span
+                      key={index}
+                      className="flex hide relative items-center justify-start"
+                    >
+                      <motion.span
+                        variants={slideup}
+                        custom={index}
+                        initial="initial"
+                        animate={inView1 ? "animate" : "exit"}
+                      >
+                        {x}
+                      </motion.span>
+                    </span>
+                  );
+                })}
+              </span>
             </span>
-            Enjoy A Luxury <br /> Experience
-            <span className="block py-6 text-lg leading-[1.6] font-normal font-booking_font">
-              Suspendisse commodo bibendum purus at hendrerit. Vivamus aliquam
-              bibendum fringilla. Praesent cursus felis nunc, quis vulputate
-              sapien posuere vitae. Aliquam erat volutpat. Cras egestas porta
-              massa eget pulvinar. Cras non enim et dui pharetra hendrerit
-              mattis.
+            <span className="w-full gap-x-[8px] flex flex-wrap ">
+              {["Enjoy", "A", "Luxury", "", "Experience"].map((x, index) => {
+                return (
+                  <span
+                    key={index}
+                    className="flex hide relative items-center justify-start"
+                  >
+                    <motion.span
+                      variants={slideup}
+                      custom={index}
+                      initial="initial"
+                      animate={inView1 ? "animate" : "exit"}
+                    >
+                      {x}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </span>
+            <span className="w-full overflow-hidden">
+              <motion.span
+                variants={slideup}
+                initial="initial"
+                animate={inView1 ? "animate" : "exit"}
+                className="block py-6 text-lg leading-[1.6] font-normal font-booking_font"
+              >
+                Suspendisse commodo bibendum purus at hendrerit. Vivamus aliquam
+                bibendum fringilla. Praesent cursus felis nunc, quis vulputate
+                sapien posuere vitae. Aliquam erat volutpat. Cras egestas porta
+                massa eget pulvinar. Cras non enim et dui pharetra hendrerit
+                mattis.
+              </motion.span>
             </span>
           </h1>
-          <div className="w-full items-start flex">
-            <div
+          <div
+            ref={button_ref}
+            className="w-full overflow-hidden items-start flex"
+          >
+            <motion.div
+              variants={slideup}
+              initial="initial"
+              animate={inView2 ? "animate" : "exit"}
               style={{ letterSpacing: "4px" }}
               className="btn btn_2 text-xs text-white uppercase px-12 py-6"
             >
-              Rooms & Suites
-            </div>
+              <AnimateText children={"Room & Suites"} />
+            </motion.div>
           </div>
         </div>
 
