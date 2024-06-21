@@ -23,21 +23,16 @@ const newFormattedData = (reservations || []).map((booking) => {
       title: booking?.title,
     },
     data: (booking?.reservations || []).map((data, index) => {
-      const formattedStartDate = new Date(data?.startDate);
-      const formattedEndDate = new Date(data?.endDate);
-      return {
-        startDate: formattedStartDate,
-        endDate: formattedEndDate,
-        id: data?.id,
-        occupancy: 11111,
-        title: "Project D",
-        subtitle: "Subtitle D",
-        description: "Garden heavy an software Metal",
-        bgColor: "#0e7b10",
-        // title: data?.user?.name,
-        // bgColor: "#0e7b10",
-        // subtitle: `${data?.user?.name} has booked this room`,
-      };
+     const formattedStartDate = moment(data?.startDate).toDate();
+        const formattedEndDate = moment(data?.endDate).toDate();
+       return {
+        startDate: new Date(data?.startDate),
+          endDate: new Date(data?.endDate),
+         id: data?.id,
+         title: data?.user?.name || "No title",
+         bgColor: "#0e7b10",
+         subtitle: `${data?.user?.name || "Unknown user"} has booked this room`,
+       };
     }),
   };
 });
@@ -79,7 +74,7 @@ const newFormattedData = (reservations || []).map((booking) => {
               setFilterButtonState(0);
             }}
             config={{
-              zoom: 0,
+              zoom: 1,
               filterButtonState,
             }}
           />

@@ -14,6 +14,7 @@ import {
   Settings,
 } from "./screens/dashboard";
 import { ProtectRoute } from "./lib/ProtectRoute";
+import Animation from "./animations/Animation";
 const HomeWrapper = lazy(() => import("./screens/Home"));
 const SearchWrapper = lazy(() => import("./screens/Search"));
 const SingleWrapper = lazy(() => import("./screens/Single"));
@@ -166,5 +167,6 @@ export default function App() {
         </Route>
       </Routes>
     </div>
+    // <Animation/>
   );
 }
