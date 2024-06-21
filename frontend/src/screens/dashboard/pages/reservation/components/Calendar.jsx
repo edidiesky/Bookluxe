@@ -15,27 +15,31 @@ const ReservationCalendar = () => {
     modal: false,
     data: null,
   });
-const newFormattedData = (reservations || []).map((booking) => {
-  return {
-    id: booking?.id,
-    label: {
-      icon: booking?.images && booking?.images[0],
-      title: booking?.title,
-    },
-    data: (booking?.reservations || []).map((data, index) => {
-     const formattedStartDate = moment(data?.startDate).toDate();
-        const formattedEndDate = moment(data?.endDate).toDate();
-       return {
-        startDate: new Date(data?.startDate),
+  const newFormattedData = (reservations || []).map((booking) => {
+    return {
+      id: booking?.id,
+      label: {
+        icon: booking?.images && booking?.images[0],
+        title: booking?.title,
+      },
+      data: (booking?.reservations || []).map((data, index) => {
+        const formattedStartDate = moment(data?.startDate);
+        const formattedEndDate = moment(data?.endDate);
+        const duration = formattedEndDate.diff(formattedStartDate, "hours");
+        return {
+          startDate: new Date(data?.startDate),
           endDate: new Date(data?.endDate),
-         id: data?.id,
-         title: data?.user?.name || "No title",
-         bgColor: "#0e7b10",
-         subtitle: `${data?.user?.name || "Unknown user"} has booked this room`,
-       };
-    }),
-  };
-});
+          id: data?.id,
+          occupancy: `${duration}`,
+          title: data?.user?.name || "No title",
+          bgColor: "#0e7b10",
+          subtitle: `${
+            data?.user?.name || "Unknown user"
+          } has booked it`,
+        };
+      }),
+    };
+  });
   // console.log(newFormattedData);
   return (
     <>
@@ -83,106 +87,5 @@ const newFormattedData = (reservations || []).map((booking) => {
     </>
   );
 };
-
-const mockedSchedulerData = [
-  {
-    id: "070ac5b5-8369-4cd2-8ba2-0a209130cc60",
-    label: {
-      icon: "https://picsum.photos/24",
-      title: "Joe Doe",
-      subtitle: "Frontend Developer",
-    },
-    data: [
-      {
-        id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
-        startDate: new Date("2024-04-13T15:31:24.272Z"),
-        endDate: new Date("2024-04-28T10:28:22.649Z"),
-        occupancy: 3600,
-        title: "Room",
-        subtitle: "Subtitle A",
-        description: "array indexing Salad West Account",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "22fbe237-6344-4c8e-affb-64a1750f33bd",
-        startDate: new Date("2024-10-07T08:16:31.123Z"),
-        endDate: new Date("2024-10-15T21:55:23.582Z"),
-        occupancy: 2852,
-        title: "Project B",
-        subtitle: "Subtitle B",
-        description: "Tuna Home pascal IP drive",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "3601c1cd-f4b5-46bc-8564-8c983919e3f5",
-        startDate: new Date("2024-03-30T22:25:14.377Z"),
-        endDate: new Date("2024-04-01T07:20:50.526Z"),
-        occupancy: 1800,
-        title: "Project C",
-        subtitle: "Subtitle C",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "b088e4ac-9911-426f-aef3-843d75e714c2",
-        startDate: new Date("2024-10-28T10:08:22.986Z"),
-        endDate: new Date("2024-10-30T12:30:30.150Z"),
-        occupancy: 11111,
-        title: "Project D",
-        subtitle: "Subtitle D",
-        description: "Garden heavy an software Metal",
-        bgColor: "#0e7b10",
-      },
-    ],
-  },
-  {
-    id: "070ac5b5-8369-4cd2-8ba2-0a209130cc60",
-    label: {
-      icon: "https://picsum.photos/24",
-      title: "Alfred Samuel",
-      subtitle: "Frontend Developer",
-    },
-    data: [
-      {
-        id: "8b71a8a5-33dd-4fc8-9caa-b4a584ba3762",
-        startDate: new Date("2024-04-20T15:31:24.272Z"),
-        endDate: new Date("2024-04-28T10:28:22.649Z"),
-        occupancy: 3600,
-        title: "Room A",
-        subtitle: "Subtitle A",
-        description: "array indexing Salad West Account",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "22fbe237-6344-4c8e-affb-64a1750f33bd",
-        startDate: new Date("2024-10-21T08:16:31.123Z"),
-        endDate: new Date("2024-10-24T21:55:23.582Z"),
-        occupancy: 2852,
-        title: "Project B",
-        subtitle: "Subtitle B",
-        description: "Tuna Home pascal IP drive",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "3601c1cd-f4b5-46bc-8564-8c983919e3f5",
-        startDate: new Date("2024-03-10T22:25:14.377Z"),
-        endDate: new Date("2024-04-11T07:20:50.526Z"),
-        occupancy: 1800,
-        title: "Project C",
-        subtitle: "Subtitle C",
-        bgColor: "#0e7b10",
-      },
-      {
-        id: "b088e4ac-9911-426f-aef3-843d75e714c2",
-        startDate: new Date("2024-10-18T10:08:22.986Z"),
-        endDate: new Date("2024-10-20T12:30:30.150Z"),
-        occupancy: 11111,
-        title: "Project D",
-        subtitle: "Subtitle D",
-        description: "Garden heavy an software Metal",
-        bgColor: "#0e7b10",
-      },
-    ],
-  },
-];
 
 export default ReservationCalendar;

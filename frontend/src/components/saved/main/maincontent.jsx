@@ -3,6 +3,7 @@ import React from "react";
 import RoomCard from "../../common/RoomCard";
 import { useSelector } from "react-redux";
 import Loader from "@/components/home/loader";
+import { Link } from "react-router-dom";
 const MainContent = () => {
   return (
     <div className="w-full relative min-h-[100vh] flex flex-col">
@@ -94,13 +95,26 @@ const RoomLists = () => {
        gap-12"
       >
         <div className="w-full">
-          <div className=" gap-8 w-full grid md:grid-cols-3">
-            {savedRooms?.map((apartment, index) => {
-              return (
-                <RoomCard type={"Search"} key={index} apartment={apartment} />
-              );
-            })}
-          </div>
+          {savedRooms?.length === 0 ? (
+            <h1 className="text-dark text-start leading-[1.3] text-4xl font-booking_font4">
+              You have an empty Saved Rooms
+              <Link
+                to={"/search"}
+                style={{ letterSpacing: "4px" }}
+                className="text-[9px] md:text-xs font-normal pb-1 pt-3 w-[300px] border-b border-[rgba(0,0,0,.5)] uppercase flex items-center gap-4 font-booking_font"
+              >
+                Visit our rooms collections
+              </Link>
+            </h1>
+          ) : (
+            <div className=" gap-8 w-full grid md:grid-cols-2 lg:grid-cols-3">
+              {savedRooms?.map((apartment, index) => {
+                return (
+                  <RoomCard type={"Search"} key={index} apartment={apartment} />
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
     </div>
