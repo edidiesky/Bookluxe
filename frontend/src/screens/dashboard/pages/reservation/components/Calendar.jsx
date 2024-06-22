@@ -18,6 +18,7 @@ const ReservationCalendar = () => {
   const newFormattedData = (reservations || []).map((booking) => {
     return {
       id: booking?.id,
+      booking:booking,
       label: {
         icon: booking?.images && booking?.images[0],
         title: booking?.title,
@@ -33,9 +34,9 @@ const ReservationCalendar = () => {
           occupancy: `${duration}`,
           title: data?.user?.name || "No title",
           bgColor: "#0e7b10",
-          subtitle: `${
-            data?.user?.name || "Unknown user"
-          } has booked it`,
+          subtitle: `${data?.user?.name || "Unknown user"} has booked it`,
+          title:`${booking?.title}`,
+          ...data
         };
       }),
     };
@@ -48,6 +49,8 @@ const ReservationCalendar = () => {
           <BookingReservationModal
             modal={reservationtab?.modal}
             setModal={setReservationTab}
+            room={reservationtab?.data}
+
           />
         )}
       </AnimatePresence>

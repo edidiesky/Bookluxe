@@ -99,14 +99,14 @@ const RoomLists = () => {
        gap-12"
       >
         <div className="w-[90%] lg:sticky top-[11%] flex flex-col gap-8">
-          <div className="w-full py-12 flex items-center justify-center md:w-[360px] lg:w-[400px] bg-[#1C1C1C]">
+          <div className="w-full py-12 flex items-center justify-center lg:w-[400px] bg-[#1C1C1C]">
             <div className="w-[90%] mx-auto grid grid-cols-2 gap-4">
               <div className="py-8 cursor-pointer bg-[#151515] flex items-center justify-center flex-col gap-4">
                 <span className="uppercase text-sm text-white">CHECK-IN</span>
                 <div className="flex items-center gap-2">
                   <span
                     style={{ letterSpacing: "4px" }}
-                    className="text-2xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    className="text-4xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                   >
                     19
                   </span>
@@ -124,7 +124,7 @@ const RoomLists = () => {
                 <div className="flex items-center gap-2">
                   <span
                     style={{ letterSpacing: "4px" }}
-                    className="text-2xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    className="text-4xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                   >
                     19
                   </span>
@@ -142,7 +142,7 @@ const RoomLists = () => {
                 <div className="flex items-center gap-2">
                   <span
                     style={{ letterSpacing: "4px" }}
-                    className="text-2xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    className="text-4xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                   >
                     19
                   </span>
@@ -160,7 +160,7 @@ const RoomLists = () => {
                 <div className="flex items-center gap-2">
                   <span
                     style={{ letterSpacing: "4px" }}
-                    className="text-2xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                    className="text-4xl text-[var(--gold-1)] pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                   >
                     19
                   </span>

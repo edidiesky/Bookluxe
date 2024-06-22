@@ -58,7 +58,7 @@ const Hero = () => {
         className="w-full z-40 flex items-center justify-center flex-col
        gap-4"
       >
-        <h1 className="text-white text-center leading-[1.3] text-6xl md:text-7xl font-booking_font4">
+        <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-6xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "4px" }}
             className="text-xs pb-12 font-semibold uppercase block font-booking_font"
@@ -92,7 +92,7 @@ const Hero = () => {
                     <div className="flex items-center gap-2">
                       <span
                         style={{ letterSpacing: "4px" }}
-                        className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                        className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                       >
                         {moment(startdate)?.date()}
                       </span>
@@ -108,7 +108,7 @@ const Hero = () => {
                   <span className="px-4 md:px-8 border-r">
                     <span
                       style={{ letterSpacing: "4px" }}
-                      className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
+                      className="text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
                     >
                       CHECK OUT
                     </span>
@@ -116,7 +116,7 @@ const Hero = () => {
                     <div className="flex items-center gap-2">
                       <span
                         style={{ letterSpacing: "4px" }}
-                        className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                        className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                       >
                         {moment(enddate)?.date()}
                       </span>
@@ -153,7 +153,7 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <span
                   style={{ letterSpacing: "4px" }}
-                  className="text-2xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                  className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
                   19
                 </span>
@@ -794,7 +794,7 @@ const RoomStructure = () => {
       </div>
       <div
         ref={collection_ref_2}
-        className="w-[90%] py-8 mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-4"
+        className="w-[90%] py-8 mx-auto gap-12 md:gap-16 md:items-center max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-4"
       >
         {roomService.map((room, index) => {
           return (
@@ -806,7 +806,7 @@ const RoomStructure = () => {
               key={index}
               className="flex items-center gap-4"
             >
-              <img src={room.icon} alt="room_images_icon" className="w-20" />
+              <img src={room.icon} alt="room_images_icon" className="w-12 md:w-20" />
               <span className="text-xl font-booking_font4">
                 {room.title}
                 <span className="block text-sm text-grey font-normal font-booking_font">
@@ -900,7 +900,7 @@ const RoomsPrice = () => {
         >
           <span
             style={{ letterSpacing: "4px" }}
-            className="text-xs pb-6 md:text-center font-semibold uppercase block font-booking_font"
+            className="text-xs pb-6 text-center font-semibold uppercase block font-booking_font"
           >
             <span className="w-full gap-x-[5px] flex justify-center items-center flex-wrap ">
               {["OUR", "ROOM", "Prices"].map((x, index) => {
@@ -922,7 +922,7 @@ const RoomsPrice = () => {
               })}
             </span>
           </span>
-          <span className="w-full gap-x-[8px] flex flex-wrap ">
+          <span className="w-full gap-x-[8px] flex justify-center items-center flex-wrap ">
             {["The", "", "Best", "", "Prices"].map((x, index) => {
               return (
                 <span
@@ -1039,7 +1039,7 @@ const RoomsBanner = () => {
   return (
     <div
       data-scroll-section
-      className="w-full min-h-[100vh] overflow-hidden relative flex items-center justify-center
+      className="w-full min-h-[100vh] py-40 overflow-hidden relative flex items-center justify-center
    gap-8"
     >
       <div className="w-full h-full z-30 bg-[rgba(0,0,0,.6)] absolute top-0 left-0"></div>
@@ -1122,7 +1122,7 @@ const RoomsBanner = () => {
             className="w-full overflow-hidden items-start flex"
           >
             <motion.div
-              variants={slideup}
+              variants={smallslideup2}
               initial="initial"
               animate={inView2 ? "animate" : "exit"}
               style={{ letterSpacing: "4px" }}

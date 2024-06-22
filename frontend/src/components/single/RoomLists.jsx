@@ -47,7 +47,7 @@ const RoomLists = () => {
         )}
       </AnimatePresence> */}
       <div
-        className="w-full relative py-24 border-b flex items-center justify-center
+        className="w-full relative py-12 md:py-24 border-b flex items-center justify-center
    gap-8"
       >
         <div
@@ -132,7 +132,7 @@ const RoomLists = () => {
                         key={index}
                         src={image}
                         alt="room"
-                        className="h-[200px] w-full md:h-[300px] object-cover"
+                        className="h-[170px] w-full md:h-[300px] object-cover"
                       />
                     );
                   })}

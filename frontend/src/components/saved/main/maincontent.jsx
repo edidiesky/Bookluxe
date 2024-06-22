@@ -91,7 +91,7 @@ const RoomLists = () => {
     >
       {wishisLoading && <Loader />}
       <div
-        className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
+        className="w-[90%] relative mx-auto max-w-custom_1 z-40 flex items-start justify-center flex-col
        gap-12"
       >
         <div className="w-full">

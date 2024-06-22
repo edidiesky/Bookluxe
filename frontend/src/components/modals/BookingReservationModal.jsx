@@ -36,15 +36,8 @@ export default function BookingReservationModal({ setModal, room }) {
   useEffect(() => {
     // dispatch(handleClearRoomAl());
   }, []);
-  // useEffect(() => {
-  //   // dispatch(handleClearRoomAlert());
-  //   if (deleteRoomisSuccess) {
-  //     setModal({
-  //       modal: false,
-  //     });
-  //     dispatch(handleClearRoomAlert());
-  //   }
-  // }, [setModal, deleteRoomisSuccess]);
+
+  // console.log(room);
 
   return (
     <ReservationModalStyles
@@ -72,23 +65,23 @@ export default function BookingReservationModal({ setModal, room }) {
         </div>
         <div className="deleteCardTop w-full sticky top-0 left-0 border-b p-8 pb-0 px-4 flex flex-col gap-4">
           <h3 className="text-2xl md:text-3xl font-booking_font4">
-            BeachFront Oasis
+            {room?.title}
             <span className="block font-booking_font font-normal text-base">
-              # 2937r4648hdd
+              %#{room?.id}
             </span>
           </h3>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2">
               <span className="p-2 px-4 font-booking_font rounded-[4px] text-center bg-[#f5f5f5] text-xs font-bold">
-                Pearl
+                {room?.title}
               </span>
-              <span className="p-2 px-4 font-booking_font rounded-[4px] text-center text-white bg-[#0e7b10] text-xs font-bold">
-                Fully Paid
+              <span className="p-2 px-4 capitalize font-booking_font rounded-[4px] text-center bg-[#B7FF0A] text-[#000] text-xs font-bold">
+                {room?.status === "PENDING" ? "Pending" : "Paid"}
               </span>
             </div>
           </div>
           <div className="grid w-full gap-4 md:grid-cols-4">
-            <div className="w-full border-b-2 border-[#0e7b10] pb-3 text-lg font-booking_font font-bold">
+            <div className="w-full border-b-2 border-[#B7FF0A] text-[#000] pb-3 text-lg font-booking_font font-bold">
               Booking Details
             </div>
           </div>
@@ -165,19 +158,19 @@ export default function BookingReservationModal({ setModal, room }) {
                 </h3>
                 <div className="w-full grid grid-cols-1 gap-2">
                   <div className="text-sm py-2 px-4 bg-[#f5f5f5] font-semibold flex items-center gap-4 font-booking_font">
-                    <div className="w-8 h-8 flex items-center text-white justify-center rounded-full text-dark bg-[#0e7b10] text-end text-sm font-booking_font">
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#B7FF0A] text-[#000] text-end text-sm font-booking_font">
                       <BiCheck />
                     </div>
                     Fully Paid
                   </div>
                   <div className="text-sm py-2 px-4 bg-[#f5f5f5] font-semibold flex items-center gap-4 font-booking_font">
-                    <div className="w-8 h-8 flex items-center text-white justify-center rounded-full text-dark bg-[#0e7b10] text-end text-sm font-booking_font">
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#B7FF0A] text-[#000] text-end text-sm font-booking_font">
                       <BiCheck />
                     </div>
                     Down Payment Made
                   </div>
                   <div className="text-sm py-2 px-4 bg-[#f5f5f5] font-semibold flex items-center gap-4 font-booking_font">
-                    <div className="w-8 h-8 flex items-center text-white justify-center rounded-full text-dark bg-[#0e7b10] text-end text-base font-booking_font">
+                    <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#B7FF0A] text-[#000] text-end text-base font-booking_font">
                       <BiCheck />
                     </div>
                     Lack of Payment
@@ -234,7 +227,7 @@ export default function BookingReservationModal({ setModal, room }) {
                     >
                       <BiMinus fontSize={"14px"} />
                     </button>{" "}
-                    <h4 className="text-lg flex-1 text-center text-dark font-booking_font4">
+                    <h4 className="text-lg flex-1 text-center text-dark font-booking_font font-bold">
                       {night}
                     </h4>
                     <button
@@ -259,7 +252,7 @@ export default function BookingReservationModal({ setModal, room }) {
                     >
                       <BiMinus fontSize={"14px"} />
                     </button>{" "}
-                    <h4 className="text-lg flex-1 text-center text-dark font-booking_font4">
+                    <h4 className="text-lg flex-1 text-center text-dark font-booking_font font-bold">
                       {night}
                     </h4>
                     <button

@@ -33,7 +33,7 @@ const Navbar = () => {
   const { currentUser } = useSelector((store) => store.auth);
   return (
     <>
-      <div className="p-3 z-[50] bg-[var(--grey-1)] px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
+      <div className="p-3 z-[50] bg-[var(--grey-1)] px-4 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
         <div className="w-full flex items-center gap-2 justify-between">
           <Link to={"/"} className=" flex items-center gap-1 justify-start">
             <img

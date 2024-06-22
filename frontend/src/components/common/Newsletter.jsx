@@ -39,7 +39,7 @@ const Newsletter = () => {
       >
         <h1
           ref={text_ref}
-          className="text-white text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4"
+          className="text-white md:text-center leading-[1.3] text-5xl md:text-6xl font-booking_font4"
         >
           <span
             style={{ letterSpacing: "4px" }}

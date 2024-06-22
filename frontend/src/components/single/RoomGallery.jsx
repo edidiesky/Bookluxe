@@ -9,7 +9,7 @@ export default function RoomGallery() {
       {/* <div className="w-full h-full z-30 bg-[rgba(0,0,0,.5)] absolute top-0 left-0"></div> */}
       <div
         style={{ gridTemplateColumns: "repeat(4, 100%)" }}
-        className="w-full h-[460px] overflow-hidden grid"
+        className="w-full h-[310px] md:h-[460px] overflow-hidden grid"
       >
         {room?.images?.map((image, index) => {
           return (
@@ -31,7 +31,7 @@ export default function RoomGallery() {
                     "filter 0.6s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                 }}
                 src={image}
-                className={`w-full z-10 h-[460px] object-cover hover:grayscale-[1]`}
+                className={`w-full z-10 h-[310px] md:h-[460px] object-cover hover:grayscale-[1]`}
               />
             </div>
           );
@@ -50,7 +50,7 @@ export default function RoomGallery() {
               <div
                 onClick={() => setTabIndex(index)}
                 key={index}
-                className="relative h-[100px]"
+                className="relative h-[80px] md:h-[100px]"
               >
                 <img
                   alt="Cotion"
@@ -64,7 +64,7 @@ export default function RoomGallery() {
                     tabindex === index
                       ? "grayscale-[1] border-4 border-[rgba(0,0,0,1)]"
                       : "grayscale-[0] border-0"
-                  } h-full cursor-pointer w-full hover:grayscale-[1] grayscale-0`}
+                  } h-full object-cover cursor-pointer w-full hover:grayscale-[1] grayscale-0`}
                 />
               </div>
             );

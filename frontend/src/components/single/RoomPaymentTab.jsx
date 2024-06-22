@@ -111,7 +111,7 @@ export default function RoomPaymentTab({
                   <div className="flex items-center gap-2">
                     <span
                       style={{ letterSpacing: "4px" }}
-                      className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                      className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                     >
                       {moment(startdate)?.date()}
                     </span>
@@ -131,7 +131,7 @@ export default function RoomPaymentTab({
                   <div className="flex items-center gap-2">
                     <span
                       style={{ letterSpacing: "4px" }}
-                      className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                      className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                     >
                       {moment(enddate)?.date()}
                     </span>
@@ -163,7 +163,7 @@ export default function RoomPaymentTab({
               <div className="flex items-center gap-2">
                 <span
                   style={{ letterSpacing: "4px" }}
-                  className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                  className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
                   19
                 </span>
@@ -181,7 +181,7 @@ export default function RoomPaymentTab({
               <div className="flex items-center gap-2">
                 <span
                   style={{ letterSpacing: "4px" }}
-                  className="text-xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                  className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
                   19
                 </span>
