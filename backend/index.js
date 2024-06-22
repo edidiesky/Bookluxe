@@ -57,60 +57,60 @@ app.use(errorHandler);
 
 // function that check sif the userId is included in the users array else it add the user id and scoket Id
 
-let users = [];
-const addUserId = (userId, socketId) => {
-  // check if the object: {yserId, socketId} is being found in the usres array
-  // if not found add it to the users array
-  const userExits = users.find((user) => user.userId === userId);
-  if (!userExits) {
-    users.push({ userId, socketId });
-  }
-};
+// let users = [];
+// const addUserId = (userId, socketId) => {
+//   // check if the object: {yserId, socketId} is being found in the usres array
+//   // if not found add it to the users array
+//   const userExits = users.find((user) => user.userId === userId);
+//   if (!userExits) {
+//     users.push({ userId, socketId });
+//   }
+// };
 
-const RemoveUser = (socketId) => {
-  // check if the object: {yserId, socketId} is being found in the usres array
-  // if not found add it to the users array
-  users = users?.filter((user) => user?.socketId !== socketId);
-};
+// const RemoveUser = (socketId) => {
+//   // check if the object: {yserId, socketId} is being found in the usres array
+//   // if not found add it to the users array
+//   users = users?.filter((user) => user?.socketId !== socketId);
+// };
 
-const getASpecificUser = (userId) => {
-  // console.log(users)
+// const getASpecificUser = (userId) => {
+//   // console.log(users)
 
-  // return users?.filter((obj) => obj.userId === userId)
-  return users.find((user) => user.userId === userId);
-};
+//   // return users?.filter((obj) => obj.userId === userId)
+//   return users.find((user) => user.userId === userId);
+// };
 
-io.on("connection", (socket) => {
-  console.log("a user connected");
+// io.on("connection", (socket) => {
+//   console.log("a user connected");
 
-  // io.emit('message','Connected form the backend and testing sending of the data form the socket server')
-  socket.on("addUserId", (id) => {
-    addUserId(id, socket?.id);
-    io.emit("getAllConnectedUser", users);
-  });
-  // socket.on('addUserId', (id) => console.log(id))
+//   // io.emit('message','Connected form the backend and testing sending of the data form the socket server')
+//   socket.on("addUserId", (id) => {
+//     addUserId(id, socket?.id);
+//     io.emit("getAllConnectedUser", users);
+//   });
+//   // socket.on('addUserId', (id) => console.log(id))
 
-  // // get the userId connected from the client and send the users back to the client
+//   // // get the userId connected from the client and send the users back to the client
 
-  // // send message to a speco=ific user
-  socket.on("sendMessage", ({ receiverId, senderId, text }) => {
-    // get the specific usre u intend to send the message to
-    const user = getASpecificUser(receiverId);
-    // console.log(user, users)
-    // console.log(user?.socketId)
-    // console.log({ receiverId, senderId, text })
-    io.to(user?.socketId).emit("getMessage", {
-      receiverId: receiverId,
-      text: text,
-    });
-  });
+//   // // send message to a speco=ific user
+//   socket.on("sendMessage", ({ receiverId, senderId, text }) => {
+//     // get the specific usre u intend to send the message to
+//     const user = getASpecificUser(receiverId);
+//     // console.log(user, users)
+//     // console.log(user?.socketId)
+//     // console.log({ receiverId, senderId, text })
+//     io.to(user?.socketId).emit("getMessage", {
+//       receiverId: receiverId,
+//       text: text,
+//     });
+//   });
 
-  socket.on("disconnect", () => {
-    console.log("🔥: A user disconnected");
-    RemoveUser(socket?.id);
-    io.emit("getAllConnectedUser", users);
-  });
-});
+//   socket.on("disconnect", () => {
+//     console.log("🔥: A user disconnected");
+//     RemoveUser(socket?.id);
+//     io.emit("getAllConnectedUser", users);
+//   });
+// });
 
 // addUserId(id, socket?.id)
 server.listen(4000, () => {
