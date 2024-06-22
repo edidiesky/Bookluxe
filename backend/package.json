@@ -8,7 +8,9 @@
     "start": "node ./dist/index.js",
     "server": "node ./index.js",
     "data:import": "node seeder",
-    "dev": "nodemon ./index.js"
+    "dev": "nodemon ./index.js",
+    "postinstall": "prisma generate",
+    "build": "prisma generate && npm run build"
   },
   "keywords": [],
   "author": "",
