@@ -15,7 +15,7 @@ const linkData = [
     path: "search",
   },
   {
-    title: "Saved Homes",
+    title: "My Favourites",
     path: "savedhomes",
   },
   {
@@ -101,7 +101,7 @@ const Navbar = () => {
                               Reservation
                             </Link>
                             <Link
-                              to={"/Favourites"}
+                              to={"/savedhomes"}
                               className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Favourites

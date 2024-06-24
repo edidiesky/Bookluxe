@@ -97,6 +97,7 @@ export const reservationSlice = createSlice({
     });
     builder.addCase(DeleteReservation.rejected, (state, action) => {
       state.deleteReservationisSuccess = false;
+           state.deleteReservationisLoading = false;
       toast.error(action.payload);
     });
   },

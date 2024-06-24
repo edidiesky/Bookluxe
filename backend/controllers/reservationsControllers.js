@@ -106,9 +106,13 @@ const DeleteReservations = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("The reservations does not exist");
   }
+    await prisma.payment.deleteMany({
+      where: { reservationid: req.params.id },
+    });
   await prisma.reservations.delete({
     where: { id: req.params.id },
   });
+
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 

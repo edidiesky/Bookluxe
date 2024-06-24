@@ -33,6 +33,7 @@ const ReservationCalendar = () => {
           id: data?.id,
           occupancy: `${duration}`,
           title: data?.user?.name || "No title",
+          roomprice:`${booking?.price}`,
           bgColor: "#0e7b10",
           subtitle: `${data?.user?.name || "Unknown user"} has booked it`,
           title:`${booking?.title}`,
