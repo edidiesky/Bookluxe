@@ -123,6 +123,10 @@ export const slide = {
   },
   enter: {
     y: "100vh",
+    transition: {
+      duration: 1,
+      ease: [0.76, 0, 0.24, 1],
+    },
   },
   exit: {
     y: 0,
