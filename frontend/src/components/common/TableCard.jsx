@@ -22,7 +22,7 @@ const TableCard = ({ x, type }) => {
           <td>
             <span className="flex items-center gap-2">
               Payment Received from{" "}
-              <span className="font-booking_font_bold text-dark">
+              <span className="font-booking_font font-bold text-dark">
                 {x?.user?.name}
               </span>
             </span>

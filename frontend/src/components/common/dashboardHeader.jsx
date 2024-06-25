@@ -158,7 +158,7 @@ const DashboardHeader = () => {
               alt=""
               className="w-10 rounded-full"
             />
-            <h4 className="text-base font-bold text-dark">
+            <h4 className="text-base font-booking_font4 text-dark">
               {currentUser?.name}
               <span className="block font-normal font-booking_font text-sm text-dark">
                 {currentUser?.email}
@@ -172,7 +172,7 @@ const DashboardHeader = () => {
                   <NavLink
                     end
                     className={`
-                      text-xm w-[90%] mx-auto text-dark font-medium`}
+                      text-xm w-[90%] mx-auto text-dark font-booking_font4`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">

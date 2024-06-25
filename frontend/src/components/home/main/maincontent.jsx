@@ -55,10 +55,10 @@ const Hero = () => {
         className="absolute z-10 object-cover top-0 left-0 h-full w-full"
       />
       <div
-        className="w-full z-40 flex items-center justify-center flex-col
+        className="w-[90%] md:w-full z-40 flex items-center justify-center flex-col
        gap-4"
       >
-        <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-6xl md:text-7xl font-booking_font4">
+        <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-5xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "4px" }}
             className="text-xs pb-12 font-semibold uppercase block font-booking_font"
@@ -76,7 +76,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-[95%] lg:w-full py-4 lg:flex-row flex-col items-center justify-center flex">
+        <div className="w-[90%] lg:w-full py-4 lg:flex-row flex-col items-center justify-center flex">
           <div className="w-full lg:w-[700px] py-8  min-h-[160px] bg-white flex items-center justify-center">
             <Popover>
               <PopoverTrigger>

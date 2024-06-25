@@ -220,6 +220,10 @@ const RegisterModalStyles = styled(motion.div)`
     border-radius: 6px;
     box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
     position: relative;
+    @media (max-width: 580px) {
+      max-width: 90%;
+      min-width: 90%;
+    }
     .cross {
       width: 3rem;
       height: 3rem;

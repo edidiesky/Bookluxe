@@ -1,26 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import moment from "moment";
-import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { FaRegCircleCheck } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import Confettis from "@/components/common/Confetti";
 const MainContent = () => {
-  const [showconfetti, setShowConfetti] = useState(false);
-  const { payment } = useSelector((store) => store.payment);
-
-  useEffect(() => {
-    if (payment) {
-      const interval = setTimeout(() => {
-        setShowConfetti(true);
-      }, 7000);
-      return () => clearTimeout(interval);
-    }
-  }, [payment]);
   return (
     <>
-      {showconfetti && <Confettis />}
-      <div className="w-full relative min-h-[100vh] flex flex-col">
+      <div className="w-full relative overflow-hidden min-h-[100vh] flex flex-col">
         <Hero />
         <RoomLists />
       </div>
@@ -110,86 +97,116 @@ const RoomLists = () => {
     moment(updatedReservation?.startDate),
     "days"
   );
+
+  const [showconfetti, setShowConfetti] = useState(false);
+
+  useEffect(() => {
+    if (payment) {
+      const interval = setTimeout(() => {
+        setShowConfetti(true);
+      }, 3000);
+      return () => clearTimeout(interval);
+    }
+  }, [payment]);
   return (
-    <div
-      className="w-full relative py-24 flex items-center justify-center
-   gap-8"
-    >
+    <div className="overflow-hidden">
+      {showconfetti && <Confettis />}
       <div
-        className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
-       gap-12"
+        className="w-full relative py-24 flex items-center justify-center
+   gap-8"
       >
-        <div className="w-full flex flex-col gap-12">
-          <div className="py-24 px-8 w-full bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
-            <FaRegCircleCheck fontSize={"80px"} color="var(--gold-1)" />
-            <h3 className="text-3xl text-center font-booking_font4">
-              Your Payment has been confirmed
-              <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-base font-booking_font text-grey">
-                Your payment has been carried out successfull! We appreciate you
-              </span>
-            </h3>
-          </div>
-          <div className="w-full pb-8 border-b flex flex-col gap-8">
-            <h3 className="text-4xl font-booking_font4">Order Details</h3>
-            <div className="w-full grid lg:grid-cols-custom md:items-center gap-20">
-              <div className="w-full">
-                <div className="grid md:grid-cols-custom_4 items-center gap-8">
-                  <img
-                    src={updatedReservation?.rooms?.images[0]}
-                    alt=""
-                    className="w-[300px] object-cover h-[300px]"
-                  />
+        <div
+          className="w-[90%] relative mx-auto max-w-custom_1 z-40 grid md:grid-cols-1 items-start justify-center flex-col
+       gap-12"
+        >
+          <div className="w-full flex flex-col gap-12">
+            <div className="py-24 px-8 w-full bg-[var(--grey-1)] flex items-center flex-col gap-8 justify-center">
+              <FaRegCircleCheck fontSize={"80px"} color="var(--gold-1)" />
+              <h3 className="text-3xl text-center font-booking_font4">
+                Your Payment has been confirmed
+                <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-base font-booking_font text-grey">
+                  Your payment has been carried out successfull! We appreciate
+                  you
+                </span>
+              </h3>
+            </div>
+            <div className="w-full pb-8 border-b flex flex-col gap-8">
+              <h3 className="text-4xl font-booking_font4">Order Details</h3>
+              <div className="w-full grid lg:grid-cols-custom md:items-center gap-20">
+                <div className="w-full">
+                  <div className="grid md:grid-cols-custom_4 items-center gap-8">
+                    <img
+                      src={updatedReservation?.rooms?.images[0]}
+                      alt=""
+                      className="w-[300px] object-cover h-[300px]"
+                    />
+                    <div className="w-full flex flex-col gap-4">
+                      <h3 className="text-3xl font-booking_font4">
+                        {updatedReservation?.rooms?.title}
+                      </h3>
+                      <ul className="flex flex-col gap-2">
+                        <li className="text-base flex items-center gap-3 font-booking_font">
+                          <span className="font-bold font-booking_font_bold">
+                            Check In:
+                          </span>
+                          {startDate}
+                        </li>
+                        <li className="text-base flex items-center gap-3 font-booking_font">
+                          <span className="font-bold font-booking_font_bold">
+                            Check Out:
+                          </span>
+                          {endDate}
+                        </li>
+                        <li className="text-base flex items-center gap-3 font-booking_font">
+                          <span className="font-bold font-booking_font_bold">
+                            Guests:
+                          </span>
+                          4
+                        </li>
+                        <li className="text-base flex items-center gap-3 font-booking_font">
+                          <span className="font-bold font-booking_font_bold">
+                            Total Days:
+                          </span>
+                          {differenceInDays} days
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div className="w-[400px]">
                   <div className="w-full flex flex-col gap-4">
                     <h3 className="text-3xl font-booking_font4">
-                      {updatedReservation?.rooms?.title}
+                      Reservation Details
                     </h3>
                     <ul className="flex flex-col gap-2">
                       <li className="text-base flex items-center gap-3 font-booking_font">
-                        <span className="font-bold font-booking_font_bold">Check In:</span>
-                        {startDate}
+                        <span className="font-bold font-booking_font_bold">
+                          Order No:
+                        </span>
+                        {payment?.id}
                       </li>
                       <li className="text-base flex items-center gap-3 font-booking_font">
-                        <span className="font-bold font-booking_font_bold">Check Out:</span>
-                        {endDate}
+                        <span className="font-bold font-booking_font_bold">
+                          Order Date:
+                        </span>
+                        {paymentDate}
                       </li>
                       <li className="text-base flex items-center gap-3 font-booking_font">
-                        <span className="font-bold font-booking_font_bold">Guests:</span>4
-                      </li>
-                      <li className="text-base flex items-center gap-3 font-booking_font">
-                        <span className="font-bold font-booking_font_bold">Total Days:</span>
-                        {differenceInDays} days
+                        <span className="font-bold font-booking_font_bold">
+                          Transaction Id:
+                        </span>{" "}
+                        {updatedReservation?.id}
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div className="w-[400px]">
-                <div className="w-full flex flex-col gap-4">
-                  <h3 className="text-3xl font-booking_font4">
-                    Reservation Details
-                  </h3>
-                  <ul className="flex flex-col gap-2">
-                    <li className="text-base flex items-center gap-3 font-booking_font">
-                      <span className="font-bold font-booking_font_bold">Order No:</span>
-                      {payment?.id}
-                    </li>
-                    <li className="text-base flex items-center gap-3 font-booking_font">
-                      <span className="font-bold font-booking_font_bold">Order Date:</span>
-                      {paymentDate}
-                    </li>
-                    <li className="text-base flex items-center gap-3 font-booking_font">
-                      <span className="font-bold font-booking_font_bold">Transaction Id:</span>{" "}
-                      {updatedReservation?.id}
-                    </li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
-          <div className="w-full flex items-center justify-end">
-            <h3 className="text-3xl font-booking_font4">
-              Amount Paid: <span>#{payment?.amount}</span>
-            </h3>
+            <div className="w-full flex items-center justify-end">
+              <h3 className="text-3xl font-booking_font4">
+                Amount Paid: <span>#{payment?.amount}</span>
+              </h3>
+            </div>
           </div>
         </div>
       </div>

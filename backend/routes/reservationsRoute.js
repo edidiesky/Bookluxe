@@ -9,21 +9,22 @@ import {
   CreateUserReservation,
   GetUserReservation,
   GetSingleReservation,
-  GetAllReservation,
+  UpdateReservations,
   DeleteReservations,
+  GetAllReservation,
 } from "../controllers/reservationsControllers.js";
 
 // router.route("/buyer/:id").get(authMiddleware, GetSingleBuyerReservations);
 router.route("/user").get(authMiddleware, GetUserReservation);
 router
   .route("/history")
-  .get(authMiddleware, adminMiddleware, GetUserReservation);
+  .get(authMiddleware, adminMiddleware, GetAllReservation);
 router
   .route("/:id")
   .post(authMiddleware, CreateUserReservation)
   .get(authMiddleware, GetSingleReservation)
-  .delete(authMiddleware, DeleteReservations);
-// .put(authMiddleware, UpdateBuyerReservations)
+  .delete(authMiddleware, DeleteReservations)
+  .put(authMiddleware, UpdateReservations);
 // .delete(authMiddleware, DeleteBuyerReservations);
 
 export default router;

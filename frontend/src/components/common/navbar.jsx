@@ -2,9 +2,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { HiBars3BottomRight } from "react-icons/hi2";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import AnimateText from "@/animations/AnimateText";
+import { ClearUserInfo } from "@/features/auth/authSlice";
+import { onLoginModal } from "@/features/modals/modalSlice";
 const linkData = [
   {
     title: "Home",
@@ -31,6 +33,11 @@ const linkData = [
 const Navbar = () => {
   const [bar, setBar] = React.useState(false);
   const { currentUser } = useSelector((store) => store.auth);
+  const dispatch = useDispatch();
+  const handleLogOut = () => {
+    dispatch(ClearUserInfo());
+    window.location.reload()
+  };
   return (
     <>
       <div className="p-3 z-[50] bg-[var(--grey-1)] px-4 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
@@ -107,7 +114,7 @@ const Navbar = () => {
                               Favourites
                             </Link>
                             <div
-                              onClick={() => signOut()}
+                              onClick={() => handleLogOut()}
                               className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Log Out
@@ -122,7 +129,7 @@ const Navbar = () => {
                               Reservation
                             </Link>
                             <Link
-                              to={"/Favourites"}
+                              to={"/savedhomes"}
                               className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Favourites
@@ -131,10 +138,10 @@ const Navbar = () => {
                               href={"/dashboard/settings"}
                               className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
-                              Profile
+                              Orders
                             </Link>
                             <div
-                              onClick={() => signOut()}
+                              onClick={() => handleLogOut()}
                               className="font-booking_font_bold text-xl font-semibold p-2 family1 w-full profile_list text-dark block"
                             >
                               Log Out
@@ -200,7 +207,10 @@ const Navbar = () => {
                 </div>
               ) : (
                 <span className="flex items-center gap-4">
-                  <div className="btn text-xs text-center p-4 font-booking_font4 text-white px-6 rounded-[40px]">
+                  <div
+                    onClick={() => dispatch(onLoginModal())}
+                    className="btn text-xs text-center p-4 font-booking_font4 text-white px-6 rounded-[40px]"
+                  >
                     Book Your Stay
                   </div>
                   <span

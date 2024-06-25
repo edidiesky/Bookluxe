@@ -15,7 +15,7 @@ export const Table = styled.div`
     border-radius: 10px;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--grey-1);
+    background: #000;
     border-radius: 10px;
     transition: all 0.5s;
   }
@@ -32,7 +32,7 @@ export const Table = styled.div`
       border-radius: 10px;
     }
     &::-webkit-scrollbar-thumb {
-      background: var(--grey-1);
+      background: #000;
       border-radius: 10px;
       transition: all 0.5s;
       &:hover {

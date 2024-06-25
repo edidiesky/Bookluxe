@@ -106,9 +106,9 @@ const DeleteReservations = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("The reservations does not exist");
   }
-    await prisma.payment.deleteMany({
-      where: { reservationid: req.params.id },
-    });
+  await prisma.payment.deleteMany({
+    where: { reservationid: req.params.id },
+  });
   await prisma.reservations.delete({
     where: { id: req.params.id },
   });
@@ -120,10 +120,38 @@ const DeleteReservations = asyncHandler(async (req, res) => {
     .status(200)
     .json({ msg: "The reservations has been successfully deleted" });
 });
+
+const UpdateReservations = asyncHandler(async (req, res) => {
+  const reservations = await prisma.reservations.findUnique({
+    where: {
+      id: req.params.id,
+    },
+  });
+  if (!reservations) {
+    res.status(404);
+    throw new Error("The reservations does not exist");
+  }
+
+  let UpdatedReservations = await prisma.reservations.update({
+    where: { id: req.params.id },
+    data: {
+      ...req.body,
+    },
+  });
+
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
+
+  res.status(200).json({
+    msg: "The reservations has been successfully deleted",
+    reservation: UpdatedReservations,
+  });
+});
 export {
   GetUserReservation,
   GetAllReservation,
   CreateUserReservation,
   GetSingleReservation,
   DeleteReservations,
+  UpdateReservations,
 };

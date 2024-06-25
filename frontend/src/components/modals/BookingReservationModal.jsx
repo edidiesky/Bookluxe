@@ -8,19 +8,15 @@ import Loader from "../home/loader";
 import { useDispatch, useSelector } from "react-redux";
 import AnimateText from "@/animations/AnimateText";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Calendar } from "@/components/ui/calendar";
-import { DeleteReservation } from "@/features/reservation/reservationReducer";
+  DeleteReservation,
+  UpdateReservation,
+} from "@/features/reservation/reservationReducer";
 export default function BookingReservationModal({ setModal, room }) {
   const { deleteRoomisLoading, deleteRoomisSuccess } = useSelector(
     (store) => store.room
   );
-  const { reservations, deleteReservationisLoading } = useSelector(
-    (store) => store.reservation
-  );
+  const { updateReservationisLoading, deleteReservationisLoading } =
+    useSelector((store) => store.reservation);
   const [status, setStatus] = useState("");
   const [price, setPrice] = useState(0);
   const [statustab, setStatusTab] = useState(null);
@@ -92,15 +88,22 @@ export default function BookingReservationModal({ setModal, room }) {
             </div>
 
             <button
-              disabled={deleteRoomisLoading}
-              onClick={handleDeleteRoom}
+              disabled={updateReservationisLoading}
+              onClick={() =>
+                dispatch(
+                  UpdateReservation({
+                    reservationId: room?.id,
+                    reservation: { status: status },
+                  })
+                )
+              }
               className="btn px-4 text-white py-2 rounded-[10px] family1 font-booking_font font-bold flex items-center justify-center text-sm"
               // onClick={() => dispatch(AdminDeleteUserProfile({ Detailsdata: id }))}
             >
-              {deleteRoomisLoading ? (
+              {updateReservationisLoading ? (
                 <span className="flex items-center justify-center gap-2">
                   <Loader type="dots" />
-                  Saving in progress
+                  Update in progress
                 </span>
               ) : (
                 <AnimateText children={`Save `} />
@@ -257,26 +260,24 @@ export default function BookingReservationModal({ setModal, room }) {
               </h3>
               <div className="w-full pt-2 flex flex-col gap-3">
                 <div className="w-full flex items-center gap-4">
-                  <span className="text-base  font-normal">Name:</span>
-                  <span className="text-base  font-bold">
-                    {room?.user?.name}
-                  </span>
+                  <span className="text-sm  font-normal">Name:</span>
+                  <span className="text-sm  font-bold">{room?.user?.name}</span>
                 </div>
                 <div className="w-full flex items-center gap-4">
-                  <span className="text-base  font-normal">Email:</span>
-                  <span className="text-base  font-bold">
+                  <span className="text-sm  font-normal">Email:</span>
+                  <span className="text-sm  font-bold">
                     {room?.user?.email}
                   </span>
                 </div>
                 <div className="w-full flex items-center gap-4">
-                  <span className="text-base  font-normal">Username:</span>
-                  <span className="text-base  font-bold">
+                  <span className="text-sm  font-normal">Username:</span>
+                  <span className="text-sm  font-bold">
                     {room?.user?.username}
                   </span>
                 </div>
                 <div className="w-full flex items-center gap-4">
-                  <span className="text-base  font-normal">App Id:</span>
-                  <span className="text-base  font-bold">{room?.user?.id}</span>
+                  <span className="text-sm  font-normal">App Id:</span>
+                  <span className="text-sm  font-bold">{room?.user?.id}</span>
                 </div>
               </div>
             </div>

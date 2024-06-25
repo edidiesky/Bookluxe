@@ -6,12 +6,12 @@ export const slideup = {
   animate: (i) => ({
     opacity: 1,
     y: "0",
-    transition: { duration: 0.4, delay: i * 0.03 },
+    transition: { duration: 0.7, delay: i * 0.03 },
   }),
   exit: {
     opacity: 0,
     y: "100%",
-    transition: { duration: 0.5 },
+    transition: { duration: 0.6 },
   },
 };
 export const smallslideup2 = {
@@ -22,7 +22,7 @@ export const smallslideup2 = {
   animate: (i) => ({
     opacity: 1,
     y: "0",
-    transition: { duration: 0.6, delay: i * 0.16 },
+    transition: { duration: 0.6, delay: i * 0.2 },
   }),
   exit: {
     opacity: 0,

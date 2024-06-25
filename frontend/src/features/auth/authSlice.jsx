@@ -52,6 +52,14 @@ export const authSlice = createSlice({
       state.deleteUserisLoading = false;
       state.deleteUserisSuccess = false;
     },
+    ClearUserInfo: (state, action) => {
+      localStorage.removeItem("customertoken");
+      localStorage.removeItem("customer");
+      // state.isLoading = false;
+      state.alertType = "";
+      state.showAlert = false;
+      state.alertText = "";
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(LoginUser.pending, (state, action) => {
@@ -129,7 +137,7 @@ export const authSlice = createSlice({
     builder.addCase(addListToWish.fulfilled, (state, action) => {
       state.wishisSuccess = true;
       state.wishisLoading = false;
-      state.currentUser  = action.payload.user
+      state.currentUser = action.payload.user;
       toast.success(action.payload.message);
     });
     builder.addCase(addListToWish.rejected, (state, action) => {
@@ -139,6 +147,6 @@ export const authSlice = createSlice({
   },
 });
 
-export const { handleClearUserAlert } = authSlice.actions;
+export const { handleClearUserAlert, ClearUserInfo } = authSlice.actions;
 
 export default authSlice.reducer;

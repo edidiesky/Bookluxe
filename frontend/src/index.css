@@ -288,3 +288,9 @@ html.lenis body {
 .sc-cCzKKE.fOgBaC::after {
   display: none !important;
 }
+
+/* @media (max-width:580px) {
+  html {
+    font-size: 60%;
+  }
+} */

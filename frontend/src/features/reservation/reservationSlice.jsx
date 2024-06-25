@@ -6,6 +6,7 @@ import {
   GetAllReservations,
   GetAllRoomAndReservations,
   DeleteReservation,
+  UpdateReservation,
 } from "./reservationReducer";
 const initialState = {
   reservation: null,
@@ -24,6 +25,10 @@ const initialState = {
   deleteReservationisLoading: false,
   deleteReservationisSuccess: false,
   deleteReservationisError: false,
+
+  updateReservationisLoading: false,
+  updateReservationisSuccess: false,
+  updateReservationisError: false,
 };
 
 export const reservationSlice = createSlice({
@@ -85,19 +90,36 @@ export const reservationSlice = createSlice({
     });
     // DeleteReservation
 
-    
+    // UpdateReservation
     builder.addCase(DeleteReservation.pending, (state, action) => {
       state.deleteReservationisLoading = true;
     });
     builder.addCase(DeleteReservation.fulfilled, (state, action) => {
       state.deleteReservationisSuccess = true;
       state.deleteReservationisLoading = false;
-      state.reservations = state.reservations.filter((Reservation) => Reservation.id !== action.payload);
+      state.reservations = state.reservations.filter(
+        (Reservation) => Reservation.id !== action.payload
+      );
       toast.success("reservations has been deleted");
     });
     builder.addCase(DeleteReservation.rejected, (state, action) => {
       state.deleteReservationisSuccess = false;
-           state.deleteReservationisLoading = false;
+      state.deleteReservationisLoading = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(UpdateReservation.pending, (state, action) => {
+      state.updateReservationisLoading = true;
+    });
+    builder.addCase(UpdateReservation.fulfilled, (state, action) => {
+      state.updateReservationisSuccess = true;
+      state.updateReservationisLoading = false;
+      state.reservation = action.payload;
+      toast.success("reservations has been updated");
+    });
+    builder.addCase(UpdateReservation.rejected, (state, action) => {
+      state.updateReservationisSuccess = false;
+      state.updateReservationisLoading = false;
       toast.error(action.payload);
     });
   },
