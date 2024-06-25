@@ -287,7 +287,7 @@ export default function BookingReservationModal({ setModal, room }) {
 
         <div className="deleteCardBottom py-2 w-full flex flex-row gap-2 items-center md:justify-end px-4">
           <button
-            className="family1 font-booking_font font-bold uppercase flex items-center justify-center text-sm"
+            className="family1 font-booking_font font-bold flex items-center justify-center text-sm"
             onClick={handleClearAlert}
           >
             Cancel
@@ -295,7 +295,7 @@ export default function BookingReservationModal({ setModal, room }) {
           <button
             disabled={deleteReservationisLoading}
             onClick={() => dispatch(DeleteReservation(room?.id))}
-            className="deleteBtn family1 font-booking_font uppercase font-bold flex items-center justify-center text-sm"
+            className="deleteBtn family1 font-booking_font font-bold flex items-center justify-center text-sm"
             // onClick={() => dispatch(AdminDeleteUserProfile({ Detailsdata: id }))}
           >
             {deleteReservationisLoading ? (
