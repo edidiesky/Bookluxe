@@ -1,17 +1,12 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaStar } from "react-icons/fa";
-// import GuestsModal from "@/components/modals/Guests";
-// import DateModal from "@/components/modals/Date";
-import LoginModal from "@/components/modals/Login";
-import RegisterModal from "@/components/modals/Register";
 import RoomGallery from "./RoomGallery";
 import RoomTitleAndDescription from "./RoomTitleAndDescription";
-import RoomFeatures from "./RoomFeatures";
-import RoomPaymentTab from "./RoomPaymentTab";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import RoomFeatures from "./RoomFeatures";
+import RoomPaymentTab from "./RoomPaymentTab";
 const RoomLists = () => {
   const [datemodal, setDateModal] = useState(false);
   const [guestsmodal, setGuestsModal] = useState(false);
@@ -34,18 +29,6 @@ const RoomLists = () => {
 
   return (
     <>
-      {/* <AnimatePresence mode="wait">
-        {guestsmodal && (
-          <GuestsModal
-            setChildrens={setChildrens}
-            childrens={childrens}
-            adults={adults}
-            setAdults={setAdults}
-            modal={guestsmodal}
-            setModal={setGuestsModal}
-          />
-        )}
-      </AnimatePresence> */}
       <div
         className="w-full relative py-12 md:py-24 border-b flex items-center justify-center
    gap-8"
@@ -74,14 +57,17 @@ const RoomLists = () => {
               {/* room image */}
               <RoomGallery room={room} />
               {/* room basic features */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 items-center mt-4 py-4 gap-8">
-                <div className="flex flex-col gap-1 text-xs font-normal text-dark">
+              <div className="grid grid-cols-2 sm:grid-cols-4 items-center mt-4 py-4 gap-4">
+                <div className="flex flex-col gap-1 text-sm font-normal text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/plugins/nd-booking/templates/icon-bed-grey.svg"
                     alt=""
                     className="w-12"
                   />
-                  {room?.price} $ / PER NIGHT
+                  <div className="flex items-center gap-3">
+                    <span className="text-base"> ${room?.price}</span>
+                    / PER NIGHT
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2 text-sm font-normal text-dark">
                   <img

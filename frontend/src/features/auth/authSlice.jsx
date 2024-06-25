@@ -74,6 +74,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(LoginUser.rejected, (state, action) => {
       state.loginisSuccess = false;
+         state.loginisLoading = false;
       toast.error(action.payload);
     });
 
@@ -87,6 +88,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(RegisterUser.rejected, (state, action) => {
       state.registerisSuccess = false;
+            state.registerisLoading = false;
       toast.error(action.payload);
     });
 

@@ -114,19 +114,17 @@ const RegisterModal = () => {
                     className="text-sm font-booking_font_normal rounded-[10px] flex flex-col gap-2 text-dark"
                   >
                     <span className="text-dark font-bold">{input.label}</span>
-                    <div className="input flex item-center gap-1">
-                      {/* <MdOutlineMailOutline fontSize={'18px'} className="text-grey" /> */}
-                      <input
-                        className="w-full rounded-2xl text-dark font-normal text-sm"
-                        required={true}
-                        name={input?.name}
-                        id={input.label}
-                        value={formvalue[input.name]}
-                        type={input.type}
-                        placeholder={input.label}
-                        onChange={handleFormChange}
-                      ></input>
-                    </div>
+                    <input
+                      className="w-full input rounded-2xl text-dark
+                           font-semibold text-base"
+                      required={true}
+                      name={input?.name}
+                      id={input.label}
+                      value={formvalue[input.name]}
+                      type={input.type}
+                      placeholder={input.label}
+                      onChange={handleFormChange}
+                    ></input>
                   </label>
                 );
               })}

@@ -170,6 +170,7 @@ const DashboardHeader = () => {
               return (
                 <div key={index} className="w-full mx-auto">
                   <NavLink
+                    onClick={() => setBar(!bar)}
                     end
                     className={`
                       text-xm w-[90%] mx-auto text-dark font-booking_font4`}

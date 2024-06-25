@@ -75,6 +75,7 @@ model Reservations {
   startDate  DateTime
   endDate    DateTime
   totalPrice Int
+  guests Int?
   createdAt  DateTime          @default(now())
   updatedAt  DateTime          @updatedAt
   status     ReservationStatus @default(PENDING)

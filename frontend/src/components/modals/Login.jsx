@@ -111,20 +111,17 @@ const LoginModal = () => {
                       <span className="text-dark font-semibold">
                         {input.label}
                       </span>
-                      <div className="input flex item-center gap-1">
-                        {/* <MdOutlineMailOutline fontSize={'18px'} className="text-grey" /> */}
-                        <input
-                          className="w-100 rounded-2xl text-dark
+                      <input
+                        className="w-full input rounded-2xl text-dark
                            font-semibold text-base"
-                          required={true}
-                          name={input?.name}
-                          id={input.label}
-                          value={formvalue[input.name]}
-                          type={input.type}
-                          placeholder={input.label}
-                          onChange={handleFormChange}
-                        ></input>
-                      </div>
+                        required={true}
+                        name={input?.name}
+                        id={input.label}
+                        value={formvalue[input.name]}
+                        type={input.type}
+                        placeholder={input.label}
+                        onChange={handleFormChange}
+                      ></input>
                     </label>
                   );
                 })}

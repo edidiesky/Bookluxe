@@ -29,6 +29,7 @@ export default function RoomPaymentTab({
   const navigate = useNavigate();
   const [bookingloading, setBookingLoading] = useState(false);
   const [bookingdata, setBookingData] = useState(null);
+  const [guests, setGuests] = useState(3);
 
   // console.log(moment(startdate).format("MMMM Do"));
   const { currentUser, token } = useSelector((store) => store.auth);
@@ -53,6 +54,7 @@ export default function RoomPaymentTab({
     totalPrice: totalPrice,
     startDate: moment(startdate).format("MMMM Do YYYY"),
     endDate: moment(enddate).format("MMMM Do YYYY"),
+    guests: guests,
   };
 
   // console.log(reservationData);
@@ -165,14 +167,27 @@ export default function RoomPaymentTab({
                   style={{ letterSpacing: "4px" }}
                   className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
-                  19
+                  {guests}
                 </span>
                 <span
                   style={{ letterSpacing: "4px" }}
-                  className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
+                  className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col gap-[4px] text-dark font-normal"
                 >
-                  <BiChevronDown fontSize={"16px"} />
-                  <BiChevronUp fontSize={"16px"} />
+                  <button
+                    disabled={guests === 1}
+                    onClick={() => setGuests(guests - 1)}
+                    className="w-8 hover:bg-[#1C1C1C] rounded-full cursor-pointer h-8 flex items-center justify-center"
+                  >
+                    <BiChevronDown fontSize={"16px"} />
+                  </button>
+                  <button
+                    disabled={guests > 6}
+                    onClick={() => setGuests(guests + 1)}
+                    className="w-8 hover:bg-[#1C1C1C] rounded-full cursor-pointer h-8 flex items-center justify-center"
+                  >
+                    <BiChevronUp fontSize={"16px"} />
+                  </button>
+                  {/* <BiChevronUp fontSize={"16px"} /> */}
                 </span>
               </div>
             </div>
@@ -183,14 +198,7 @@ export default function RoomPaymentTab({
                   style={{ letterSpacing: "4px" }}
                   className="text-3xl text-[var(--gold-1)] pt-3 md:text-4xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
-                  19
-                </span>
-                <span
-                  style={{ letterSpacing: "4px" }}
-                  className="text-[8px] text-[var(--gold-1)] uppercase leading-[1.5] flex flex-col text-dark font-normal"
-                >
-                  <BiChevronDown fontSize={"16px"} />
-                  <BiChevronUp fontSize={"16px"} />
+                  {differenceInDays}
                 </span>
               </div>
             </div>

@@ -188,13 +188,20 @@ const TableCard = ({ x, type }) => {
               </span>
             )}
           </td>
-          <td className=" font-semibold">{x?.totalPrice}</td>
-          <td className=" font-semibold">{x?.rooms?.address}</td>
           <td className=" font-semibold">
-            {startDate} - {endDate}
+            <span>{x?.totalPrice}</span>
           </td>
           <td className=" font-semibold">
-            {moment(x?.createdAt).format("DD MMM YYYY")}
+            <span>{x?.rooms?.address}</span>
+          </td>
+          <td className=" font-semibold">
+            <span>
+              {" "}
+              {startDate} - {endDate}
+            </span>
+          </td>
+          <td className=" font-semibold">
+            <span> {moment(x?.createdAt).format("DD MMM YYYY")}</span>
           </td>
         </tr>
       </>

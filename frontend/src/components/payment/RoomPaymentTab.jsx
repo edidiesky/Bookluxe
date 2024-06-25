@@ -84,7 +84,7 @@ export default function RoomPaymentTab() {
                       Guests
                     </span>
                     <span className="text-base font-booking_font font-normal">
-                      1 guest
+                      {reservation?.guests} guest
                     </span>
                   </div>
                 </div>
