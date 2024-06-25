@@ -55,13 +55,13 @@ const Hero = () => {
         className="absolute z-10 object-cover top-0 left-0 h-full w-full"
       />
       <div
-        className="w-[90%] md:w-full z-40 flex items-center justify-center flex-col
+        className="w-[95%] md:w-full z-40 flex items-center justify-center flex-col
        gap-4"
       >
         <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-5xl md:text-7xl font-booking_font4">
           <span
-            style={{ letterSpacing: "4px" }}
-            className="text-xs pb-12 font-semibold uppercase block font-booking_font"
+            style={{ letterSpacing: "3px" }}
+            className="text-[10px] md:text-xs pb-12 font-semibold uppercase block font-booking_font"
           >
             Luxury Home & Best Resort
           </span>
@@ -76,11 +76,11 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="w-[90%] lg:w-full py-4 lg:flex-row flex-col items-center justify-center flex">
+        <div className="w-full py-4 lg:flex-row flex-col items-center justify-center flex">
           <div className="w-full lg:w-[700px] py-8  min-h-[160px] bg-white flex items-center justify-center">
             <Popover>
               <PopoverTrigger>
-                <div className="flex items-center gap-3">
+                <div className="w-full flex items-center gap-3">
                   <span className="pr-3 md:pr-8 border-r">
                     <span
                       style={{ letterSpacing: "4px" }}
@@ -92,7 +92,7 @@ const Hero = () => {
                     <div className="flex items-center gap-2">
                       <span
                         style={{ letterSpacing: "4px" }}
-                        className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                        className="text-3xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                       >
                         {moment(startdate)?.date()}
                       </span>
@@ -108,7 +108,7 @@ const Hero = () => {
                   <span className="px-4 md:px-8 border-r">
                     <span
                       style={{ letterSpacing: "4px" }}
-                      className="text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
+                      className="text-[8px] md:text-xs block uppercase leading-[1.5] text-center text-dark font-normal"
                     >
                       CHECK OUT
                     </span>
@@ -116,7 +116,7 @@ const Hero = () => {
                     <div className="flex items-center gap-2">
                       <span
                         style={{ letterSpacing: "4px" }}
-                        className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                        className="text-3xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                       >
                         {moment(enddate)?.date()}
                       </span>
@@ -153,7 +153,7 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <span
                   style={{ letterSpacing: "4px" }}
-                  className="text-4xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
+                  className="text-3xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
                   19
                 </span>
@@ -251,7 +251,7 @@ const RoomFlex = () => {
             })}
           </span>
           <span
-            className="text-lg md:text-xl w-full md:w-[650px] md:mx-auto font-normal pt-6
+            className="text-base md:text-xl w-full md:w-[650px] md:mx-auto font-normal pt-6
              flex md:items-center md:justify-center gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_2.map((x, index) => {
@@ -278,7 +278,7 @@ const RoomFlex = () => {
       <div className="w-[90%] mx-auto gap-24 md:gap-24 py-20 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
         <div
           ref={image_ref_1}
-          className="w-full lg:w-[450px] h-[400px] md:h-[550px] relative"
+          className="w-full lg:w-[450px] h-[350px] md:h-[550px] relative"
         >
           <motion.img
             variants={clipPathLeft}
@@ -308,7 +308,7 @@ const RoomFlex = () => {
           >
             enjoy your life
           </span>
-          <h2 className="text-5xl md:text-7xl leading-[1.2] font-booking_font4 gap-x-[5px] flex flex-wrap ">
+          <h2 className="text-5xl md:text-7xl leading-[1.1] font-booking_font4 gap-x-[5px] flex flex-wrap ">
             {RoomFlex_text_3.map((x, index) => {
               return (
                 <span
@@ -328,7 +328,7 @@ const RoomFlex = () => {
             })}
           </h2>
           <span
-            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-xl w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_4.map((x, index) => {
@@ -352,7 +352,7 @@ const RoomFlex = () => {
           </span>
           <span
             ref={RoomFlex_text_ref_5}
-            className="text-lg md:text-xl w-full font-normal
+            className="text-base md:text-xl w-full font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_5.map((x, index) => {
@@ -467,7 +467,7 @@ const Collections = () => {
           </span>
           <h2
             ref={collection_ref_2}
-            className="text-5xl md:text-7xl leading-[1.2] font-booking_font4"
+            className="text-5xl md:text-7xl leading-[1.1] font-booking_font4"
           >
             <span className="w-full gap-x-[5px] flex flex-wrap ">
               {text_1.map((x, index) => {
@@ -491,7 +491,7 @@ const Collections = () => {
           </h2>
           <span
             ref={text_ref_4}
-            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-xl w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {
@@ -515,7 +515,7 @@ const Collections = () => {
           </span>
           <span
             ref={text_ref_5}
-            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-xl w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {
@@ -747,7 +747,7 @@ const RoomStructure = () => {
           </h2>
           <span
             ref={collection_ref_3}
-            className="text-lg md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-xl w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {

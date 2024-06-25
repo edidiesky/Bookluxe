@@ -40,7 +40,7 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="p-3 z-[50] bg-[var(--grey-1)] px-4 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
+      <div className="p-3 z-[50] bg-[var(--grey-1)] px-2 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center">
         <div className="w-full flex items-center gap-2 justify-between">
           <Link to={"/"} className=" flex items-center gap-1 justify-start">
             <img
@@ -52,7 +52,7 @@ const Navbar = () => {
               src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
               className="w-14 h-14 rounded-full object-cover"
             />
-            <h4 className="flex flex-col text-base font-booking_font4 text-dark">
+            <h4 className="hidden md:flex flex-col text-sm md:text-base font-booking_font4 text-dark">
               HOME & VILLAS{" "}
               <span className="block font-semibold text-xs font-booking_font">
                 {" "}
