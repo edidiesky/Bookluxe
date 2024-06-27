@@ -11,7 +11,8 @@ import { LuBedDouble } from "react-icons/lu";
 import { BiSearch } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { ClearUserInfo } from "@/features/auth/authSlice";
 const AdminSidebarData = [
   {
     id: 1,
@@ -55,9 +56,10 @@ const DashboardHeader = () => {
   const { currentUser } = useSelector((store) => store.auth);
   const [bar, setBar] = React.useState(false);
   const [activeindex, setActiveIndex] = useState(0);
+  const dispatch = useDispatch()
 
   const handleLogOut = () => {
-    // dispatch(ClearUserInfo("any"));
+    dispatch(ClearUserInfo("any"));
     window.location.reload();
   };
   return (

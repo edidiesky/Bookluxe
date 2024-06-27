@@ -113,7 +113,7 @@ const LoginModal = () => {
                       </span>
                       <input
                         className="w-full input rounded-2xl text-dark
-                           font-semibold text-base"
+                           font-normal text-sm"
                         required={true}
                         name={input?.name}
                         id={input.label}

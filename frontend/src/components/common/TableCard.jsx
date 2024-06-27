@@ -193,7 +193,7 @@ const TableCard = ({ x, type }) => {
             <span>{x?.totalPrice}</span>
           </td>
           <td className=" font-semibold">
-            <span>{x?.rooms?.address}</span>
+            <span>{x?.rooms?.city}</span>
           </td>
           <td className=" font-semibold">
             <span>

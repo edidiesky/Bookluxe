@@ -1,28 +1,27 @@
 import { Link } from "react-router-dom";
 
 const navbarCenterList = [
+  
   {
     title: "Home",
-    icon: "./images/home.png",
+    path: "",
   },
   {
-    title: "Rooms",
-    icon: "./images/svg_1.png",
+    title: "Search",
+    path: "search",
   },
   {
-    title: "Schedule",
-    icon: "./About/svg_4.png",
+    title: "My Favourites",
+    path: "savedhomes",
   },
-
   {
-    title: "Contact",
-    icon: "./images/svg_2.png",
+    title: "My Trips",
+    path: "trips",
   },
-
-  // {
-  //   title: "Transaction",
-  //   icon: "./images/svg_3.png",
-  // },
+  {
+    title: "About & FAQ",
+    path: "about",
+  },
 ];
 const Footer = () => {
   return (
@@ -101,7 +100,7 @@ const Footer = () => {
                   to={"#"}
                   key={index}
                   className={`text-sm 
-                font-normal  text-white flex items-center gap-2 p-3 px-4 rounded-[40px]`}
+                font-normal  text-white font-booking_font4 flex items-center gap-2 p-3 px-4 rounded-[40px]`}
                 >
                   {/* <img src={list?.icon} className="w-4" alt="" /> */}
                   {list?.title}

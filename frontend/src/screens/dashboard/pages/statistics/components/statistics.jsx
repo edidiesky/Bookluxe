@@ -72,7 +72,7 @@ const GrowthStat = () => {
   return (
     <div id="chart" className="w-full">
       <div className="w-full flex flex-col gap-8">
-        <div className="p-6 w-full px-6 flex-col rounded-[10px] min-h-[500px] border bg-white flex gap-4">
+        <div className="p-6 w-full px-6 flex-col rounded-[10px] min-h-[400px] border bg-white flex gap-4">
           <h3 className="text-2xl font-booking_font4">This Year Growth</h3>
           <div className="flex w-full flex-col gap-8">
             <Chart
@@ -80,7 +80,7 @@ const GrowthStat = () => {
               series={series}
               type="line"
               width={"100%"}
-              height={430}
+              height={340}
             />
           </div>
         </div>
