@@ -98,8 +98,7 @@
   font-family: "Montreal";
   font-style: normal;
   font-weight: 400 600 700;
-  src: url(https://www.upwork.com/static/fonts-global/4.5.1/neue-montreal-variable.woff2)
-    format("woff2");
+  src: url("./assets/fonts/neue-montreal-variable.ttf") format("truetype");
 }
 
 * {
