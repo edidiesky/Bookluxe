@@ -826,7 +826,7 @@ const RoomsPrice = () => {
     {
       title: "Single Room",
       background: "var(-white-1)",
-      price: 55,
+      price: "70,000",
       amenties: [
         "Home Screen",
         "PS5 Console",
@@ -840,7 +840,7 @@ const RoomsPrice = () => {
     {
       title: "Small Suite",
       background: "var(-gold-1)",
-      price: 75,
+      price: "90,000",
       amenties: [
         "Home Screen",
         "24 / 7 Power Supply",
@@ -855,7 +855,7 @@ const RoomsPrice = () => {
     {
       title: "Apartment",
       background: "var(-white-1)",
-      price: 105,
+      price: "120,000",
       amenties: [
         "Home Screen",
         "24 / 7 Power Supply",
@@ -962,14 +962,14 @@ const RoomsPrice = () => {
                 <div className="w-full flex flex-col gap-3 px-8">
                   <h3
                     className={`${index === 1 ? "text-[#B7FF0A]" : "b"}
-                     text-xl font-booking_font font-bold`}
+                     text-xl font-booking_font_bold font-bold`}
                   >
                     {room?.title}
                   </h3>
-                  <h3 className="text-6xl md:text-7xl font-booking_font4">
-                    <span className="text-xl">$</span>
+                  <h3 className="text-4xl md:text-5xl font-booking_font4">
+                    <span className="text-xl">₦</span>
                     {room?.price}
-                    <span className="pl-3 text-xl font-booking_font font-bold">
+                    <span className="pl-3 text-xl font-booking_font">
                       / night
                     </span>
                   </h3>

@@ -87,7 +87,7 @@ const LoginModal = () => {
           <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex border-[rgba(0,0,0,.2)] items-center justify-between">
             <h3 className="text-3xl font-booking_font4">
               Sign In
-              <span className="block text-sm font-normal font-booking_font_normal">
+              <span className="block text-sm font-normal font-booking_font">
                 Login to your account and check out your bookings
               </span>
             </h3>
@@ -106,9 +106,9 @@ const LoginModal = () => {
                     <label
                       key={index}
                       htmlFor={input.label}
-                      className="text-sm font-booking_font_normal rounded-[10px] flex flex-col gap-2 text-dark"
+                      className="text-sm font-booking_font rounded-[10px] flex flex-col gap-2 text-dark"
                     >
-                      <span className="text-dark font-semibold">
+                      <span className="text-dark">
                         {input.label}
                       </span>
                       <input
@@ -129,7 +129,7 @@ const LoginModal = () => {
               <div className="w-full flex items-center justify-center flex-col gap-3">
                 <button
                   type="submit"
-                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_normal font-semibold text-white"
+                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_bold text-white"
                 >
                   Sign In
                 </button>
@@ -139,7 +139,7 @@ const LoginModal = () => {
                     <span
                       onClick={handleLoginModal}
                       style={{ textDecoration: "underline" }}
-                      className="font-bold font-booking_font_bold cursor-pointer"
+                      className="font-booking_font_bold cursor-pointer"
                       // href={"#"}
                     >
                       Sign Up
@@ -153,13 +153,13 @@ const LoginModal = () => {
               <div
                 // onClick={() => signIn("google")}
                 className="p-3 px-8 items-center flex justify-center gap-4
-                 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_normal font-semibold"
+                 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_bold"
               >
                 <FcGoogle fontSize={"28px"} />
                 Continue with Google
               </div>
 
-              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font_normal font-normal border border-[rgba(0,0,0,.9)]">
+              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font font-normal border border-[rgba(0,0,0,.9)]">
                 <FaGithub fontSize={"28px"} />
                 Continue with Github
               </div> */}

@@ -93,7 +93,7 @@ const RegisterModal = () => {
           <div className="w-full sticky top-0 left-0 p-6 px-8 border-b flex border-[rgba(0,0,0,.2)] items-center justify-between">
             <h3 className="text-2xl font-bold font-booking_font_bold">
               Sign Up
-              <span className="block text-sm font-normal font-booking_font_normal">
+              <span className="block text-sm font-normal font-booking_font">
                 Register to your account and check out your bookings
               </span>
             </h3>
@@ -104,16 +104,16 @@ const RegisterModal = () => {
           <div className="w-full overflow-auto h-[400px] pb-6 flex">
             <form
               onSubmit={handleFormSubmision}
-              className="w-[90%] mx-auto p-4 px-8 pb-4 flex flex-col gap-4"
+              className="w-[90%] mx-auto p-4 px-8 pb-4 flex flex-col gap-2"
             >
               {RegisterFormInputData?.map((input, index) => {
                 return (
                   <label
                     key={index}
                     htmlFor={input.label}
-                    className="text-sm font-booking_font_normal rounded-[10px] flex flex-col gap-2 text-dark"
+                    className="text-sm font-booking_font rounded-[10px] flex flex-col gap-2 text-dark"
                   >
-                    <span className="text-dark font-bold">{input.label}</span>
+                    <span className="text-dark ">{input.label}</span>
                     <input
                       className="w-full input rounded-2xl text-dark
                            font-normal text-sm"
@@ -131,7 +131,7 @@ const RegisterModal = () => {
               <div className="w-full flex items-center justify-center flex-col gap-3">
                 <button
                   type="submit"
-                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_normal font-bold text-white"
+                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_bold font-bold text-white"
                 >
                   Sign Up
                 </button>
@@ -152,12 +152,12 @@ const RegisterModal = () => {
               <div className="option text-dark">or</div>
               <div
                 // onClick={() => signIn("google")}
-                className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_normal font-bold border border-[rgba(0,0,0,.9)]"
+                className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_bold font-bold border border-[rgba(0,0,0,.9)]"
               >
                 <FcGoogle fontSize={"28px"} />
                 Continue with Google
               </div>
-              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font_normal font-bold border border-[rgba(0,0,0,.9)]">
+              {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font font-bold border border-[rgba(0,0,0,.9)]">
                 <FaGithub fontSize={"28px"} />
                 Continue with Github
               </div>{" "} */}

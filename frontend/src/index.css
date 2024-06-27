@@ -143,6 +143,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fff;
+  line-height: 1;
 }
 
 .hide {
