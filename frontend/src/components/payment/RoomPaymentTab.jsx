@@ -58,13 +58,14 @@ export default function RoomPaymentTab() {
             <div className="w-full flex flex-col gap-2">
               <div className="flex p-8 pb-6 border-b-4 flex-col w-full gap-2">
                 <span className="text-sm font-booking_font font-normal">
-                  1 Bedroom | 3 Guests
+                  {reservation?.rooms?.bedroom} Bedroom |{" "}
+                  {reservation?.rooms?.guests} Guests
                 </span>
                 <h1 className="text-3xl w-full font-medium font-booking_font4">
                   {reservation?.rooms?.title}
                 </h1>
                 <span className="text-sm font-booking_font font-normal">
-                  {reservation?.rooms?.address}, {reservation?.rooms?.city}
+                  {reservation?.rooms?.city}
                 </span>
                 {/* date and guests */}
                 <div className="py-3 flex items-center justify-between w-full">
@@ -96,16 +97,16 @@ export default function RoomPaymentTab() {
                     {reservation?.rooms?.price} x {differenceInDays} nights
                   </span>
                   <span>
-                    {reservation?.totalPrice}{" "}
-                    <span className="text-base">USD</span>
+                    <span className="text-base">₦</span>
+                    {Number(reservation?.totalPrice).toLocaleString()}{" "}
                   </span>
                 </div>
                 {/* taxes */}
                 <div className="w-full text-base pb-4 font-normal font-booking_font flex items-center justify-between">
                   <span>Fees and taxess</span>
                   <span>
-                    {reservation?.totalPrice}{" "}
-                    <span className="text-base">USD</span>
+                    <span className="text-base">₦</span>
+                    {Number(reservation?.totalPrice).toLocaleString()}{" "}
                   </span>
                 </div>
                 {/* total */}
@@ -114,10 +115,10 @@ export default function RoomPaymentTab() {
                     Total Cash
                   </span>
                   <span className="font-bold font-booking_font_bold">
-                    {reservation?.totalPrice}{" "}
                     <span className="text-base font-normal font-booking_font">
-                      USD
+                      ₦
                     </span>
+                    {Number(reservation?.totalPrice).toLocaleString()}{" "}
                   </span>
                 </div>
               </div>
@@ -128,10 +129,10 @@ export default function RoomPaymentTab() {
                     Total Cash
                   </span>
                   <span className="font-bold font-booking_font_bold">
-                    {reservation?.totalPrice}{" "}
                     <span className="text-base font-normal font-booking_font">
-                      USD
+                      ₦
                     </span>
+                    {Number(reservation?.totalPrice).toLocaleString()}{" "}
                   </span>
                 </div>
               </div>

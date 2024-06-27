@@ -47,8 +47,17 @@ export default function RoomPaymentTab({
   let date2 = moment(enddate);
   const differenceInDays = date2?.diff(date1, "days"); // Convert milliseconds to days
   // console.log(moment(startdate)?.date());
+  const price =
+    room && room?.price ? parseInt(room?.price.replace(/,/g, "")) : 0;
+  const cautionFee =
+    room && room?.cautionfee ? parseInt(room?.cautionfee.replace(/,/g, "")) : 0;
 
-  const totalPrice = room?.price * differenceInDays + room?.cautionfee;
+  // Calculate total price
+  const totalPrice = price * differenceInDays + cautionFee;
+
+  // console.log("price:", price);
+  // console.log("cautionFee:", cautionFee);
+  // console.log("totalPrice:", totalPrice);
   const reservationData = {
     totalPrice: totalPrice,
     startDate: moment(startdate).format("MMMM Do YYYY"),
@@ -207,17 +216,17 @@ export default function RoomPaymentTab({
           <div className="w-full flex flex-col gap-2">
             {/* price */}
             <div className="w-full text-base font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-grey text-lg block font-booking_font font-normal">
-                {room?.price} x {differenceInDays} nights
+              <span className="text-white text-lg block font-booking_font font-normal">
+                {price} x {differenceInDays} nights
               </span>
               <span>
                 <span className="text-base">₦</span>{" "}
-                {room?.price * differenceInDays}{" "}
+                {Number(price * differenceInDays).toLocaleString()}{" "}
               </span>
             </div>
             {/* taxes */}
             <div className="w-full font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-grey text-lg block font-booking_font font-normal">
+              <span className="text-white text-lg block font-booking_font font-normal">
                 Caution Fees
               </span>
               <span>
@@ -226,24 +235,26 @@ export default function RoomPaymentTab({
             </div>
             {/* total */}
             <div className="w-full font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
-              <span className="text-grey text-lg block font-booking_font font-normal">
+              <span className="text-white text-lg block font-booking_font font-normal">
                 Total
               </span>
               <span>
-                <span className="text-lg">₦</span> {totalPrice}
+                <span className="text-lg">₦</span>{" "}
+                {Number(totalPrice).toLocaleString()}
               </span>
             </div>
           </div>
           {/* summary */}
           <div
-            className="w-full text-xl font-normal text-grey font-booking_font4
+            className="w-full text-xl font-normal text-white font-booking_font4
                     flex items-center justify-between"
           >
             <span className="text-base font-booking_font font-normal">
               You Pay
             </span>
             <span className="text-[var(--gold-1)] ">
-              <span className="text-base">₦</span> {totalPrice}
+              <span className="text-base">₦</span>{" "}
+              {Number(totalPrice).toLocaleString()}
             </span>
           </div>
           {currentUser ? (

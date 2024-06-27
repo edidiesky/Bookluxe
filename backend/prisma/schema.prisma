@@ -50,9 +50,9 @@ model Rooms {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String
   description String
-  price       Int
+  price       String?
   city        String
-  cautionfee  Int?
+  cautionfee  String?
   guests      Int?
   // latitude    Int?
   // longitude   Int?
@@ -75,7 +75,7 @@ model Reservations {
   id         String            @id @default(auto()) @map("_id") @db.ObjectId
   startDate  DateTime
   endDate    DateTime
-  totalPrice Int
+  totalPrice Int?
   guests     Int?
   createdAt  DateTime          @default(now())
   updatedAt  DateTime          @updatedAt

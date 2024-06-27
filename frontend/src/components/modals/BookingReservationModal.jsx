@@ -48,10 +48,10 @@ export default function BookingReservationModal({ setModal, room }) {
 
   return (
     <ReservationModalStyles
-      as={motion.div}
-      initial={{ opacity: 0 }}
-      exit={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      // as={motion.div}
+      // initial={{ opacity: 0 }}
+      // exit={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
     >
       <motion.div
         initial={{
@@ -237,13 +237,13 @@ export default function BookingReservationModal({ setModal, room }) {
                   className="text-sm font-semibold flex flex-col gap-2 font-booking_font"
                 >
                   Final Price:
-                  <span className="block text-base">{room?.roomprice}</span>
+                  <span className="block text-lg">₦{room?.roomprice}</span>
                 </label>
 
                 <div className="text-sm font-semibold flex flex-col gap-2 font-booking_font">
                   Payment on Place:
-                  <div className="p-4 text-dark rounded-[5px] bg-[#f5f5f5] text-end text-base font-bold">
-                    #{room?.totalPrice}
+                  <div className="p-2 text-dark rounded-[5px] bg-[#f5f5f5] text-end text-lg font-bold">
+                    ₦{Number(room?.totalPrice).toLocaleString()}
                   </div>
                 </div>
               </div>
@@ -313,7 +313,7 @@ export default function BookingReservationModal({ setModal, room }) {
   );
 }
 
-const ReservationModalStyles = styled(motion.div)`
+const ReservationModalStyles = motion.div`
   width: 100vw;
   height: 100vh;
   position: fixed;

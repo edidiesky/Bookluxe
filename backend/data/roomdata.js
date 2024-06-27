@@ -21,8 +21,8 @@ export const apartmentDataList = [
     title: "Hazel",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 120000,
-    cautionfee: 100000,
+    price: "120,000",
+    cautionfee: "100,000",
     guests: 4,
   },
   // mocha
@@ -41,8 +41,8 @@ export const apartmentDataList = [
     title: "Mocha",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 70000,
-    cautionfee: 50000,
+    price: "70,000",
+    cautionfee: "50,000",
     guests: 2,
   },
   // pearl
@@ -66,8 +66,8 @@ export const apartmentDataList = [
     title: "Pearl",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 90000,
-    cautionfee: 50000,
+    price: "90,000",
+    cautionfee: "50,000",
     guests: 2,
   },
   // Valentina
@@ -85,8 +85,8 @@ export const apartmentDataList = [
     title: "Valentina",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 55000,
-    cautionfee: 40000,
+    price: "55,000",
+    cautionfee: "40,000",
     guests: 2,
   },
   // Cinammon
@@ -105,8 +105,8 @@ export const apartmentDataList = [
     title: "Cinammon",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 85000,
-    cautionfee: 50000,
+    price: "85,000",
+    cautionfee: "50,000",
     guests: 2,
   },
   // Scarlett
@@ -124,8 +124,8 @@ export const apartmentDataList = [
     title: "Scarlett",
     description:
       "Family room, nice and spacious with a double and single bed with the fabulous shower room. You won’t want to leave.",
-    price: 55000,
-    cautionfee: 40000,
+    price: "55,000",
+    cautionfee: "40,000",
     guests: 2,
   },
 ];

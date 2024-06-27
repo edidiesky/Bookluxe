@@ -38,8 +38,9 @@ const RoomsList = () => {
                 <tr>
                   {/* <th>ID</th> */}
                   <th>Room Name</th>
-                  <th>Location</th>
-                  <th>city</th>
+                  {/* <th>Location</th> */}
+                  <th>City</th>
+                  <th>Price</th>
                   <th>Date Created</th>
                   <th>Manage Room</th>
                 </tr>
