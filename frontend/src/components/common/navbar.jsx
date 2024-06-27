@@ -24,10 +24,10 @@ const linkData = [
     title: "My Trips",
     path: "trips",
   },
-  {
-    title: "About & FAQ",
-    path: "about",
-  },
+  // {
+  //   title: "About & FAQ",
+  //   path: "about",
+  // },
 ];
 
 const Navbar = () => {
