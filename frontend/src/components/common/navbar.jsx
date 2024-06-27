@@ -60,7 +60,7 @@ const Navbar = () => {
               </span>
             </h4>
           </Link>
-          <div className="items-center justify-start hidden lg:flex gap-3">
+          <div className="items-center justify-start hidden lg:flex gap-4">
             {linkData?.map((list, index) => {
               return (
                 <Link
