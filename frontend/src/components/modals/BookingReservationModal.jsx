@@ -48,10 +48,10 @@ export default function BookingReservationModal({ setModal, room }) {
 
   return (
     <ReservationModalStyles
-      // as={motion.div}
-      // initial={{ opacity: 0 }}
-      // exit={{ opacity: 0 }}
-      // animate={{ opacity: 1 }}
+      as={motion.div}
+      initial={{ opacity: 0}}
+      exit={{ opacity: 0,   transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }, }}
+      animate={{ opacity: 1,   transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] }, }}
     >
       <motion.div
         initial={{
@@ -59,10 +59,10 @@ export default function BookingReservationModal({ setModal, room }) {
         }}
         animate={{
           y: "0",
-          transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
+          transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] },
         }}
         exit={{
-          y: "100vh",
+          y: "-100vh",
           transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
         }}
         className={"deleteCard gap-2"}
@@ -237,7 +237,7 @@ export default function BookingReservationModal({ setModal, room }) {
                   className="text-sm font-semibold flex flex-col gap-2 font-booking_font"
                 >
                   Final Price:
-                  <span className="block text-lg">₦{room?.roomprice}</span>
+                  <span className="block text-lg">    ₦{Number(room?.totalPrice).toLocaleString()}</span>
                 </label>
 
                 <div className="text-sm font-semibold flex flex-col gap-2 font-booking_font">
@@ -313,7 +313,7 @@ export default function BookingReservationModal({ setModal, room }) {
   );
 }
 
-const ReservationModalStyles = motion.div`
+const ReservationModalStyles = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   position: fixed;
