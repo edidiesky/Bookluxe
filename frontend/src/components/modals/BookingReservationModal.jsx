@@ -49,9 +49,15 @@ export default function BookingReservationModal({ setModal, room }) {
   return (
     <ReservationModalStyles
       as={motion.div}
-      initial={{ opacity: 0}}
-      exit={{ opacity: 0,   transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] }, }}
-      animate={{ opacity: 1,   transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] }, }}
+      initial={{ opacity: 0 }}
+      exit={{
+        opacity: 0,
+        transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+      }}
+      animate={{
+        opacity: 1,
+        transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] },
+      }}
     >
       <motion.div
         initial={{
@@ -59,10 +65,10 @@ export default function BookingReservationModal({ setModal, room }) {
         }}
         animate={{
           y: "0",
-          transition: { duration: 1.6, ease: [0.76, 0, 0.24, 1] },
+          transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
         }}
         exit={{
-          y: "-100vh",
+          y: "100vh",
           transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
         }}
         className={"deleteCard gap-2"}
@@ -111,7 +117,7 @@ export default function BookingReservationModal({ setModal, room }) {
             </button>
           </div>
           <div className="grid w-full gap-4 md:grid-cols-4">
-            <div className="w-full border-b-2 border-[#B7FF0A] text-[#000] pb-3 text-lg font-booking_font font-bold">
+            <div className="w-full border-b-2 border-[#B7FF0A] text-[#000] pb-3 text-lg font-booking_font_bold font-bold">
               Booking Details
             </div>
           </div>
@@ -127,10 +133,10 @@ export default function BookingReservationModal({ setModal, room }) {
                 {/* dates */}
                 <label
                   htmlFor="titlprice"
-                  className="text-sm font-semibold flex flex-col gap-2 font-booking_font"
+                  className="text-sm flex flex-col gap-2 font-booking_font"
                 >
                   From:
-                  <span className="block text-base">
+                  <span className="block text-base font-booking_font_bold">
                     {moment(room?.startDate).format("DD MMM YYYY")}
                   </span>
                   {/* <input
@@ -144,18 +150,16 @@ export default function BookingReservationModal({ setModal, room }) {
                 </label>
                 <label
                   htmlFor="titlprice"
-                  className="text-sm font-semibold flex flex-col gap-2 font-booking_font"
+                  className="text-sm flex flex-col gap-2 font-booking_font"
                 >
                   To:
-                  <span className="block text-base">
+                  <span className="block text-base font-booking_font_bold">
                     {moment(room?.endDate).format("DD MMM YYYY")}
                   </span>
                 </label>
               </div>
               <div className="w-full flex flex-col gap-2">
-                <h5 className="text-sm font-semibold font-booking_font">
-                  Number of Nights:
-                </h5>
+                <h5 className="text-sm font-booking_font">Number of Nights:</h5>
                 <span className="block font-bold text-base">
                   {diffrenceInDays} Nights
                 </span>
@@ -184,15 +188,15 @@ export default function BookingReservationModal({ setModal, room }) {
               </div>
 
               <div className="w-full flex flex-col gap-4 pt-2">
-                <h3 className="text-base w-full pb-4 border-b font-booking_font4 family1">
+                <h3 className="text-base w-full pb-2 border-b font-booking_font4 family1">
                   Booking Status
                 </h3>
-                <div className="w-full grid grid-cols-1 gap-2">
+                <div className="w-full grid grid-cols-1">
                   <div
                     onClick={() => HandleStatus({ stat: "CONFIRMED", tab: 0 })}
                     className={`text-sm py-2 px-4 ${
                       status === "CONFIRMED" ? "bg-[#f5f5f5]" : ""
-                    } font-semibold flex items-center gap-4 font-booking_font`}
+                    } flex items-center gap-4 font-booking_font`}
                   >
                     <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#B7FF0A] text-[#000] text-end text-sm font-booking_font">
                       {status === "CONFIRMED" && <BiCheck />}
@@ -203,7 +207,7 @@ export default function BookingReservationModal({ setModal, room }) {
                     onClick={() => HandleStatus({ stat: "PENDING", tab: 1 })}
                     className={`text-sm py-2 px-4 ${
                       status === "PENDING" ? "bg-[#f5f5f5]" : ""
-                    } font-semibold flex items-center gap-4 font-booking_font`}
+                    } flex items-center gap-4 font-booking_font`}
                   >
                     <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#e4c590] text-[#000] text-end text-sm font-booking_font">
                       {status === "PENDING" && <BiCheck />}
@@ -214,7 +218,7 @@ export default function BookingReservationModal({ setModal, room }) {
                     onClick={() => HandleStatus({ stat: "CANCELLED", tab: 2 })}
                     className={`text-sm py-2 px-4 ${
                       status === "CANCELLED" ? "bg-[#f5f5f5]" : ""
-                    } font-semibold flex items-center gap-4 font-booking_font`}
+                    } flex items-center gap-4 font-booking_font`}
                   >
                     <div className="w-8 h-8 flex items-center justify-center rounded-full text-dark bg-[#f9d955] text-[#000] text-end text-base font-booking_font">
                       {status === "CANCELLED" && <BiCheck />}
@@ -234,13 +238,16 @@ export default function BookingReservationModal({ setModal, room }) {
               <div className="w-full flex flex-col gap-4">
                 <label
                   htmlFor="titlprice"
-                  className="text-sm font-semibold flex flex-col gap-2 font-booking_font"
+                  className="text-sm flex flex-col gap-2 font-booking_font"
                 >
                   Final Price:
-                  <span className="block text-lg">    ₦{Number(room?.totalPrice).toLocaleString()}</span>
+                  <span className="block text-lg font-booking_font_bold">
+                    {" "}
+                    ₦{Number(room?.totalPrice).toLocaleString()}
+                  </span>
                 </label>
 
-                <div className="text-sm font-semibold flex flex-col gap-2 font-booking_font">
+                <div className="text-sm flex flex-col gap-2 font-booking_font">
                   Payment on Place:
                   <div className="p-2 text-dark rounded-[5px] bg-[#f5f5f5] text-end text-lg font-bold">
                     ₦{Number(room?.totalPrice).toLocaleString()}
@@ -248,8 +255,8 @@ export default function BookingReservationModal({ setModal, room }) {
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col gap-4 pt-2">
-              <h3 className="text-base w-full pb-4 border-b font-booking_font4 family1">
+            <div className="w-full flex flex-col gap-2 pt-2">
+              <h3 className="text-base w-full pb-2 border-b font-booking_font4 family1">
                 Number of Guests
               </h3>
               <span className="block font-bold text-base">5 Guests</span>

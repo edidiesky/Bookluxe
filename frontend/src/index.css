@@ -98,7 +98,7 @@
   font-family: "Montreal";
   font-style: normal;
   font-weight: 400 600 700;
-  src: url("./assets/fonts/neue-montreal-variable.ttf") format("truetype");
+  src: url("./assets/fonts/booking_font_regular.ttf") format("truetype");
 }
 
 * {
@@ -143,9 +143,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #fff;
-  font-weight: 400;
-  line-height: 1.1;
-  /* letter-spacing: 1px; */
 }
 
 .hide {

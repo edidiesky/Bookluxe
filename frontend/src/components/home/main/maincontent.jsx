@@ -251,7 +251,7 @@ const RoomFlex = () => {
             })}
           </span>
           <span
-            className="text-base md:text-xl w-full md:w-[650px] md:mx-auto font-normal pt-6
+            className="text-base md:text-lg w-full md:w-[650px] md:mx-auto font-normal pt-6
              flex md:items-center md:justify-center gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_2.map((x, index) => {
@@ -328,7 +328,7 @@ const RoomFlex = () => {
             })}
           </h2>
           <span
-            className="text-base md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-lg w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_4.map((x, index) => {
@@ -352,7 +352,7 @@ const RoomFlex = () => {
           </span>
           <span
             ref={RoomFlex_text_ref_5}
-            className="text-base md:text-xl w-full font-normal
+            className="text-base md:text-lg w-full font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {RoomFlex_text_5.map((x, index) => {
@@ -491,7 +491,7 @@ const Collections = () => {
           </h2>
           <span
             ref={text_ref_4}
-            className="text-base md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-lg w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {
@@ -515,7 +515,7 @@ const Collections = () => {
           </span>
           <span
             ref={text_ref_5}
-            className="text-base md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-lg w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {
@@ -747,7 +747,7 @@ const RoomStructure = () => {
           </h2>
           <span
             ref={collection_ref_3}
-            className="text-base md:text-xl w-full md:w-[650px] font-normal
+            className="text-base md:text-lg w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {

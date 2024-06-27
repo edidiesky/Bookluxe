@@ -33,8 +33,8 @@ module.exports = {
       },
       fontFamily: {
         booking_font: ["Montreal", "sans-serif"],
-        booking_font_bold: ["Montreal", "sans-serif"],
-        booking_font_normal: ["Montreal", "sans-serif"],
+        booking_font_bold: ["Booking_Normal_Bold", "sans-serif"],
+        booking_font_normal: ["Booking_Normal_Medium", "sans-serif"],
         booking_font4: ["playfair", "sans-serif"],
       },
       colors: {
