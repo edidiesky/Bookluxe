@@ -188,61 +188,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           </div>
           {/* <img src= alt="" /> */}
         </div>
-        {/* <div className="w-full bg-white flex-col gap-4 flex items-start p-3 pb-8 px-8 z-[40]">
-          <h3 className="text-2xl md:text-3xl text-dark font-booking_font4">
-            {apartment?.title}
-          </h3>
-          <span className="flex items-center gap-4">
-            <span className="flex text-grey gap-3 items-center text-sm font-normal uppercase">
-              <FaRegUserCircle fontSize={"20px"} />3 Guests
-            </span>
-            <span className="flex text-grey gap-3 items-center text-sm font-normal uppercase">
-              <FaWifi fontSize={"20px"} /> Free Wifi
-            </span>
-          </span>
-
-          <span className="text-sm leading-[1.6] font-light text-dark">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel
-            molestie nisl. Duis ac mi leo.
-          </span>
-          <div className="w-full flex items-center">
-            <div className="w-[200px] min-h-[50px] flex items-center justify-center text-sm uppercase font-bold border-2 border-[rgba(0,0,0,1)]">
-              book now for ${apartment?.price}
-            </div>
-            <div className="w-[60px] min-h-[50px] flex items-center justify-center text-sm uppercase font-bold text-white bg-[rgba(0,0,0,1)]">
-              i
-            </div>
-          </div>
-          <div className="pt-4 mt-4 w-full border-t flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img
-                src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/king-beds.png"
-                alt=""
-                className="w-8"
-              />
-              <img
-                src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/private-bathroom.png"
-                alt=""
-                className="w-6"
-              />
-              <img
-                src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/no-smoking.png"
-                alt=""
-                className="w-6"
-              />
-              <img
-                src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/television.png"
-                alt=""
-                className="w-6"
-              />
-            </div>
-
-            <span className="text-sm flex items-center leading-[1.6] font-light text-dark">
-              FULL INFO
-              <BiChevronRight fontSize={"20px"} />
-            </span>
-          </div>
-        </div> */}
+      
         <div className="w-full flex flex-col bg-white gap-2">
           <h4
             style={{ letterSpacing: "3px" }}
@@ -257,7 +203,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
 
           <div
             style={{ letterSpacing: "1px" }}
-            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-[10px] font-bold font-booking_font_bold"
+            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
           >
             <span className="flex uppercase items-center gap-2">
               Explore Destinations <IoIosArrowRoundForward fontSize={"24px"} />
@@ -265,7 +211,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
 
             <span className="flex text-[10px] text-grey font-normal font-booking_font flex-col">
               price
-              <span className="block text-base text-stone-950 font-bold font-booking_font_bold">
+              <span className="block text-lg text-[#000] font-booking_font4">
                 ₦{apartment?.price}
               </span>
             </span>
