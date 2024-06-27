@@ -48,8 +48,7 @@ export default function RoomPaymentTab({
   const differenceInDays = date2?.diff(date1, "days"); // Convert milliseconds to days
   // console.log(moment(startdate)?.date());
 
-  const totalPrice =
-    room?.price * differenceInDays + room?.price * differenceInDays * 0.1;
+  const totalPrice = room?.price * differenceInDays + room?.cautionfee;
   const reservationData = {
     totalPrice: totalPrice,
     startDate: moment(startdate).format("MMMM Do YYYY"),
@@ -212,18 +211,17 @@ export default function RoomPaymentTab({
                 {room?.price} x {differenceInDays} nights
               </span>
               <span>
+                <span className="text-base">₦</span>{" "}
                 {room?.price * differenceInDays}{" "}
-                <span className="text-base">USD</span>
               </span>
             </div>
             {/* taxes */}
             <div className="w-full font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
               <span className="text-grey text-lg block font-booking_font font-normal">
-                Fees and taxess
+                Caution Fees
               </span>
               <span>
-                {room?.price * differenceInDays * 0.1}{" "}
-                <span className="text-lg">USD</span>
+                <span className="text-lg">₦</span> {room?.cautionfee}
               </span>
             </div>
             {/* total */}
@@ -232,7 +230,7 @@ export default function RoomPaymentTab({
                 Total
               </span>
               <span>
-                {100} <span className="text-lg">USD</span>
+                <span className="text-lg">₦</span> {totalPrice}
               </span>
             </div>
           </div>
@@ -245,7 +243,7 @@ export default function RoomPaymentTab({
               You Pay
             </span>
             <span className="text-[var(--gold-1)] ">
-              {totalPrice} <span className="text-base">USD</span>
+              <span className="text-base">₦</span> {totalPrice}
             </span>
           </div>
           {currentUser ? (

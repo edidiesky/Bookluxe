@@ -65,8 +65,8 @@ const RoomLists = () => {
                     className="w-12"
                   />
                   <div className="flex items-center gap-3">
-                    <span className="text-base"> ${room?.price}</span>
-                    / PER NIGHT
+                    <span className="text-base"> ₦{room?.price}</span>/ PER
+                    NIGHT
                   </div>
                 </div>
                 <div className="flex flex-col gap-2 text-sm font-normal text-dark">

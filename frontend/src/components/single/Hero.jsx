@@ -49,7 +49,7 @@ const Hero = () => {
               <h3 className="text-5xl font-booking_font4 justify-end gap-2 flex text-white">
                 {room?.price}{" "}
                 <div className="flex font-booking_font_bold flex-col">
-                  <span className="text-sm uppercase">$</span>
+                  <span className="text-sm uppercase">₦</span>
                   <span className="text-sm uppercase">/ per night</span>
                 </div>
               </h3>

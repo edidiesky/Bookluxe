@@ -51,8 +51,9 @@ model Rooms {
   title       String
   description String
   price       Int
-  address     String
   city        String
+  cautionfee  Int?
+  guests      Int?
   // latitude    Int?
   // longitude   Int?
   type        String?
@@ -75,7 +76,7 @@ model Reservations {
   startDate  DateTime
   endDate    DateTime
   totalPrice Int
-  guests Int?
+  guests     Int?
   createdAt  DateTime          @default(now())
   updatedAt  DateTime          @updatedAt
   status     ReservationStatus @default(PENDING)

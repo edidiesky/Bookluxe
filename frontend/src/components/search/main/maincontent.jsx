@@ -178,7 +178,7 @@ const RoomLists = () => {
           <div className="py-8 border-t border-b px-4 w-full text-xl">
             <div className="flex items-center justify-between w-full">
               <h4 className="font-booking_font4">Maximum Price:</h4>
-              <h4 className="font-booking_font4">$199</h4>
+              <h4 className="font-booking_font4">₦100,000</h4>
             </div>
           </div>
         </div>

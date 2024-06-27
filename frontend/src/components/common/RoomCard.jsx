@@ -93,7 +93,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
             <span className="flex text-xs text-grey font-normal font-booking_font flex-col">
               price
               <span className="block text-lg text-stone-950 font-bold font-booking_font_bold">
-                ${apartment?.rooms?.price}
+                ₦{apartment?.rooms?.price}
               </span>
             </span>
           </div>
@@ -266,7 +266,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
             <span className="flex text-[10px] text-grey font-normal font-booking_font flex-col">
               price
               <span className="block text-base text-stone-950 font-bold font-booking_font_bold">
-                ${apartment?.price}
+                ₦{apartment?.price}
               </span>
             </span>
           </div>
@@ -288,14 +288,15 @@ const RoomCard = ({ type, apartment, inView, index }) => {
         className="w-full flex flex-col gap-8"
       >
         <div className="w-full h-[270px] overflow-hidden relative">
-          <div className="w-full h-full absolute bg-[rgba(0,0,0,.09)] z-[30]"></div>
+          <div className="w-full h-full absolute bg-[rgba(0,0,0,.4)] z-[30]"></div>
           <div className="w-full absolute justify-end h-full flex-col gap-1 flex items-start p-6 pb-8 px-8 z-[40]">
-            <h3 className="text-2xl text-white font-booking_font4">
+            <h3 className="text-2xl font-normal text-white font-booking_font4">
               {apartment?.title}
             </h3>
             <span className="flex items-center gap-4">
               <span className="flex text-white gap-3 items-center text-sm font-normal uppercase">
-                <FaRegUserCircle fontSize={"20px"} />3 Guests
+                <FaRegUserCircle fontSize={"20px"} />
+                {apartment?.guests} Guests
               </span>
               <span className="flex text-white gap-3 items-center text-sm font-normal uppercase">
                 <FaWifi fontSize={"20px"} /> Free Wifi
@@ -343,12 +344,6 @@ const RoomCard = ({ type, apartment, inView, index }) => {
                 >
                   <img
                     key={index}
-                    //   alt="Cotion"
-                    //   width={0}
-                    //   sizes="100vw"
-                    //   height={0}
-                    //   loading="lazy"
-                    //   placeholder="blur"
                     style={{
                       transition:
                         "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
