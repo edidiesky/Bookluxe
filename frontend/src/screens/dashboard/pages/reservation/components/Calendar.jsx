@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 import BookingReservationModal from "@/components/modals/BookingReservationModal";
 import { Scheduler } from "@bitnoi.se/react-scheduler";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 const ReservationCalendar = () => {
   const [filterButtonState, setFilterButtonState] = useState(0);
   // const isLoading = false;
@@ -55,7 +56,7 @@ const ReservationCalendar = () => {
           />
         )}
       </AnimatePresence>
-      <section className="relative p4 bg-white overflow-hidden shadow-lg border rounded-[10px] min-h-[500px]">
+      <ReservationCalendarStyle className="relative p4 bg-white overflow-hidden shadow-lg border rounded-[10px] min-h-[500px]">
         {getsingleReservationisLoading === false && (
           <Scheduler
             data={newFormattedData}
@@ -87,9 +88,84 @@ const ReservationCalendar = () => {
             }}
           />
         )}
-      </section>
+      </ReservationCalendarStyle>
     </>
   );
 };
+
+const ReservationCalendarStyle = styled.section`
+  /* calendar */
+  #reactSchedulerOutsideWrapper,
+  #reactSchedulerOutsideWrapper *,
+  #reactSchedulerOutsideWrapper ::before,
+  #reactSchedulerOutsideWrapper ::after {
+    /* font-family: "playfair" !important; */
+    font-weight: normal !important;
+  }
+
+  .sc-gjLKRp.gqsWwT {
+    font-family: "Booking_Normal_Medium" !important;
+    font-size: 15px !important;
+  }
+
+  .sc-cCzKKE.bwVOYM {
+    font-family: "Booking_Normal_Medium" !important;
+    /* font-weight: normal !important; */
+    font-size: 12px !important;
+  }
+
+  .sc-cCzKKE.fOgBaC {
+    font-family: "playfair" !important;
+    font-size: 14px !important;
+    font-weight: normal !important;
+  }
+
+  .sc-gjLKRp.gqsWwT {
+    font-family: "playfair" !important;
+    font-size: 14px !important;
+  }
+
+  .sc-gjLKRp.eAzhgx {
+    font-family: "Booking_Normal_Medium" !important;
+    font-size: 12px !important;
+  }
+
+  .jMfbsI {
+    min-width: 196px;
+    max-width: 196px;
+    min-height: 100vh;
+    position: sticky;
+    left: 0px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    z-index: 2;
+  }
+
+  .jwOjdZ {
+    margin-right: 0.6rem;
+    width: 5rem !important;
+    height: 3rem !important;
+    border-radius: 10px !important;
+
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .sc-cCzKKE.bwVOYM {
+    display: block !important;
+    font-family: "Booking_Normal_Medium" !important;
+  }
+
+  .sc-cCzKKE.fOgBaC::after {
+    display: none !important;
+  }
+
+  /* @media (max-width:580px) {
+  html {
+    font-size: 60%;
+  }
+} */
+`;
 
 export default ReservationCalendar;
