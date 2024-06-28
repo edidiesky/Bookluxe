@@ -94,10 +94,7 @@
   src: url("./assets/fonts/booking_font_regular.ttf") format("truetype");
 }
 @font-face {
-  font-display: swap;
   font-family: "Montreal";
-  font-style: normal;
-  font-weight: 400 600 700;
   src: url("./assets/fonts/booking_font_regular.ttf") format("truetype");
 }
 
