@@ -110,7 +110,6 @@ const ReservationCalendarStyle = styled.section`
 
   .sc-cCzKKE.bwVOYM {
     font-family: "Booking_Normal_Medium" !important;
-    /* font-weight: normal !important; */
     font-size: 12px !important;
   }
 
