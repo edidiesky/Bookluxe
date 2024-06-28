@@ -15,6 +15,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../home/loader";
 import { onLoginModal } from "@/features/modals/modalSlice";
+import AnimateText from "@/animations/AnimateText";
 export default function RoomPaymentTab({
   setDateModal,
   dateRange,
@@ -29,7 +30,7 @@ export default function RoomPaymentTab({
   const navigate = useNavigate();
   const [bookingloading, setBookingLoading] = useState(false);
   const [bookingdata, setBookingData] = useState(null);
-  const [guests, setGuests] = useState(3);
+  const [guests, setGuests] = useState(1);
 
   // console.log(moment(startdate).format("MMMM Do"));
   const { currentUser, token } = useSelector((store) => store.auth);
@@ -110,7 +111,7 @@ export default function RoomPaymentTab({
   }, [bookingdata]);
 
   return (
-    <div className="w-[95%] lg:sticky top-[10%] flex flex-col gap-8">
+    <div className="w-[100%] lg:sticky top-[10%] flex flex-col gap-8">
       <div className="w-full py-8 flex flex-col items-center gap-4 justify-center md:w-[400px] bg-[#1C1C1C]">
         <div className="w-[90%] mx-auto grid grid-cols-1 gap-4">
           <Popover>
@@ -189,7 +190,7 @@ export default function RoomPaymentTab({
                     <BiChevronDown fontSize={"16px"} />
                   </button>
                   <button
-                    disabled={guests > 6}
+                    disabled={guests === room?.guests}
                     onClick={() => setGuests(guests + 1)}
                     className="w-8 hover:bg-[#1C1C1C] rounded-full cursor-pointer h-8 flex items-center justify-center"
                   >
@@ -263,12 +264,12 @@ export default function RoomPaymentTab({
               disabled={bookingloading}
               onClick={handleReservationBooking}
               style={{ letterSpacing: "4px" }}
-              className="btn text-center text-sm uppercase text-white py-6 px-8 w-full"
+              className="btn flex items-center justify-center text-sm uppercase text-white py-6 px-8 w-full"
             >
               {bookingloading ? (
                 <span className="flex items-center justify-center gap-2">
                   <Loader type="dots" />
-                  Placing Reservation
+                  <AnimateText children={" Placing Reservation"} />
                 </span>
               ) : (
                 "Place Reservation"
@@ -278,9 +279,9 @@ export default function RoomPaymentTab({
             <button
               onClick={handleReservationBooking}
               style={{ letterSpacing: "4px" }}
-              className="btn text-center text-sm uppercase text-white py-6 px-8 w-full"
+              className="btn flex items-center justify-center text-sm uppercase text-white py-6 px-8 w-full"
             >
-              Sign in to Book
+              <AnimateText children={" Sign in to Book"} />
             </button>
           )}
         </div>

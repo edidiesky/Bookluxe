@@ -30,7 +30,8 @@ export const favouritesSlice = createSlice({
     });
     builder.addCase(GetUserFavouriteRooms.rejected, (state, action) => {
       state.wishisSuccess = false;
-      toast.error(action.payload);
+      state.wishisLoading = false;
+      // toast.error(action.payload);
     });
   },
 });

@@ -36,7 +36,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const handleLogOut = () => {
     dispatch(ClearUserInfo());
-    window.location.reload()
+    window.location.reload();
   };
   return (
     <>
@@ -211,7 +211,7 @@ const Navbar = () => {
                     onClick={() => dispatch(onLoginModal())}
                     className="btn text-xs text-center p-4 font-booking_font4 text-white px-6 rounded-[40px]"
                   >
-                    Book Your Stay
+                    <AnimateText children={" Book Your Stay"} />
                   </div>
                   <span
                     onClick={() => setBar(true)}
@@ -243,38 +243,40 @@ const Navbar = () => {
           style={{ zIndex: "200" }}
           className="w-full Header_wrapper h-full bg-white flex item-center flex-col gap-4"
         >
-          <div className="flex p-4 items-center gap-2">
-            {currentUser?.image ? (
-              <img
-                src={currentUser?.image}
-                alt=""
-                className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
-              />
-            ) : currentUser?.username ? (
-              // <div className="w-12 h-12 text-white rounded-full bg-[#000] text-2xl flex items-center justify-center ">
-              //   {currentUser?.username[0]}{" "}
-              // </div>
-              <img
-                src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
-                alt=""
-                className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
-              />
-            ) : (
-              <img
-                src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
-                alt=""
-                className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
-              />
-            )}
-            {currentUser && (
-              <h4 className="text-base font-booking_font4 text-dark family1">
-                {currentUser?.name}
-                <span className="block font-normal font-booking_font text-sm text-grey">
-                  {currentUser?.email}
-                </span>
-              </h4>
-            )}
-          </div>
+          {currentUser && (
+            <div className="flex p-4 items-center gap-2">
+              {currentUser?.image ? (
+                <img
+                  src={currentUser?.image}
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              ) : currentUser?.username ? (
+                // <div className="w-12 h-12 text-white rounded-full bg-[#000] text-2xl flex items-center justify-center ">
+                //   {currentUser?.username[0]}{" "}
+                // </div>
+                <img
+                  src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              ) : (
+                <img
+                  src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              )}
+              {currentUser && (
+                <h4 className="text-base font-booking_font4 text-dark family1">
+                  {currentUser?.name}
+                  <span className="block font-normal font-booking_font text-sm text-grey">
+                    {currentUser?.email}
+                  </span>
+                </h4>
+              )}
+            </div>
+          )}
           <ul className="flex flex-col w-full">
             {currentUser
               ? linkData?.slice(0, 6)?.map((x, index) => {

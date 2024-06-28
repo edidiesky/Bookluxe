@@ -93,7 +93,7 @@ const Footer = () => {
           className="w-[90%] mx-auto max-w-custom_1 flex items-center justify-between
        gap-4"
         >
-          <div className="items-center justify-start flex gap-1">
+          <div className="items-center justify-start flex-wrap flex gap-1">
             {navbarCenterList?.map((list, index) => {
               return (
                 <Link

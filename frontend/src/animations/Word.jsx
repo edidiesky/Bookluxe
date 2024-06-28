@@ -9,7 +9,7 @@ const Word = ({ children }) => {
     offset: ["start .7", "start .25"],
   });
   return (
-    <span ref={text_1_ref}>
+    <span ref={text_1_ref} className="w-full flex flex-wrap items-center">
       {words.map((word, index) => {
         const start = index / words?.length;
         const end = start + 1 / words?.length;
@@ -19,12 +19,13 @@ const Word = ({ children }) => {
           [0, 1]
         );
         return (
-          <span key={index} className="relative w-full">
-            <span className="absolute w-full left-0 right-0 opacity-[.1]">
-              {word}
-            </span>
-            <motion.span style={{ opacity: opacityonScroll }} className="">
-              {word}
+          <span key={index} className="relative">
+            <span className="absolute w-full opacity-[.1]">{word}</span>
+            <motion.span
+              style={{ opacity: opacityonScroll, transition: "all .2s" }}
+              className="w-full"
+            >
+              {word === " " ? "\u00A0" : word}
             </motion.span>
           </span>
         );

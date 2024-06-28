@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/popover";
 import moment from "moment";
 import { addDays } from "date-fns";
-import { BiCheck, BiChevronDown } from "react-icons/bi";
+import { BiCheck, BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import RoomCard from "../../common/RoomCard";
 import { getAllRooms } from "../../../features/room/roomReducer";
@@ -31,6 +31,7 @@ const MainContent = () => {
 
 const Hero = () => {
   const today = new Date();
+    const [guests, setGuests] = React.useState(2);
   const [date, setDate] = React.useState({
     from: today,
     to: addDays(today, 3),
@@ -150,12 +151,32 @@ const Hero = () => {
                 Guests
               </span>
 
-              <div className="flex items-center gap-2">
+              <div className="flex pt-1 items-center gap-2">
                 <span
                   style={{ letterSpacing: "4px" }}
                   className="text-3xl pt-3 md:text-6xl block font-booking_font4 uppercase leading-[1.5] text-center text-dark"
                 >
-                  19
+                  {guests}
+                </span>
+                <span
+                  style={{ letterSpacing: "4px" }}
+                  className="text-[8px] uppercase leading-[1.5] flex flex-col gap-[4px] text-dark font-normal"
+                >
+                  <button
+                    disabled={guests === 1}
+                    onClick={() => setGuests(guests - 1)}
+                    className="w-8 hover:bg-[#eee] rounded-full cursor-pointer h-8 flex items-center justify-center"
+                  >
+                    <BiChevronDown fontSize={"16px"} />
+                  </button>
+                  <button
+                    disabled={guests === 4}
+                    onClick={() => setGuests(guests + 1)}
+                    className="w-8 hover:bg-[#eee] rounded-full cursor-pointer h-8 flex items-center justify-center"
+                  >
+                    <BiChevronUp fontSize={"16px"} />
+                  </button>
+                  {/* <BiChevronUp fontSize={"16px"} /> */}
                 </span>
               </div>
             </span>

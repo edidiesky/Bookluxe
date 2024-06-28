@@ -16,6 +16,7 @@ import {
 } from "../../features/modals/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { LoginUser } from "@/features/auth/authReducer";
+import AnimateText from "@/animations/AnimateText";
 
 const ModalVariants = {
   initial: {
@@ -98,9 +99,9 @@ const LoginModal = () => {
           <div className="w-full overflow-auto h-[350px]  flex">
             <form
               onSubmit={handleFormSubmision}
-              className="w-[90%] mx-auto p-4 px-8 pb-8 flex flex-col gap-6"
+              className="w-[90%] mx-auto p-4 md:px-8 pb-8 flex flex-col gap-6"
             >
-              <div className="w-full flex flex-col gap-3">
+              <div className="w-full flex flex-col gap-2">
                 {LoginFormInputData?.map((input, index) => {
                   return (
                     <label
@@ -108,9 +109,7 @@ const LoginModal = () => {
                       htmlFor={input.label}
                       className="text-sm font-booking_font rounded-[10px] flex flex-col gap-2 text-dark"
                     >
-                      <span className="text-dark">
-                        {input.label}
-                      </span>
+                      <span className="text-dark">{input.label}</span>
                       <input
                         className="w-full input rounded-2xl text-dark
                            font-normal text-sm"
@@ -129,9 +128,10 @@ const LoginModal = () => {
               <div className="w-full flex items-center justify-center flex-col gap-3">
                 <button
                   type="submit"
-                  className="p-4 px-8 text-center w-full cursor-pointer btn bg-[#000] rounded-[10px] font-booking_font_bold text-white"
+                  className="p-4 px-8 text-base flex items-center justify-center w-full cursor-pointer 
+                  btn bg-[#000] rounded-[40px] font-booking_font_bold text-white"
                 >
-                  Sign In
+                  <AnimateText children={"Sign In"} />
                 </button>
                 <div className="w-full flex items-center justify-start gap-2">
                   <span className="text-sm font-normal text-dark">
@@ -152,11 +152,11 @@ const LoginModal = () => {
 
               <div
                 // onClick={() => signIn("google")}
-                className="p-3 px-8 items-center flex justify-center gap-4
-                 w-full cursor-pointer btn text-[#fff] rounded-[10px] font-booking_font_bold"
+                className="p-4 px-8 items-center flex justify-center gap-4
+                 w-full cursor-pointer btn text-[#fff] rounded-[40px] font-booking_font_bold"
               >
-                <FcGoogle fontSize={"28px"} />
-                Continue with Google
+                <FcGoogle fontSize={"24px"} />
+                <AnimateText children={"Continue with Google"} />
               </div>
 
               {/* <div className="p-4 px-8 items-center flex justify-center gap-4 w-full cursor-pointer btn text-[#000] rounded-[10px] font-booking_font font-normal border border-[rgba(0,0,0,.9)]">
@@ -218,7 +218,7 @@ const LoginModalStyles = styled(motion.div)`
     flex-direction: column;
     background: #fff;
     gap: 2rem;
-    border-radius: 6px;
+    border-radius: 20px;
     box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.4);
     position: relative;
     @media (max-width: 580px) {
@@ -249,7 +249,7 @@ const LoginModalStyles = styled(motion.div)`
       button {
         padding: 1.2rem 2rem;
         border: none;
-        font-size: 1.3rem;
+        /* font-size: 1.4rem; */
         font-weight: 400;
         background: var(--grey-2);
         color: #fff;
