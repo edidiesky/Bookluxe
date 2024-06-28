@@ -225,29 +225,29 @@ html.lenis body {
   font-weight: normal !important;
 }
 
-.sc-gjLKRp.gqsWwT {
+.gqsWwT {
   font-family: "Booking_Normal_Medium" !important;
   font-size: 15px !important;
 }
 
-.sc-cCzKKE.bwVOYM {
+.bwVOYM {
   font-family: "Booking_Normal_Medium" !important;
   /* font-weight: normal !important; */
   font-size: 12px !important;
 }
 
-.sc-cCzKKE.fOgBaC {
+.fOgBaC {
   font-family: "playfair" !important;
   font-size: 14px !important;
   font-weight: normal !important;
 }
 
-.sc-gjLKRp.gqsWwT {
+.gqsWwT {
   font-family: "playfair" !important;
   font-size: 14px !important;
 }
 
-.sc-gjLKRp.eAzhgx {
+.eAzhgx {
   font-family: "Booking_Normal_Medium" !important;
   font-size: 12px !important;
 }
@@ -274,12 +274,12 @@ html.lenis body {
   flex-shrink: 0;
 }
 
-.sc-cCzKKE.bwVOYM {
+.bwVOYM {
   display: block !important;
   font-family: "Booking_Normal_Medium" !important;
 }
 
-.sc-cCzKKE.fOgBaC::after {
+.fOgBaC::after {
   display: none !important;
 }
 
