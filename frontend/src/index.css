@@ -96,6 +96,8 @@
 @font-face {
   font-display: swap;
   font-family: "Montreal";
+  font-style: normal;
+  font-weight: 400 600 700;
   src: url("./assets/fonts/booking_font_regular.ttf") format("truetype");
 }
 
@@ -222,7 +224,7 @@ html.lenis body {
 #reactSchedulerOutsideWrapper *,
 #reactSchedulerOutsideWrapper ::before,
 #reactSchedulerOutsideWrapper ::after {
-  font-family: "playfair" !important;
+  /* font-family: "playfair" !important; */
   font-weight: normal !important;
 }
 
@@ -274,6 +276,12 @@ html.lenis body {
   overflow: hidden;
   flex-shrink: 0;
 }
+.sc-lnskGP.jxgfZX {
+  margin-right: 0.6rem;
+  width: 5rem !important;
+  height: 3rem !important;
+  border-radius: 10px !important;
+}
 
 .sc-cCzKKE.bwVOYM {
   display: block !important;
@@ -289,62 +297,3 @@ html.lenis body {
     font-size: 60%;
   }
 } */
-
- 
-.gqsWwT {
-  font-family: "Booking_Normal_Medium" !important;
-  font-size: 15px !important;
-}
-
-.bwVOYM {
-  font-family: "Booking_Normal_Medium" !important;
-  /* font-weight: normal !important; */
-  font-size: 12px !important;
-}
-
-.fOgBaC {
-  font-family: "playfair" !important;
-  font-size: 14px !important;
-  font-weight: normal !important;
-}
-
-.gqsWwT {
-  font-family: "playfair" !important;
-  font-size: 14px !important;
-}
-
-.eAzhgx {
-  font-family: "Booking_Normal_Medium" !important;
-  font-size: 12px !important;
-}
-
-.jMfbsI {
-  min-width: 196px;
-  max-width: 196px;
-  min-height: 100vh;
-  position: sticky;
-  left: 0px;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.1) !important;
-  border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
-  z-index: 2;
-}
-
-.jwOjdZ {
-  margin-right: 0.6rem;
-  width: 5rem !important;
-  height: 3rem !important;
-  border-radius: 10px !important;
-
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.bwVOYM {
-  display: block !important;
-  font-family: "Booking_Normal_Medium" !important;
-}
-
-.fOgBaC::after {
-  display: none !important;
-}
