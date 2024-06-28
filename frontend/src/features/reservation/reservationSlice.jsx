@@ -58,7 +58,8 @@ export const reservationSlice = createSlice({
     });
     builder.addCase(GetUserReservations.rejected, (state, action) => {
       state.getsingleReservationisSuccess = false;
-      toast.error(action.payload);
+      state.getsingleReservationisLoading = false;
+      // toast.error(action.payload);
     });
 
     builder.addCase(GetAllReservations.pending, (state, action) => {
