@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import RoomForms from "./roomsform";
 import RoomDetail from "./roomdetail";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateRoom } from "@/features/room/roomReducer";
+import { CreateRoom, getSingleRooms } from "@/features/room/roomReducer";
 import Loader from "@/components/home/loader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { handleClearRoomAlert } from "@/features/room/roomSlice";
 const DashboardIndex = () => {
   const navigate = useNavigate();
@@ -22,9 +22,26 @@ const DashboardIndex = () => {
   const [shortdescription, setShortDescription] = useState("");
 
   const dispatch = useDispatch();
-  const { creatingRoomisLoading, creatingRoomisSuccess } = useSelector(
+  const { creatingRoomisLoading, creatingRoomisSuccess, room } = useSelector(
     (store) => store.room
   );
+  // get the room id
+  const { id } = useParams();
+  useEffect(() => {
+    if (id) {
+      dispatch(getSingleRooms(id));
+    }
+  }, [id]);
+
+    useEffect(() => {
+      if (room) {
+        setTitle(room?.title);
+        setPrice(room?.price);
+        setCity(room?.city)
+        setDescription(room?.description);
+        // dispatch(getSingleRooms(room));
+      }
+    }, [room, setTitle, setPrice, setDescription]);
   //  const [bookingdata, setBookingData] = useState(null);
   const roomData = {
     title: title,
@@ -65,7 +82,7 @@ const DashboardIndex = () => {
             <button
               disabled={creatingRoomisLoading}
               onClick={handleRoomCreation}
-              className="btn text-sm p-3 px-8 text-white rounded-lg"
+              className="btn text-base font-booking_font_bold p-3  px-8 text-white rounded-[40px]"
             >
               {creatingRoomisLoading ? (
                 <span className="flex items-center justify-center gap-2">

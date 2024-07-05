@@ -1,7 +1,7 @@
 "use client";
 import React, { useRef } from "react";
 import { useInView } from "framer-motion";
-export default function RoomTitleAndDescription() {
+export default function RoomTitleAndDescription({ room }) {
   const ctaText_1 = useRef(null);
   const ctaText_2 = useRef(null);
   const inView = useInView(ctaText_1, {
@@ -9,33 +9,22 @@ export default function RoomTitleAndDescription() {
   });
   return (
     <>
-      <div className="w-full mt-4 flex flex-col gap-8">
+      <div className="w-full flex flex-col gap-8">
         {/* title */}
         <div className="w-full py-12 mt-3  border-t border-b flex flex-col gap-6">
           <h4 className="text-lg leading-[1.8] block font-booking_font font-normal text-dark">
-            1 Free single kayak or Standup Paddleboard, or 50% off a double
-            kayak for 2 hours. Or take 15% off all rental e-bikes, paddleboards,
-            or kayaks for your entire family.
+            Functional living space of one of our apartments{" "}
+            <span className="text-xl text-[var(--gold-1)]">{room?.title}.</span>
           </h4>
           <h4 className="text-lg leading-[1.8] block font-booking_font font-normal text-dark">
-            BEST LOCATION! Located in central Big Bear where you are no more
-            than 3.5 miles from EVERY fun activity that Big Bear has to offer.
-            This cabin is adorable with an incredible forest feel, a fenced
-            yard, and a patio with a gas firepit!
+            With our single bedroom in a gated estate, Lekki. Feel free to treat
+            yourself to a luxurious getaway filled with comfort, relaxation and
+            unforgettable memories.
           </h4>
-          <div className="flex flex-col">
-            <h4 className="text-lg leading-[1.8] block font-booking_font font-normal text-dark">
-              LOCATION: 0.7 Miles to the VILLAGE (3 Minute drive, 13 Minute
-              walk) <br /> 0.8 Miles to the LAKE (4 Minute Drive, 16 Minute
-              Walk) <br /> 1.3 Miles to SNOW SUMMET SLOPES (8 Minute Drive){" "}
-              <br /> 2.0 Miles to VONS (6 Minute Drive) <br /> 2.8 Miles to the
-              ALPINE ZOO (6 Minute Drive)
-              <br /> 3.4 Miles to BEAR MOUNTAIN SLOPES (9 Minute Drive)
-            </h4>
-          </div>
+
           <h4 className="text-lg leading-[1.8] block font-booking_font font-normal text-dark">
-            SLEEPS 3 People - 1 Bedroom, 1 Bathroom. 600 sq ft. - 1 Cars
-            MAXIMUM!
+            SLEEPS {room?.guests} People - {room?.bedroom} Bedroom,{" "}
+            {room?.bathroom} Bathroom. - 1 Car MAX!
           </h4>
           <h4 className="text-xl font-booking_font_normal font-normal"></h4>
         </div>

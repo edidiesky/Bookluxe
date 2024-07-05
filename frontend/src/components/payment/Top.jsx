@@ -12,7 +12,6 @@ export default function RoomInfo() {
     (store) => store.reservation
   );
 
-
   const ctaText_1 = useRef(null);
   const ctaText_2 = useRef(null);
 
@@ -22,8 +21,8 @@ export default function RoomInfo() {
   const inView2 = useInView(ctaText_2, {
     margin: "0px 100px -50px 0px",
   });
-  const ctaText1 = "You are almost there!";
-  const ctaText2 = "Book your Home with confidence";
+  const ctaText1 = "Almost there!";
+  const ctaText2 = "Complete your booking seamlessly";
   return (
     <>
       <div className="w-full py-20 flex flex-col gap-24 justify-end items-end">
@@ -63,9 +62,9 @@ export default function RoomInfo() {
                   </div>
                   <ul className="flex flex-col gap-8 pb-6 border-b">
                     <li className="text-base font-booking_font font-normal">
-                      Did you know that Marriott Bonvoy members earn 5 points
-                      per qualifying $1 spent on every home stay? Join now and
-                      start earning today.
+                      One more step to complete your booking with Zyra&Stones
+                      Living. Our payment platform ensures your payment details
+                      are safe and secured.
                     </li>
                   </ul>
                 </div>
@@ -92,17 +91,18 @@ export default function RoomInfo() {
                   </h2>
                   <ul className="flex flex-col gap-4 pb-12 border-b">
                     <li className="text-base flex items-center gap-2 font-booking_font font-normal">
-                      <BiCheck fontSize={"24px"} /> All homes are hosted by a
-                      property management company
+                      <BiCheck fontSize={"24px"} /> Take advantage of our serene
+                      environment to relax in comfort and luxury.
                     </li>
 
-                    <li className="text-base flex items-center gap-2 font-booking_font font-normal">
-                      <BiCheck fontSize={"24px"} /> Every home has been curated
-                      by our team
+                    <li className="text-base flex items-start gap-2 font-booking_font font-normal">
+                      <BiCheck fontSize={"24px"} /> Book with us to get the best
+                      rates available. Get immediate confirmation of your
+                      booking.
                     </li>
                     <li className="text-base flex items-center gap-2 font-booking_font font-normal">
-                      <BiCheck fontSize={"24px"} /> 24/7 guest support is
-                      included with every stay
+                      <BiCheck fontSize={"24px"} /> 24/7 housekeeping is
+                      included with every stay.
                     </li>
                   </ul>
                 </div>

@@ -34,7 +34,7 @@ const Hero = () => {
         <h1 className="text-white text-center leading-[1.3] text-4xl md:text-6xl font-booking_font4">
           Thank You!!
           <span className="block md:mx-auto md:text-center md:w-[450px] text-base text-grey font-booking_font">
-            Your payment has been carried out successfull! We appreciate you
+            Your payment is successful!
           </span>
         </h1>
         <div className="w-full absolute bottom-0 left-0 z-[35] flex items-center justify-center py-8">
@@ -125,8 +125,7 @@ const RoomLists = () => {
               <h3 className="text-3xl text-center font-booking_font4">
                 Your Payment has been confirmed
                 <span className="block md:mx-auto pt-4 md:text-center md:w-[400px] text-base font-booking_font text-grey">
-                  Your payment has been carried out successfull! We appreciate
-                  you
+                  Your payment has been carried out successfully!
                 </span>
               </h3>
             </div>

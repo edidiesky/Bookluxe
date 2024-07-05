@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useRef } from "react";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -15,14 +14,15 @@ import { getAllRooms } from "../../../features/room/roomReducer";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { slideup, clipPathLeft, smallslideup2 } from "@/constants/utils/framer";
 import AnimateText from "@/animations/AnimateText";
+import { Link } from "react-router-dom";
 const MainContent = () => {
   return (
-    <div className="w-full overflow-hidden flex flex-col gap-8">
+    <div className="w-full overflow-hidden flex flex-col gap-2">
       <Hero />
       <RoomFlex />
       {/* <About /> */}
       <Collections />
-      <RoomsPrice />
+      {/* <RoomsPrice /> */}
       <RoomStructure />
       <RoomsBanner />
     </div>
@@ -62,7 +62,7 @@ const Hero = () => {
         <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-5xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "3px" }}
-            className="text-[10px] md:text-xs pb-12 font-semibold uppercase block font-booking_font"
+            className="text-[10px] md:text-xs pb-12 font-normal uppercase block font-booking_font"
           >
             Luxury Home & Best Resort
           </span>
@@ -439,23 +439,26 @@ const Collections = () => {
     ` service ensures a stay that's as enjoyable as it is memorable.`,
   ];
 
+  const text_5 = [
+    `At Zyra&Stones Living, we prioritize your comfort and satisfaction. `,
+    `our commitment to cleanliness, attention to detail, and personalized `,
+    ` service ensures a stay that's as enjoyable as it is memorable.`,
+  ];
+
   const servicesData = [
     {
-      title: " Reception 24h / 7 Days",
+      title: "  Online Reservation",
       image: "/images/hazel_1.jpeg",
-      desc: "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec",
+      desc: "  Book your stay in minutes, Experience convenience at your fingertips with our seamless online reservation system.",
     },
     {
-      title: " Reservation Online",
+      title: " Smooth Check-in",
       image: "/images/hazel_2.jpeg",
-      desc: "  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec",
+      desc: "  Get immediate confirmation of your booking, and enjoy a seamless process through to check-in.  ",
     },
   ];
   return (
-    <div
-      data-scroll-section
-      className="w-full py-16 flex flex-col gap-32 md:gap-40"
-    >
+    <div data-scroll-section className="w-full flex flex-col gap-32 md:gap-40">
       <div
         ref={collection_ref_1}
         className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3"
@@ -536,7 +539,7 @@ const Collections = () => {
             className="text-base md:text-lg w-full md:w-[650px] font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
-            {text_4.map((x, index) => {
+            {text_5.map((x, index) => {
               return (
                 <span
                   key={index}
@@ -624,34 +627,38 @@ const RoomStructure = () => {
   const roomService = [
     {
       icon: "https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-16.png",
-      title: "Smart Key",
+      ddsc: "Gated estate and security",
+      title: "Gated Estate",
     },
     {
       icon: "https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-15.png",
+      ddsc: "Ample storage room for luggage",
       title: "Store Luggage",
     },
     {
       icon: "https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-17.png",
-      title: "Room Service",
+      ddsc: "Fully equipped kitchens to prepare meals",
+      title: "KItchenette",
     },
     {
       icon: "https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-18.png",
-      title: "Disinfection",
+      ddsc: "Standby housekeeping 24/7",
+      title: "Housekeeping",
     },
   ];
   const roomUtilities = [
     {
       width: "90%",
-      title: "Room Service",
+      title: "Housekeeping",
       bgColor: "var(--gold-1)",
     },
     {
       width: "60%",
-      title: "BreakFact Inclusion",
+      title: "24/7 Power and internet",
       bgColor: "#000",
     },
     {
-      width: "70%",
+      width: "90%",
       title: "Smart Television",
       bgColor: "var(--gold-1)",
     },
@@ -683,7 +690,7 @@ const RoomStructure = () => {
     `This is why we strive to provide a space where our guests can relax, unwind and immerse themselves in the experiences we have to offer.`,
   ];
   return (
-    <div data-scroll-section className="w-full flex py-20 flex-col gap-20">
+    <div data-scroll-section className="w-full flex py-40 mt-24 flex-col gap-20">
       <div className="w-[90%] mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid lg:grid-cols-2">
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
@@ -694,7 +701,7 @@ const RoomStructure = () => {
             />
             <div className="min-h-[240px] shadow-2xl md:absolute px-8 left-[40%] top-[30%] bg-white flex flex-col gap-4 items-center justify-center">
               <div className="text-3xl font-bold text-center flex flex-col gap-1 uppercase text-dark font-booking_font4">
-                23
+                8+
                 <br />{" "}
                 <span
                   style={{ letterSpacing: "3px" }}
@@ -720,7 +727,7 @@ const RoomStructure = () => {
                   style={{ letterSpacing: "3px" }}
                   className="text-xs font-normal font-booking_font uppercase"
                 >
-                  h /24
+                  Hrs
                 </span>
               </div>
             </div>
@@ -803,7 +810,7 @@ const RoomStructure = () => {
                   className="h-10  px-4 text-white font-semibold text-sm flex items-center justify-between"
                 >
                   <span className="">{data?.title}</span>
-                  <span className="">{data?.width}</span>
+                  {/* <span className="">{data?.width}</span> */}
                 </motion.div>
               );
             })}
@@ -832,7 +839,7 @@ const RoomStructure = () => {
               <span className="text-xl font-booking_font4">
                 {room.title}
                 <span className="block text-sm text-grey font-normal font-booking_font">
-                  Kitchenette
+                  {room?.ddsc}
                 </span>
               </span>
             </motion.div>
@@ -979,7 +986,7 @@ const RoomsPrice = () => {
                 animate={inView2 ? "animate" : "exit"}
                 className={`w-full ${
                   index === 1 ? "bg-[#101727] text-white" : "bg-white"
-                } flex items-center shadow-2xl justify-center rounded-[20px] flex-col gap-8 py-16`}
+                } flex items-center shadow-2xl justify-center rounded-[20px] flex-col gap-8`}
               >
                 <div className="w-full flex flex-col gap-3 px-8">
                   <h3
@@ -1083,7 +1090,7 @@ const RoomsBanner = () => {
           >
             <span
               style={{ letterSpacing: "4px" }}
-              className="text-xs pb-8 font-semibold uppercase block font-booking_font"
+              className="text-xs pb-8 font-bold uppercase block font-booking_font_bold"
             >
               <span className="w-full gap-x-[5px] flex justify-start items-center flex-wrap ">
                 {["COME", "JOIN", "US"].map((x, index) => {
@@ -1134,9 +1141,34 @@ const RoomsBanner = () => {
                 Ready to experience the best of comfort? Book your stay today
                 and start creating unforgettable memories. We look forward to
                 welcoming you and ensuring your time with us is nothing short of
-                exceptional. For inquiries or assistance, reach out to us at
-                zyraandstones@gmail.com or +(234) 913 861 1598. Follow us on IG:
-                @zyrastones_living for the latest news and special offers.
+                exceptional. For inquiries or assistance, reach out to us at{" "}
+                <Link
+                  style={{ textDecoration: "underline" }}
+                  className="text-[var(--gold-1)]"
+                  mailto={"zyraandstones@gmail.com"}
+                >
+                  zyraandstones@gmail.com
+                </Link>{" "}
+                or{" "}
+                <Link
+                  style={{ textDecoration: "underline" }}
+                  className="text-[var(--gold-1)]"
+                  to={""}
+                >
+                  +(234) 913 861 1598
+                </Link>{" "}
+                . Follow us on IG:{" "}
+                <Link
+                  _blanck
+                  style={{ textDecoration: "underline" }}
+                  className="text-[var(--gold-1)]"
+                  to={
+                    "https://www.instagram.com/zyrastones_living?igsh=MzRIODBiNWFIZA"
+                  }
+                >
+                  @zyrastones_living
+                </Link>{" "}
+                for the latest news and special offers.
               </motion.span>
             </span>
           </h1>
@@ -1144,15 +1176,12 @@ const RoomsBanner = () => {
             ref={button_ref}
             className="w-full overflow-hidden items-start flex"
           >
-            <motion.div
-              variants={smallslideup2}
-              initial="initial"
-              animate={inView2 ? "animate" : "exit"}
+            <div
               style={{ letterSpacing: "4px" }}
               className="btn btn_2 text-xs text-white uppercase px-12 py-6"
             >
               <AnimateText children={"Room & Suites"} />
-            </motion.div>
+            </div>
           </div>
         </div>
 

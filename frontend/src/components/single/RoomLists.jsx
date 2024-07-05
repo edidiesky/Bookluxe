@@ -57,48 +57,51 @@ const RoomLists = () => {
               {/* room image */}
               <RoomGallery room={room} />
               {/* room basic features */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 items-center mt-4 py-4 gap-4">
-                <div className="flex flex-col gap-1 text-sm font-normal text-dark">
+              <div className="grid grid-cols-2 sm:grid-cols-4 md:items-center gap-8">
+                <div className="flex flex-col items-center justify-center gap-1 text-sm font-booking_font4 text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/plugins/nd-booking/templates/icon-bed-grey.svg"
                     alt=""
                     className="w-12"
                   />
                   <div className="flex items-center gap-3">
-                    <span className="text-base"> ₦{room?.price}</span>/ PER
-                    NIGHT
+                    <span className="text-base"> ₦{room?.price}</span>
+                    <span className="font-booking_font text-xs">
+                      {" "}
+                      / PER NIGHT
+                    </span>
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 text-sm font-normal text-dark">
+                <div className="flex flex-col items-center justify-center gap-2 text-sm font-booking_font4 text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/plugins/nd-booking/templates/icon-user-grey.svg"
                     alt=""
                     className="w-10"
                   />
-                  4 GUESTS
+                  {room?.guests} GUESTS
                 </div>
 
-                <div className="flex flex-col gap-2 uppercase text-sm font-normal text-dark">
+                <div className="flex flex-col items-center justify-center gap-2 uppercase text-sm font-booking_font4 text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/television.png"
                     alt=""
                     className="w-10"
                   />
-                  Television
+                  PS5 Console
                 </div>
 
-                <div className="flex flex-col uppercase gap-1 text-sm font-normal text-dark">
+                <div className="flex flex-col items-center justify-center uppercase gap-1 text-sm font-booking_font4 text-dark">
                   <img
                     src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/private-bathroom.png"
                     alt=""
                     className="w-12"
                   />
-                  Bathroom
+                  1 Bathroom
                 </div>
               </div>
 
               {/* room description */}
-              <RoomTitleAndDescription />
+              <RoomTitleAndDescription room={room} />
               {/* room services */}
               <RoomFeatures />
 

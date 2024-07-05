@@ -20,7 +20,7 @@ const FlutterPaymentButton = () => {
   const config = {
     public_key: import.meta.env.VITE_FLUTTER_PUBLIC_KEY,
     tx_ref: Date.now(),
-    amount: reservation?.totalPrice * 500,
+    amount: reservation?.totalPrice,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
     customer: {
@@ -40,22 +40,22 @@ const FlutterPaymentButton = () => {
     dispatch(
       CreatePayment({
         reservationid: reservation?.id,
-        amount: reservation?.totalPrice * 500,
+        amount: reservation?.totalPrice,
         currency: "NGN",
       })
     );
   };
-useEffect(() => {
-  if (flutterpaymentsuccess) {
-    const timer = setTimeout(() => {
-      navigate(
-        `/payment-success/${payment?.id}?reservationid=${payment?.reservationid}`
-      );
-    }, 3000);
+  useEffect(() => {
+    if (flutterpaymentsuccess) {
+      const timer = setTimeout(() => {
+        navigate(
+          `/payment-success/${payment?.id}?reservationid=${payment?.reservationid}`
+        );
+      }, 3000);
 
-    return () => clearTimeout(timer);
-  }
-}, [flutterpaymentsuccess, navigate]);
+      return () => clearTimeout(timer);
+    }
+  }, [flutterpaymentsuccess, navigate]);
   // console.log(payment);
   return (
     <button
@@ -69,8 +69,7 @@ useEffect(() => {
             if (response.status === "successful") {
               // Handle successful payment here
               setFlutterPaymentSuccess(true);
-              toast.success("Payment Successfully!! Redirecting Soon...");
-            
+              toast.success("Payment Successful!! Redirecting Soon...");
             } else {
               toast.error("Payment Failed");
             }

@@ -71,8 +71,8 @@ export default function RoomPaymentTab({
     if (currentUser) {
       // console.log('Reservation has been booked')
       // window.location.href = `/reservation/payment`;
-      if (differenceInDays <= 2) {
-        toast.error("Reservation date should be more than 2 days");
+      if (differenceInDays < 2) {
+        toast.error("Minimum reservation is 2 nights");
       } else {
         // toast.success("Reservation date is fine");
         try {

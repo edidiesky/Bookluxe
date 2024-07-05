@@ -155,7 +155,7 @@ const TableCard = ({ x, type }) => {
           <td className=" font-semibold">
             <div className="flex items-center justify-center">
               <Link
-                to={`/dashboard/Manage_Customers/${x?._id}`}
+                to={`/dashboard/rooms/${x?.id}`}
                 className="w-12 h-12 rounded-full flex hover:shadow-xs hover:bg-[#ddd] items-center justify-center"
               >
                 <MdEdit />

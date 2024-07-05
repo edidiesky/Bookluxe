@@ -117,6 +117,15 @@ export default function App() {
           />
           <Route
             exact
+            path="rooms/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <CreateRoom />
+              </Suspense>
+            }
+          />
+          <Route
+            exact
             path="customers"
             element={
               <Suspense fallback={<Loader />}>

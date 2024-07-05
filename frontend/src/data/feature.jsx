@@ -14,7 +14,7 @@ import { MdOutlineFireplace } from "react-icons/md";
 import { FaFireExtinguisher } from "react-icons/fa6";
 import { CgSmartHomeRefrigerator } from "react-icons/cg";
 export const RoomFeaturesList = [
-  { title: "Home Screen", icon: <CgHomeScreen fontSize={"24px"} /> },
+  { title: "Internet", icon: <CgHomeScreen fontSize={"24px"} /> },
   { title: "Bath Tub", icon: <PiBathtubFill fontSize={"24px"} /> },
   { title: "Pets Allowed", icon: <FaDog fontSize={"24px"} /> },
   { title: "Free Parking", icon: <IoIosCar fontSize={"24px"} /> },

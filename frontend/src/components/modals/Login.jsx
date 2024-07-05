@@ -148,7 +148,7 @@ const LoginModal = () => {
                 </div>
               </div>
 
-              <div className="option text-dark">or</div>
+              <div className="option text-dark">Or sign in with Google</div>
 
               <div
                 // onClick={() => signIn("google")}
