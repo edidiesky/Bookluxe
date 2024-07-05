@@ -81,21 +81,27 @@ const TableCard = ({ x, type }) => {
             </span>
           </td>
           <td>
-            <span className=" text-dark  font-semibold family1">
-              {x?.country ? x?.country : "-"}
-            </span>
+            {x?.isAdmin ? (
+              <span className=" font-semibold text-xs font-booking_font_bold text-center success">
+               Admin
+              </span>
+            ) : (
+              <span className=" font-semibold text-xs font-booking_font_bold text-center danger">
+                User
+              </span>
+            )}
           </td>
 
           <td>
             <span className="text-dark  font-semibold family1 text-light">
-              24th May 2024
+              {moment(x?.createdAt).format("DD MMM YYYY")}
             </span>
           </td>
           <td>
             <div className="flex items-center justify-center">
               <Link
-                // href={`/account/admin/dashboard/Manage_Customers/${x?._id}`}
-                href={"#"}
+                to={`/dashboard/profile/${x?.id}`}
+                // to={"#"}
                 className="w-12 h-12 rounded-full flex hover:shadow-xs hover:bg-[#ddd] items-center justify-center"
               >
                 <MdEdit />
@@ -149,7 +155,7 @@ const TableCard = ({ x, type }) => {
           <td className=" font-semibold">
             <div className="flex items-center justify-center">
               <Link
-                href={`/account/admin/dashboard/Manage_Customers/${x?._id}`}
+                to={`/dashboard/Manage_Customers/${x?._id}`}
                 className="w-12 h-12 rounded-full flex hover:shadow-xs hover:bg-[#ddd] items-center justify-center"
               >
                 <MdEdit />

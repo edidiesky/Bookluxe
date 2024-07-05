@@ -7,6 +7,7 @@ import {
   DeleteSingleUser,
   UpdateSingleUser,
   addListToWish,
+  GetSingleUser,
 } from "./authReducer";
 const customerData = JSON.parse(localStorage.getItem("customer"));
 const customerToken = localStorage.getItem("customertoken");
@@ -14,6 +15,7 @@ const initialState = {
   users: [],
   token: customerToken ? customerToken : "",
   currentUser: customerData ? customerData : null,
+  userInfo: null,
   alertText: "",
   showAlert: false,
   alertType: "",
@@ -74,7 +76,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(LoginUser.rejected, (state, action) => {
       state.loginisSuccess = false;
-         state.loginisLoading = false;
+      state.loginisLoading = false;
       toast.error(action.payload);
     });
 
@@ -88,10 +90,10 @@ export const authSlice = createSlice({
     });
     builder.addCase(RegisterUser.rejected, (state, action) => {
       state.registerisSuccess = false;
-            state.registerisLoading = false;
+      state.registerisLoading = false;
       toast.error(action.payload);
     });
-
+    // GetSingleUser
     builder.addCase(GetAllUsers.pending, (state, action) => {
       state.getallUserisLoading = true;
     });
@@ -102,6 +104,19 @@ export const authSlice = createSlice({
       state.totalUser = action.payload.totalUser;
     });
     builder.addCase(GetAllUsers.rejected, (state, action) => {
+      state.getallUserisSuccess = false;
+      toast.error(action.payload);
+    });
+
+    builder.addCase(GetSingleUser.pending, (state, action) => {
+      state.getallUserisLoading = true;
+    });
+    builder.addCase(GetSingleUser.fulfilled, (state, action) => {
+      state.getallUserisLoading = false;
+      state.getallUserisSuccess = true;
+      state.userInfo = action.payload.user;
+    });
+    builder.addCase(GetSingleUser.rejected, (state, action) => {
       state.getallUserisSuccess = false;
       toast.error(action.payload);
     });
@@ -117,6 +132,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(DeleteSingleUser.rejected, (state, action) => {
       state.deleteUserisSuccess = false;
+      state.deleteUserisLoading = false;
       toast.error(action.payload);
     });
 
@@ -130,6 +146,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(UpdateSingleUser.rejected, (state, action) => {
       state.updateUserisSuccess = false;
+      state.updateUserisLoading = false;
       toast.error(action.payload);
     });
 

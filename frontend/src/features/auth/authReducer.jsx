@@ -67,6 +67,30 @@ export const GetAllUsers = createAsyncThunk(
   }
 );
 
+export const GetSingleUser = createAsyncThunk(
+  "GetSingleUser",
+  async (userId, thunkAPI) => {
+    try {
+      const state = thunkAPI.getState();
+      const config = {
+        headers: {
+          authorization: `Bearer ${state.auth.token}`,
+        },
+      };
+      const { data } = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URLS}/user/${userId}`,
+        config
+      );
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message
+      );
+    }
+  }
+);
 export const DeleteSingleUser = createAsyncThunk(
   "DeleteSingleUser",
   async (id, thunkAPI) => {
@@ -102,12 +126,14 @@ export const UpdateSingleUser = createAsyncThunk(
           authorization: `Bearer ${state.auth.token}`,
         },
       };
+      // console.log(user);
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URLS}/user/${user?.id}`,
+        `${import.meta.env.VITE_API_BASE_URLS}/user/${state.auth.userInfo?.id}`,
         user,
         config
       );
-      return data;
+      
+      return data.user;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.response && error.response.data.message
@@ -117,7 +143,6 @@ export const UpdateSingleUser = createAsyncThunk(
     }
   }
 );
-
 
 export const addListToWish = createAsyncThunk(
   "addListToWish",

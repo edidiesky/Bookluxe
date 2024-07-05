@@ -83,7 +83,7 @@ export const RegisterFormInputData = [
 export const DashboardProfileInputData = [
   {
     id: 4,
-    name: "fullname",
+    name: "name",
     type: "name",
     text: "Full Name",
     label: "Full Name",
@@ -109,13 +109,13 @@ export const DashboardProfileInputData = [
     required: false,
   },
 
-  {
-    id: 36,
-    name: "location",
-    placeholder: "Please input your location",
-    type: "text",
-    text: "Location",
-    label: "Location",
-    required: false,
-  },
+  // {
+  //   id: 36,
+  //   name: "location",
+  //   placeholder: "Please input your location",
+  //   type: "text",
+  //   text: "Location",
+  //   label: "Location",
+  //   required: false,
+  // },
 ];

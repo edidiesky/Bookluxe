@@ -87,7 +87,7 @@ const Navbar = () => {
                   <div className="flex profile_wrapper relative items-center justify-end gap-2">
                     <div className="profile_dropdown shadow-2xl absolute">
                       <div className="w-full flex flex-col">
-                        {currentUser?.role === "admin" ? (
+                        {currentUser?.isAdmin ? (
                           <div className="flex profile_dropdown_bottom flex-col w-full">
                             <Link
                               to={"/dashboard"}

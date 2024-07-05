@@ -1,9 +1,10 @@
 import asyncHandler from "express-async-handler";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import prisma from "../prisma/index.js";
 //PRIVATE/ADMIN
 const GetUserById = asyncHandler(async (req, res) => {
-  const { userId, username } = req.user;
-  const user = await prisma.user.findOne({ _id: req.params.id });
+  const user = await prisma.user.findUnique({ where: { id: req.params.id } });
   if (!user) {
     res.status(404);
     throw new Error("The user does not exist");
@@ -43,7 +44,9 @@ const UpdateUser = asyncHandler(async (req, res) => {
 
 //PRIVATE/ADMIN
 const AdminUpdateUser = asyncHandler(async (req, res) => {
-  const { userId, username } = req.user;
+  const { password, ...rest } = req.body;
+  let hashedPassword;
+  // console.log(req.params.id);
   const user = await prisma.user.findUnique({
     where: {
       id: req.params.id,
@@ -53,13 +56,18 @@ const AdminUpdateUser = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("The user does not exist");
   }
+  if (password) {
+    const salt = await bcrypt.genSalt(10);
+    hashedPassword = await bcrypt.hash(password, salt);
+  }
   const updatedUser = await prisma.user.update({
-    where: { id: req.params.id, data: { ...req.body } },
+    where: { id: req.params.id },
+    data: { ...(hashedPassword && { hashedPassword }), ...rest },
   });
   res.setHeader("Content-Type", "text/html");
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 
-  res.status(200).json({ updatedUser });
+  res.status(200).json({ user:updatedUser });
 });
 //PRIVATE/ADMIN
 const DeleteUser = asyncHandler(async (req, res) => {

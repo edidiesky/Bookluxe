@@ -15,6 +15,7 @@ import { getAllRooms } from "../../../features/room/roomReducer";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { slideup, clipPathLeft, smallslideup2 } from "@/constants/utils/framer";
 import AnimateText from "@/animations/AnimateText";
+import { Link } from "react-router-dom";
 const MainContent = () => {
   return (
     <div className="w-full overflow-hidden flex flex-col gap-8">
@@ -31,7 +32,7 @@ const MainContent = () => {
 
 const Hero = () => {
   const today = new Date();
-    const [guests, setGuests] = React.useState(2);
+  const [guests, setGuests] = React.useState(2);
   const [date, setDate] = React.useState({
     from: today,
     to: addDays(today, 3),
@@ -45,7 +46,6 @@ const Hero = () => {
 
   return (
     <div
-      data-scroll-section
       className="w-full min-h-[100vh] py-32 relative flex items-center justify-center
    gap-8"
     >
@@ -62,19 +62,20 @@ const Hero = () => {
         <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-5xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "3px" }}
-            className="text-[10px] md:text-xs pb-12 font-semibold uppercase block font-booking_font"
+            className="text-[10px] md:text-xs pb-12 font-normal uppercase block font-booking_font"
           >
             Luxury Home & Best Resort
           </span>
           Enjoy A Luxury <br /> Experience
         </h1>
         <div className="w-full items-center justify-center flex">
-          <div
+          <Link
+            to={"/search"}
             style={{ letterSpacing: "4px" }}
-            className="btn btn_2 text-xs font-bold text-white uppercase px-12 py-6"
+            className="btn btn_2 text-xs font-normal text-white uppercase px-12 py-6"
           >
             <AnimateText children={"Book & Flex"} />
-          </div>
+          </Link>
         </div>
 
         <div className="w-full py-4 lg:flex-row flex-col items-center justify-center flex">
@@ -240,7 +241,7 @@ const RoomFlex = () => {
   ];
 
   return (
-    <div data-scroll-section className="w-full flex py-32 flex-col gap-40">
+    <div className="w-full flex py-32 flex-col gap-40">
       <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
         <h1
           ref={RoomFlex_text_ref_1}
@@ -455,10 +456,7 @@ const Collections = () => {
     },
   ];
   return (
-    <div
-      data-scroll-section
-      className="w-full py-16 flex flex-col gap-32 md:gap-40"
-    >
+    <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
       <div
         ref={collection_ref_1}
         className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3"
@@ -686,7 +684,7 @@ const RoomStructure = () => {
     `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
   ];
   return (
-    <div data-scroll-section className="w-full flex py-20 flex-col gap-20">
+    <div className="w-full flex py-20 flex-col gap-20">
       <div className="w-[90%] mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid lg:grid-cols-2">
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
@@ -827,7 +825,11 @@ const RoomStructure = () => {
               key={index}
               className="flex items-center gap-4"
             >
-              <img src={room.icon} alt="room_images_icon" className="w-12 md:w-20" />
+              <img
+                src={room.icon}
+                alt="room_images_icon"
+                className="w-12 md:w-20"
+              />
               <span className="text-xl font-booking_font4">
                 {room.title}
                 <span className="block text-sm text-grey font-normal font-booking_font">
@@ -901,10 +903,7 @@ const RoomsPrice = () => {
     margin: "0px 100px -120px 0px",
   });
   return (
-    <div
-      data-scroll-section
-      className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8"
-    >
+    <div className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8">
       <img
         src="/images/hazel_11.jpeg"
         alt=""
@@ -1059,7 +1058,6 @@ const RoomsBanner = () => {
 
   return (
     <div
-      data-scroll-section
       className="w-full min-h-[100vh] py-40 overflow-hidden relative flex items-center justify-center
    gap-8"
     >

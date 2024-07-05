@@ -30,6 +30,7 @@ const registerUser = asyncHandler(async (req, res) => {
     hashedPassword: hashedpassword,
     name,
     username,
+    isAdmin: false,
   };
   const user = await prisma.user.create({
     data: Tempuser,
@@ -78,7 +79,7 @@ const LoginUser = asyncHandler(async (req, res) => {
   );
   if (!verifyPassword) {
     res.status(404);
-    throw new Error("Please provide a valid hashedPassword");
+    throw new Error("Please provide a valid Password!!");
   }
 
   //

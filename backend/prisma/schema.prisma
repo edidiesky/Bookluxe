@@ -29,7 +29,7 @@ model User {
   email           String?         @unique
   emailVerified   DateTime?
   image           String?
-  role            String?
+  isAdmin         Boolean?
   hashedPassword  String?
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt

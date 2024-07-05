@@ -8,7 +8,7 @@ export const ProtectRoute = ({ children, type }) => {
     return <Navigate to="/" />;
   }
   if (type === "dashboard") {
-    if (currentUser?.role === "user") {
+    if (currentUser?.isAdmin) {
       return <Navigate to="/" />;
     }
   }

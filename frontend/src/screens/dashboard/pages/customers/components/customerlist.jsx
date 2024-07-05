@@ -4,36 +4,6 @@ import { BiSearch } from "react-icons/bi";
 import { Table } from "@/components/common/styles";
 import TableCard from "@/components/common/TableCard";
 import { useSelector } from "react-redux";
-const rooms = [
-  {
-    name: "Hover",
-    username: "peterfrog",
-    image:
-      "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/3935083/original/facial-hair.jpg",
-    lastname: "nikola",
-    country: "Serbia",
-    state: "Lagos",
-    phone: "1456-93837-5883",
-    email: "peterfrog@gmail.com",
-    createdAt: "1/17/2020",
-    password: 1234556,
-    role: "user",
-  },
-  {
-    name: "Hover",
-    username: "peterfrog",
-    image:
-      "https://fiverr-res.cloudinary.com/t_profile_original,q_auto,f_auto/profile/photos/3935083/original/facial-hair.jpg",
-    lastname: "nikola",
-    country: "Serbia",
-    state: "Lagos",
-    phone: "1456-93837-5883",
-    email: "peterfrog@gmail.com",
-    createdAt: "1/17/2020",
-    password: 1234556,
-    role: "user",
-  },
-];
 
 const RoomsList = () => {
   //   const [roommodal, setRoomModal] = useState(false);
@@ -62,7 +32,7 @@ const RoomsList = () => {
                 {/* <th>ID</th> */}
                 <th>Customer Name</th>
                 <th>Email</th>
-                <th className=''>Location</th>
+                <th className=''>Role</th>
                 <th>Date Created</th>
                 <th>Manage Customer</th>
               </tr>

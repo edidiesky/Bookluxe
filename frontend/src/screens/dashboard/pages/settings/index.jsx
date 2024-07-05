@@ -2,14 +2,17 @@
 import { useDispatch } from "react-redux";
 import DashboardIndex from "./components";
 import { useEffect } from "react";
-import { GetAllUsers } from "@/features/auth/authReducer";
+import { GetSingleUser } from "@/features/auth/authReducer";
+import { useParams } from "react-router-dom";
 
 export default function Settings() {
+  const {id} = useParams()
   const dispatch = useDispatch()
 
-  useEffect(()=> {
-    // dispatch(GetAllUsers())
-  },[])
+  useEffect(() => {
+    
+    dispatch(GetSingleUser(id))
+  }, [id]);
   return (
     <div>
       <DashboardIndex />
