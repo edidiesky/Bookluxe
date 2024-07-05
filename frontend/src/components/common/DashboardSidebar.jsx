@@ -120,8 +120,8 @@ const DashboardSidebar = () => {
             <NavLink
               // activeClassName="active"
               end
-              className={`text-sm flex items-center gap-4 p-[6px] px-4 font-booking_font4 text-[#000] family1`}
-              to={`/dashboard/settings`}
+              className={`text-sm tab flex items-center gap-4 p-[12px] px-4 font-booking_font4 text-[#000] family1`}
+              to={`/dashboard/profile/${currentUser?.id}`}
             >
               <FiSettings fontSize={"24px"} />
               Settings
