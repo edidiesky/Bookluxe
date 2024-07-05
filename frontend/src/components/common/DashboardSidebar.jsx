@@ -68,8 +68,10 @@ const DashboardSidebar = () => {
           <div className="flex flex-col w-full items-start justify-between py-1">
             {/* <h4 className="text-sm text-[#000]">RockTrading</h4> */}
             <div className=" w-[90%] mx-auto relative flex gap-4 items-center flex-col justify-between">
-             
-              <Link to={'/'} className="w-full flex items-center gap-1 justify-start">
+              <Link
+                to={"/"}
+                className="w-full flex items-center gap-1 justify-start"
+              >
                 <img
                   loading="lazy"
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
@@ -96,7 +98,7 @@ const DashboardSidebar = () => {
                   <NavLink
                     // activeClassName="active"
                     end
-                    className={`
+                    className={` tab
                       text-base w-[90%] mx-auto text-[#000]`}
                     to={`/dashboard${x.tab.path}`}
                   >
@@ -162,7 +164,7 @@ export const HeaderStyles = styled.div`
       /* min-height: 100px; */
     }
   }
-  a,
+
   .tab {
     margin: 0 auto;
     border-radius: 10px;

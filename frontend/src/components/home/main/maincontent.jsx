@@ -688,7 +688,7 @@ const RoomStructure = () => {
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
             <img
-              src="/images/haz  el_4.jpeg"
+              src="/images/hazel_4.jpeg"
               alt=""
               className="object-cover md:min-h-[550px]"
             />
@@ -765,7 +765,7 @@ const RoomStructure = () => {
           </h2>
           <span
             ref={collection_ref_3}
-            className="text-base md:text-lg w-full md:w-[650px] font-normal
+            className="text-base md:text-lg w-full font-normal
              flex gap-x-[4px] leading-[1.5] flex-wrap  font-booking_font"
           >
             {text_4.map((x, index) => {

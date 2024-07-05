@@ -95,11 +95,39 @@ const DashboardHeader = () => {
         <div className="flex w-full auto items-center justify-end gap-1">
           <div className="flex profile_wrapper relative items-center gap-2">
             <div className="flex items-center gap-2">
-              <img
+              {/* <img
                 src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
                 alt=""
                 className="w-10 rounded-full"
               />
+              <h4 className="text-base text-dark font-booking_font4 family1">
+                {currentUser?.name}
+                <span className="block font-normal font-booking_font text-xs text-dark">
+                  {currentUser?.email}
+                </span>
+              </h4> */}
+              {currentUser?.image ? (
+                <img
+                  src={currentUser?.image}
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              ) : currentUser?.username ? (
+                // <div className="w-12 h-12 text-white rounded-full bg-[#000] text-2xl flex items-center justify-center ">
+                //   {currentUser?.username[0]}{" "}
+                // </div>
+                <img
+                  src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              ) : (
+                <img
+                  src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                  alt=""
+                  className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                />
+              )}
               <h4 className="text-base text-dark font-booking_font4 family1">
                 {currentUser?.name}
                 <span className="block font-normal font-booking_font text-xs text-dark">
