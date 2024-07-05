@@ -52,8 +52,9 @@ export const patientSlice = createSlice({
     handleClearRoomAlert: (state, action) => {
       state.deleteRoomisLoading = false;
       state.deleteRoomisSuccess = false;
-      state.creatingRoomisSuccess = false
-      state.room = null
+      state.creatingRoomisSuccess = false;
+      state.updateRoomisSuccess = false;
+      state.room = null;
     },
   },
   extraReducers: (builder) => {

@@ -48,7 +48,7 @@ const RoomForms = ({
             <h4 className="text-2xl font-booking_font4">Name & Description</h4>
             <div className="flex items-center justify-end">
               <Link
-                href={"/dashboard/rooms"}
+                to={"/dashboard/rooms"}
                 className="p-2 px-4 cursor-pointer hover:bg-[#fafafa] border rounded-lg font-booking_font_bold text-base flex items-center justify-center gap-2"
               >
                 Go Back
@@ -87,8 +87,8 @@ const RoomForms = ({
                 // modules={module}
                 theme="snow"
                 style={{
-                  height:"200px",
-                  borderRadius:"15px"
+                  height: "200px",
+                  borderRadius: "15px",
                 }}
                 value={description}
                 onChange={setDescription}
@@ -118,8 +118,8 @@ const RoomForms = ({
                 name="price"
                 value={price}
                 id="price"
-                type="number"
-                onChange={(e) => setPrice(parseFloat(e.target.value))}
+                type="text"
+                onChange={(e) => setPrice(e.target.value)}
                 className="text-sm w-full input"
               />
             </label>

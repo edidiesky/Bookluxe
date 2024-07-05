@@ -43,7 +43,7 @@ const DashboardIndex = () => {
   useEffect(() => {
     if (room) {
       setTitle(room?.title);
-      setPrice(parseInt(room?.price));
+      setPrice(room?.price);
       setCity(room?.city);
       setDescription(room?.description);
       setImages(room?.images);
@@ -63,7 +63,7 @@ const DashboardIndex = () => {
   //  const [bookingdata, setBookingData] = useState(null);
   const roomData = {
     title: title,
-    price: price,
+    price: price.toString(),
     images: images,
     city: city,
     features: features,
@@ -77,7 +77,6 @@ const DashboardIndex = () => {
       dispatch(
         UpdateRoom({
           ...roomData,
-          id: room?.id,
         })
       );
     } else {
@@ -89,7 +88,7 @@ const DashboardIndex = () => {
     if (creatingRoomisSuccess || updateRoomisSuccess) {
       const timeout = setTimeout(() => {
         navigate(`/dashboard/rooms`);
-      }, 3000);
+      }, 700);
       return () => clearTimeout(timeout);
     }
   }, [creatingRoomisSuccess, updateRoomisSuccess, navigate]);

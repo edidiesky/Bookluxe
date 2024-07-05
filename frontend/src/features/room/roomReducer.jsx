@@ -126,7 +126,7 @@ export const UpdateRoom = createAsyncThunk(
         },
       };
       const { data } = await axios.put(
-        `${import.meta.env.VITE_API_BASE_URLS}/room/${roomdata?.id}`,
+        `${import.meta.env.VITE_API_BASE_URLS}/room/${state?.room?.room?.id}`,
         roomdata,
         config
       );
