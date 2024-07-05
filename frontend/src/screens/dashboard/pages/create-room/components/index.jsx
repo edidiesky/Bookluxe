@@ -3,7 +3,11 @@ import React, { useState, useEffect } from "react";
 import RoomForms from "./roomsform";
 import RoomDetail from "./roomdetail";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateRoom, getSingleRooms } from "@/features/room/roomReducer";
+import {
+  CreateRoom,
+  getSingleRooms,
+  UpdateRoom,
+} from "@/features/room/roomReducer";
 import Loader from "@/components/home/loader";
 import { useNavigate, useParams } from "react-router-dom";
 import { handleClearRoomAlert } from "@/features/room/roomSlice";
@@ -22,9 +26,12 @@ const DashboardIndex = () => {
   const [shortdescription, setShortDescription] = useState("");
 
   const dispatch = useDispatch();
-  const { creatingRoomisLoading, creatingRoomisSuccess, room } = useSelector(
-    (store) => store.room
-  );
+  const {
+    creatingRoomisLoading,
+    updateRoomisSuccess,
+    creatingRoomisSuccess,
+    room,
+  } = useSelector((store) => store.room);
   // get the room id
   const { id } = useParams();
   useEffect(() => {
@@ -33,15 +40,26 @@ const DashboardIndex = () => {
     }
   }, [id]);
 
-    useEffect(() => {
-      if (room) {
-        setTitle(room?.title);
-        setPrice(room?.price);
-        setCity(room?.city)
-        setDescription(room?.description);
-        // dispatch(getSingleRooms(room));
-      }
-    }, [room, setTitle, setPrice, setDescription]);
+  useEffect(() => {
+    if (room) {
+      setTitle(room?.title);
+      setPrice(parseInt(room?.price));
+      setCity(room?.city);
+      setDescription(room?.description);
+      setImages(room?.images);
+      setBathRooms(room?.bathroom);
+      setRooms(room?.bedroom);
+      // dispatch(getSingleRooms(room));
+    }
+  }, [
+    room,
+    setTitle,
+    setRooms,
+    setPrice,
+    setDescription,
+    setImages,
+    setBathRooms,
+  ]);
   //  const [bookingdata, setBookingData] = useState(null);
   const roomData = {
     title: title,
@@ -55,17 +73,26 @@ const DashboardIndex = () => {
   };
   // console.log(roomData);
   const handleRoomCreation = () => {
-    dispatch(CreateRoom(roomData));
+    if (room) {
+      dispatch(
+        UpdateRoom({
+          ...roomData,
+          id: room?.id,
+        })
+      );
+    } else {
+      dispatch(CreateRoom(roomData));
+    }
   };
   useEffect(() => {
     dispatch(handleClearRoomAlert());
-    if (creatingRoomisSuccess) {
+    if (creatingRoomisSuccess || updateRoomisSuccess) {
       const timeout = setTimeout(() => {
         navigate(`/dashboard/rooms`);
       }, 3000);
       return () => clearTimeout(timeout);
     }
-  }, [creatingRoomisSuccess, navigate]);
+  }, [creatingRoomisSuccess, updateRoomisSuccess, navigate]);
   return (
     <div className="w-full relative">
       <div className="w-full relative pb-20 flex flex-col gap-12">
@@ -87,10 +114,10 @@ const DashboardIndex = () => {
               {creatingRoomisLoading ? (
                 <span className="flex items-center justify-center gap-2">
                   <Loader type="dots" />
-                  Room Creating
+                  {room ? " Updating in progress" : "Room Creating"}
                 </span>
               ) : (
-                "Create Room"
+                <>{room ? "Update Room" : "Create Room"}</>
               )}
             </button>
           </div>

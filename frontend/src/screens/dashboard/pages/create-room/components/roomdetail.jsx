@@ -50,6 +50,7 @@ const RoomDetail = ({
                 className="text-xs flex items-center font-booking_font_bold text-dark "
               >
                 Rooms:{" "}
+                <span className="text-xl font-booking_font4"> {rooms}</span>{" "}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}

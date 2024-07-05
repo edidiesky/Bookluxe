@@ -49,7 +49,7 @@ const RoomForms = ({
             <div className="flex items-center justify-end">
               <Link
                 href={"/dashboard/rooms"}
-                className="p-3 px-4 cursor-pointer hover:bg-[#fafafa] border rounded-lg font-booking_font4 text-base flex items-center justify-center gap-2"
+                className="p-2 px-4 cursor-pointer hover:bg-[#fafafa] border rounded-lg font-booking_font_bold text-base flex items-center justify-center gap-2"
               >
                 Go Back
               </Link>

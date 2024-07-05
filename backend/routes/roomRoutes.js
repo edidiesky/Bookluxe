@@ -12,6 +12,7 @@ import {
   DeleteRoom,
   GetAllAdminRooms,
   GetAllRoomAndReservations,
+  UpdateRoom,
 } from "../controllers/roomControllers.js";
 
 router
@@ -25,6 +26,7 @@ router
 router
   .route("/:id")
   .get(GetSingleRoom)
-  .delete(authMiddleware, adminMiddleware, DeleteRoom);
+  .delete(authMiddleware, adminMiddleware, DeleteRoom)
+  .put(authMiddleware, adminMiddleware, UpdateRoom);
 
 export default router;

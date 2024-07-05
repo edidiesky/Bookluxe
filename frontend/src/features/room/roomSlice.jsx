@@ -10,7 +10,7 @@ import {
 } from "./roomReducer";
 const initialState = {
   rooms: [],
-  room: {},
+  room: null,
   creatingRoomisLoading: false,
   creatingRoomisSuccess: false,
   creatingRoomisError: false,
@@ -53,6 +53,7 @@ export const patientSlice = createSlice({
       state.deleteRoomisLoading = false;
       state.deleteRoomisSuccess = false;
       state.creatingRoomisSuccess = false
+      state.room = null
     },
   },
   extraReducers: (builder) => {

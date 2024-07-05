@@ -76,7 +76,16 @@ const GetSingleRoom = asyncHandler(async (req, res) => {
   res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
   return res.json(room);
 });
+const UpdateRoom = asyncHandler(async (req, res) => {
+  const updateRoom = await prisma.rooms.update({
+    where: { id: req.params.id },
+    data: req.body,
+  });
+  res.setHeader("Content-Type", "text/html");
+  res.setHeader("Cache-Control", "s-max-age=1, stale-while-revalidate");
 
+  res.status(200).json({ updateRoom });
+});
 const DeleteRoom = asyncHandler(async (req, res) => {
   const rooms = await prisma.rooms.findUnique({
     where: {
@@ -102,4 +111,5 @@ export {
   GetSingleRoom,
   DeleteRoom,
   GetAllAdminRooms,
+  UpdateRoom,
 };
