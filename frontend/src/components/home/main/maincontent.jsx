@@ -69,12 +69,13 @@ const Hero = () => {
           Enjoy A Luxury <br /> Experience
         </h1>
         <div className="w-full items-center justify-center flex">
-          <div
+          <Link
+            to={"/search"}
             style={{ letterSpacing: "4px" }}
             className="btn btn_2 text-xs font-bold text-white uppercase px-12 py-6"
           >
             <AnimateText children={"Book & Flex"} />
-          </div>
+          </Link>
         </div>
 
         <div className="w-full py-4 lg:flex-row flex-col items-center justify-center flex">
@@ -690,7 +691,10 @@ const RoomStructure = () => {
     `This is why we strive to provide a space where our guests can relax, unwind and immerse themselves in the experiences we have to offer.`,
   ];
   return (
-    <div data-scroll-section className="w-full flex py-40 mt-24 flex-col gap-20">
+    <div
+      data-scroll-section
+      className="w-full flex py-40 mt-24 flex-col gap-20"
+    >
       <div className="w-[90%] mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid lg:grid-cols-2">
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
