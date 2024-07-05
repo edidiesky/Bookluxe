@@ -1,10 +1,11 @@
 // import Head from "next/head";
 import DashboardIndex from "./components";
-
+import Meta from "@/components/common/Meta";
 export default function Home() {
   return (
     <div>
-      <DashboardIndex/>
+      <Meta title={"Dashboard Summary"} />
+      <DashboardIndex />
     </div>
   );
 }
