@@ -218,7 +218,8 @@ export default function RoomPaymentTab({
             {/* price */}
             <div className="w-full text-base font-light font-booking_font4 text-[var(--gold-1)] flex items-center justify-between">
               <span className="text-white text-lg block font-booking_font font-normal">
-                {price} x {differenceInDays} nights
+                ₦ {Number(room?.price).toLocaleString()} x {differenceInDays}{" "}
+                nights
               </span>
               <span>
                 <span className="text-base">₦</span>{" "}

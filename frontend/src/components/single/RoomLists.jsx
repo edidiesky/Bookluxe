@@ -65,7 +65,10 @@ const RoomLists = () => {
                     className="w-12"
                   />
                   <div className="flex items-center gap-3">
-                    <span className="text-base"> ₦{room?.price}</span>
+                    <span className="text-base">
+                      {" "}
+                      ₦ {Number(room?.price).toLocaleString()}{" "}
+                    </span>
                     <span className="font-booking_font text-xs">
                       {" "}
                       / PER NIGHT
