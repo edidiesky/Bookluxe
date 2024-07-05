@@ -78,10 +78,11 @@ const DashboardSidebar = () => {
                   className="w-14 h-14 rounded-full object-cover"
                 />
                 <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-[#fff]">
-                  HOME & VILLAS{" "}
+                 
+                  Zyra&Stones
                   <span className="block text-grey text-xs font-booking_font">
                     {" "}
-                    Benneth Okeke
+                 Home of Comfort
                   </span>
                 </h4>
               </Link>
@@ -128,11 +129,28 @@ const DashboardSidebar = () => {
             </NavLink>
             <div className=" w-full relative px-2 flex gap-1 items-center justify-between">
               <div className="flex flex-1 gap-2 items-center">
-                <img
-                  src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
-                  alt=""
-                  className="w-10 rounded-full"
-                />
+                {currentUser?.image ? (
+                  <img
+                    src={currentUser?.image}
+                    alt=""
+                    className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                  />
+                ) : currentUser?.username ? (
+                  // <div className="w-12 h-12 text-white rounded-full bg-[#000] text-2xl flex items-center justify-center ">
+                  //   {currentUser?.username[0]}{" "}
+                  // </div>
+                  <img
+                    src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                    alt=""
+                    className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                  />
+                ) : (
+                  <img
+                    src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                    alt=""
+                    className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+                  />
+                )}
                 <h4 className="text-base text-[#fff] font-booking_font4">
                   {currentUser?.name}
                   <span className="block font-booking_font text-xs font-normal text-grey">

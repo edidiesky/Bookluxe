@@ -68,7 +68,7 @@ const DashboardHeader = () => {
         <div className="flex w-full items-center gap-3">
           <div
             onClick={() => setBar(!bar)}
-            className="flex flex-1 lg:hidden gap-4 items-center justify-start text-white"
+            className="flex flex-1 lg:hidden gap-4 items-center justify-start text-dark"
           >
             {bar ? (
               <RxCross1 fontSize={"30px"} />
@@ -183,11 +183,24 @@ const DashboardHeader = () => {
           className="w-full h-full bg-[#151515] Header_wrapper py-4 flex items-start flex-col gap-2"
         >
           <div className="flex px-3 items-center gap-2">
-            <img
-              src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
-              alt=""
-              className="w-10 rounded-full"
-            />
+            {currentUser?.image ? (
+              <img
+                src={currentUser?.image}
+                alt=""
+                className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+              />
+            ) : currentUser?.username ? (
+              // <div className="w-12 h-12 text-white rounded-full bg-[#000] text-2xl flex items-center justify-center ">
+              //   {currentUser?.username[0]}{" "}
+              // </div>
+              <img
+                src="https://fundednext.fra1.digitaloceanspaces.com/dashboard/demo-avatar.jpg"
+                alt=""
+                className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
+              />
+            ) : (
+           ""
+            )}
             <h4 className="text-base font-booking_font4 text-white">
               {currentUser?.name}
               <span className="block font-normal font-booking_font text-sm text-white">
@@ -277,7 +290,7 @@ export const HeaderStyles = styled.div`
   }
   a,
   .tab {
-    padding: 10px 14px;
+    padding: 7px 14px;
     margin: 0 auto;
     border-radius: 4px;
     width: 100%;
@@ -286,11 +299,11 @@ export const HeaderStyles = styled.div`
     gap: 1rem;
     position: relative;
     svg {
-      color: #000;
+      color: #fff;
     }
 
     &:hover {
-      background: #1c1c1c;
+      background: #3a616a;
       color: #fff;
 
       svg {
@@ -299,7 +312,7 @@ export const HeaderStyles = styled.div`
     }
     &.active {
       position: relative;
-      background: #1c1c1c;
+      background: #3a616a;
       color: #fff;
       svg {
         color: #fff;
