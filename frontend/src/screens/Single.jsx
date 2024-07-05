@@ -3,10 +3,10 @@ import HomeIndex from "../components/single";
 import Meta from "@/components/common/Meta";
 import { useSelector } from "react-redux";
 const Single = () => {
-const {room} = useSelector(store=> store.room)
+  const { room } = useSelector((store) => store.room);
   return (
     <div>
-      <Meta title={`Home Detail for ${room?.title} `} />
+      <Meta title={`Home Detail for ${room?.title ? room?.title : ""} `} />
       <HomeIndex />
     </div>
   );
