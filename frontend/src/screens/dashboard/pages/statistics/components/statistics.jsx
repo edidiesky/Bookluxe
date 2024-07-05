@@ -127,7 +127,7 @@ const SalesStat = () => {
                     </div>
                   </span>
                 </div>
-                <span>+{data?.amount}</span>
+                <span>+#{Number(data?.amount).toLocaleString()}</span>
               </li>
             );
           })}
