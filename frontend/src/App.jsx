@@ -167,6 +167,8 @@ export default function App() {
         </Route>
       </Routes>
     </div>
-    // <Animation/>
+    // <div  style={{ height }}>
+    //   <Animation />
+    // </div>
   );
 }
