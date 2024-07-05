@@ -62,7 +62,7 @@ const DashboardSidebar = () => {
   const { currentUser } = useSelector((store) => store.auth);
   const pathname = true;
   return (
-    <HeaderStyles className={`w-full border-r  hidden lg:flex column gap-2`}>
+    <HeaderStyles className={`w-full hidden lg:flex column gap-2`}>
       <div className="w-full h-full py-4 justify-between flex items-center flex-col gap-4">
         <div className="w-full h-[90%] flex flex-col gap-8">
           <div className="flex flex-col w-full items-start justify-between py-1">
@@ -77,7 +77,7 @@ const DashboardSidebar = () => {
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
                   className="w-14 h-14 rounded-full object-cover"
                 />
-                <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-[#000]">
+                <h4 className="hidden md:flex flex-col text-sm font-booking_font4 text-[#fff]">
                   HOME & VILLAS{" "}
                   <span className="block text-grey text-xs font-booking_font">
                     {" "}
@@ -99,7 +99,7 @@ const DashboardSidebar = () => {
                     // activeClassName="active"
                     end
                     className={` tab
-                      text-base w-[90%] mx-auto text-[#000]`}
+                      text-base w-[90%] mx-auto text-[#fff]`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
@@ -120,7 +120,7 @@ const DashboardSidebar = () => {
             <NavLink
               // activeClassName="active"
               end
-              className={`text-sm tab flex items-center gap-4 p-[12px] px-4 font-booking_font4 text-[#000] family1`}
+              className={`text-sm tab flex items-center gap-4 p-[12px] px-4 font-booking_font4 text-[#fff] family1`}
               to={`/dashboard/profile/${currentUser?.id}`}
             >
               <FiSettings fontSize={"24px"} />
@@ -133,7 +133,7 @@ const DashboardSidebar = () => {
                   alt=""
                   className="w-10 rounded-full"
                 />
-                <h4 className="text-base text-[#000] font-booking_font4">
+                <h4 className="text-base text-[#fff] font-booking_font4">
                   {currentUser?.name}
                   <span className="block font-booking_font text-xs font-normal text-grey">
                     {currentUser?.email}
@@ -153,7 +153,7 @@ export const HeaderStyles = styled.div`
   position: sticky;
   top: 0;
   height: 100vh;
-  background: #fff;
+  background: #151515;
   /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
 
   .dropdown {

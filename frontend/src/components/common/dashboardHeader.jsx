@@ -63,12 +63,12 @@ const DashboardHeader = () => {
     window.location.reload();
   };
   return (
-    <HeaderStyles className="w-full z-[3000] bg-white border-b flex relative items-center justify-center">
+    <HeaderStyles className="w-full z-[3000] bg-[#151515] border-b flex relative items-center justify-center">
       <div className="Header_wrapper w-[95%] mx-auto flex items-center justify-between">
         <div className="flex w-full items-center gap-3">
           <div
             onClick={() => setBar(!bar)}
-            className="flex flex-1 lg:hidden gap-4 items-center justify-start text-dark"
+            className="flex flex-1 lg:hidden gap-4 items-center justify-start text-white"
           >
             {bar ? (
               <RxCross1 fontSize={"30px"} />
@@ -168,7 +168,7 @@ const DashboardHeader = () => {
         style={{ zIndex: "200" }}
         className={`${
           bar ? "left-0" : "-left-[100%]"
-        } w-[300px] bg-white border-r shadow-2xl  h-full transition-all ease duration-700 fixed flex lg:hidden top-0 flex-col gap-2`}
+        } w-[300px] bg-[#151515] border-r shadow-2xl  h-full transition-all ease duration-700 fixed flex lg:hidden top-0 flex-col gap-2`}
       >
         <div
           onClick={() => setBar(!bar)}
@@ -180,7 +180,7 @@ const DashboardHeader = () => {
         {/* <div className="w-full h-full absolute bg-[#fff] z-[24] object-cover" /> */}
         <div
           style={{ zIndex: "200" }}
-          className="w-full h-full bg-white Header_wrapper py-4 flex items-start flex-col gap-2"
+          className="w-full h-full bg-[#151515] Header_wrapper py-4 flex items-start flex-col gap-2"
         >
           <div className="flex px-3 items-center gap-2">
             <img
@@ -188,9 +188,9 @@ const DashboardHeader = () => {
               alt=""
               className="w-10 rounded-full"
             />
-            <h4 className="text-base font-booking_font4 text-dark">
+            <h4 className="text-base font-booking_font4 text-white">
               {currentUser?.name}
-              <span className="block font-normal font-booking_font text-sm text-dark">
+              <span className="block font-normal font-booking_font text-sm text-white">
                 {currentUser?.email}
               </span>
             </h4>
@@ -203,7 +203,7 @@ const DashboardHeader = () => {
                     onClick={() => setBar(!bar)}
                     end
                     className={`
-                      text-xm w-[90%] mx-auto text-dark font-booking_font4`}
+                      text-xm w-[90%] mx-auto text-white font-booking_font4`}
                     to={`/dashboard${x.tab.path}`}
                   >
                     <div className="flex items-center">
@@ -290,19 +290,19 @@ export const HeaderStyles = styled.div`
     }
 
     &:hover {
-      background: #f5f5f5;
-      color: #000;
+      background: #1c1c1c;
+      color: #fff;
 
       svg {
-        color: #000;
+        color: #fff;
       }
     }
     &.active {
       position: relative;
-      background: #f5f5f5;
-      color: #000;
+      background: #1c1c1c;
+      color: #fff;
       svg {
-        color: #000;
+        color: #fff;
       }
     }
   }
