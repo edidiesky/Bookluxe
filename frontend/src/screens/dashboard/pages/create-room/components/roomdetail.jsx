@@ -33,33 +33,30 @@ const RoomDetail = ({
           )}
 
           <div className="w-full flex flex-col gap-2">
-            <h4
-              style={{ letterSpacing: "3px" }}
-              className="text-xs text-grey uppercase font-booking_font_bold"
-            >
-              for settling in castle
-            </h4>
-            <h3 className="text-2xl lg:text-2xl font-booking_font4 font-medium text-text_dark_1 ">
-              {title}
+            <h3 className="text-sm font-booking_font_bold text-text_dark_1 ">
+              Title:{" "}
+              <span className="font-booking_font4 text-2xl"> {title}</span>
             </h3>
-            <div className="w-full flex flex-wrap gap-2">
+            <div className="w-full flex flex-col gap-2">
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold"
+                className="text-xs font-booking_font_bold flex items-center text-dark "
               >
-                Price: ${price}
+                Price:{" "}
+                <span className="text-xl font-booking_font4">${price}</span>
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold"
+                className="text-xs flex items-center font-booking_font_bold text-dark "
               >
-                Rooms: {rooms}
+                Rooms:{" "}
               </h4>
               <h4
                 style={{ letterSpacing: "2px" }}
-                className="text-xs text-dark uppercase font-booking_font_bold"
+                className="text-xs flex items-center font-booking_font_bold text-dark "
               >
-                BathRooms: {bathrooms}
+                BathRooms:{" "}
+                <span className="text-xl font-booking_font4"> {bathrooms}</span>{" "}
               </h4>
             </div>
           </div>

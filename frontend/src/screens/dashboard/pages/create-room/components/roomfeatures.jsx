@@ -3,8 +3,6 @@ import React from 'react';
 const Roomfeatures = ({
   features,
   handleFeatureSelection,
-  handleRoomAmenitiesSelection,
-  amenities,
 }) => {
   return (
     <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">

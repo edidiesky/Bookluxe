@@ -15,7 +15,6 @@ import { getAllRooms } from "../../../features/room/roomReducer";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { slideup, clipPathLeft, smallslideup2 } from "@/constants/utils/framer";
 import AnimateText from "@/animations/AnimateText";
-import { Link } from "react-router-dom";
 const MainContent = () => {
   return (
     <div className="w-full overflow-hidden flex flex-col gap-8">
@@ -46,6 +45,7 @@ const Hero = () => {
 
   return (
     <div
+      data-scroll-section
       className="w-full min-h-[100vh] py-32 relative flex items-center justify-center
    gap-8"
     >
@@ -62,20 +62,19 @@ const Hero = () => {
         <h1 className="text-white text-center leading-[1.1] md:leading-[1.3] text-5xl md:text-7xl font-booking_font4">
           <span
             style={{ letterSpacing: "3px" }}
-            className="text-[10px] md:text-xs pb-12 font-normal uppercase block font-booking_font"
+            className="text-[10px] md:text-xs pb-12 font-semibold uppercase block font-booking_font"
           >
             Luxury Home & Best Resort
           </span>
           Enjoy A Luxury <br /> Experience
         </h1>
         <div className="w-full items-center justify-center flex">
-          <Link
-            to={"/search"}
+          <div
             style={{ letterSpacing: "4px" }}
-            className="btn btn_2 text-xs font-normal text-white uppercase px-12 py-6"
+            className="btn btn_2 text-xs font-bold text-white uppercase px-12 py-6"
           >
             <AnimateText children={"Book & Flex"} />
-          </Link>
+          </div>
         </div>
 
         <div className="w-full py-4 lg:flex-row flex-col items-center justify-center flex">
@@ -220,28 +219,26 @@ const RoomFlex = () => {
 
   const RoomFlex_text_1 = [`Enjoy`, `A`, `Luxury`, `Experience`];
   const RoomFlex_text_2 = [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet`,
+    ` Discover a unique blend of comfort, `,
+    `style, and convenience at our Apartments`,
+    `Whether you're traveling for leisure, business, or a special occasion, `,
+    ` Our space offers everything you need for an unforgettable stay.`,
   ];
 
-  const RoomFlex_text_3 = ["Flex your Life", "in our amazing", "Home Resort"];
+  const RoomFlex_text_3 = ["The Art of Living"];
   const RoomFlex_text_4 = [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Our rooms are designed to be your home away from home. `,
+    `Make every moment a peaceful retreat from the outside world.`,
+    `Situated in the city of excellence, the highlights of Lagos are just a step away.`,
+    `Take advantage of our fully equipped apartments to binge your favorite shows.`,
   ];
   const RoomFlex_text_5 = [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `Enjoy access to a fully equipped kitchen, high-speed Wi-Fi, and a cozy living area perfect for relaxing`,
+    `We promise a getaway you won't soon forget.`,
   ];
 
   return (
-    <div className="w-full flex py-32 flex-col gap-40">
+    <div data-scroll-section className="w-full flex py-32 flex-col gap-40">
       <div className="w-[90%] mx-auto gap-24 md:gap-24 md:items-center max-w-custom_1 flex md:justify-center">
         <h1
           ref={RoomFlex_text_ref_1}
@@ -297,7 +294,7 @@ const RoomFlex = () => {
           </span>
         </h1>
       </div>
-      <div className="w-[90%] mx-auto gap-24 md:gap-24 py-20 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
+      <div className="w-[90%] mx-auto gap-24 md:gap-24 py-12 md:items-center max-w-custom_1 grid lg:grid-cols-custom_4">
         <div
           ref={image_ref_1}
           className="w-full lg:w-[450px] h-[350px] md:h-[550px] relative"
@@ -435,12 +432,11 @@ const Collections = () => {
     margin: "0px 100px -120px 0px",
   });
 
-  const text_1 = [`Our Amazing`, `Home Resort`];
+  const text_1 = [`Come Stay`, `With Us`];
   const text_4 = [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `At Zyra&Stones Living, we prioritize your comfort and satisfaction. `,
+    `our commitment to cleanliness, attention to detail, and personalized `,
+    ` service ensures a stay that's as enjoyable as it is memorable.`,
   ];
 
   const servicesData = [
@@ -456,7 +452,10 @@ const Collections = () => {
     },
   ];
   return (
-    <div className="w-full py-16 flex flex-col gap-32 md:gap-40">
+    <div
+      data-scroll-section
+      className="w-full py-16 flex flex-col gap-32 md:gap-40"
+    >
       <div
         ref={collection_ref_1}
         className="w-[90%] mx-auto gap-4 max-w-custom_1 grid md:grid-cols-2 lg:grid-cols-3"
@@ -676,20 +675,20 @@ const RoomStructure = () => {
     margin: "0px 100px -120px 0px",
   });
 
-  const text_1 = [`The`, `Structure`];
+  const text_1 = [`The`, `View`];
   const text_4 = [
-    `Lorem ipsum dolor sit amet consectetur adipisicing elit. `,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad, reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
-    `Ad,reprehenderit. Lorem ipsum dolor sit amet consectetur adipisicing elit.`,
+    `At Zyra&Stones Living, We believe that every stay should be an unforgettable experience. 
+    With our prime locations in the heart of Lagos, we offer the perfect blend of comfort, style and charm.`,
+    `We are passionate about creating a home away from home for our esteemed guests.`,
+    `This is why we strive to provide a space where our guests can relax, unwind and immerse themselves in the experiences we have to offer.`,
   ];
   return (
-    <div className="w-full flex py-20 flex-col gap-20">
+    <div data-scroll-section className="w-full flex py-20 flex-col gap-20">
       <div className="w-[90%] mx-auto gap-24 md:gap-16 md:items-center max-w-custom_1 grid lg:grid-cols-2">
         <div className="w-full flex items-center gap-4 relative">
           <div className="w-full relative grid md:grid-cols-2 gap-12">
             <img
-              src="/images/hazel_4.jpeg"
+              src="/images/haz  el_4.jpeg"
               alt=""
               className="object-cover md:min-h-[550px]"
             />
@@ -833,7 +832,7 @@ const RoomStructure = () => {
               <span className="text-xl font-booking_font4">
                 {room.title}
                 <span className="block text-sm text-grey font-normal font-booking_font">
-                  Lorem ipsum dolor sit amet
+                  Kitchenette
                 </span>
               </span>
             </motion.div>
@@ -903,7 +902,10 @@ const RoomsPrice = () => {
     margin: "0px 100px -120px 0px",
   });
   return (
-    <div className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8">
+    <div
+      data-scroll-section
+      className="w-full min-h-[100vh] py-40 relative flex items-center justify-center gap-8"
+    >
       <img
         src="/images/hazel_11.jpeg"
         alt=""
@@ -1058,6 +1060,7 @@ const RoomsBanner = () => {
 
   return (
     <div
+      data-scroll-section
       className="w-full min-h-[100vh] py-40 overflow-hidden relative flex items-center justify-center
    gap-8"
     >
@@ -1083,7 +1086,7 @@ const RoomsBanner = () => {
               className="text-xs pb-8 font-semibold uppercase block font-booking_font"
             >
               <span className="w-full gap-x-[5px] flex justify-start items-center flex-wrap ">
-                {["BUS", "STATION", "NEAR"].map((x, index) => {
+                {["COME", "JOIN", "US"].map((x, index) => {
                   return (
                     <span
                       key={index}
@@ -1128,11 +1131,12 @@ const RoomsBanner = () => {
                 animate={inView1 ? "animate" : "exit"}
                 className="block py-6 text-lg leading-[1.6] font-normal font-booking_font"
               >
-                Suspendisse commodo bibendum purus at hendrerit. Vivamus aliquam
-                bibendum fringilla. Praesent cursus felis nunc, quis vulputate
-                sapien posuere vitae. Aliquam erat volutpat. Cras egestas porta
-                massa eget pulvinar. Cras non enim et dui pharetra hendrerit
-                mattis.
+                Ready to experience the best of comfort? Book your stay today
+                and start creating unforgettable memories. We look forward to
+                welcoming you and ensuring your time with us is nothing short of
+                exceptional. For inquiries or assistance, reach out to us at
+                zyraandstones@gmail.com or +(234) 913 861 1598. Follow us on IG:
+                @zyrastones_living for the latest news and special offers.
               </motion.span>
             </span>
           </h1>

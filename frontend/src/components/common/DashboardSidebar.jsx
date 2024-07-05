@@ -68,7 +68,8 @@ const DashboardSidebar = () => {
           <div className="flex flex-col w-full items-start justify-between py-1">
             {/* <h4 className="text-sm text-[#000]">RockTrading</h4> */}
             <div className=" w-[90%] mx-auto relative flex gap-4 items-center flex-col justify-between">
-              <div className="w-full flex items-center gap-1 justify-start">
+             
+              <Link to={'/'} className="w-full flex items-center gap-1 justify-start">
                 <img
                   loading="lazy"
                   src="https://www.hopper.com/assets/treasure-D-5S8iOp.svg"
@@ -81,7 +82,7 @@ const DashboardSidebar = () => {
                     Benneth Okeke
                   </span>
                 </h4>
-              </div>
+              </Link>
             </div>
           </div>
           <div className="w-full my-4 flex flex-col gap-1">

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import { BiSearch, BiUpload } from "react-icons/bi";
 import {Link} from "react-router-dom";
-import { RoomFeaturesList, RoomFeaturesList2 } from "@/constants/data/feature";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import ImageUpload from "./imageUpload";
 import Roomfeatures from "./roomfeatures";
 
@@ -36,25 +36,16 @@ const RoomForms = ({
       setFeatures([...features, data]);
     }
   };
-
-  const handleRoomAmenitiesSelection = (data) => {                                                                    
-    if (amenities.includes(data)) {
-      const newdata = amenities.filter((x) => x?.title !== data?.title);
-      setAmenities(newdata);
-    } else {
-      setAmenities([...amenities, data]);
-    }
-  };
-  // console.log(features);
+  const module = {
+    toolbar:[["bold", "italic"], ['link']]
+  }
   return (
     <div className="w-full flex flex-col gap-8">
       {/* title */}
       <div className="w-full bg-[#fff] border p-6 px-2 rounded-[10px]">
         <div className="w-[95%] md:w-[90%] mx-auto flex flex-col gap-8">
           <div className="w-full flex items-center justify-between">
-            <h4 className="text-2xl font-booking_font4">
-              Name & Description
-            </h4>
+            <h4 className="text-2xl font-booking_font4">Name & Description</h4>
             <div className="flex items-center justify-end">
               <Link
                 href={"/dashboard/rooms"}
@@ -81,16 +72,26 @@ const RoomForms = ({
             </label>
             <label
               htmlFor="description"
-              className="text-sm  flex flex-col gap-2 font-booking_font4"
+              className="text-sm h-[300px] flex flex-col gap-2 font-booking_font4"
             >
               Product Description
-              <textarea
+              {/* <textarea
                 name="description"
                 value={description}
                 id="description"
                 type="text"
                 onChange={(e) => setDescription(e.target.value)}
                 className="text-lg w-full h-[250px]"
+              /> */}
+              <ReactQuill
+                // modules={module}
+                theme="snow"
+                style={{
+                  height:"200px",
+                  borderRadius:"15px"
+                }}
+                value={description}
+                onChange={setDescription}
               />
             </label>
           </div>
@@ -168,7 +169,7 @@ const RoomForms = ({
             </h4>
           </div>
           <div className="pt-2 w-full flex flex-col gap-4">
-            <div className="w-full grid md:grid-cols-2 gap-4">
+            <div className="w-full grid md:grid-cols-1 gap-4">
               <label
                 htmlFor="city"
                 className="text-sm  flex flex-col gap-2 font-booking_font4"
@@ -183,7 +184,7 @@ const RoomForms = ({
                   className="text-lg w-full input"
                 />
               </label>
-              <label
+              {/* <label
                 htmlFor="bathrooms"
                 className="text-sm  flex flex-col gap-2 font-booking_font4"
               >
@@ -196,7 +197,7 @@ const RoomForms = ({
                   onChange={(e) => setAddress(e.target.value)}
                   className="text-lg w-full input"
                 />
-              </label>
+              </label> */}
             </div>
           </div>
         </div>
@@ -207,10 +208,8 @@ const RoomForms = ({
 
       {/* Room Attributes and Features */}
       <Roomfeatures
-        amenities={amenities}
         features={features}
         handleFeatureSelection={handleFeatureSelection}
-        handleRoomAmenitiesSelection={handleRoomAmenitiesSelection}
       />
     </div>
   );

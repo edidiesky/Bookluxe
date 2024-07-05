@@ -12,7 +12,6 @@ const DashboardIndex = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState(0);
   const [city, setCity] = useState("");
-  const [address, setAddress] = useState("");
   const [images, setImages] = useState([]);
 
   const [features, setFeatures] = useState([]);
@@ -32,9 +31,7 @@ const DashboardIndex = () => {
     price: price,
     images: images,
     city: city,
-    address: address,
     features: features,
-    // amenities: amenities,
     bedroom: rooms,
     bathroom: bathrooms,
     description: description,
@@ -101,8 +98,6 @@ const DashboardIndex = () => {
             setFeatures={setFeatures}
             setAmenities={setAmenities}
             amenities={amenities}
-            setAddress={setAddress}
-            address={address}
             city={city}
             setCity={setCity}
           />

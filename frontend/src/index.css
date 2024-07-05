@@ -93,6 +93,9 @@
   font-family: "Booking_Normal_Font";
   src: url("./assets/fonts/booking_font_regular.ttf") format("truetype");
 }
+.ql-container {
+  font-family: "Booking_Normal_Medium", sans-serif !important;
+}
 @font-face {
   font-display: swap;
   font-family: "Montreal";
