@@ -30,11 +30,14 @@ const DashboardIndex = () => {
     creatingRoomisLoading,
     updateRoomisSuccess,
     creatingRoomisSuccess,
+    updateRoomisLoading,
     room,
   } = useSelector((store) => store.room);
   // get the room id
   const { id } = useParams();
+
   useEffect(() => {
+     dispatch(handleClearRoomAlert());
     if (id) {
       dispatch(getSingleRooms(id));
     }
@@ -50,6 +53,14 @@ const DashboardIndex = () => {
       setBathRooms(room?.bathroom);
       setRooms(room?.bedroom);
       // dispatch(getSingleRooms(room));
+    } else {
+       setTitle("");
+       setPrice("");
+       setCity("");
+       setDescription("");
+       setImages([]);
+       setBathRooms("");
+       setRooms("");
     }
   }, [
     room,
@@ -83,21 +94,24 @@ const DashboardIndex = () => {
       dispatch(CreateRoom(roomData));
     }
   };
+
   useEffect(() => {
-    dispatch(handleClearRoomAlert());
-    if (creatingRoomisSuccess || updateRoomisSuccess) {
+   
+    if (creatingRoomisSuccess) {
       const timeout = setTimeout(() => {
         navigate(`/dashboard/rooms`);
       }, 700);
+
       return () => clearTimeout(timeout);
     }
-  }, [creatingRoomisSuccess, updateRoomisSuccess, navigate]);
+  }, [creatingRoomisSuccess, navigate]);
+
   return (
     <div className="w-full relative">
       <div className="w-full relative pb-20 flex flex-col gap-12">
         <div className="w-full grid md:grid-cols-2 md:items-center gap-4 justify-between">
           <h3 className="text-3xl lg:text-4xl font-booking_font4">
-            Add Your Room
+            {room ? "Update Your room" : "Add Your Room"}
             <span className="block font-normal text-dark pt-2 text-base font-booking_font">
               The most important idea about this section is that it gives u
               ability to add your rooms. When adding your room product idea do
@@ -106,11 +120,11 @@ const DashboardIndex = () => {
           </h3>
           <div className="flex items-center md:justify-end">
             <button
-              disabled={creatingRoomisLoading}
+              disabled={creatingRoomisLoading || updateRoomisLoading}
               onClick={handleRoomCreation}
               className="btn text-base font-booking_font_bold p-3  px-8 text-white rounded-[40px]"
             >
-              {creatingRoomisLoading ? (
+              {creatingRoomisLoading || updateRoomisLoading ? (
                 <span className="flex items-center justify-center gap-2">
                   <Loader type="dots" />
                   {room ? " Updating in progress" : "Room Creating"}

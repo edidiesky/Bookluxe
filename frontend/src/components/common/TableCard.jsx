@@ -27,7 +27,7 @@ const TableCard = ({ x, type }) => {
               </span>
             </span>
           </td>
-          <td>{x?.amount}</td>
+          <td>₦{Number(x?.amount).toLocaleString()}</td>
           <td>{x?.currency}</td>
           <td>
             {/* <span className="p-4">
@@ -148,7 +148,9 @@ const TableCard = ({ x, type }) => {
           {/* <td className=" font-semibold">{x?.address}</td> */}
 
           <td className=" font-semibold">{x?.city}</td>
-          <td className=" font-semibold">₦{x?.price}</td>
+          <td className=" font-semibold">
+            ₦{Number(x?.price).toLocaleString()}
+          </td>
 
           <td className=" font-semibold">{startDate}</td>
 
@@ -196,7 +198,7 @@ const TableCard = ({ x, type }) => {
             )}
           </td>
           <td className=" font-semibold">
-            <span>{x?.totalPrice}</span>
+            <span>₦{Number(x?.totalPrice).toLocaleString()}</span>
           </td>
           <td className=" font-semibold">
             <span>{x?.rooms?.city}</span>

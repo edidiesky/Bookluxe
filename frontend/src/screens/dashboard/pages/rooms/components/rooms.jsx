@@ -17,7 +17,7 @@ const RoomsList = () => {
     <>
       {getallRoomisLoading && <Loader />}
       <div className="w-full bg-white shadows p-4 px-6 border rounded-[20px]">
-        <label
+        {/* <label
           htmlFor=""
           className="hidden md:flex text-xl text-dark w-[200px] lg:w-[250px]
              items-center gap-2 h-12 border rounded-[10px] bg-[#f9f9f9] px-4"
@@ -30,7 +30,7 @@ const RoomsList = () => {
             placeholder="Search"
             className="bg-transparent border-none outline-none text-base text-dark flex-1"
           />
-        </label>
+        </label> */}
         <Table>
           <div className="TableContainer">
             <table className="tableWrapper">

@@ -36,7 +36,7 @@ const initialState = {
   noOfPages: 0,
 };
 
-export const patientSlice = createSlice({
+export const roomSlice = createSlice({
   name: "room",
   initialState,
   reducers: {
@@ -140,6 +140,6 @@ export const patientSlice = createSlice({
   },
 });
 
-export const { handleClearRoomAlert, handlePage } = patientSlice.actions;
+export const { handleClearRoomAlert, handlePage } = roomSlice.actions;
 
-export default patientSlice.reducer;
+export default roomSlice.reducer;
