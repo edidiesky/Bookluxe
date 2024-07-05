@@ -93,7 +93,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
             <span className="flex text-xs text-grey font-normal font-booking_font flex-col">
               price
               <span className="block text-lg text-stone-950 font-bold font-booking_font_bold">
-                ₦{apartment?.rooms?.price}
+                ₦{Number(apartment?.rooms?.price).toLocaleString()}
               </span>
             </span>
           </div>
@@ -188,7 +188,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           </div>
           {/* <img src= alt="" /> */}
         </div>
-      
+
         <div className="w-full flex flex-col bg-white gap-2">
           <h4
             style={{ letterSpacing: "3px" }}
@@ -212,7 +212,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
             <span className="flex text-[10px] text-grey font-normal font-booking_font flex-col">
               price
               <span className="block text-lg text-[#000] font-booking_font4">
-                ₦{apartment?.price}
+                ₦{Number(apartment?.price).toLocaleString()}
               </span>
             </span>
           </div>
