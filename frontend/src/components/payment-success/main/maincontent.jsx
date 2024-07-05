@@ -104,7 +104,7 @@ const RoomLists = () => {
     if (payment) {
       const interval = setTimeout(() => {
         setShowConfetti(true);
-      }, 3000);
+      }, 300);
       return () => clearTimeout(interval);
     }
   }, [payment]);
