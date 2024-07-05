@@ -26,25 +26,6 @@ const PaymentSuccess = lazy(() => import("./screens/Payment-Success"));
 // PaymentSuccess
 export default function App() {
   const [height, setHeight] = useState(0);
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.7,
-      easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)), // https://easings.net
-      direction: "vertical",
-      smooth: true,
-      smoothTouch: true,
-      touchMultiplier: 2,
-    });
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-    return () => {
-      lenis.destroy(); // Ensure Lenis is cleaned up on unmount
-    };
-  }, []);
 
   return (
     <div className="based" style={{ height }}>
