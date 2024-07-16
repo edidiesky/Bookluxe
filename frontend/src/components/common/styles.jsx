@@ -91,14 +91,10 @@ export const Table = styled.div`
         tr {
           transition: all 0.5s;
           z-index: 200;
-          &:hover {
-            background-color: rgba(0, 0, 0, 0.06);
-          }
           td {
             text-align: start;
             padding: 1.6rem 1rem !important;
             font-size: 14px !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.07);
             color: #000;
 
             span {

@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { projects } from "./data";
 
 const ParallaxContent = () => {
   const containerRef = useRef(null);

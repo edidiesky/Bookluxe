@@ -5,7 +5,6 @@ const HorizontalScroll = ({ children }) => {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    // offset:['start .75', 'end end']
   });
   const translateByX = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
   return (
