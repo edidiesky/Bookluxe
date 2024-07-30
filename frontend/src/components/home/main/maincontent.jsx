@@ -435,13 +435,13 @@ const Collections = () => {
 
   const text_1 = [`Come Stay`, `With Us`];
   const text_4 = [
-    `At Zyra&Stones Living, we prioritize your comfort and satisfaction. `,
+    `At BookLuxe Living, we prioritize your comfort and satisfaction. `,
     `our commitment to cleanliness, attention to detail, and personalized `,
     ` service ensures a stay that's as enjoyable as it is memorable.`,
   ];
 
   const text_5 = [
-    `At Zyra&Stones Living, we prioritize your comfort and satisfaction. `,
+    `At BookLuxe Living, we prioritize your comfort and satisfaction. `,
     `our commitment to cleanliness, attention to detail, and personalized `,
     ` service ensures a stay that's as enjoyable as it is memorable.`,
   ];
@@ -685,7 +685,7 @@ const RoomStructure = () => {
 
   const text_1 = [`The`, `View`];
   const text_4 = [
-    `At Zyra&Stones Living, We believe that every stay should be an unforgettable experience. 
+    `At BookLuxe Living, We believe that every stay should be an unforgettable experience. 
     With our prime locations in the heart of Lagos, we offer the perfect blend of comfort, style and charm.`,
     `We are passionate about creating a home away from home for our esteemed guests.`,
     `This is why we strive to provide a space where our guests can relax, unwind and immerse themselves in the experiences we have to offer.`,

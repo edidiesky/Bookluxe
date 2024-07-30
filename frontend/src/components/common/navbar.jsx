@@ -53,7 +53,7 @@ const Navbar = () => {
               className="w-14 h-14 rounded-full object-cover"
             />
             <h4 className="hidden md:flex flex-col text-sm md:text-base font-booking_font4 text-dark">
-              Zyra&Stones{" "}
+              BookLuxe{" "}
               <span className="block text-grey text-xs font-booking_font">
                 {" "}
                 Home of Comfort
