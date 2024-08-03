@@ -71,7 +71,7 @@ const Navbar = () => {
             </div>
           </div>
           <Link to={"/"} className="flex items-center gap-1 justify-center">
-            <h4 className="text-lg md:text-2xl text-center font-booking_bold text-dark">
+            <h4 className="text-3xl text-center family2 text-dark">
               <span className="block text-grey text-xs family1">
                 {" "}
                 Home of Comfort
@@ -86,11 +86,11 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               <div
                 onClick={() => dispatch(onLoginModal())}
-                className="h-[46px] font-semibold text-[13px] w-[140px] rounded-[60px]"
+                className="h-[46px] font-semibold text-[11px] md:text-[13px] w-[120px] md:w-[140px] rounded-[60px]"
               >
                 <Button type={"full_dark"} text={" Book Your Stay"} />
               </div>
-              {currentUser?.image ? (
+              {/* {currentUser?.image ? (
                 <img
                   src={currentUser?.image}
                   alt=""
@@ -111,7 +111,7 @@ const Navbar = () => {
                   alt=""
                   className="w-12 lg:w-12 h-12 lg:h-12 rounded-full"
                 />
-              )}
+              )} */}
             </div>
           </div>
         </div>

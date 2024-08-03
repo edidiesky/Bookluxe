@@ -18,8 +18,8 @@ const AnimateText = ({ children }) => {
                 hover: { y: "-100%" },
               }}
               transition={{
-                delay: index * 0.025,
-                duration: 0.25,
+                delay: index * 0.05,
+                duration: 0.3,
                 ease: "easeInOut",
               }}
               className="inline-block"
@@ -39,8 +39,8 @@ const AnimateText = ({ children }) => {
                 hover: { y: "0" },
               }}
               transition={{
-                delay: index * 0.025,
-                duration: 0.25,
+                delay: index * 0.05,
+                duration: 0.3,
                 ease: "easeInOut",
               }}
             >

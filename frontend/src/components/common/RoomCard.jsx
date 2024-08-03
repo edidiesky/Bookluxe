@@ -110,6 +110,11 @@ const RoomCard = ({ type, apartment, inView, index, setMousePosition }) => {
             index: index,
           });
         }}
+        onMouseLeave={() =>
+          setMousePosition({
+            active: false,
+          })
+        }
         to={`/room/${apartment?.id}`}
         className="w-full flex flex-col gap-4"
       >

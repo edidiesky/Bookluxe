@@ -1,128 +1,109 @@
-import { Link } from "react-router-dom";
-
-const navbarCenterList = [
+import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllRooms } from "@/features/room/roomReducer";
+import AnimateText from "@/animations/AnimateText";
+const linkData = [
   {
-    title: "Home",
+    title: "Buy",
     path: "",
   },
   {
-    title: "Search",
+    title: "Rent",
     path: "search",
   },
   {
-    title: "My Favourites",
+    title: "Sell",
     path: "savedhomes",
   },
   {
-    title: "My Trips",
+    title: "Agents",
     path: "trips",
-  },
-  {
-    title: "About & FAQ",
-    path: "about",
   },
 ];
 const Footer = () => {
+  const dispatch = useDispatch();
+  const { rooms, getallRoomisLoading } = useSelector((store) => store.room);
+  useEffect(() => {
+    dispatch(getAllRooms());
+  }, []);
   return (
-    <>
+    <div className="w-full relative">
       <div
-        className="w-full  py-16 relative bg-[#1D1D1D] flex items-center justify-center
-   gap-8"
+        className="w-full grid md:grid-cols-custom_2
+       border-t border-[rgba(0,0,0,.1)]"
       >
-        <div
-          className="w-[90%] mx-auto max-w-custom_1 justify-between z-40 grid md:grid-cols-2 lg:grid-cols-3
-      gap-8 md:gap-2"
-        >
-          <div className="flex flex-col items-center justify-center gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-20.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl text-white font-booking_font4">
-              Phone Support
-              <span className="block uppercase text-sm font-booking_font text-grey">
-                CALL US
-              </span>
-            </h3>
-            <h3 className="text-2xl text-white hover:text-[var(--gold-1)] font-booking_font4">
-              +(234) 913 861 1598
-            </h3>
-          </div>
-
-          <div className="flex flex-col items-center justify-center gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-19.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl text-white font-booking_font4">
-              Connect With Us
-              <span className="block uppercase text-sm font-booking_font text-grey">
-                SOCIAL MEDIA
-              </span>
-            </h3>
-            <h3 className="text-2xl text-white font-booking_font4">
-              <Link
-                _blanck
-                className="hover:text-[var(--gold-1)] text-white"
-                to={
-                  "https://www.instagram.com/zyrastones_living?igsh=MzRIODBiNWFIZA"
-                }
-              >
-                @zyrastones_living
-              </Link>
-            </h3>
-          </div>
-          <div className="flex flex-col items-center justify-center gap-6">
-            <img
-              src="https://www.nicdarkthemes.com/themes/hotel-booking/wp/demo/hotel/wp-content/uploads/sites/2/2022/04/icon-20.png"
-              alt=""
-              className="w-12 md:w-16"
-            />
-            <h3 className="text-2xl flex flex-col items-center justify-center gap-4 text-white font-booking_font4">
-              <span>
-                Contact Us
-                <span className="block leading-[1.5]  text-sm font-booking_font text-grey">
-                  BOOK A RESERVATION
-                </span>
-              </span>
-              <Link
-                className="hover:text-[var(--gold-1)] text-white"
-                mailto={"zyraandstones@gmail.com"}
-              >
-                zyraandstones@gmail.com
-              </Link>
-            </h3>
-          </div>
-        </div>
-      </div>
-      <div
-        className="w-full  py-4 relative bg-[#000] flex items-center justify-center
-   gap-8"
-      >
-        <div
-          className="w-[90%] mx-auto max-w-custom_1 flex items-center justify-between
-       gap-4"
-        >
-          <div className="items-center justify-start flex-wrap flex gap-1">
-            {navbarCenterList?.map((list, index) => {
+        <div className="w-[500px] border-b md:border-b-0 md:border-r border-[rgba(0,0,0,.1)] h-full p-12 md:p-24 relative flex flex-col gap-8">
+          <p className="text-start text-grey text-base font-normal">Menu</p>
+          <div className="flex flex-col gap-1">
+            {linkData?.map((nav, index) => {
               return (
-                <Link
-                  to={"#"}
-                  key={index}
-                  className={`text-sm 
-                font-normal  text-white font-booking_font4 flex items-center gap-2 p-3 px-4 rounded-[40px]`}
-                >
-                  {/* <img src={list?.icon} className="w-4" alt="" /> */}
-                  {list?.title}
-                </Link>
+                <NavLink end className={"text-6xl family2 "} to={"/"}>
+                  <AnimateText children={nav?.title} />
+                </NavLink>
               );
             })}
           </div>
         </div>
+        <div className="w-full relative grid md:grid-cols-2 h-full gap-4">
+          <div className="border-b md:border-b-0 md:border-r border-[rgba(0,0,0,.1)] h-full py-8 md:py-24 px-12 relative flex flex-col gap-8">
+            <p className="text-start text-grey text-sm font-normal">Stay</p>
+            <div className=" grid grid-cols-2 items-center justify-between gap-2">
+              {rooms?.map((data, index) => {
+                return (
+                  <Link
+                    to={"/"}
+                    key={index}
+                    className="text-start text-grey text-sm font-normal"
+                  >
+                    {data?.subtitle}
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+          <div className="border-b md:border-b-0 md:border-r border-[rgba(0,0,0,.1)] h-full py-8 md:py-24 px-12 relative flex flex-col gap-8">
+            <p className="text-start text-grey text-sm font-normal">Contact</p>
+            <div className="flex flex-col gap-1">
+              <p className="text-start text-grey text-sm font-normal">
+                Jl. Damai, Kayu Putih
+              </p>{" "}
+              <p className="text-start text-grey text-sm font-normal">
+                Kayu Putih, Lovina, Buleleng, Bali, Indonesia
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-1">
+              <p className="text-start text-grey text-sm font-normal">
+                T: +62 877 888 41008
+              </p>{" "}
+              <p className="text-start text-grey text-sm font-normal">
+                E: resort@thedamai.com
+              </p>{" "}
+              <p className="text-start text-grey text-sm font-normal">
+                Reception: WhatsApp
+              </p>{" "}
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+      <div
+        className="w-full grid grid-cols-2 md:grid-cols-custom_2
+       border-t  border-b border-[rgba(0,0,0,.1)]"
+      >
+        <div className=" md:w-[500px] border-r border-[rgba(0,0,0,.1)] h-full p-4 px-24 relative flex flex-col gap-8">
+          <p className="text-start text-grey text-base font-normal">Menu</p>
+        </div>
+        <div className="w-full relative grid grid-cols-2 h-full gap-4">
+          <div className="border-r border-[rgba(0,0,0,.1)] h-full py-4 px-4 relative flex flex-col gap-8">
+            <p className="text-start text-grey text-sm font-normal">Stay</p>
+          </div>
+          <div className="border-r border-[rgba(0,0,0,.1)] h-full py-4 px-4 relative flex flex-col gap-8">
+            <p className="text-start text-grey text-sm font-normal">Contact</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
