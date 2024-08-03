@@ -29,7 +29,7 @@ const GetAllRoomAndReservations = asyncHandler(async (req, res) => {
   return res.json(rooms);
 });
 const GetAllAdminRooms = asyncHandler(async (req, res) => {
-  const limit = req.query.limit || 3;
+  const limit = req.query.limit || 6;
   const page = req.query.page || 1;
   const skip = (page - 1) * limit;
 
@@ -38,6 +38,9 @@ const GetAllAdminRooms = asyncHandler(async (req, res) => {
   const rooms = await prisma.rooms.findMany({
     skip: skip,
     take: limit,
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   const noOfPages = Math.ceil(totalRoom / limit);
