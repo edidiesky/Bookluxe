@@ -3,8 +3,8 @@ import HomeIndex from "../components/search";
 import Meta from "@/components/common/Meta";
 const Search = () => {
   return (
-    <div>
-      <Meta title={"Search for quality homes"} />
+    <div className="overflow-hidden">
+      <Meta title={"Search Homes - BookLuxe"} />
       <HomeIndex />
     </div>
   );

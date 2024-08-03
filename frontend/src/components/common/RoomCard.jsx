@@ -14,7 +14,7 @@ import { DeleteReservation } from "@/features/reservation/reservationReducer";
 import { onLoginModal } from "@/features/modals/modalSlice";
 import { addListToWish } from "@/features/auth/authReducer";
 
-const RoomCard = ({ type, apartment, inView, index }) => {
+const RoomCard = ({ type, apartment, inView, index, setMousePosition }) => {
   const [tabindex, setTabIndex] = useState(0);
   const { currentUser } = useSelector((store) => store.auth);
   const handleImagePosition = (position) => {
@@ -104,11 +104,17 @@ const RoomCard = ({ type, apartment, inView, index }) => {
   if (type === "Search") {
     return (
       <Link
+        onMouseEnter={() => {
+          setMousePosition({
+            active: true,
+            index: index,
+          });
+        }}
         to={`/room/${apartment?.id}`}
         className="w-full flex flex-col gap-4"
       >
         <div className="w-full h-[440px] overflow-hidden relative">
-          <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
+          {/* <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div> */}
 
           <Link
             to={"#"}
@@ -117,58 +123,46 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           >
             <Heart active={active} />
           </Link>
-          <div
-            style={{ gridTemplateColumns: "repeat(4, 100%)" }}
-            className="w-full h-full absolute top-0 left-0 overflow-hidden grid"
+          <motion.div
+            initial="initial"
+            whileHover={"hover"}
+            className="w-full h-full relative"
           >
-            {apartment.images.map((image, index) => {
-              return (
-                <div
-                  style={{
-                    transform: `translateX(-${tabindex * 100}%)`,
-                    transition: "all .4s ease",
-                  }}
-                  key={index}
-                  className="w-full h-full"
-                >
-                  <img
-                    key={index}
-                    //   alt="Cotion"
-                    //   width={0}
-                    //   sizes="100vw"
-                    //   height={0}
-                    //   loading="lazy"
-                    //   placeholder="blur"
-                    style={{
-                      transition:
-                        "filter 0.2s cubic-bezier(0.4, 0, 0.2, 1), -webkit-filter 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                    //   blurDataURL={image}
-                    src={image}
-                    className="w-full z-10 h-[100%] object-cover hover:grayscale-[1] grayscale-0"
-                  />
-                </div>
-              );
-            })}
-          </div>
-          {/* <div className="absolute z-[40] left-0 bottom-[5%] w-full flex items-center justify-center">
-            <div className="w-full flex items-center justify-center gap-1">
-              {Array(apartment?.images?.length)
-                .fill("")
-                .map((tab, index) => {
-                  const active = tabindex === index;
-                  return (
-                    <span
-                      key={index}
-                      className={`w-[7px] ${
-                        active ? "bg-[#fff]" : "bg-[#7b797972]"
-                      }  h-[7px] cursor-pointer hover:scale-[1.09] rounded-full`}
-                    ></span>
-                  );
-                })}
-            </div>
-          </div> */}
-          {/* <img src= alt="" /> */}
+            <motion.div
+              variants={{
+                initial: { opacity: 1 },
+                hover: { opacity: 0 },
+              }}
+              transition={{
+                delay: 0.025,
+                duration: 0.25,
+                ease: "easeInOut",
+              }}
+              className="w-full h-full relative"
+            >
+              <img
+                src={apartment?.images[0]}
+                className="w-full z-10 h-[100%] relative object-cover"
+              />
+            </motion.div>
+            <motion.div
+              variants={{
+                initial: { opacity: 0 },
+                hover: { opacity: 1 },
+              }}
+              transition={{
+                delay: 0.035,
+                duration: 0.25,
+                ease: "easeInOut",
+              }}
+              className="w-full z-[30] h-full absolute top-0"
+            >
+              <img
+                src={apartment?.images[1]}
+                className="w-full z-10 h-[100%] relative object-cover"
+              />
+            </motion.div>
+          </motion.div>
         </div>
 
         <div className="w-full flex flex-col py-4 gap-2">
