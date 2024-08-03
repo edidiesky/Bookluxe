@@ -24,29 +24,42 @@ enum PaymentStatus {
   PARTPAYMENT
 }
 
+enum RoleStatus {
+  ADMIN
+  USER
+  SELLER
+}
+
 model User {
   id              String          @id @default(auto()) @map("_id") @db.ObjectId
   name            String
   username        String
+  location        String?
+  about           String?
+  phone           String?
+  experience      Int?
   email           String?         @unique
   emailVerified   DateTime?
   image           String?
-  isAdmin         Boolean?
+  role            RoleStatus      @default(USER)
   hashedPassword  String?
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   conversationIds String[]        @db.ObjectId
   conversations   Conversations[] @relation(fields: [conversationIds], references: [id])
 
-  seenMessageIds String[]  @db.ObjectId
-  seenMessages   Message[] @relation("Seen", fields: [seenMessageIds], references: [id])
-
-  messages    Message[]
-  rooms       Rooms[]
-  reservation Reservations[]
-  favourites  String[]
-  payment     Payment[]
-  notifications Notifications[]
+  seenMessageIds String[]        @db.ObjectId
+  seenMessages   Message[]       @relation("Seen", fields: [seenMessageIds], references: [id])
+  ratings        Int?
+  messages       Message[]
+  reservation    Reservations[]
+  payment        Payment[]       @relation("SellerPayments")
+  paymentsMade   Payment[]       @relation("UserPayments")
+  reviews        Review[]        @relation("SellerReviews")
+  reviewsMade    Review[]        @relation("UserReview")
+  notifications  Notifications[]
+  Payment        Payment[]
+  Rooms          Rooms[]
 }
 
 model Rooms {
@@ -68,51 +81,69 @@ model Rooms {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  userid String @db.ObjectId
+  sellerid String @db.ObjectId
 
-  user         User?          @relation(fields: [userid], references: [id], onDelete: Cascade)
+  user         User?          @relation(fields: [sellerid], references: [id], onDelete: Cascade)
   reservations Reservations[]
+  review       Review[]
+}
+
+model Review {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  review      Int
+  description String
+  roomid      String @db.ObjectId
+  room        Rooms? @relation(fields: [roomid], references: [id], onDelete: Cascade)
+  userid      String @db.ObjectId // Customer ID
+  sellerid    String @db.ObjectId // Seller ID
+  user        User   @relation("UserReview", fields: [userid], references: [id])
+  seller      User   @relation("SellerReviews", fields: [sellerid], references: [id])
 }
 
 model Notifications {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  action String?
-  read Boolean @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  action    String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   userid String @db.ObjectId
-  user         User?          @relation(fields: [userid], references: [id], onDelete: Cascade)
+  user   User?  @relation(fields: [userid], references: [id], onDelete: Cascade)
 }
+
 model Reservations {
-  id         String            @id @default(auto()) @map("_id") @db.ObjectId
-  startDate  DateTime
-  endDate    DateTime
-  totalPrice Int?
-  guests     Int?
-  patchguests     Json?
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
-  status     ReservationStatus @default(PENDING)
-  roomid     String            @db.ObjectId
-  userid     String            @db.ObjectId
-  payment    Payment[]
-  rooms      Rooms?            @relation(fields: [roomid], references: [id], onDelete: Cascade)
-  user       User?             @relation(fields: [userid], references: [id], onDelete: Cascade)
+  id          String            @id @default(auto()) @map("_id") @db.ObjectId
+  startDate   DateTime
+  endDate     DateTime
+  totalPrice  Int?
+  guests      Int?
+  patchguests Json?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  status      ReservationStatus @default(PENDING)
+  roomid      String            @db.ObjectId
+  userid      String            @db.ObjectId
+  payment     Payment[]
+  rooms       Rooms?            @relation(fields: [roomid], references: [id], onDelete: Cascade)
+  user        User?             @relation(fields: [userid], references: [id], onDelete: Cascade)
 }
 
 model Payment {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
   amount        Int?
-    guests     Int?
   currency      String
   status        PaymentStatus @default(PENDING)
-  userid        String        @db.ObjectId
-  reservationid String        @db.ObjectId
-  user          User          @relation(fields: [userid], references: [id])
-  reservation   Reservations  @relation(fields: [reservationid], references: [id])
+  userid        String        @db.ObjectId // Customer ID
+  sellerId      String        @db.ObjectId // Seller ID
+  reservationId String        @db.ObjectId // Seller ID
+  user          User          @relation("UserPayments", fields: [userid], references: [id])
+  seller        User          @relation("SellerPayments", fields: [sellerId], references: [id])
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
+  cartItems     Json?
+  User          User?         @relation(fields: [userId], references: [id])
+  Reservation   Reservations? @relation(fields: [reservationId], references: [id])
+  userId        String?       @db.ObjectId
 }
 
 model Conversations {

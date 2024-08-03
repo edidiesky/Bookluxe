@@ -32,10 +32,6 @@ module.exports = {
         custom_2: "1304px",
       },
       fontFamily: {
-        booking_font: ["Montreal", "sans-serif"],
-        booking_font_bold: ["Booking_Normal_Bold", "sans-serif"],
-        booking_font_normal: ["Booking_Normal_Medium", "sans-serif"],
-        booking_font4: ["playfair", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
