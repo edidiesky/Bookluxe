@@ -32,6 +32,7 @@ module.exports = {
         custom_2: "1304px",
       },
       fontFamily: {
+        booking_bold: ["Bold", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
