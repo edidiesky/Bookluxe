@@ -52,12 +52,12 @@ const RoomLists = () => {
   }, []);
   useEffect(() => {
     let mouseXMovement = gsap.quickTo(mouseRef.current, "left", {
-      duration: 0.9,
+      duration: 0.7,
       ease: "power3",
     });
 
     let mouseYMovement = gsap.quickTo(mouseRef.current, "top", {
-      duration: 0.9,
+      duration: 0.7,
       ease: "power3",
     });
 

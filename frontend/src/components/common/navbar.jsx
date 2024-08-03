@@ -43,7 +43,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className="p-6 z-[50] bg-[#EAE5DF] border-b border-[rgba(0,0,0,.1)] 
+        className="p-4 z-[50] bg-[#EAE5DF] border-b border-[rgba(0,0,0,.1)] 
         px-2 md:px-8 min-h-[72px] sticky top-0 left-0 flex items-center justify-center"
       >
         <div className="w-full flex items-center gap-2 justify-between">
@@ -86,7 +86,7 @@ const Navbar = () => {
             <div className="flex items-center gap-6">
               <div
                 onClick={() => dispatch(onLoginModal())}
-                className="h-[50px] font-semibold text-[13px] w-[140px] rounded-[60px]"
+                className="h-[46px] font-semibold text-[13px] w-[140px] rounded-[60px]"
               >
                 <Button type={"full_dark"} text={" Book Your Stay"} />
               </div>
