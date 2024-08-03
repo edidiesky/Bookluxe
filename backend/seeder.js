@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import { PrismaClient } from "@prisma/client";
 import { apartmentDataList } from "./data/roomdata.js";
+import { user } from "./data/seller.js";
 
 dotenv.config();
 
@@ -26,6 +27,9 @@ const importData = async () => {
     await prisma.rooms.createMany({
       data: apartmentDataList,
     });
+    // await prisma.user.createMany({
+    //   data: user,
+    // });
     console.log("Data Imported!");
     process.exit();
   } catch (error) {
