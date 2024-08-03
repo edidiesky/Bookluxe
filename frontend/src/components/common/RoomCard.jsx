@@ -107,7 +107,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
         to={`/room/${apartment?.id}`}
         className="w-full flex flex-col gap-4"
       >
-        <div className="w-full h-[270px] overflow-hidden relative">
+        <div className="w-full h-[440px] overflow-hidden relative">
           <div className="w-full h-full absolute bg-[rgba(0,0,0,.3)] z-[30]"></div>
 
           <Link
@@ -117,27 +117,9 @@ const RoomCard = ({ type, apartment, inView, index }) => {
           >
             <Heart active={active} />
           </Link>
-          <div className="h-full z-[40] absolute left-0 w-[80px] flex items-center justify-center">
-            <Link
-              to={"#"}
-              onClick={() => handleImagePosition("left")}
-              className="w-12 h-12 text-lg bg-[#00000013] hover:bg-[#00000072] hover:scale-[1.09] cursor-pointer text-white flex items-center justify-center z-[40]"
-            >
-              <BiChevronLeft fontSize={"30px"} />
-            </Link>
-          </div>
-          <div className="h-full z-[40] absolute right-0 w-[80px] flex items-center justify-center">
-            <Link
-              to={"#"}
-              onClick={() => handleImagePosition("right")}
-              className="w-12 h-12 text-lg bg-[#00000013] hover:bg-[#00000072] hover:scale-[1.09] cursor-pointer text-white flex items-center justify-center"
-            >
-              <BiChevronRight fontSize={"30px"} />
-            </Link>
-          </div>
           <div
             style={{ gridTemplateColumns: "repeat(4, 100%)" }}
-            className="w-full h-[270px] absolute top-0 left-0 overflow-hidden grid"
+            className="w-full h-full absolute top-0 left-0 overflow-hidden grid"
           >
             {apartment.images.map((image, index) => {
               return (
@@ -147,7 +129,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
                     transition: "all .4s ease",
                   }}
                   key={index}
-                  className="w-full h-[270px]"
+                  className="w-full h-full"
                 >
                   <img
                     key={index}
@@ -169,7 +151,7 @@ const RoomCard = ({ type, apartment, inView, index }) => {
               );
             })}
           </div>
-          <div className="absolute z-[40] left-0 bottom-[5%] w-full flex items-center justify-center">
+          {/* <div className="absolute z-[40] left-0 bottom-[5%] w-full flex items-center justify-center">
             <div className="w-full flex items-center justify-center gap-1">
               {Array(apartment?.images?.length)
                 .fill("")
@@ -185,37 +167,19 @@ const RoomCard = ({ type, apartment, inView, index }) => {
                   );
                 })}
             </div>
-          </div>
+          </div> */}
           {/* <img src= alt="" /> */}
         </div>
 
-        <div className="w-full flex flex-col bg-white gap-2">
-          <h4
-            style={{ letterSpacing: "3px" }}
-            con
-            className="text-[10px] text-grey uppercase font-booking_font_bold font-bold"
-          >
-            for settling in castle
-          </h4>
-          <h3 className="text-3xl font-booking_font4 font-normal text-text_dark_1 ">
-            {apartment?.title}
+        <div className="w-full flex flex-col py-4 gap-2">
+          <h3 className="text-4xl md:text-5xl family2 w-full text-center text-text_dark_1 ">
+            {apartment?.subtitle}
+            {/* Amazon */}
           </h3>
-
-          <div
-            style={{ letterSpacing: "1px" }}
-            className="flex items-center justify-between gap-2 pb-2 uppercase border-b border-[rgba(0,0,0,.6)] text-xs font-bold font-booking_font_bold"
-          >
-            <span className="flex uppercase items-center gap-2">
-              Explore Destinations <IoIosArrowRoundForward fontSize={"24px"} />
-            </span>
-
-            <span className="flex text-[10px] text-grey font-normal font-booking_font flex-col">
-              price
-              <span className="block text-lg text-[#000] font-booking_font4">
-                ₦{Number(apartment?.price).toLocaleString()}
-              </span>
-            </span>
-          </div>
+          <p className="text-center max-w-[500px] text-grey mx-auto text-base font-normal">
+            Sleep {apartment?.guests} adults - Includes {apartment?.bedroom}{" "}
+            bedroom
+          </p>
         </div>
       </Link>
     );

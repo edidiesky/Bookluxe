@@ -127,6 +127,9 @@ body {
   color: var(--dark-1);
   font-family: "Karla", sans-serif;
 }
+.family2 {
+  font-family: 'Bebas Neue';
+}
 
 .hide {
   overflow: hidden !important;
